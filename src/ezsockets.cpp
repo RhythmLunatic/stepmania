@@ -215,16 +215,16 @@ bool EzSockets::listen()
 
 void EzSockets::setBlocking(bool b)
 {
-#if defined(WIN32)
 	ezs_internal *data = (ezs_internal*)(this->opaque);
+#if defined(WIN32)
 	u_long iMode = 0;
 	if (!b)	iMode = 1;
 	ioctlsocket(data->sock, FIONBIO, &iMode);
 #else
-	const int flags = fcntl(sock, F_GETFL, 0);
+	const int flags = fcntl(data->sock, F_GETFL, 0);
 	if ((flags & O_NONBLOCK) && !b) { return; }
 	if (!(flags & O_NONBLOCK) && b) { return; }
-	fcntl(sock, F_SETFL, (b ? flags ^ O_NONBLOCK : flags | O_NONBLOCK));
+	fcntl(data->sock, F_SETFL, (b ? flags ^ O_NONBLOCK : flags | O_NONBLOCK));
 #endif
 	blocking = b;
 }

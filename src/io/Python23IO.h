@@ -105,7 +105,7 @@ private:
 	static uint8_t hxdb_vbaud_rate;// = 0x03; //this is 2 on p2io
 	static uint8_t extio_vcom_port;// = 0x00;//p2io only
 	static uint8_t extio_vbaud_rate;// = 0x03;//p2io only
-	static uint8_t Python23IO::hdxb_dev_id; // if user connects ONLY HDXB this they can change this but really they shouldn't
+	static uint8_t hdxb_dev_id; // if user connects ONLY HDXB this they can change this but really they shouldn't
 	static const int interrupt_ep = 0x83;
 	static const int bulk_write_to_ep = 0x02;
 	static const int bulk_read_from_ep = 0x81;
@@ -113,11 +113,11 @@ private:
 	static const uint16_t python3io_PRODUCT_ID[2];// = { 0x5731, 0x8008 };
 	static const uint16_t python2io_VENDOR_ID[1];// = { 0x0000 };
 	static const uint16_t python2io_PRODUCT_ID[1];// = { 0x7305 };
-	static Preference<PSTRING> Python23IO::m_COM4PORT;
-	static Preference<PSTRING> Python23IO::m_sP23IOMode;
-	static Preference<bool> Python23IO::m_bP2IOEXTIO;
-	static Preference<int> Python23IO::m_iP2IO_HDXB_DEV_ID;
-	
+	static Preference<PSTRING> m_COM4PORT;
+	static Preference<PSTRING> m_sP23IOMode;
+	static Preference<bool> m_bP2IOEXTIO;
+	static Preference<int> m_iP2IO_HDXB_DEV_ID;
+
 
 };
 
