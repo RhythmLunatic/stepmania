@@ -505,8 +505,10 @@ void OptionsList::SwitchToCurrentRow()
 	msg.SetParam( "Player", m_pn );
 	msg.SetParam( "Menu", m_asMenuStack.back() );
 	/* This is here because if we want to adjust the size of a graphic
-	 * behind the list or do other lua things, we'd need to know the size. */
-	msg.SetParam( "Size", (int)m_asMenuStack.size());
+	 * behind the list or do other lua things, we'd need to know the size.
+	 * TODO: It doesn't actually work.
+	 */
+	//msg.SetParam( "Size", (int)m_asMenuStack.size());
 	MESSAGEMAN->Broadcast( msg );
 }
 
