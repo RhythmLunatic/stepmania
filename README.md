@@ -4,12 +4,16 @@ Rave It Out
 This is a custom version of StepMania with various features. The theme is available [here](https://github.com/raveitoutofficial/raveitout)
 
 Features:
+* OptionsList implements more features that the regular options menu supports.
 * Update checker
 * Windows PIUIO ported from OpenITG (thx to pk for the libUSB shit)
+* PacDrive lights because it's been a year and it still hasn't been merged
 
 ## Compiling
 
-https://github.com/stepmania/stepmania/wiki/Compiling-StepMania
+Do this because it has libUSB: `apt-get install libusb-dev libusb-1.0.0 libusb-0.1-4`
+
+Then follow the rest like normal: https://github.com/stepmania/stepmania/wiki/Compiling-StepMania
 
 ## Resources
 
