@@ -369,12 +369,16 @@ list(APPEND SMDATA_ARCH_LIGHTS_HPP
         "arch/Lights/LightsDriver_Linux_PIUIO_Leds.cpp"
         "arch/Lights/LightsDriver_LinuxWeedTech.cpp"
         "arch/Lights/LightsDriver_LinuxParallel.cpp"
+        "arch/Lights/LightsDriver_LinuxPacDrive.cpp"
+        "io/PacDrive.cpp"
       )
       list(APPEND SMDATA_ARCH_LIGHTS_HPP
         "arch/Lights/LightsDriver_Linux_PIUIO.h"
         "arch/Lights/LightsDriver_Linux_PIUIO_Leds.h"
         "arch/Lights/LightsDriver_LinuxWeedTech.h"
         "arch/Lights/LightsDriver_LinuxParallel.h"
+        "arch/Lights/LightsDriver_LinuxPacDrive.h"
+        "io/PacDrive.h"
       )
       if (WITH_PARALLEL_PORT)
         list(APPEND SMDATA_ARCH_LIGHTS_SRC
