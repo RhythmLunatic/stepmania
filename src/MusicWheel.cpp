@@ -1474,14 +1474,12 @@ void MusicWheel::SetOpenSection( RString group )
 void MusicWheel::GetCurrentSections(vector<RString> &sections)
 {
 	vector<MusicWheelItemData *> &wiWheelItems = getWheelItemsData(GAMESTATE->m_SortOrder);
-	//vector<RString> sections;
 	for( unsigned i = 0; i < wiWheelItems.size(); i++ )
 	{
 		//MusicWheelItemData &d = *from[i];
 		if ( wiWheelItems[i]->m_Type == WheelItemDataType_Section && !wiWheelItems[i]->m_sText.empty())
 			sections.push_back(wiWheelItems[i]->m_sText);
 	}
-	//return sections;
 }
 
 // sm-ssc additions: jump to group
@@ -1718,11 +1716,6 @@ public:
 	{
 		vector<RString> v;
 		p->GetCurrentSections(v);
-		
-		//vector<RString> v;
-		
-		//v.push_back("asdadasdads");
-		
 		LuaHelpers::CreateTableFromArray<RString>( v, L );
 		return 1;
 	
