@@ -293,7 +293,7 @@ namespace {
 		{
 			GetDirListing( SONG_MOVIES_DIR+pSong->m_sGroupName+"/"+sMatch, vsPathsOut, false, true );	// search in SongMovies/SongGroupName/ first
 			GetDirListing( SONG_MOVIES_DIR+sMatch, vsPathsOut, false, true );
-			if ((int)PREFSMAN->m_iMaxTextureResolution == 256)
+			if ((int)PREFSMAN->m_iMaxTextureResolution <= 1024)
             {
 			    //make a copy of sMatch
 			    RString sdPath(sMatch);
