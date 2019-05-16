@@ -293,14 +293,11 @@ namespace {
 		{
 			GetDirListing( SONG_MOVIES_DIR+pSong->m_sGroupName+"/"+sMatch, vsPathsOut, false, true );	// search in SongMovies/SongGroupName/ first
 			GetDirListing( SONG_MOVIES_DIR+sMatch, vsPathsOut, false, true );
-			//LOG->Warn("texRes: %i",(int)PREFSMAN->m_iMaxTextureResolution);
 			if ((int)PREFSMAN->m_iMaxTextureResolution == 256)
             {
-			    //inefficient C++ garbage because writing good code takes skill
-			    //RString sdPath = sMatch;
+			    //make a copy of sMatch
 			    RString sdPath(sMatch);
 			    sdPath.Replace("(HD)","(SD)");
-			    //LOG->Warn("OldStr: %s | NewStr: %s",sMatch.c_str(),sdPath.c_str());
                 //LOG->Warn("Searching %sSD/%s",SONG_MOVIES_DIR.c_str(),sdPath.c_str());
                 GetDirListing( SONG_MOVIES_DIR+"SD/"+sdPath, vsPathsOut, false, true );
 
