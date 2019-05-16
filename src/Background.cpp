@@ -321,6 +321,7 @@ bool BackgroundImpl::Layer::CreateBackground( const Song *pSong, const Backgroun
 		}
 
 		ASSERT( !sResolved.empty() );
+		//LOG->Info("Path to BGAnim: %s",sResolved.c_str());
 
 		vsResolvedRef[i] = new LuaThreadVariable( ssprintf("File%d",i+1), sResolved );
 	}

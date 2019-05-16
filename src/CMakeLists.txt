@@ -349,7 +349,7 @@ list(APPEND SMDATA_LINK_LIB
   "png"
   "glew"
   "jpeg"
-  "usb"
+  #"usb" #Causes a linker error in Windows/MSVC2015 right now. Might be required for PIUIO to work.
 )
 include(../extern/CMakeProject-mmmagic.cmake)
 
