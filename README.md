@@ -15,6 +15,12 @@ Do this because it has libUSB: `apt-get install libusb-dev libusb-1.0.0 libusb-0
 
 Then follow the rest like normal: https://github.com/stepmania/stepmania/wiki/Compiling-StepMania
 
+## Linux PacDrive
+In preferences.ini: `LightsDriver=Linux_PacDrive`
+
+Check product ID with lsusb. Replace idProduct with the Product ID of your PacDrive and the OWNER="raveitout" with the name of your linux account. Then run this command.
+`sudo echo SUBSYSTEMS=="usb", ATTRS{idVendor}=="d209", ATTRS{idProduct}=="1500", SYMLINK+="pacdrive", OWNER="raveitout" > /etc/udev/rules.d/90-pacdrive.rules`
+
 ## Resources
 
 Hit us up on Facebook!
