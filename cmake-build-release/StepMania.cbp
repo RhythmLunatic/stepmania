@@ -1,0 +1,4495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="StepMania"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\CMake\;CMake Files\CMake\TestCode\;CMake Files\CMake\Modules\;CMake Files\cmake-build-release\;CMake Files\cmake-build-release\ffmpeg-prefix\;CMake Files\cmake-build-release\ffmpeg-prefix\tmp\;CMake Files\src\;CMake Files\extern\;CMake Files\Xcode\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ffmpeg">
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 ffmpeg"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package_source">
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 package_source"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package">
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 package"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="jsoncpp">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/libjsoncpp.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/arc/Documents/stepmania/extern/jsoncpp/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 jsoncpp"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="jsoncpp/fast">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/libjsoncpp.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/arc/Documents/stepmania/extern/jsoncpp/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 jsoncpp/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tomcrypt">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/libtomcrypt.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DLTC_NO_ASM"/>
+					<Add directory="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 tomcrypt"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tomcrypt/fast">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/libtomcrypt.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DLTC_NO_ASM"/>
+					<Add directory="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 tomcrypt/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glew">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/libglew.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLEW_STATIC"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/glew-1.5.8/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 glew"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glew/fast">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/libglew.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLEW_STATIC"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/glew-1.5.8/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 glew/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tommath">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/libtommath.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/arc/Documents/stepmania/src/libtommath"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 tommath"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tommath/fast">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/libtommath.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/arc/Documents/stepmania/src/libtommath"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 tommath/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="png">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/libpng.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/arc/Documents/stepmania/extern/zlib"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 png"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="png/fast">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/libpng.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/arc/Documents/stepmania/extern/zlib"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 png/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lua-5.1">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/liblua-5.1.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 lua-5.1"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lua-5.1/fast">
+				<Option output="/home/arc/Documents/stepmania/cmake-build-release/extern/liblua-5.1.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/extern"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 lua-5.1/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/extern/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="GtkModule">
+				<Option output="/home/arc/Documents/stepmania/GtkModule.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCMAKE_POWERED"/>
+					<Add directory="/home/arc/Documents/stepmania/src"/>
+					<Add directory="/home/arc/Documents/stepmania/src/generated"/>
+					<Add directory="/home/arc/Documents/stepmania/src/arch/LoadingWindow"/>
+					<Add directory="/usr/include/gtk-2.0"/>
+					<Add directory="/usr/include/freetype2"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+					<Add directory="/usr/include/atk-1.0"/>
+					<Add directory="/usr/include/gdk-pixbuf-2.0"/>
+					<Add directory="/usr/include/cairo"/>
+					<Add directory="/usr/include/pango-1.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/gtk-2.0/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 GtkModule"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="GtkModule/fast">
+				<Option output="/home/arc/Documents/stepmania/GtkModule.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCMAKE_POWERED"/>
+					<Add directory="/home/arc/Documents/stepmania/src"/>
+					<Add directory="/home/arc/Documents/stepmania/src/generated"/>
+					<Add directory="/home/arc/Documents/stepmania/src/arch/LoadingWindow"/>
+					<Add directory="/usr/include/gtk-2.0"/>
+					<Add directory="/usr/include/freetype2"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+					<Add directory="/usr/include/atk-1.0"/>
+					<Add directory="/usr/include/gdk-pixbuf-2.0"/>
+					<Add directory="/usr/include/cairo"/>
+					<Add directory="/usr/include/pango-1.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/gtk-2.0/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 GtkModule/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="StepMania">
+				<Option output="/home/arc/Documents/stepmania/stepmania" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/src"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DLTC_NO_ASM"/>
+					<Add option="-DCMAKE_POWERED"/>
+					<Add option="-DRELEASE"/>
+					<Add option="-DCRASH_HANDLER"/>
+					<Add option="-DBACKTRACE_METHOD_X86_LINUX"/>
+					<Add option="-DBACKTRACE_METHOD_TEXT=&quot;x86 custom backtrace&quot;"/>
+					<Add option="-DBACKTRACE_LOOKUP_METHOD_TEXT=&quot;backtrace_symbols&quot;"/>
+					<Add option="-DBACKTRACE_LOOKUP_METHOD_DLADDR"/>
+					<Add option="-DHAVE_LIBPTHREAD"/>
+					<Add option="-DCPU_X86_64"/>
+					<Add option="-DHAVE_FFMPEG"/>
+					<Add option="-DHAVE_XRANDR"/>
+					<Add option="-DHAVE_XINERAMA"/>
+					<Add option="-DHAVE_GTK"/>
+					<Add option="-DUNIX"/>
+					<Add option="-DLINUX"/>
+					<Add option="-DHAVE_OSS_VERSION=1"/>
+					<Add option="-DPACKAGE_NAME=&quot;StepMania&quot;"/>
+					<Add option="-DPACKAGE_VERSION=&quot;5.1&quot;"/>
+					<Add directory="/home/arc/Documents/stepmania/src"/>
+					<Add directory="/home/arc/Documents/stepmania/src/generated"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/glew-1.5.8/include"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/jsoncpp/include"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/zlib"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/vorbis"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/ffmpeg-linux-2.1.3"/>
+					<Add directory="/home/arc/Documents/stepmania/cmake-build-release/ffmpeg-prefix/src/ffmpeg-build"/>
+					<Add directory="/usr/include/gtk-2.0"/>
+					<Add directory="/usr/include/freetype2"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+					<Add directory="/usr/include/atk-1.0"/>
+					<Add directory="/usr/include/gdk-pixbuf-2.0"/>
+					<Add directory="/usr/include/cairo"/>
+					<Add directory="/usr/include/pango-1.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/gtk-2.0/include"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/libpng/include"/>
+					<Add directory="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers"/>
+					<Add directory="/home/arc/Documents/stepmania/src/libtommath"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 StepMania"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="StepMania/fast">
+				<Option output="/home/arc/Documents/stepmania/stepmania" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arc/Documents/stepmania/cmake-build-release/src"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DLTC_NO_ASM"/>
+					<Add option="-DCMAKE_POWERED"/>
+					<Add option="-DRELEASE"/>
+					<Add option="-DCRASH_HANDLER"/>
+					<Add option="-DBACKTRACE_METHOD_X86_LINUX"/>
+					<Add option="-DBACKTRACE_METHOD_TEXT=&quot;x86 custom backtrace&quot;"/>
+					<Add option="-DBACKTRACE_LOOKUP_METHOD_TEXT=&quot;backtrace_symbols&quot;"/>
+					<Add option="-DBACKTRACE_LOOKUP_METHOD_DLADDR"/>
+					<Add option="-DHAVE_LIBPTHREAD"/>
+					<Add option="-DCPU_X86_64"/>
+					<Add option="-DHAVE_FFMPEG"/>
+					<Add option="-DHAVE_XRANDR"/>
+					<Add option="-DHAVE_XINERAMA"/>
+					<Add option="-DHAVE_GTK"/>
+					<Add option="-DUNIX"/>
+					<Add option="-DLINUX"/>
+					<Add option="-DHAVE_OSS_VERSION=1"/>
+					<Add option="-DPACKAGE_NAME=&quot;StepMania&quot;"/>
+					<Add option="-DPACKAGE_VERSION=&quot;5.1&quot;"/>
+					<Add directory="/home/arc/Documents/stepmania/src"/>
+					<Add directory="/home/arc/Documents/stepmania/src/generated"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/glew-1.5.8/include"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/jsoncpp/include"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/zlib"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/vorbis"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/ffmpeg-linux-2.1.3"/>
+					<Add directory="/home/arc/Documents/stepmania/cmake-build-release/ffmpeg-prefix/src/ffmpeg-build"/>
+					<Add directory="/usr/include/gtk-2.0"/>
+					<Add directory="/usr/include/freetype2"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+					<Add directory="/usr/include/atk-1.0"/>
+					<Add directory="/usr/include/gdk-pixbuf-2.0"/>
+					<Add directory="/usr/include/cairo"/>
+					<Add directory="/usr/include/pango-1.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/gtk-2.0/include"/>
+					<Add directory="/home/arc/Documents/stepmania/extern/libpng/include"/>
+					<Add directory="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers"/>
+					<Add directory="/home/arc/Documents/stepmania/src/libtommath"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 StepMania/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arc/Documents/stepmania/cmake-build-release/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/arc/Documents/stepmania/extern/glew-1.5.8/src/glew.c">
+			<Option target="glew"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/jsoncpp/include/json/config.h">
+			<Option target="jsoncpp"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/jsoncpp/include/json/features.h">
+			<Option target="jsoncpp"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/jsoncpp/include/json/forwards.h">
+			<Option target="jsoncpp"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/jsoncpp/include/json/json.h">
+			<Option target="jsoncpp"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/jsoncpp/include/json/reader.h">
+			<Option target="jsoncpp"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/jsoncpp/include/json/value.h">
+			<Option target="jsoncpp"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/jsoncpp/include/json/writer.h">
+			<Option target="jsoncpp"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/jsoncpp/src/lib_json/json_reader.cpp">
+			<Option target="jsoncpp"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/jsoncpp/src/lib_json/json_value.cpp">
+			<Option target="jsoncpp"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/jsoncpp/src/lib_json/json_writer.cpp">
+			<Option target="jsoncpp"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/png.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/png.h">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngconf.h">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngdebug.h">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngerror.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngget.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pnginfo.h">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pnglibconf.h">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngmem.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngpread.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngpriv.h">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngread.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngrio.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngrtran.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngrutil.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngset.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngstruct.h">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngtest.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngtrans.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngwio.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngwrite.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngwtran.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/libpng/include/pngwutil.c">
+			<Option target="png"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lapi.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lapi.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lauxlib.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lauxlib.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lbaselib.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lcode.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lcode.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ldblib.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ldebug.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ldebug.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ldo.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ldo.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ldump.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lfunc.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lfunc.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lgc.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lgc.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/linit.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/liolib.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/llex.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/llex.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/llimits.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lmathlib.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lmem.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lmem.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/loadlib.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lobject.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lobject.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lopcodes.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lopcodes.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/loslib.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lparser.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lparser.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lstate.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lstate.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lstring.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lstring.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lstrlib.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ltable.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ltable.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ltablib.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ltm.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/ltm.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lua.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/luaconf.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lualib.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lundump.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lundump.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lvm.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lvm.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lzio.c">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/lua-5.1/src/lzio.h">
+			<Option target="lua-5.1"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActiveAttackList.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActiveAttackList.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Actor.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Actor.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorFrame.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorFrame.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorFrameTexture.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorFrameTexture.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorMultiTexture.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorMultiTexture.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorMultiVertex.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorMultiVertex.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorProxy.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorProxy.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorScroller.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorScroller.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorSound.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorSound.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ActorUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/AdjustSync.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/AdjustSync.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/AnnouncerManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/AnnouncerManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ArrowEffects.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ArrowEffects.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Attack.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Attack.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/AttackDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/AttackDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/AutoActor.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/AutoActor.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/AutoKeysounds.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/AutoKeysounds.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BGAnimation.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BGAnimation.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BGAnimationLayer.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BGAnimationLayer.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BPMDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BPMDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Background.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Background.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BackgroundUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BackgroundUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Banner.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Banner.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BeginnerHelper.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BeginnerHelper.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BitmapText.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/BitmapText.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Bookkeeper.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Bookkeeper.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Character.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Character.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CharacterManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CharacterManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CodeDetector.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CodeDetector.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CodeSet.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CodeSet.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CombinedLifeMeter.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CombinedLifeMeterTug.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CombinedLifeMeterTug.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ComboGraph.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ComboGraph.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Command.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Command.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CommandLineActions.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CommandLineActions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CommonMetrics.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CommonMetrics.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ControllerStateDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ControllerStateDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Course.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Course.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CourseContentsList.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CourseContentsList.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CourseLoaderCRS.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CourseLoaderCRS.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CourseUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CourseUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CourseWriterCRS.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CourseWriterCRS.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CreateZip.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CreateZip.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CryptHelpers.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CryptHelpers.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CryptManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CryptManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CsvFile.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CsvFile.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CubicSpline.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CubicSpline.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DancingCharacters.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DancingCharacters.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DateTime.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DateTime.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Difficulty.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Difficulty.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DifficultyIcon.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DifficultyIcon.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DifficultyList.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DifficultyList.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DisplaySpec.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DisplaySpec.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DualScrollBar.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DualScrollBar.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DynamicActorScroller.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/DynamicActorScroller.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/EditMenu.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/EditMenu.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/EnumHelper.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/EnumHelper.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/FadingBanner.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/FadingBanner.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/FileDownload.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/FileDownload.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Font.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Font.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/FontCharAliases.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/FontCharAliases.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/FontCharmaps.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/FontCharmaps.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/FontManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/FontManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Foreach.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Foreground.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Foreground.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Game.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Game.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameCommand.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameCommand.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameConstantsAndTypes.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameConstantsAndTypes.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameInput.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameInput.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameLoop.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameLoop.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GamePreferences.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GamePreferences.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameSoundManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameSoundManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameState.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameState.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameplayAssist.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GameplayAssist.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GhostArrowRow.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GhostArrowRow.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Grade.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Grade.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GradeDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GradeDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GraphDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GraphDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GrooveRadar.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/GrooveRadar.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/HTTPHelper.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/HTTPHelper.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/HelpDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/HelpDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/HighScore.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/HighScore.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/HoldJudgment.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/HoldJudgment.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ImageCache.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ImageCache.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/IniFile.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/IniFile.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/InputEventPlus.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/InputFilter.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/InputFilter.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/InputMapper.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/InputMapper.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/InputQueue.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/InputQueue.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Inventory.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Inventory.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/JsonUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/JsonUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LifeMeter.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LifeMeter.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LifeMeterBar.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LifeMeterBar.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LifeMeterBattery.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LifeMeterBattery.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LifeMeterTime.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LifeMeterTime.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LightsManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LightsManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LocalizedString.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LocalizedString.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LuaBinding.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LuaBinding.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LuaExpressionTransform.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LuaExpressionTransform.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LuaManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LuaManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LuaReference.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LuaReference.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LyricDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LyricDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LyricsLoader.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/LyricsLoader.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Main.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MemoryCardDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MemoryCardDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MemoryCardManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MemoryCardManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MenuTimer.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MenuTimer.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MessageManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MessageManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MeterDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MeterDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ModIcon.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ModIcon.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ModIconRow.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ModIconRow.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Model.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Model.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ModelManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ModelManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ModelTypes.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ModelTypes.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ModsGroup.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ModsGroup.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MsdFile.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MsdFile.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MusicWheel.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MusicWheel.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MusicWheelItem.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/MusicWheelItem.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NetworkSyncManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NetworkSyncManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteData.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteData.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteDataUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteDataUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteDataWithScoring.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteDataWithScoring.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteField.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteField.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteSkinManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteSkinManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteTypes.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NoteTypes.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoader.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoader.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderBMS.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderBMS.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderDWI.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderDWI.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderJson.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderJson.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderKSF.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderKSF.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderSM.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderSM.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderSMA.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderSMA.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderSSC.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesLoaderSSC.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesWriterDWI.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesWriterDWI.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesWriterJson.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesWriterJson.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesWriterSM.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesWriterSM.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesWriterSSC.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/NotesWriterSSC.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/OptionRow.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/OptionRow.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/OptionRowHandler.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/OptionRowHandler.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/OptionsCursor.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/OptionsCursor.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/OptionsList.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/OptionsList.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PaneDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PaneDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PercentageDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PercentageDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Player.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Player.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PlayerAI.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PlayerAI.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PlayerNumber.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PlayerNumber.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PlayerOptions.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PlayerOptions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PlayerStageStats.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PlayerStageStats.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PlayerState.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PlayerState.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Preference.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Preference.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PrefsManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/PrefsManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ProductInfo.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Profile.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Profile.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ProfileManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ProfileManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Quad.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Quad.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RadarValues.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RadarValues.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageBitmapTexture.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageBitmapTexture.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageDisplay_GLES2.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageDisplay_GLES2.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageDisplay_Null.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageDisplay_Null.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageDisplay_OGL.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageDisplay_OGL.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageDisplay_OGL_Helpers.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageDisplay_OGL_Helpers.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageException.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageException.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFile.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFile.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileBasic.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileBasic.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriver.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriver.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverDeflate.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverDeflate.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverDirect.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverDirect.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverDirectHelpers.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverDirectHelpers.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverMemory.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverMemory.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverReadAhead.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverReadAhead.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverSlice.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverSlice.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverTimeout.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverTimeout.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverZip.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileDriverZip.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileManager_ReadAhead.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageFileManager_ReadAhead.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageInput.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageInput.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageInputDevice.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageInputDevice.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageLog.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageLog.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageMath.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageMath.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageModelGeometry.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageModelGeometry.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSound.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSound.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundMixBuffer.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundMixBuffer.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundPosMap.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundPosMap.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Chain.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Chain.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_ChannelSplit.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_ChannelSplit.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Extend.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Extend.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_FileReader.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_FileReader.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Filter.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_MP3.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_MP3.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Merge.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Merge.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Pan.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Pan.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_PitchChange.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_PitchChange.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_PostBuffering.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_PostBuffering.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Preload.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Preload.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Resample_Good.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Resample_Good.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_SpeedChange.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_SpeedChange.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_ThreadedBuffer.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_ThreadedBuffer.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Vorbisfile.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_Vorbisfile.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_WAV.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundReader_WAV.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSoundUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurfaceUtils.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurfaceUtils.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurfaceUtils_Dither.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurfaceUtils_Dither.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurfaceUtils_Palettize.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurfaceUtils_Palettize.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurfaceUtils_Zoom.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurfaceUtils_Zoom.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load_BMP.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load_BMP.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load_GIF.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load_GIF.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load_JPEG.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load_JPEG.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load_PNG.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load_PNG.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load_XPM.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Load_XPM.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Save_BMP.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Save_BMP.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Save_JPEG.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Save_JPEG.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Save_PNG.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageSurface_Save_PNG.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTexture.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTexture.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTextureID.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTextureID.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTextureManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTextureManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTexturePreloader.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTexturePreloader.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTextureRenderTarget.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTextureRenderTarget.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageThreads.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageThreads.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTimer.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTimer.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTypes.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageTypes.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_AutoPtr.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_BackgroundLoader.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_BackgroundLoader.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_CachedObject.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_CachedObject.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_CharConversions.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_CharConversions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_CircularBuffer.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_FileDB.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_FileDB.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_WorkerThread.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RageUtil_WorkerThread.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RandomSample.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RandomSample.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ReceptorArrow.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ReceptorArrow.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ReceptorArrowRow.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ReceptorArrowRow.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RollingNumbers.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RollingNumbers.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RoomInfoDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RoomInfoDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RoomWheel.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/RoomWheel.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SampleHistory.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SampleHistory.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayAliveTime.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayAliveTime.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayBattle.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayBattle.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayCalories.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayCalories.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayLifeTime.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayLifeTime.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayNormal.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayNormal.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayOni.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayOni.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayPercentage.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayPercentage.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayRave.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreDisplayRave.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreKeeper.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreKeeper.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreKeeperNormal.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreKeeperNormal.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreKeeperRave.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreKeeperRave.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreKeeperShared.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScoreKeeperShared.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Screen.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Screen.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenAttract.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenAttract.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenBookkeeping.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenBookkeeping.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenContinue.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenContinue.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenDebugOverlay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenDebugOverlay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenDemonstration.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenDemonstration.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenDimensions.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenDimensions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenEdit.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenEdit.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenEditMenu.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenEditMenu.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenEnding.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenEnding.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenEvaluation.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenEvaluation.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenExit.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenExit.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenGameplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenGameplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenGameplayLesson.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenGameplayLesson.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenGameplayNormal.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenGameplayNormal.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenGameplayShared.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenGameplayShared.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenGameplaySyncMachine.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenGameplaySyncMachine.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenHighScores.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenHighScores.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenHowToPlay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenHowToPlay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenInstallOverlay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenInstallOverlay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenInstructions.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenInstructions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenJukebox.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenJukebox.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenMapControllers.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenMapControllers.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenMessage.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenMessage.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenMiniMenu.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenMiniMenu.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNameEntry.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNameEntry.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNameEntryTraditional.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNameEntryTraditional.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNetEvaluation.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNetEvaluation.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNetRoom.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNetRoom.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNetSelectBase.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNetSelectBase.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNetSelectMusic.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNetSelectMusic.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNetworkOptions.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenNetworkOptions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptions.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsCourseOverview.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsCourseOverview.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsEditCourse.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsEditCourse.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsEditProfile.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsEditProfile.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsExportPackage.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsExportPackage.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsManageCourses.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsManageCourses.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsManageEditSteps.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsManageEditSteps.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsManageProfiles.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsManageProfiles.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsMaster.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsMaster.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsMasterPrefs.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsMasterPrefs.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsMemoryCard.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsMemoryCard.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsToggleSongs.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenOptionsToggleSongs.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenPackages.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenPackages.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenPlayerOptions.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenPlayerOptions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenProfileLoad.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenProfileLoad.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenProfileSave.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenProfileSave.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenPrompt.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenPrompt.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenRanking.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenRanking.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenReloadSongs.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenReloadSongs.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSMOnlineLogin.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSMOnlineLogin.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSandbox.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSandbox.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSaveSync.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSaveSync.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelect.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelect.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelectCharacter.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelectCharacter.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelectLanguage.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelectLanguage.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelectMaster.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelectMaster.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelectMusic.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelectMusic.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelectProfile.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSelectProfile.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenServiceAction.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenServiceAction.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSetTime.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSetTime.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSongOptions.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSongOptions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSplash.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSplash.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenStatsOverlay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenStatsOverlay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSyncOverlay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSyncOverlay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSystemLayer.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenSystemLayer.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenTestInput.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenTestInput.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenTestLights.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenTestLights.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenTestSound.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenTestSound.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenTextEntry.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenTextEntry.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenTitleMenu.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenTitleMenu.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenUnlockBrowse.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenUnlockBrowse.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenUnlockCelebrate.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenUnlockCelebrate.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenUnlockStatus.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenUnlockStatus.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenWithMenuElements.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScreenWithMenuElements.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScrollBar.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ScrollBar.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SnapDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SnapDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Song.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Song.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SongCacheIndex.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SongCacheIndex.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SongManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SongManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SongOptions.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SongOptions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SongPosition.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SongPosition.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SongUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SongUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SoundEffectControl.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SoundEffectControl.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SpecialFiles.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SpecialFiles.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Sprite.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Sprite.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StageStats.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StageStats.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StatsManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StatsManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StdString.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StepMania.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StepMania.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Steps.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Steps.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StepsDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StepsDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StepsUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StepsUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StreamDisplay.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StreamDisplay.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Style.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Style.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StyleUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/StyleUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/SubscriptionManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/TextBanner.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/TextBanner.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ThemeManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ThemeManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ThemeMetric.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/TimingData.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/TimingData.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/TimingSegments.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/TimingSegments.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/TitleSubstitution.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/TitleSubstitution.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Trail.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Trail.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/TrailUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/TrailUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Transition.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Transition.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Tween.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/Tween.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/UnlockManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/UnlockManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/WheelBase.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/WheelBase.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/WheelItemBase.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/WheelItemBase.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/WheelNotifyIcon.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/WheelNotifyIcon.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/WorkoutGraph.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/WorkoutGraph.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/XmlFile.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/XmlFile.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/XmlFileUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/XmlFileUtil.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/XmlToLua.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/XmlToLua.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/ACIO/ACIO.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/ACIO/ACIO.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/ArchHooks/ArchHooks.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/ArchHooks/ArchHooks.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/ArchHooks/ArchHooksUtil.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/ArchHooks/ArchHooks_Unix.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/ArchHooks/ArchHooks_Unix.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/COM/impl/list_ports/list_ports_linux.cc">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/COM/impl/unix.cc">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/COM/impl/unix.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/COM/serial.cc">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/COM/serial.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/COM/v8stdint.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Dialog/Dialog.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Dialog/Dialog.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Dialog/DialogDriver.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Dialog/DialogDriver.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_Linux_Event.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_Linux_Event.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_Linux_Joystick.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_Linux_Joystick.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_Linux_PIUIO.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_Linux_PIUIO.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_MonkeyKeyboard.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_MonkeyKeyboard.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_Python23IO.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_Python23IO.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_SextetStream.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_SextetStream.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_X11.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/InputHandler_X11.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/LinuxInputManager.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/InputHandler/LinuxInputManager.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_EXTIO.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_EXTIO.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_Export.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_Export.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_LinuxPacDrive.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_LinuxPacDrive.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_LinuxParallel.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_LinuxParallel.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_LinuxWeedTech.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_LinuxWeedTech.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_Linux_PIUIO.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_Linux_PIUIO.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_Linux_PIUIO_Leds.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_Linux_PIUIO_Leds.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_Satellite.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_Satellite.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_SextetStream.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_SextetStream.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_SystemMessage.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Lights/LightsDriver_SystemMessage.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LoadingWindow/LoadingWindow.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LoadingWindow/LoadingWindow.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LoadingWindow/LoadingWindow_Gtk.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LoadingWindow/LoadingWindow_Gtk.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LoadingWindow/LoadingWindow_GtkModule.cpp">
+			<Option target="GtkModule"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LoadingWindow/LoadingWindow_GtkModule.h">
+			<Option target="GtkModule"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LoadingWindow/LoadingWindow_Null.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LowLevelWindow/LowLevelWindow.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LowLevelWindow/LowLevelWindow.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LowLevelWindow/LowLevelWindow_X11.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/LowLevelWindow/LowLevelWindow_X11.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MemoryCard/MemoryCardDriver.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MemoryCard/MemoryCardDriver.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MemoryCard/MemoryCardDriverThreaded_Linux.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MemoryCard/MemoryCardDriverThreaded_Linux.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MemoryCard/MemoryCardDriver_Null.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MovieTexture/MovieTexture.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MovieTexture/MovieTexture.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MovieTexture/MovieTexture_FFMpeg.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MovieTexture/MovieTexture_Generic.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MovieTexture/MovieTexture_Generic.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MovieTexture/MovieTexture_Null.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/MovieTexture/MovieTexture_Null.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/RageDriver.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/RageDriver.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/ALSA9Dynamic.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/ALSA9Dynamic.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/ALSA9Functions.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/ALSA9Helpers.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/ALSA9Helpers.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver_ALSA9_Software.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver_ALSA9_Software.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver_Generic_Software.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver_Null.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver_Null.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver_OSS.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver_OSS.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver_PulseAudio.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Sound/RageSoundDriver_PulseAudio.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Threads/Threads.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Threads/Threads_Pthreads.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/Threads/Threads_Pthreads.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/USB/USBDriver_Impl.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/USB/USBDriver_Impl.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/USB/USBDriver_Impl_Libusb.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/USB/USBDriver_Impl_Libusb.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/USB/USBDriver_Macros.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/arch/arch_default.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Common/PthreadHelpers.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Common/PthreadHelpers.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Common/gcc_byte_swaps.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/AssertionHandler.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/AssertionHandler.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/Backtrace.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/Backtrace.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/BacktraceNames.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/BacktraceNames.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/CrashHandler.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/CrashHandler.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/CrashHandlerChild.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/CrashHandlerInternal.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/CrashHandlerInternal.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/EmergencyShutdown.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/EmergencyShutdown.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/GetSysInfo.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/GetSysInfo.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/RunningUnderValgrind.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/RunningUnderValgrind.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/SignalHandler.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/SignalHandler.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/SpecialDirs.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/SpecialDirs.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/StackCheck.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/X11Helper.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/X11Helper.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/archutils/Unix/arch_setup.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ezsockets.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/ezsockets.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/generated/config.hpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/generated/verstub.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/global.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/global.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/io/PIUIO.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/io/PIUIO.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/io/PacDrive.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/io/PacDrive.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/io/Python23IO.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/io/Python23IO.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/io/USBDevice.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/io/USBDevice_Libusb.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/io/USBDriver.cpp">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/io/USBDriver.h">
+			<Option target="StepMania"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/ciphers/aes/aes.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/hashes/helper/hash_memory.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/hashes/md5.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/hashes/sha1.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_argchk.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_cfg.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_cipher.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_custom.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_hash.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_mac.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_macros.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_math.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_misc.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_pk.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_pkcs.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/headers/tomcrypt_prng.h">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/math/fp/ltc_ecc_fp_mulmod.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/math/ltm_desc.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/math/multi.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/math/rand_prime.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/base64/base64_decode.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/base64/base64_encode.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/burn_stack.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_argchk.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_cipher_descriptor.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_cipher_is_valid.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_find_cipher.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_find_cipher_any.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_find_cipher_id.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_find_hash.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_find_hash_any.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_find_hash_id.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_find_hash_oid.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_find_prng.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_fsa.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_hash_descriptor.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_hash_is_valid.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_ltc_mp_descriptor.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_prng_descriptor.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_prng_is_valid.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_register_cipher.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_register_hash.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_register_prng.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_unregister_cipher.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_unregister_hash.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/crypt/crypt_unregister_prng.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/error_to_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/pkcs5/pkcs_5_1.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/pkcs5/pkcs_5_2.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/misc/zeromem.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cbc/cbc_decrypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cbc/cbc_done.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cbc/cbc_encrypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cbc/cbc_getiv.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cbc/cbc_setiv.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cbc/cbc_start.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cfb/cfb_decrypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cfb/cfb_done.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cfb/cfb_encrypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cfb/cfb_getiv.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cfb/cfb_setiv.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/cfb/cfb_start.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ctr/ctr_decrypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ctr/ctr_done.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ctr/ctr_encrypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ctr/ctr_getiv.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ctr/ctr_setiv.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ctr/ctr_start.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ctr/ctr_test.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ecb/ecb_decrypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ecb/ecb_done.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ecb/ecb_encrypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ecb/ecb_start.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ofb/ofb_decrypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ofb/ofb_done.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ofb/ofb_encrypt.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ofb/ofb_getiv.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ofb/ofb_setiv.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/modes/ofb/ofb_start.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/bit/der_decode_bit_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/bit/der_encode_bit_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/bit/der_length_bit_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/boolean/der_decode_boolean.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/boolean/der_encode_boolean.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/boolean/der_length_boolean.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/choice/der_decode_choice.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/ia5/der_decode_ia5_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/ia5/der_encode_ia5_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/ia5/der_length_ia5_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/integer/der_decode_integer.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/integer/der_encode_integer.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/integer/der_length_integer.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/object_identifier/der_decode_object_identifier.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/object_identifier/der_encode_object_identifier.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/object_identifier/der_length_object_identifier.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/octet/der_decode_octet_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/octet/der_encode_octet_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/octet/der_length_octet_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/printable_string/der_decode_printable_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/printable_string/der_encode_printable_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/printable_string/der_length_printable_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/sequence/der_decode_sequence_ex.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/sequence/der_decode_sequence_flexi.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/sequence/der_decode_sequence_multi.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/sequence/der_encode_sequence_ex.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/sequence/der_encode_sequence_multi.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/sequence/der_length_sequence.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/sequence/der_sequence_free.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/set/der_encode_set.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/set/der_encode_setof.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/short_integer/der_decode_short_integer.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/short_integer/der_encode_short_integer.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/short_integer/der_length_short_integer.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/utctime/der_decode_utctime.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/utctime/der_encode_utctime.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/utctime/der_length_utctime.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/utf8/der_decode_utf8_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/utf8/der_encode_utf8_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/asn1/der/utf8/der_length_utf8_string.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/dsa/dsa_decrypt_key.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/dsa/dsa_encrypt_key.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/dsa/dsa_export.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/dsa/dsa_free.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/dsa/dsa_import.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/dsa/dsa_make_key.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/dsa/dsa_shared_secret.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/dsa/dsa_sign_hash.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/dsa/dsa_verify_hash.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/dsa/dsa_verify_key.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/pkcs1/pkcs_1_i2osp.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/pkcs1/pkcs_1_mgf1.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/pkcs1/pkcs_1_oaep_decode.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/pkcs1/pkcs_1_oaep_encode.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/pkcs1/pkcs_1_os2ip.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/pkcs1/pkcs_1_pss_decode.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/pkcs1/pkcs_1_pss_encode.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/pkcs1/pkcs_1_v1_5_decode.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/pkcs1/pkcs_1_v1_5_encode.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/rsa/rsa_decrypt_key.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/rsa/rsa_encrypt_key.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/rsa/rsa_export.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/rsa/rsa_exptmod.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/rsa/rsa_free.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/rsa/rsa_import.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/rsa/rsa_make_key.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/rsa/rsa_sign_hash.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/pk/rsa/rsa_verify_hash.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/prngs/fortuna.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/prngs/rc4.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/prngs/rng_get_bytes.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/prngs/rng_make_prng.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/prngs/sprng.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtomcrypt/src/prngs/yarrow.c">
+			<Option target="tomcrypt"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_error.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_fast_mp_invmod.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_fast_mp_montgomery_reduce.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_fast_s_mp_mul_digs.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_fast_s_mp_mul_high_digs.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_fast_s_mp_sqr.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_2expt.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_abs.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_add.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_add_d.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_addmod.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_and.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_clamp.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_clear.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_clear_multi.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_cmp.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_cmp_d.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_cmp_mag.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_cnt_lsb.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_copy.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_count_bits.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_div.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_div_2.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_div_2d.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_div_3.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_div_d.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_dr_is_modulus.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_dr_reduce.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_dr_setup.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_exch.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_expt_d.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_exptmod.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_exptmod_fast.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_exteuclid.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_fread.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_fwrite.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_gcd.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_get_int.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_grow.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_init.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_init_copy.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_init_multi.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_init_set.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_init_set_int.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_init_size.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_invmod.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_invmod_slow.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_is_square.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_jacobi.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_karatsuba_mul.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_karatsuba_sqr.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_lcm.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_lshd.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_mod.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_mod_2d.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_mod_d.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_montgomery_calc_normalization.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_montgomery_reduce.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_montgomery_setup.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_mul.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_mul_2.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_mul_2d.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_mul_d.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_mulmod.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_n_root.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_neg.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_or.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_prime_fermat.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_prime_is_divisible.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_prime_is_prime.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_prime_miller_rabin.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_prime_next_prime.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_prime_rabin_miller_trials.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_prime_random_ex.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_radix_size.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_radix_smap.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_rand.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_read_radix.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_read_signed_bin.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_read_unsigned_bin.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_reduce.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_reduce_2k.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_reduce_2k_l.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_reduce_2k_setup.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_reduce_2k_setup_l.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_reduce_is_2k.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_reduce_is_2k_l.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_reduce_setup.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_rshd.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_set.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_set_int.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_shrink.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_signed_bin_size.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_sqr.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_sqrmod.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_sqrt.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_sub.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_sub_d.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_submod.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_to_signed_bin.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_to_signed_bin_n.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_to_unsigned_bin.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_to_unsigned_bin_n.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_toom_mul.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_toom_sqr.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_toradix.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_toradix_n.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_unsigned_bin_size.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_xor.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_mp_zero.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_prime_tab.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_reverse.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_s_mp_add.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_s_mp_exptmod.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_s_mp_mul_digs.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_s_mp_mul_high_digs.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_s_mp_sqr.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bn_s_mp_sub.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/bncore.c">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/tommath.h">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/tommath_class.h">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/libtommath/tommath_superclass.h">
+			<Option target="tommath"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/StepmaniaCore.cmake">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/CMakeMacros.cmake">
+			<Option virtualFolder="CMake Files\CMake\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/CPackSetup.cmake">
+			<Option virtualFolder="CMake Files\CMake\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/DefineOptions.cmake">
+			<Option virtualFolder="CMake Files\CMake\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/SMDefs.cmake">
+			<Option virtualFolder="CMake Files\CMake\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/SetupFfmpeg.cmake">
+			<Option virtualFolder="CMake Files\CMake\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/TestCode/test_broken.c">
+			<Option virtualFolder="CMake Files\CMake\TestCode\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/TestCode/test_external.c">
+			<Option virtualFolder="CMake Files\CMake\TestCode\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/TestCode/test_prototype.c">
+			<Option virtualFolder="CMake Files\CMake\TestCode\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindDl.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindIconv.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindJACK.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindMad.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindOSS.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindOgg.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindPcre.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindPulseAudio.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindVa.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindVorbis.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindVorbisFile.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindXinerama.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/FindXrandr.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/Findlibusb.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/Findnasm.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/CMake/Modules/Findyasm.cmake">
+			<Option virtualFolder="CMake Files\CMake\Modules\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/cmake-build-release/ffmpeg-prefix/tmp/ffmpeg-cfgcmd.txt.in">
+			<Option virtualFolder="CMake Files\cmake-build-release\ffmpeg-prefix\tmp\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-actor.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-arch.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-data.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-file-types.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-globals.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-gtk.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-io.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-os.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-rage.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-screen.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeData-singletons.cmake">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/config.in.hpp">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/src/verstub.in.cpp">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\extern\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/CMakeProject-glew.cmake">
+			<Option virtualFolder="CMake Files\extern\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/CMakeProject-json.cmake">
+			<Option virtualFolder="CMake Files\extern\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/CMakeProject-lua.cmake">
+			<Option virtualFolder="CMake Files\extern\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/CMakeProject-mmmagic.cmake">
+			<Option virtualFolder="CMake Files\extern\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/CMakeProject-png.cmake">
+			<Option virtualFolder="CMake Files\extern\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/CMakeProject-tomcrypt.cmake">
+			<Option virtualFolder="CMake Files\extern\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/extern/CMakeProject-tommath.cmake">
+			<Option virtualFolder="CMake Files\extern\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/Xcode/Info.plist.in.xml">
+			<Option virtualFolder="CMake Files\Xcode\"/>
+		</Unit>
+		<Unit filename="/home/arc/Documents/stepmania/Xcode/plistHelper.in.hpp">
+			<Option virtualFolder="CMake Files\Xcode\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -547,9 +547,8 @@ bool ScreenSelectMusic::Input( const InputEventPlus &input )
 		return false; // ignore
 
 	// Handle unselect steps
-	// xxx: select button could conflict with OptionsList here -aj
 	if( m_SelectionState == SelectionState_SelectingSteps && m_bStepsChosen[input.pn]
-		&& input.MenuI == GAME_BUTTON_SELECT && input.type == IET_FIRST_PRESS )
+		&& (input.MenuI == m_GameButtonCancelTwoPart1 || input.MenuI == m_GameButtonCancelTwoPart2) && input.type == IET_FIRST_PRESS )
 	{
 		Message msg("StepsUnchosen");
 		msg.SetParam( "Player", input.pn );

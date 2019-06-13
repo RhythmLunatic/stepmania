@@ -297,7 +297,9 @@ namespace {
             {
 			    //make a copy of sMatch
 			    RString sdPath(sMatch);
-			    sdPath.Replace("(HD)","(SD)");
+			    //There is a chance this could screw something up, so it should be checked for ending in -hd or -sd instead.
+			    //Although this is only for RIO, so does it really matter?
+			    sdPath.Replace("-hd","-sd");
                 //LOG->Warn("Searching %sSD/%s",SONG_MOVIES_DIR.c_str(),sdPath.c_str());
                 GetDirListing( SONG_MOVIES_DIR+"SD/"+sdPath, vsPathsOut, false, true );
 

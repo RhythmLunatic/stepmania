@@ -571,10 +571,12 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 		case SORT_MEDIUM_METER:
 		case SORT_HARD_METER:
 		case SORT_CHALLENGE_METER:
+		case SORT_ALL_DIFFICULTY_METER:
 		case SORT_DOUBLE_EASY_METER:
 		case SORT_DOUBLE_MEDIUM_METER:
 		case SORT_DOUBLE_HARD_METER:
 		case SORT_DOUBLE_CHALLENGE_METER:
+		case SORT_DOUBLE_ALL_DIFFICULTY_METER:
 		case SORT_LENGTH:
 		case SORT_RECENT:
 		{
@@ -651,6 +653,38 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 					SongUtil::GetStepsTypeAndDifficultyFromSortOrder( so, st, dc );
 					SongUtil::SortSongPointerArrayByStepsTypeAndMeter( arraySongs, st, dc );
 					break;
+				case SORT_ALL_DIFFICULTY_METER:
+				case SORT_DOUBLE_ALL_DIFFICULTY_METER:
+				{
+					//Copy pasted from the GetStepsTypeAndDifficultyFromSortOrder
+					//There's no reason to do this since it's either single or double?
+					StepsType st;
+					switch( so )
+					{
+						DEFAULT_FAIL( so );
+						case SORT_ALL_DIFFICULTY_METER:
+							st = GAMESTATE->GetCurrentStyle(GAMESTATE->GetMasterPlayerNumber())->m_StepsType;
+							break;
+						case SORT_DOUBLE_ALL_DIFFICULTY_METER:
+							st = GAMESTATE->GetCurrentStyle(GAMESTATE->GetMasterPlayerNumber())->m_StepsType;	// in case we don't find any matches below
+							vector<const Style*> vpStyles;
+							GAMEMAN->GetStylesForGame(GAMESTATE->m_pCurGame,vpStyles);
+							FOREACH_CONST( const Style*, vpStyles, i )
+							{
+								if( (*i)->m_StyleType == StyleType_OnePlayerTwoSides )
+								{
+									// Ugly hack to ignore pump's half-double.
+									bool bContainsHalf = ((RString)(*i)->m_szName).find("half") != RString::npos;
+									if( bContainsHalf )
+										continue;
+									st = (*i)->m_StepsType;
+									break;
+								}
+							}
+					}
+					SongUtil::SortSongPointerArrayByStepsTypeAndMeterAllDifficulties(arraySongs, st);
+					break;
+				}
 				default:
 					FAIL_M("Unhandled sort order! Aborting...");
 			}
