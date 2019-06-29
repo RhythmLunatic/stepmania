@@ -1,4 +1,4 @@
-Rave It Out
+StepMania-RaveItOut
 =========
 
 This is a custom version of StepMania with various features. The theme is available [here](https://github.com/raveitoutofficial/raveitout)
