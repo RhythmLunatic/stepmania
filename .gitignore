@@ -10,6 +10,8 @@ CMakeScripts/
 cmake_install.cmake
 CPackConfig.cmake
 CPackSourceConfig.cmake
+cmake-build-release/
+cmake-build-debug/
 # The following are generated from CMake, and thus should be stopped.
 .codelite/
 StepMania.project
