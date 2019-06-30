@@ -717,7 +717,7 @@ void SongUtil::SortSongPointerArrayByStepsTypeAndMeter( vector<Song*> &vpSongsIn
 //Unfinished.
 void SongUtil::SortSongPointerArrayByStepsTypeAndMeterAllDifficulties( vector<Song*> &vpSongsInOut, StepsType st)
 {
-	g_mapSongSortVal.clear();
+	/*g_mapSongSortVal.clear();
 	for(unsigned i = 0; i < vpSongsInOut.size(); ++i)
 	{
 		// Ignore locked steps.
@@ -725,19 +725,11 @@ void SongUtil::SortSongPointerArrayByStepsTypeAndMeterAllDifficulties( vector<So
 		//for (unsigned j = 0; j < 
 		RString &s = g_mapSongSortVal[vpSongsInOut[i]];
 		s = ssprintf("%03d", pSteps ? pSteps->GetMeter() : 0);
-
-		/* pSteps may not be exactly the difficulty we want; for example, we
-		 * may be sorting by Hard difficulty and a song may have no Hard steps.
-		 * In this case, we can end up with unintuitive ties; for example, pSteps
-		 * may be Medium with a meter of 5, which will sort it among the 5-meter
-		 * Hard songs.  Break the tie, by adding the difficulty to the sort as
-		 * well. That way, we'll always put Medium 5s before Hard 5s. If all
-		 * songs are using the preferred difficulty (dc), this will be a no-op. */
 		s += ssprintf( "%c", (pSteps? pSteps->GetDifficulty():0) + '0' );
 
 		if( PREFSMAN->m_bSubSortByNumSteps )
 			s += ssprintf("%06.0f",pSteps ? pSteps->GetRadarValues(PLAYER_1)[RadarCategory_TapsAndHolds] : 0);
-	}
+	}*/
 	stable_sort( vpSongsInOut.begin(), vpSongsInOut.end(), CompareSongPointersBySortValueAscending );
 
 }
