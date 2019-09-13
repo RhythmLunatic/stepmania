@@ -418,6 +418,7 @@ void MusicWheel::GetSongList( vector<Song*> &arraySongs, SortOrder so )
 	case SORT_PREFERRED:
 		SONGMAN->GetPreferredSortSongs( apAllSongs );
 		break;
+
 	case SORT_POPULARITY:
 		apAllSongs = SONGMAN->GetPopularSongs();
 		break;
@@ -557,6 +558,48 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 			}
 			break;
 		}
+        case SORT_ALL_DIFFICULTY_METER:
+        case SORT_DOUBLE_ALL_DIFFICULTY_METER:
+        {
+            map<int, vector<Song*>> AllStepsAllDifficultyGroups;
+            switch (so)
+            {
+                case SORT_ALL_DIFFICULTY_METER:
+                {
+                    AllStepsAllDifficultyGroups = SONGMAN->GenerateFoldersAllDifficultiesAllSteps(StepsType_pump_single);
+                    break;
+                }
+                case SORT_DOUBLE_ALL_DIFFICULTY_METER:
+                {
+                    AllStepsAllDifficultyGroups = SONGMAN->GenerateFoldersAllDifficultiesAllSteps(StepsType_pump_double);
+                    break;
+                }
+            }
+
+
+            vector<Song*> arraySongs;
+            // make WheelItemDatas with sections
+            int iSectionColorIndex = 0;
+            map<int, vector<Song*>>::iterator it;
+            for ( it = AllStepsAllDifficultyGroups.begin(); it != AllStepsAllDifficultyGroups.end(); it++ )
+            {
+
+
+                vector<Song*> v = it->second;
+                int iSectionCount = v.size()-1;
+                arraySongs.insert( arraySongs.end(), v.begin(), v.end() );
+                RageColor colorSection = SECTION_COLORS.GetValue(iSectionColorIndex);
+                iSectionColorIndex = (iSectionColorIndex+1) % NUM_SECTION_COLORS;
+                RString sectionName = ssprintf("%02d", it->first );
+                arrayWheelItemDatas.push_back( new MusicWheelItemData(WheelItemDataType_Section, NULL, sectionName, NULL, colorSection, iSectionCount) );
+                //For each song in the vector (it->second returns the vector)
+                FOREACH_CONST( Song*, it->second, pSong )
+                {
+                    arrayWheelItemDatas.push_back( new MusicWheelItemData(WheelItemDataType_Song, *pSong, sectionName, NULL, SONGMAN->GetSongColor(*pSong), 0) );
+                }
+            }
+            break;
+        }
 		case SORT_PREFERRED:
 		case SORT_ROULETTE:
 		case SORT_GROUP:
@@ -571,12 +614,10 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 		case SORT_MEDIUM_METER:
 		case SORT_HARD_METER:
 		case SORT_CHALLENGE_METER:
-		case SORT_ALL_DIFFICULTY_METER:
 		case SORT_DOUBLE_EASY_METER:
 		case SORT_DOUBLE_MEDIUM_METER:
 		case SORT_DOUBLE_HARD_METER:
 		case SORT_DOUBLE_CHALLENGE_METER:
-		case SORT_DOUBLE_ALL_DIFFICULTY_METER:
 		case SORT_LENGTH:
 		case SORT_RECENT:
 		{
@@ -653,38 +694,6 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 					SongUtil::GetStepsTypeAndDifficultyFromSortOrder( so, st, dc );
 					SongUtil::SortSongPointerArrayByStepsTypeAndMeter( arraySongs, st, dc );
 					break;
-				case SORT_ALL_DIFFICULTY_METER:
-				case SORT_DOUBLE_ALL_DIFFICULTY_METER:
-				{
-					//Copy pasted from the GetStepsTypeAndDifficultyFromSortOrder
-					//There's no reason to do this since it's either single or double?
-					StepsType st;
-					switch( so )
-					{
-						DEFAULT_FAIL( so );
-						case SORT_ALL_DIFFICULTY_METER:
-							st = GAMESTATE->GetCurrentStyle(GAMESTATE->GetMasterPlayerNumber())->m_StepsType;
-							break;
-						case SORT_DOUBLE_ALL_DIFFICULTY_METER:
-							st = GAMESTATE->GetCurrentStyle(GAMESTATE->GetMasterPlayerNumber())->m_StepsType;	// in case we don't find any matches below
-							vector<const Style*> vpStyles;
-							GAMEMAN->GetStylesForGame(GAMESTATE->m_pCurGame,vpStyles);
-							FOREACH_CONST( const Style*, vpStyles, i )
-							{
-								if( (*i)->m_StyleType == StyleType_OnePlayerTwoSides )
-								{
-									// Ugly hack to ignore pump's half-double.
-									bool bContainsHalf = ((RString)(*i)->m_szName).find("half") != RString::npos;
-									if( bContainsHalf )
-										continue;
-									st = (*i)->m_StepsType;
-									break;
-								}
-							}
-					}
-					SongUtil::SortSongPointerArrayByStepsTypeAndMeterAllDifficulties(arraySongs, st);
-					break;
-				}
 				default:
 					FAIL_M("Unhandled sort order! Aborting...");
 			}
@@ -1420,6 +1429,10 @@ void MusicWheel::SetOpenSection( RString group )
 	//LOG->Trace( "SetOpenSection %s", group.c_str() );
 	m_sExpandedSectionName = group;
 	GAMESTATE->sExpandedSectionName = group;
+	if (GAMESTATE->m_PreferredSortOrder == SORT_ALL_DIFFICULTY_METER or GAMESTATE->m_PreferredSortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
+    {
+        sscanf(group.c_str(), "%d", &GAMESTATE->m_PreferredMeter);
+    }
 
 	// wheel positions = num song groups
 	if ( REMIND_WHEEL_POSITIONS && HIDE_INACTIVE_SECTIONS )

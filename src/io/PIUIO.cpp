@@ -13,17 +13,17 @@ const short PIUIO_CTL_REQ = 0xAE;
 /* timeout value for read/writes, in microseconds (so, 10 ms) */
 const int REQ_TIMEOUT = 10000;
 
-bool PIUIO::DeviceMatches( int iVID, int iPID )
+bool PIUIO_libusb::DeviceMatches( int iVID, int iPID )
 {
 	return iVID == PIUIO_VENDOR_ID && iPID == PIUIO_PRODUCT_ID;
 }
 
-bool PIUIO::Open()
+bool PIUIO_libusb::Open()
 {
 	return OpenInternal( PIUIO_VENDOR_ID, PIUIO_PRODUCT_ID );
 }
 
-bool PIUIO::Read( uint32_t *pData )
+bool PIUIO_libusb::Read( uint32_t *pData )
 {
 	/* XXX: magic number left over from the ITG disassembly */
 	int iExpected = 8;
@@ -35,7 +35,7 @@ bool PIUIO::Read( uint32_t *pData )
 	return iResult == iExpected;
 }
 
-bool PIUIO::Write( const uint32_t iData )
+bool PIUIO_libusb::Write( const uint32_t iData )
 {
 	/* XXX: magic number left over from the ITG disassembly */
 	int iExpected = 8;
@@ -47,7 +47,7 @@ bool PIUIO::Write( const uint32_t iData )
 	return iResult == iExpected;
 }
 
-bool PIUIO::BulkReadWrite( uint32_t pData[8] )
+bool PIUIO_libusb::BulkReadWrite( uint32_t pData[8] )
 {
 	/* XXX: magic number left over from the ITG disassembly */
 	int iExpected = 32;

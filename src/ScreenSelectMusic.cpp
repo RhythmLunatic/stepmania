@@ -977,10 +977,7 @@ bool ScreenSelectMusic::DetectCodes( const InputEventPlus &input )
 			m_soundLocked.Play(true);
 		else
 		{
-			RString sCurSection = m_MusicWheel.GetSelectedSection();
-			m_MusicWheel.SelectSection(sCurSection);
-			m_MusicWheel.SetOpenSection("");
-			AfterMusicChange();
+			CloseCurrentSection();
 		}
 	}
 	else
@@ -988,6 +985,17 @@ bool ScreenSelectMusic::DetectCodes( const InputEventPlus &input )
 		return false;
 	}
 	return true;
+}
+
+//Unfortunately, this is the only safe way to close the folder on the musicwheel while keeping it lua accessible.
+//Putting it in MusicWheel would mean AfterMusicChange() can't be accessed.
+void ScreenSelectMusic::CloseCurrentSection()
+{
+    std::string sCurSection = m_MusicWheel.GetSelectedSection();
+    m_MusicWheel.SelectSection(sCurSection);
+    m_MusicWheel.SetOpenSection("");
+    AfterMusicChange();
+    //MESSAGEMAN->Broadcast("MusicWheelSectionClosed");
 }
 
 void ScreenSelectMusic::UpdateSelectButton( PlayerNumber pn, bool bSelectIsDown )
@@ -1630,36 +1638,63 @@ void ScreenSelectMusic::SwitchToPreferredDifficulty()
 	{
 		FOREACH_HumanPlayer( pn )
 		{
-			// Find the closest match to the user's preferred difficulty and StepsType.
-			int iCurDifference = -1;
 			int &iSelection = m_iSelection[pn];
-			FOREACH_CONST( Steps*, m_vpSteps, s )
-			{
-				int i = s - m_vpSteps.begin();
+		    if (GAMESTATE->m_SortOrder == SORT_ALL_DIFFICULTY_METER or GAMESTATE->m_SortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
+            {
+		        int currentLevelFolder = GAMESTATE->m_PreferredMeter;
 
-				// If the current steps are listed, use them.
-				if( GAMESTATE->m_pCurSteps[pn] == *s )
+				int pref = 0;
+				FOREACH_CONST( Steps*, m_vpSteps, s )
 				{
-					iSelection = i;
-					break;
-				}
+					int i = s - m_vpSteps.begin();
 
-				if( GAMESTATE->m_PreferredDifficulty[pn] != Difficulty_Invalid  )
-				{
-					int iDifficultyDifference = abs( (*s)->GetDifficulty() - GAMESTATE->m_PreferredDifficulty[pn] );
-					int iStepsTypeDifference = 0;
-					if( GAMESTATE->m_PreferredStepsType != StepsType_Invalid )
-						iStepsTypeDifference = abs( (*s)->m_StepsType - GAMESTATE->m_PreferredStepsType );
-					int iTotalDifference = iStepsTypeDifference * NUM_Difficulty + iDifficultyDifference;
-
-					if( iCurDifference == -1 || iTotalDifference < iCurDifference )
+					// If the current steps are listed, use them.
+					if( GAMESTATE->m_pCurSteps[pn] == *s )
 					{
 						iSelection = i;
-						iCurDifference = iTotalDifference;
+						break;
 					}
-				}
-			}
 
+					if ((*s)->GetMeter() == currentLevelFolder)
+					{
+						iSelection = pref;
+						break;
+					}
+					pref++;
+				}
+            }
+            else
+            {
+
+                // Find the closest match to the user's preferred difficulty and StepsType.
+                int iCurDifference = -1;
+                FOREACH_CONST( Steps*, m_vpSteps, s )
+                {
+                    int i = s - m_vpSteps.begin();
+
+                    // If the current steps are listed, use them.
+                    if( GAMESTATE->m_pCurSteps[pn] == *s )
+                    {
+                        iSelection = i;
+                        break;
+                    }
+
+                    if( GAMESTATE->m_PreferredDifficulty[pn] != Difficulty_Invalid  )
+                    {
+                        int iDifficultyDifference = abs( (*s)->GetDifficulty() - GAMESTATE->m_PreferredDifficulty[pn] );
+                        int iStepsTypeDifference = 0;
+                        if( GAMESTATE->m_PreferredStepsType != StepsType_Invalid )
+                            iStepsTypeDifference = abs( (*s)->m_StepsType - GAMESTATE->m_PreferredStepsType );
+                        int iTotalDifference = iStepsTypeDifference * NUM_Difficulty + iDifficultyDifference;
+
+                        if( iCurDifference == -1 || iTotalDifference < iCurDifference )
+                        {
+                            iSelection = i;
+                            iCurDifference = iTotalDifference;
+                        }
+                    }
+                }
+            }
 			CLAMP( iSelection, 0, m_vpSteps.size()-1 );
 		}
 	}
@@ -2068,12 +2103,19 @@ public:
 		return 1;
 	}
 
+    static int CloseCurrentSection( T* p, lua_State *L )
+    {
+        p->CloseCurrentSection();
+        COMMON_RETURN_SELF;
+    }
+
 	LunaScreenSelectMusic()
 	{
   		ADD_METHOD( GetGoToOptions );
 		ADD_METHOD( GetMusicWheel );
 		ADD_METHOD( OpenOptionsList );
 		ADD_METHOD( CanOpenOptionsList );
+		ADD_METHOD( CloseCurrentSection );
 	}
 };
 

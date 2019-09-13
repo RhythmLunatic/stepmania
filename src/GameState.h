@@ -198,6 +198,7 @@ public:
 	BroadcastOnChange<StepsType>				m_PreferredStepsType;
 	BroadcastOnChange1D<Difficulty,NUM_PLAYERS>		m_PreferredDifficulty;
 	BroadcastOnChange1D<CourseDifficulty,NUM_PLAYERS>	m_PreferredCourseDifficulty;// used in nonstop
+	int m_PreferredMeter; //For level sort
 	BroadcastOnChange<SortOrder>	m_SortOrder;			// set by MusicWheel
 	SortOrder	m_PreferredSortOrder;		// used by MusicWheel
 	EditMode	m_EditMode;

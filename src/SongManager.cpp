@@ -1609,6 +1609,7 @@ void SongManager::UpdatePreferredSort(RString sPreferredSongs, RString sPreferre
 			bool bSectionDivider = BeginsWith(sLine, "---");
 			if( bSectionDivider )
 			{
+			    //I think this pushes back the previous section then makes a new one?
 				if( !section.vpSongs.empty() )
 				{
 					m_vPreferredSongSort.push_back( section );
@@ -1768,6 +1769,44 @@ void SongManager::UpdatePreferredSort(RString sPreferredSongs, RString sPreferre
 				ASSERT( *j != NULL );
 	}
 }
+
+map<int, vector<Song*>> SongManager::GenerateFoldersAllDifficultiesAllSteps(StepsType st)
+{
+    map<int, vector<Song*>> m_vAllStepsAllDifficultiesSort;
+
+    const vector<Song*> &vSongs = GetAllSongs();
+    for( unsigned i=0; i<vSongs.size(); i++ )
+	{
+        Song* pSong = vSongs[i];
+        const vector<Steps*> &vpSteps = st == StepsType_Invalid ? pSong->GetAllSteps() : pSong->GetStepsByStepsType(st);
+        for( unsigned i=0; i<vpSteps.size(); i++ )	// for each of the Song's Steps
+        {
+            m_vAllStepsAllDifficultiesSort[vpSteps[i]->GetMeter()].push_back(pSong);
+
+
+        }
+	}
+    // prune duplicate songs, such as a song that has two S04 steps
+    map<int, vector<Song*>>::iterator it;
+    for ( it = m_vAllStepsAllDifficultiesSort.begin(); it != m_vAllStepsAllDifficultiesSort.end(); it++ )
+    {
+        vector<Song*> v = it->second;
+        std::sort(v.begin(), v.end());
+        //shut up clang-tidy it's too old for auto
+        vector<Song *, std::allocator<Song *>>::iterator last = std::unique(v.begin(), v.end());
+        v.erase(last, v.end());
+    }
+    // prune empty groups
+    /*for( int i=m_vPreferredCourseSort.size()-1; i>=0; i-- )
+        if( m_vPreferredCourseSort[i].empty() )
+            m_vPreferredCourseSort.erase( m_vPreferredCourseSort.begin()+i );*/
+    return m_vAllStepsAllDifficultiesSort;
+}
+
+/*map<int, vector<Song*>> SongManager::GetAllStepsAllDifficultySortSongs()
+{
+    return m_vAllStepsAllDifficultiesSort;
+}*/
 
 void SongManager::SortSongs()
 {

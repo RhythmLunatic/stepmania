@@ -74,6 +74,9 @@ protected:
 
 	bool WheelItemIsVisible(int n);
 
+	//Keep this as an int because converting from string to int to get the level is expensive..
+	//int lastOpenedLevelSection;
+
 	ThemeMetric<float>		ROULETTE_SWITCH_SECONDS;
 	ThemeMetric<int>		ROULETTE_SLOW_DOWN_SWITCHES;
 	ThemeMetric<int>		NUM_SECTION_COLORS;

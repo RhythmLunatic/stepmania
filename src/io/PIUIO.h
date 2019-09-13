@@ -3,7 +3,7 @@
 
 #include "USBDriver.h"
 
-class PIUIO: public USBDriver
+class PIUIO_libusb: public USBDriver
 {
 public:
 	/* returns true if the VID/PID match PIUIO. */

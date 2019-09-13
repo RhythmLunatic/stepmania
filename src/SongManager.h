@@ -120,6 +120,10 @@ public:
 
 	void GetPreferredSortSongs( vector<Song*> &AddTo ) const;
 	RString SongToPreferredSortSectionName( const Song *pSong ) const;
+    map<int, vector<Song*>> GetAllStepsAllDifficultySortSongs();
+    //Because SM does not keep the last opened folders in memory
+    RString lastOpenedLevelSort;
+    //RString SongToAllStepsAllDifficultySortSectionName( const Song *pSong ) const;
 	const vector<Course*> &GetPopularCourses( CourseType ct ) const { return m_pPopularCourses[ct]; }
 	Song *FindSong( RString sPath ) const;
 	Song *FindSong( RString sGroup, RString sSong ) const;
@@ -163,7 +167,8 @@ public:
 
 	void UpdatePopular();
 	void UpdateShuffled();	// re-shuffle songs and courses
-	void UpdatePreferredSort(RString sPreferredSongs = "PreferredSongs.txt", RString sPreferredCourses = "PreferredCourses.txt"); 
+	void UpdatePreferredSort(RString sPreferredSongs = "PreferredSongs.txt", RString sPreferredCourses = "PreferredCourses.txt");
+    map<int, vector<Song*>> GenerateFoldersAllDifficultiesAllSteps(StepsType st); // Generate folders then push to m_vAllStepsAllDifficultiesSort to be used later
 	void SortSongs();		// sort m_pSongs by CompareSongPointersByTitle
 
 	void UpdateRankingCourses();	// courses shown on the ranking screen
@@ -197,6 +202,8 @@ protected:
 		vector<Song*> vpSongs;
 	};
 	vector<PreferredSortSection> m_vPreferredSongSort;
+	//map<int, vector<Song*>> m_vAllStepsAllDifficultiesSort;
+
 	vector<RString>		m_sSongGroupNames;
 	vector<RString>		m_sSongGroupBannerPaths; // each song group may have a banner associated with it
 	//vector<RString>		m_sSongGroupBackgroundPaths; // each song group may have a background associated with it (very rarely)

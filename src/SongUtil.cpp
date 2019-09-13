@@ -568,6 +568,9 @@ RString SongUtil::GetSectionNameFromSongAndSort( const Song* pSong, SortOrder so
 	{
 	case SORT_PREFERRED:
 		return SONGMAN->SongToPreferredSortSectionName( pSong );
+    case SORT_ALL_DIFFICULTY_METER:
+    case SORT_DOUBLE_ALL_DIFFICULTY_METER:
+        return SORT_NOT_AVAILABLE.GetValue();
 	case SORT_GROUP:
 		// guaranteed not empty	
 		return pSong->m_sGroupName;
@@ -712,26 +715,6 @@ void SongUtil::SortSongPointerArrayByStepsTypeAndMeter( vector<Song*> &vpSongsIn
 			s += ssprintf("%06.0f",pSteps ? pSteps->GetRadarValues(PLAYER_1)[RadarCategory_TapsAndHolds] : 0);
 	}
 	stable_sort( vpSongsInOut.begin(), vpSongsInOut.end(), CompareSongPointersBySortValueAscending );
-}
-
-//Unfinished.
-void SongUtil::SortSongPointerArrayByStepsTypeAndMeterAllDifficulties( vector<Song*> &vpSongsInOut, StepsType st)
-{
-	/*g_mapSongSortVal.clear();
-	for(unsigned i = 0; i < vpSongsInOut.size(); ++i)
-	{
-		// Ignore locked steps.
-		const Steps* pSteps = GetClosestNotes( vpSongsInOut[i], st, dc, true );
-		//for (unsigned j = 0; j < 
-		RString &s = g_mapSongSortVal[vpSongsInOut[i]];
-		s = ssprintf("%03d", pSteps ? pSteps->GetMeter() : 0);
-		s += ssprintf( "%c", (pSteps? pSteps->GetDifficulty():0) + '0' );
-
-		if( PREFSMAN->m_bSubSortByNumSteps )
-			s += ssprintf("%06.0f",pSteps ? pSteps->GetRadarValues(PLAYER_1)[RadarCategory_TapsAndHolds] : 0);
-	}*/
-	stable_sort( vpSongsInOut.begin(), vpSongsInOut.end(), CompareSongPointersBySortValueAscending );
-
 }
 
 void SongUtil::SortByMostRecentlyPlayedForMachine( vector<Song*> &vpSongsInOut )
@@ -1127,6 +1110,36 @@ bool SongUtil::GetStepsTypeAndDifficultyFromSortOrder( SortOrder so, StepsType &
 
 	return true;
 }
+
+/*bool SongUtil::GetStepsTypeFromSortOrder( SortOrder so, StepsType &stOut )
+{
+
+	switch( so )
+	{
+		DEFAULT_FAIL( so );
+		case SORT_DOUBLE_ALL_DIFFICULTY_METER:
+			stOut = GAMESTATE->GetCurrentStyle(GAMESTATE->GetMasterPlayerNumber())->m_StepsType;
+			break;
+		case SORT_ALL_DIFFICULTY_METER:
+			stOut = GAMESTATE->GetCurrentStyle(GAMESTATE->GetMasterPlayerNumber())->m_StepsType;	// in case we don't find any matches below
+			vector<const Style*> vpStyles;
+			GAMEMAN->GetStylesForGame(GAMESTATE->m_pCurGame,vpStyles);
+			FOREACH_CONST( const Style*, vpStyles, i )
+			{
+				if( (*i)->m_StyleType == StyleType_OnePlayerTwoSides )
+				{
+					// Ugly hack to ignore pump's half-double.
+					bool bContainsHalf = ((RString)(*i)->m_szName).find("half") != RString::npos;
+					if( bContainsHalf )
+						continue;
+					stOut = (*i)->m_StepsType;
+					break;
+				}
+			}
+	}
+
+	return true;
+}*/
 
 //////////////////////////////////
 // SongID
