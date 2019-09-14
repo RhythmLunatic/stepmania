@@ -120,7 +120,10 @@ public:
 	
 	/** @brief Fetch the contents of the system clipboard. */
 	virtual RString GetClipboard();
-	
+
+	// Check on system memory status
+	static unsigned long GetSystemAvailRam();
+
 	// Lua
 	void PushSelf( lua_State *L );
 	void RegisterWithLua();

@@ -49,6 +49,10 @@ enum Code {
 	CODE_CLOSE_CURRENT_FOLDER,
 	CODE_NEXT_OPLIST,
 	CODE_PREV_OPLIST,
+	CODE_CLOSE_OPLIST1,
+	CODE_CLOSE_OPLIST2,
+	CODE_CLOSE_OPLIST3,
+	CODE_CLOSE_OPLIST4,
 	NUM_Code	// leave this at the end
 };
 
@@ -67,7 +71,7 @@ public:
 	static bool EnteredCloseFolder( GameController controller );
 	static bool EnteredPrevOpList( GameController controller );
 	static bool EnteredNextOpList( GameController controller );
-
+	static bool EnteredCloseOpList( GameController controller );
 	// todo: move to PlayerOptions.h -aj
 	void ChangeScrollSpeed( GameController controller, bool bIncrement );
 };

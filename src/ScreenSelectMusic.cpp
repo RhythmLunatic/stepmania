@@ -998,6 +998,9 @@ void ScreenSelectMusic::CloseCurrentSection()
     //MESSAGEMAN->Broadcast("MusicWheelSectionClosed");
 }
 
+/*
+ * asdafasfadsasdasdasdads
+ */
 void ScreenSelectMusic::UpdateSelectButton( PlayerNumber pn, bool bSelectIsDown )
 {
 	if( !SELECT_MENU_AVAILABLE  ||  !CanChangeSong() )
