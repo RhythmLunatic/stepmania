@@ -1429,7 +1429,7 @@ void MusicWheel::SetOpenSection( RString group )
 	//LOG->Trace( "SetOpenSection %s", group.c_str() );
 	m_sExpandedSectionName = group;
 	GAMESTATE->sExpandedSectionName = group;
-	if (GAMESTATE->m_PreferredSortOrder == SORT_ALL_DIFFICULTY_METER or GAMESTATE->m_PreferredSortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
+	if (GAMESTATE->m_PreferredSortOrder == SORT_ALL_DIFFICULTY_METER || GAMESTATE->m_PreferredSortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
     {
         sscanf(group.c_str(), "%d", &GAMESTATE->m_PreferredMeter);
     }
