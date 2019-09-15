@@ -11,6 +11,7 @@
 #include "archutils/win32/RestartProgram.h"
 #include "archutils/win32/GotoURL.h"
 #include "archutils/Win32/RegistryAccess.h"
+#include "psapi.h"
 
 static HANDLE g_hInstanceMutex;
 static bool g_bIsMultipleInstance = false;
