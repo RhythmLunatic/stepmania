@@ -1642,7 +1642,7 @@ void ScreenSelectMusic::SwitchToPreferredDifficulty()
 		FOREACH_HumanPlayer( pn )
 		{
 			int &iSelection = m_iSelection[pn];
-		    if (GAMESTATE->m_SortOrder == SORT_ALL_DIFFICULTY_METER or GAMESTATE->m_SortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
+		    if (GAMESTATE->m_SortOrder == SORT_ALL_DIFFICULTY_METER || GAMESTATE->m_SortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
             {
 		        int currentLevelFolder = GAMESTATE->m_PreferredMeter;
 
