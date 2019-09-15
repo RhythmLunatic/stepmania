@@ -477,7 +477,7 @@ bool OptionsList::Input( const InputEventPlus &input )
 
 		return true;
 	}
-	else if( input.MenuI == GAME_BUTTON_SELECT or CodeDetector::EnteredCloseOpList(input.GameI.controller))
+	else if( input.MenuI == GAME_BUTTON_SELECT || CodeDetector::EnteredCloseOpList(input.GameI.controller))
 	{
 		if( input.type != IET_FIRST_PRESS )
 			return false;
