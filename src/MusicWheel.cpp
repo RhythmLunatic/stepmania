@@ -329,17 +329,40 @@ bool MusicWheel::SelectSong( const Song *p )
 
 	unsigned i;
 	vector<MusicWheelItemData *> &from = getWheelItemsData(GAMESTATE->m_SortOrder);
-	for( i=0; i<from.size(); i++ )
-	{
-		if( from[i]->m_pSong == p )
+	//TODO: Add support for Preferred Sort
+	if (GAMESTATE->m_SortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER || GAMESTATE->m_SortOrder == SORT_ALL_DIFFICULTY_METER)
+    {
+		/*
+		 * 1. First we have to find the song
+		 * 2. Then we have to check if this song is in the folder we want to return to
+		 * Luckily C++ does short circuit evaluations so this operation is cheap
+		 */
+		RString folderName = ssprintf("%02d", GAMESTATE->m_PreferredMeter );
+		for( i=0; i<from.size(); i++ )
 		{
-			// make its group the currently expanded group
-			SetOpenSection( from[i]->m_sText );
-			break;
+			//TODO: Fix for doubles and game modes other than pump
+			if( from[i]->m_pSong == p && folderName.compare(from[i]->m_sText) == 0)
+			{
+				// make its group the currently expanded group
+				SetOpenSection( from[i]->m_sText );
+				break;
+			}
 		}
-	}
-
-	if( i == from.size() )
+    }
+    else
+    {
+        for( i=0; i<from.size(); i++ )
+        {
+            if( from[i]->m_pSong == p )
+            {
+                // make its group the currently expanded group
+                SetOpenSection( from[i]->m_sText );
+                break;
+            }
+        }
+    }
+	//If 'i' reached the end we haven't found a song, so return false.
+    if( i == from.size() )
 		return false;
 
 	for( i=0; i<m_CurWheelItemData.size(); i++ )
@@ -348,6 +371,10 @@ bool MusicWheel::SelectSong( const Song *p )
 			m_iSelection = i;		// select it
 	}
 	return true;
+
+
+
+
 }
 
 bool MusicWheel::SelectCourse( const Course *p )
@@ -1429,6 +1456,7 @@ void MusicWheel::SetOpenSection( RString group )
 	//LOG->Trace( "SetOpenSection %s", group.c_str() );
 	m_sExpandedSectionName = group;
 	GAMESTATE->sExpandedSectionName = group;
+	//If we're in the all difficulty sorts, save it in memory as 'preferred meter' so the first matching steps will be jumped to
 	if (GAMESTATE->m_PreferredSortOrder == SORT_ALL_DIFFICULTY_METER || GAMESTATE->m_PreferredSortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
     {
         sscanf(group.c_str(), "%d", &GAMESTATE->m_PreferredMeter);
