@@ -101,6 +101,7 @@ static const StepsTypeInfo g_StepsTypeInfos[] = {
 };
 
 
+
 // Important:  Every game must define the buttons: "Start", "Back", "MenuLeft", "Operator" and "MenuRight"
 static const AutoMappings g_AutoKeyMappings_Dance = AutoMappings (
 	"",

@@ -1770,23 +1770,36 @@ void SongManager::UpdatePreferredSort(RString sPreferredSongs, RString sPreferre
 	}
 }
 
-map<int, vector<Song*>> SongManager::GenerateFoldersAllDifficultiesAllSteps(StepsType st)
+map<int, vector<Song*>> SongManager::GenerateFoldersAllDifficultiesAllSteps(StepsTypeCategory stc)
 {
+    vector<StepsType> validStepsTypes;
+    GAMEMAN->GetStepsTypesForGame(GAMESTATE->GetCurrentGame(), validStepsTypes);
+
     map<int, vector<Song*>> m_vAllStepsAllDifficultiesSort;
 
     const vector<Song*> &vSongs = GetAllSongs();
     for( unsigned i=0; i<vSongs.size(); i++ )
 	{
         Song* pSong = vSongs[i];
-        const vector<Steps*> &vpSteps = st == StepsType_Invalid ? pSong->GetAllSteps() : pSong->GetStepsByStepsType(st);
-        for( unsigned i=0; i<vpSteps.size(); i++ )	// for each of the Song's Steps
+        const vector<Steps*> &vpSteps = pSong->GetAllSteps();
+        for( unsigned j=0; j<vpSteps.size(); j++ )	// for each of the Song's Steps
         {
-            m_vAllStepsAllDifficultiesSort[vpSteps[i]->GetMeter()].push_back(pSong);
-
-
+            //Hoping this if statement is faster than the k for loop
+        	if (stc == GAMEMAN->GetStepsTypeInfo(vpSteps[j]->m_StepsType).m_StepsTypeCategory)
+            {
+                for (unsigned k=0; k<validStepsTypes.size(); k++)
+                {
+                    if (validStepsTypes[k] == vpSteps[j]->m_StepsType)
+                    {
+                        m_vAllStepsAllDifficultiesSort[vpSteps[j]->GetMeter()].push_back(pSong);
+                        break;
+                    }
+                }
+            }
         }
 	}
     // prune duplicate songs, such as a song that has two S04 steps
+    //TODO: It doesn't work right now
     map<int, vector<Song*>>::iterator it;
     for ( it = m_vAllStepsAllDifficultiesSort.begin(); it != m_vAllStepsAllDifficultiesSort.end(); it++ )
     {
@@ -1802,11 +1815,6 @@ map<int, vector<Song*>> SongManager::GenerateFoldersAllDifficultiesAllSteps(Step
             m_vPreferredCourseSort.erase( m_vPreferredCourseSort.begin()+i );*/
     return m_vAllStepsAllDifficultiesSort;
 }
-
-/*map<int, vector<Song*>> SongManager::GetAllStepsAllDifficultySortSongs()
-{
-    return m_vAllStepsAllDifficultiesSort;
-}*/
 
 void SongManager::SortSongs()
 {

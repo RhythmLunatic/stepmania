@@ -340,7 +340,6 @@ bool MusicWheel::SelectSong( const Song *p )
 		RString folderName = ssprintf("%02d", GAMESTATE->m_PreferredMeter );
 		for( i=0; i<from.size(); i++ )
 		{
-			//TODO: Fix for doubles and game modes other than pump
 			if( from[i]->m_pSong == p && folderName.compare(from[i]->m_sText) == 0)
 			{
 				// make its group the currently expanded group
@@ -593,12 +592,12 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
             {
                 case SORT_ALL_DIFFICULTY_METER:
                 {
-                    AllStepsAllDifficultyGroups = SONGMAN->GenerateFoldersAllDifficultiesAllSteps(StepsType_pump_single);
+                    AllStepsAllDifficultyGroups = SONGMAN->GenerateFoldersAllDifficultiesAllSteps(StepsTypeCategory_Single);
                     break;
                 }
                 case SORT_DOUBLE_ALL_DIFFICULTY_METER:
                 {
-                    AllStepsAllDifficultyGroups = SONGMAN->GenerateFoldersAllDifficultiesAllSteps(StepsType_pump_double);
+                    AllStepsAllDifficultyGroups = SONGMAN->GenerateFoldersAllDifficultiesAllSteps(StepsTypeCategory_Double);
                     break;
                 }
             }

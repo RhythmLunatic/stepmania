@@ -723,6 +723,9 @@ void BackgroundImpl::Layer::UpdateCurBGChange( const Song *pSong, float fLastMus
 {
 	ASSERT( fCurrentTime != GameState::MUSIC_SECONDS_INVALID );
 
+	//compensate a bit for the fade delay hack, make the bg a bit ahead
+	//fCurrentTime = fCurrentTime + 0.033;
+
 	if( m_aBGChanges.size() == 0 )
 		return;
 

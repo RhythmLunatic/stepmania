@@ -1644,7 +1644,6 @@ void ScreenSelectMusic::SwitchToPreferredDifficulty()
 			int &iSelection = m_iSelection[pn];
 		    if (GAMESTATE->m_SortOrder == SORT_ALL_DIFFICULTY_METER || GAMESTATE->m_SortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
             {
-		        int currentLevelFolder = GAMESTATE->m_PreferredMeter;
 
 				int pref = 0;
 				FOREACH_CONST( Steps*, m_vpSteps, s )
@@ -1658,11 +1657,22 @@ void ScreenSelectMusic::SwitchToPreferredDifficulty()
 						break;
 					}
 
-					if ((*s)->GetMeter() == currentLevelFolder)
-					{
-						iSelection = pref;
-						break;
-					}
+                    if (GAMESTATE->m_SortOrder == SORT_ALL_DIFFICULTY_METER)
+                    {
+                        if ((*s)->GetMeter() == GAMESTATE->m_PreferredMeter && GAMEMAN->GetStepsTypeInfo((*s)->m_StepsType).m_StepsTypeCategory == StepsTypeCategory_Single)
+                        {
+                            iSelection = pref;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if ((*s)->GetMeter() == GAMESTATE->m_PreferredMeter && GAMEMAN->GetStepsTypeInfo((*s)->m_StepsType).m_StepsTypeCategory == StepsTypeCategory_Double)
+                        {
+                            iSelection = pref;
+                            break;
+                        }
+                    }
 					pref++;
 				}
             }

@@ -70,7 +70,6 @@ namespace StringConversion { template<> RString ToString<StepsType>( const Steps
 
 LuaXType( StepsType );
 
-
 static const char *PlayModeNames[] = {
 	"Regular",
 	"Nonstop",

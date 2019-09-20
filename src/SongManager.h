@@ -168,7 +168,7 @@ public:
 	void UpdatePopular();
 	void UpdateShuffled();	// re-shuffle songs and courses
 	void UpdatePreferredSort(RString sPreferredSongs = "PreferredSongs.txt", RString sPreferredCourses = "PreferredCourses.txt");
-    map<int, vector<Song*>> GenerateFoldersAllDifficultiesAllSteps(StepsType st); // Generate folders then push to m_vAllStepsAllDifficultiesSort to be used later
+    map<int, vector<Song*>> GenerateFoldersAllDifficultiesAllSteps(StepsTypeCategory st); // Generate folders then push to m_vAllStepsAllDifficultiesSort to be used later
 	void SortSongs();		// sort m_pSongs by CompareSongPointersByTitle
 
 	void UpdateRankingCourses();	// courses shown on the ranking screen
