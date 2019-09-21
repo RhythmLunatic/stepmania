@@ -876,7 +876,7 @@ bool ScreenSelectMusic::Input( const InputEventPlus &input )
 				}
 			}
 			//This should not be MENUP or MENUDOWN, different games use different buttons to cancel.
-			else if( input.MenuI == m_GameButtonCancelTwoPart1 || input.MenuI == m_GameButtonCancelTwoPart2 ) // && TWO_PART_DESELECTS_WITH_MENUUPDOWN
+			else if( input.MenuI == m_GameButtonCancelTwoPart1 || input.MenuI == m_GameButtonCancelTwoPart2 )
 			{
 				if( GAMESTATE->IsAnExtraStageAndSelectionLocked() )
 					m_soundLocked.Play(true);
@@ -1357,7 +1357,7 @@ bool ScreenSelectMusic::MenuStart( const InputEventPlus &input )
 			if(TWO_PART_CONFIRMS_ONLY)
 				bAllPlayersDoneSelectingSteps = true;
 
-			/* TRICKY: if we have a Routine chart selected, we need to ensure
+			/* TRICKY: if we have a Routine/Couples chart selected, we need to ensure
 			 * the following:
 			 * 1. Both players must select the same Routine steps.
 			 * 2. If the other player picks non-Routine steps, this player
@@ -1381,7 +1381,7 @@ bool ScreenSelectMusic::MenuStart( const InputEventPlus &input )
 					const Steps *pSteps = GAMESTATE->m_pCurSteps[p];
 					const StepsTypeInfo &sti = GAMEMAN->GetStepsTypeInfo( pSteps->m_StepsType );
 
-					bSelectedRoutineSteps[p] = sti.m_StepsTypeCategory == StepsTypeCategory_Routine;
+					bSelectedRoutineSteps[p] = sti.m_StepsTypeCategory == StepsTypeCategory_Routine || sti.m_StepsTypeCategory == StepsTypeCategory_Couple;
 					bAnySelectedRoutine |= bSelectedRoutineSteps[p];
 				}
 
@@ -1642,6 +1642,7 @@ void ScreenSelectMusic::SwitchToPreferredDifficulty()
 		FOREACH_HumanPlayer( pn )
 		{
 			int &iSelection = m_iSelection[pn];
+			//If we're in a level sort, jump to level instead of difficulty.
 		    if (GAMESTATE->m_SortOrder == SORT_ALL_DIFFICULTY_METER || GAMESTATE->m_SortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
             {
 

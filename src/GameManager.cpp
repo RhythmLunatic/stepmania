@@ -730,20 +730,20 @@ static const Style g_Style_Pump_Couple =
 	StyleType_TwoPlayersTwoSides,		// m_StyleType
 	5,				// m_iColsPerPlayer
 	{	// m_ColumnInfo[NUM_PLAYERS][MAX_COLS_PER_PLAYER];
-		{	// PLAYER_1
-			{ TRACK_1,	-PUMP_COL_SPACING*2.0f, NULL },
-			{ TRACK_2,	-PUMP_COL_SPACING*1.0f, NULL },
-			{ TRACK_3,	+PUMP_COL_SPACING*0.0f, NULL },
-			{ TRACK_4,	+PUMP_COL_SPACING*1.0f, NULL },
-			{ TRACK_5,	+PUMP_COL_SPACING*2.0f, NULL },
-		},
-		{	// PLAYER_2
-			{ TRACK_1,	-PUMP_COL_SPACING*2.0f, NULL },
-			{ TRACK_2,	-PUMP_COL_SPACING*1.0f, NULL },
-			{ TRACK_3,	+PUMP_COL_SPACING*0.0f, NULL },
-			{ TRACK_4,	+PUMP_COL_SPACING*1.0f, NULL },
-			{ TRACK_5,	+PUMP_COL_SPACING*2.0f, NULL },
-		},
+        {	// PLAYER_1
+            { TRACK_1,	-PUMP_COL_SPACING*2.0f, NULL },
+            { TRACK_2,	-PUMP_COL_SPACING*1.0f, NULL },
+            { TRACK_3,	+PUMP_COL_SPACING*0.0f, NULL },
+            { TRACK_4,	+PUMP_COL_SPACING*1.0f, NULL },
+            { TRACK_5,	+PUMP_COL_SPACING*2.0f, NULL },
+        },
+        {	// PLAYER_2
+            { TRACK_6,	-PUMP_COL_SPACING*2.0f, NULL },
+            { TRACK_7,	-PUMP_COL_SPACING*1.0f, NULL },
+            { TRACK_8,	+PUMP_COL_SPACING*0.0f, NULL },
+            { TRACK_9,	+PUMP_COL_SPACING*1.0f, NULL },
+            { TRACK_10,	+PUMP_COL_SPACING*2.0f, NULL },
+        },
 	},
 	{	// m_iInputColumn[NUM_GameController][NUM_GameButton]
 		{ 1, 3, 2, 0, 4, Style::END_MAPPING },
