@@ -99,6 +99,7 @@ else()
       "io/USBDriver.cpp"
       "arch/USB/USBDriver_Impl.cpp"
       "arch/USB/USBDriver_Impl_Libusb.cpp"
+      "arch/CardReader/CardReader_Arduino.cpp"
       )
     list(APPEND SMDATA_OS_HPP
       "archutils/Unix/arch_setup.h"
@@ -113,6 +114,7 @@ else()
       "arch/USB/USBDriver_Impl.h"
       "arch/USB/USBDriver_Impl_Libusb.h"
       "arch/USB/USBDriver_Macros.h"
+      "arch/CardReader/CardReader_Arduino.h"
     )
     if(X11_FOUND)
       list(APPEND SMDATA_OS_SRC

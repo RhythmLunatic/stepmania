@@ -30,6 +30,7 @@
 #include "RageSurface.h"
 #include "RageSurface_Load.h"
 #include "CommandLineActions.h"
+#include "arch/CardReader/CardReader_Arduino.h"
 
 #if !defined(SUPPORT_OPENGL) && !defined(SUPPORT_D3D)
 #define SUPPORT_OPENGL
@@ -1168,6 +1169,7 @@ int sm_main(int argc, char* argv[])
 	if( PREFSMAN->m_bSignProfileData )
 		CRYPTMAN->GenerateGlobalKeys();
 	MEMCARDMAN	= new MemoryCardManager;
+	CARDREADER = new CardReader_Arduino;
 	CHARMAN		= new CharacterManager;
 	PROFILEMAN	= new ProfileManager;
 	PROFILEMAN->Init();				// must load after SONGMAN

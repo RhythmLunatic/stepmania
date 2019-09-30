@@ -92,7 +92,7 @@ else()
       endif()
     endforeach()
   endif()
-  add_executable("${SM_EXE_NAME}" ${SMDATA_ALL_FILES_SRC} ${SMDATA_ALL_FILES_HPP})
+  add_executable("${SM_EXE_NAME}" ${SMDATA_ALL_FILES_SRC} ${SMDATA_ALL_FILES_HPP} arch/CardReader/CardReader_Arduino.cpp arch/CardReader/CardReader_Arduino.h)
 endif()
 
 set_target_properties("${SM_EXE_NAME}" PROPERTIES
