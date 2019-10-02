@@ -6,6 +6,7 @@
 
 #define STEPMANIA_CARDREADER_ARDUINO_H
 
+#include "RageTimer.h"
 class CardReader_Arduino
 {
     int fd;
@@ -14,6 +15,8 @@ class CardReader_Arduino
 public:
     void Update();
     CardReader_Arduino();
+private:
+    int m_LastTimeScanned;
 };
 //I know this should be changed to a generic reader eventually...
 extern CardReader_Arduino* CARDREADER;
