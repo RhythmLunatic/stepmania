@@ -1169,7 +1169,7 @@ int sm_main(int argc, char* argv[])
 	if( PREFSMAN->m_bSignProfileData )
 		CRYPTMAN->GenerateGlobalKeys();
 	MEMCARDMAN	= new MemoryCardManager;
-	CARDREADER = new CardReader_Arduino;
+	//CARDREADER = new CardReader_Arduino;
 	CHARMAN		= new CharacterManager;
 	PROFILEMAN	= new ProfileManager;
 	PROFILEMAN->Init();				// must load after SONGMAN

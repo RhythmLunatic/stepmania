@@ -285,7 +285,7 @@ void GameLoop::UpdateAllButDraw(bool bRunningFromVBLANK)
 	GAMESTATE->Update(fDeltaTime);
 	SCREENMAN->Update(fDeltaTime);
 	MEMCARDMAN->Update();
-	CARDREADER->Update();
+	//CARDREADER->Update();
 	NSMAN->Update(fDeltaTime);
 
 	/* Important: Process input AFTER updating game logic, or input will be
