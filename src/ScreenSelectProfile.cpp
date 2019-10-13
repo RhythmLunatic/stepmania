@@ -178,8 +178,9 @@ bool ScreenSelectProfile::Finish(){
 	}
 
 	// this allows to continue if there is less local profiles than number of human players
-	if( iUnselectedProfiles && iUsedLocalProfiles < PROFILEMAN->GetNumLocalProfiles() )
-		return false;
+	// Is this really necessary? The lua can handle it.
+	//if( iUnselectedProfiles && iUsedLocalProfiles < PROFILEMAN->GetNumLocalProfiles() )
+	//	return false;
 
 	// all ok - load profiles and go to next screen
 	FOREACH_PlayerNumber( p )
