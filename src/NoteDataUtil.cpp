@@ -270,7 +270,7 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 					if(hasStepF2Annotation)
 						isBadLine = true;
 					break;
-				// case 'I': tn = TAP_ORIGINAL_ITEM;			break;
+                        // case 'I': tn = TAP_ORIGINAL_ITEM;			break;
 				default: 
 					/* Invalid data. We don't want to assert, since there might
 					 * simply be invalid data in an .SM, and we don't want to die
@@ -362,7 +362,8 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 			if(isBadLine)
 			{
 				int n = intptr_t(endLine) - intptr_t(beginLine);
-				LOG->Warn( "While loading .sm/.ssc note data, found invalid data in \"%.*s\"", n, beginLine );
+				//shut up
+				//LOG->Warn( "While loading .sm/.ssc note data, found invalid data in \"%.*s\"", n, beginLine );
 			}
 		}
 	}
@@ -513,11 +514,12 @@ void NoteDataUtil::GetSMNoteDataString( const NoteData &in, RString &sRet )
 					switch( tn.type )
 					{
 					case TapNoteType_Empty:			c = '0'; break;
-					case TapNoteType_Tap:			c = '1'; break;
+					case TapNoteType_Tap:           c = '1'; break;
 					case TapNoteType_HoldHead:
 						switch( tn.subType )
 						{
 						case TapNoteSubType_Hold:	c = '2'; break;
+
 						case TapNoteSubType_Roll:	c = '4'; break;
 						//case TapNoteSubType_Mine:	c = 'N'; break;
 						default:

@@ -283,6 +283,7 @@ protected:
 	Song*			m_pSong;
 	Steps*			m_pSteps;
 
+
 	PlayerNumber	m_InputPlayerNumber;
 	PlayerState		m_PlayerStateEdit;
 	NoteField		m_NoteFieldEdit;

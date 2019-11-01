@@ -11,6 +11,8 @@ enum PlayerNumber
 {
 	PLAYER_1 = 0,
 	PLAYER_2,
+	PLAYER_3,
+	PLAYER_4,
 	NUM_PlayerNumber,	// leave this at the end
 	PlayerNumber_Invalid
 };

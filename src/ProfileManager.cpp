@@ -508,7 +508,7 @@ bool ProfileManager::CreateLocalProfile( RString sName, RString &sProfileIDOut )
 {
 	ASSERT( !sName.empty() );
 
-	// Find a directory directory name that's a number greater than all 
+	// Find a directory name that's a number greater than all
 	// existing numbers.  This preserves the "order by create date".
 	// Profile IDs are actually the directory names, so they can be any string,
 	// and we have to handle the case where the user renames one.
@@ -568,6 +568,62 @@ bool ProfileManager::CreateLocalProfile( RString sName, RString &sProfileIDOut )
 	sProfileIDOut = profile_id;
 	return true;
 }
+
+bool ProfileManager::CreateLocalProfileByID( RString sName, RString sProfileIDIn )
+{
+    ASSERT( !sName.empty() );
+
+    // Find a directory name that's a number greater than all
+    // existing numbers.  This preserves the "order by create date".
+    // Profile IDs are actually the directory names, so they can be any string,
+    // and we have to handle the case where the user renames one.
+    // Since the user can rename them, they might have any number, wrapping our
+    // counter or setting it to a ridiculous value.  That case must also be
+    // handled. -Kyz
+    int max_profile_number= -1;
+    int first_free_number= 0;
+    vector<RString> profile_ids;
+    GetLocalProfileIDs(profile_ids);
+    FOREACH_CONST(RString, profile_ids, id)
+    {
+        int tmp= 0;
+        if((*id) >> tmp)
+        {
+            // The profile ids are already in order, so we don't have to handle the
+            // case where 5 is encountered before 3.
+            if(tmp == first_free_number)
+            {
+                ++first_free_number;
+            }
+            max_profile_number= max(tmp, max_profile_number);
+        }
+    }
+
+
+    // make sure this id doesn't already exist
+    ASSERT_M(GetLocalProfile(sProfileIDIn) == NULL,
+             ssprintf("creating profile with ID \"%s\" that already exists",
+                      sProfileIDIn.c_str()));
+
+    // Create the new profile.
+    Profile *pProfile = new Profile;
+    pProfile->m_sDisplayName = sName;
+    pProfile->m_sCharacterID = CHARMAN->GetRandomCharacter()->m_sCharacterID;
+
+    // Save it to disk.
+    RString sProfileDir = LocalProfileIDToDir(sProfileIDIn);
+    if( !pProfile->SaveAllToDir(sProfileDir, PREFSMAN->m_bSignProfileData) )
+    {
+        delete pProfile;
+        return false;
+    }
+
+    AddLocalProfileByID(pProfile, sProfileIDIn);
+    LOG->Trace(ssprintf("Created a local profile with ID of %s in %s.",sProfileIDIn.c_str(),sProfileDir.c_str()));
+    return true;
+}
+
+
 
 static void InsertProfileIntoList(DirAndProfile& derp)
 {
@@ -1188,6 +1244,11 @@ public:
 		return 1;
 	}
 	static int GetLocalProfileIndexFromID( T* p, lua_State *L )	{ lua_pushnumber(L, p->GetLocalProfileIndexFromID(SArg(1)) ); return 1; }
+    static int CreateLocalProfileByID( T* p, lua_State *L )
+    {
+	    lua_pushboolean(L, p->CreateLocalProfileByID(SArg(1), SArg(2)) );
+	    return 1;
+	}
 	static int GetNumLocalProfiles( T* p, lua_State *L )	{ lua_pushnumber(L, p->GetNumLocalProfiles() ); return 1; }
 	static int GetProfileDir( T* p, lua_State *L ) { lua_pushstring(L, p->GetProfileDir(Enum::Check<ProfileSlot>(L, 1)) ); return 1; }
 	static int IsSongNew( T* p, lua_State *L )	{ lua_pushboolean(L, p->IsSongNew(Luna<Song>::check(L,1)) ); return 1; }
@@ -1236,6 +1297,7 @@ public:
 		ADD_METHOD( GetLocalProfileFromIndex );
 		ADD_METHOD( GetLocalProfileIDFromIndex );
 		ADD_METHOD( GetLocalProfileIndexFromID );
+		ADD_METHOD( CreateLocalProfileByID );
 		ADD_METHOD( GetNumLocalProfiles );
 		ADD_METHOD( GetProfileDir );
 		ADD_METHOD( IsSongNew );

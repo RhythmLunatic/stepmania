@@ -45,6 +45,10 @@ void StageStats::Init()
 
 void StageStats::AssertValid( PlayerNumber pn ) const
 {
+	//Don't check for P3 and P4 since they might have no notes
+	if (pn == PLAYER_3 || pn == PLAYER_4)
+		return;
+
 	ASSERT( m_vpPlayedSongs.size() != 0 );
 	ASSERT( m_vpPossibleSongs.size() != 0 );
 	if( m_vpPlayedSongs[0] )

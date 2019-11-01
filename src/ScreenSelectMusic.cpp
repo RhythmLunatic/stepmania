@@ -78,6 +78,16 @@ void ScreenSelectMusic::Init()
 		GAMESTATE->SetMasterPlayerNumber(PLAYER_1);
 	}
 
+	//Hackjob fix for the game thinking there aren't any valid songs for four players after a routine chart
+    //Sorry... No 4 player support yet.
+    GAMESTATE->UnjoinPlayer(PLAYER_3);
+    GAMESTATE->UnjoinPlayer(PLAYER_4);
+	FOREACH_EnabledPlayer(pn)
+	{
+        if (CommonMetrics::AUTO_SET_STYLE && GAMESTATE->GetCurrentStyle(pn) != nullptr && GAMESTATE->GetCurrentStyle(pn)->m_StyleType == StyleType_TwoPlayersSharedSides)
+            GAMESTATE->SetCurrentStyle(GAMEMAN->GameAndStringToStyle(GAMEMAN->GetDefaultGame(),"versus"),pn);
+	}
+
 	IDLE_COMMENT_SECONDS.Load( m_sName, "IdleCommentSeconds" );
 	SAMPLE_MUSIC_DELAY_INIT.Load( m_sName, "SampleMusicDelayInit" );
 	SAMPLE_MUSIC_DELAY.Load( m_sName, "SampleMusicDelay" );
@@ -1371,7 +1381,7 @@ bool ScreenSelectMusic::MenuStart( const InputEventPlus &input )
 			 *    something better?)
 			 */
 
-			if( !GAMESTATE->IsCourseMode() && GAMESTATE->GetNumSidesJoined() == 2 )
+			if( !GAMESTATE->IsCourseMode() && GAMESTATE->GetNumSidesJoined() >= 2 )
 			{
 				bool bSelectedRoutineSteps[NUM_PLAYERS], bAnySelectedRoutine = false;
 				bool bSelectedSameSteps = GAMESTATE->m_pCurSteps[PLAYER_1] == GAMESTATE->m_pCurSteps[PLAYER_2];
@@ -1483,6 +1493,25 @@ bool ScreenSelectMusic::MenuStart( const InputEventPlus &input )
 	{
 		m_MenuTimer->Stop();
 
+		/*bool bSelectedRoutineSteps[NUM_PLAYERS], bAnySelectedRoutine = false;
+
+		FOREACH_HumanPlayer( p )
+		{
+			const Steps *pSteps = GAMESTATE->m_pCurSteps[p];
+			const StepsTypeInfo &sti = GAMEMAN->GetStepsTypeInfo( pSteps->m_StepsType );
+
+			bSelectedRoutineSteps[p] = sti.m_StepsTypeCategory == StepsTypeCategory_Routine || sti.m_StepsTypeCategory == StepsTypeCategory_Couple;
+			bAnySelectedRoutine |= bSelectedRoutineSteps[p];
+		}*/
+
+		//If we picked a routine steps, force enable p3 and p4
+		if (GAMEMAN->GetStepsTypeInfo(GAMESTATE->m_pCurSteps[PLAYER_1]->m_StepsType).m_StepsTypeCategory == StepsTypeCategory_Routine)
+		{
+			GAMESTATE->JoinPlayer(PLAYER_3);
+			GAMESTATE->JoinPlayer(PLAYER_4);
+			GAMESTATE->m_pCurSteps[PLAYER_3].Set( GAMESTATE->m_pCurSteps[PLAYER_1] );
+			GAMESTATE->m_pCurSteps[PLAYER_4].Set( GAMESTATE->m_pCurSteps[PLAYER_1] );
+		}
 		FOREACH_HumanPlayer( p )
 		{
 			if( !m_bStepsChosen[p] )

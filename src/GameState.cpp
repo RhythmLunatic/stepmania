@@ -1119,7 +1119,7 @@ void GameState::ForceSharedSidesMatch()
 	}
 	if(pn_with_shared != PLAYER_INVALID)
 	{
-		ASSERT_M(GetNumPlayersEnabled() == 2, "2 players must be enabled for shared sides.");
+		ASSERT_M(GetNumPlayersEnabled() >= 2, "2 or more players must be enabled for shared sides.");
 		PlayerNumber other_pn= OPPOSITE_PLAYER[pn_with_shared];
 		const Style* other_style= GetCurrentStyle(other_pn);
 		ASSERT_M(other_style != NULL, "Other player's style being null should not be possible.");
@@ -1213,16 +1213,16 @@ void GameState::Update( float fDelta )
 	{
 		m_pPlayerState[p]->Update( fDelta );
 
-		if( !m_bGoalComplete[p] && IsGoalComplete(p) )
+		/*if( !m_bGoalComplete[p] && IsGoalComplete(p) )
 		{
 			m_bGoalComplete[p] = true;
 			MESSAGEMAN->Broadcast( (MessageID)(Message_GoalCompleteP1+p) );
-		}
+		}*/
 	}
 
 	if( GAMESTATE->m_pCurCourse )
 	{
-		if( GAMESTATE->m_pCurCourse->m_fGoalSeconds > 0  &&  !m_bWorkoutGoalComplete )
+		/*if( GAMESTATE->m_pCurCourse->m_fGoalSeconds > 0  &&  !m_bWorkoutGoalComplete )
 		{
 			const StageStats &ssCurrent = STATSMAN->m_CurStageStats;
 			bool bGoalComplete = ssCurrent.m_fGameplaySeconds > GAMESTATE->m_pCurCourse->m_fGoalSeconds;
@@ -1231,7 +1231,7 @@ void GameState::Update( float fDelta )
 				MESSAGEMAN->Broadcast( "WorkoutGoalComplete" );
 				m_bWorkoutGoalComplete = true;
 			}
-		}
+		}*/
 	}
 }
 
@@ -1767,6 +1767,7 @@ bool GameState::IsHumanPlayer( PlayerNumber pn ) const
 	switch( type )
 	{
 	case StyleType_TwoPlayersTwoSides:
+		return m_bSideIsJoined[pn];
 	case StyleType_TwoPlayersSharedSides:
 		return true;
 	case StyleType_OnePlayerOneSide:

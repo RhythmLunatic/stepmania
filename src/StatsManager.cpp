@@ -111,7 +111,12 @@ void AddPlayerStatsToProfile( Profile *pProfile, const StageStats &ss, PlayerNum
 	StyleID sID;
 	sID.FromStyle( ss.m_player[pn].m_pStyle );
 
-	ASSERT( (int) ss.m_vpPlayedSongs.size() == ss.m_player[pn].m_iStepsPlayed );
+	//What is this supposed to do?
+	//ASSERT( (int) ss.m_vpPlayedSongs.size() == ss.m_player[pn].m_iStepsPlayed );
+	//Let's just return. It's better not to crash just because a profile is invalid...
+	if ((int) ss.m_vpPlayedSongs.size() != ss.m_player[pn].m_iStepsPlayed)
+		return;
+
 	for( int i=0; i<ss.m_player[pn].m_iStepsPlayed; i++ )
 	{
 		Steps *pSteps = ss.m_player[pn].m_vpPossibleSteps[i];

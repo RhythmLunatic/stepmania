@@ -1418,6 +1418,7 @@ void ScreenEdit::Init()
 	m_CurrentAction = MAIN_MENU_CHOICE_INVALID;
 	m_InputPlayerNumber = PLAYER_INVALID;
 
+
 	if( GAMESTATE->GetCurrentStyle(GAMESTATE->GetMasterPlayerNumber())->m_StyleType == StyleType_TwoPlayersSharedSides )
 		m_InputPlayerNumber = PLAYER_1;
 
@@ -3074,13 +3075,13 @@ bool ScreenEdit::InputEdit( const InputEventPlus &input, EditButton EditB )
 		return true;
 
 	case EDIT_BUTTON_SWITCH_PLAYERS:
-		if( m_InputPlayerNumber == PLAYER_INVALID )
-			return false;
-		enum_add( m_InputPlayerNumber, 1 );
-		if( m_InputPlayerNumber == NUM_PLAYERS )
-			m_InputPlayerNumber = PLAYER_1;
-		m_soundSwitchPlayer.Play(true);
-		return true;
+        if( m_InputPlayerNumber == PLAYER_INVALID )
+            return false;
+        enum_add( m_InputPlayerNumber, 1 );
+        if( m_InputPlayerNumber == NUM_PLAYERS )
+            m_InputPlayerNumber = PLAYER_1;
+        m_soundSwitchPlayer.Play(true);
+        return true;
 	
 	case EDIT_BUTTON_SWITCH_TIMINGS:
 		GAMESTATE->m_bIsUsingStepTiming = !GAMESTATE->m_bIsUsingStepTiming;

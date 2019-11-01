@@ -850,6 +850,7 @@ static const Style g_Style_Pump_Routine =
 	true, // m_bLockDifficulties
 };
 
+
 static const Style *g_apGame_Pump_Styles[] =
 {
 	&g_Style_Pump_Single,
