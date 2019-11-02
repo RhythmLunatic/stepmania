@@ -270,7 +270,8 @@ void RageBitmapTexture::Create()
 
 	CreateFrameRects();
 
-
+	//Shut up, there's too many jackets and it's too late to fix them
+#if 0
 	{
 		// Enforce frames in the image have even dimensions.
 		// Otherwise, pixel/texel alignment will be off.
@@ -323,7 +324,7 @@ void RageBitmapTexture::Create()
 			}
 		}
 	}
-
+#endif
 
 	delete pImg;
 

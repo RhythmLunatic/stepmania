@@ -105,6 +105,8 @@ enum TapNoteSubType
 {
 	TapNoteSubType_Hold, /**< The start of a traditional hold note. */
 	TapNoteSubType_Roll, /**< The start of a roll note that must be hit repeatedly. */
+	TapNoteSubType_Hidden, /**< This tap note disappears halfway through. */
+	TapNoteSubType_Sudden, /**< This tap note appears halfway through. */
 	//TapNoteSubType_Mine,
 	NUM_TapNoteSubType,
 	TapNoteSubType_Invalid
