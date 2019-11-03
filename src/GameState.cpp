@@ -1767,7 +1767,7 @@ bool GameState::IsHumanPlayer( PlayerNumber pn ) const
 	switch( type )
 	{
 	case StyleType_TwoPlayersTwoSides:
-		return m_bSideIsJoined[pn];
+		return (pn == PLAYER_1 || pn == PLAYER_2 );
 	case StyleType_TwoPlayersSharedSides:
 		return true;
 	case StyleType_OnePlayerOneSide:

@@ -82,11 +82,11 @@ void ScreenSelectMusic::Init()
     //Sorry... No 4 player support yet.
     GAMESTATE->UnjoinPlayer(PLAYER_3);
     GAMESTATE->UnjoinPlayer(PLAYER_4);
-	FOREACH_EnabledPlayer(pn)
+	/*FOREACH_EnabledPlayer(pn)
 	{
         if (CommonMetrics::AUTO_SET_STYLE && GAMESTATE->GetCurrentStyle(pn) != nullptr && GAMESTATE->GetCurrentStyle(pn)->m_StyleType == StyleType_TwoPlayersSharedSides)
             GAMESTATE->SetCurrentStyle(GAMEMAN->GameAndStringToStyle(GAMEMAN->GetDefaultGame(),"versus"),pn);
-	}
+	}*/
 
 	IDLE_COMMENT_SECONDS.Load( m_sName, "IdleCommentSeconds" );
 	SAMPLE_MUSIC_DELAY_INIT.Load( m_sName, "SampleMusicDelayInit" );
