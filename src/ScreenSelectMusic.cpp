@@ -440,7 +440,8 @@ bool ScreenSelectMusic::Input( const InputEventPlus &input )
 		if( input.type != IET_FIRST_PRESS ) 
 			return false;
 		PREFSMAN->m_bShowNativeLanguage.Set( !PREFSMAN->m_bShowNativeLanguage );
-		MESSAGEMAN->Broadcast( "DisplayLanguageChanged" );
+		//I don't care for this. People can just reload the screen. -RhythmLunatic
+		//MESSAGEMAN->Broadcast( "DisplayLanguageChanged" );
 		m_MusicWheel.RebuildWheelItems();
 		return true;
 	}
@@ -469,7 +470,8 @@ bool ScreenSelectMusic::Input( const InputEventPlus &input )
 				return true;
 			}
 		}
-		else if( bHoldingCtrl && ( c >= 'A' ) && ( c <= 'Z' ) )
+		//There's no reason to have this in Rave It Out.
+		/*else if( bHoldingCtrl && ( c >= 'A' ) && ( c <= 'Z' ) )
 		{
 			// Only allow changing the sort order if the wheel is not locked
 			// and we're not in course mode. -aj
@@ -493,7 +495,7 @@ bool ScreenSelectMusic::Input( const InputEventPlus &input )
 				AfterMusicChange();
 				return true;
 			}
-		}
+		}*/
 		else if( input.DeviceI.device == DEVICE_KEYBOARD && bHoldingCtrl && input.DeviceI.button == KEY_BACK && input.type == IET_FIRST_PRESS
 			&& m_MusicWheel.IsSettled() )
 		{
@@ -864,6 +866,7 @@ bool ScreenSelectMusic::Input( const InputEventPlus &input )
 			}
 		}
 	}
+	//This handles the normal two part select.
 	else
 	{
 		if( m_SelectionState == SelectionState_SelectingSteps && input.type == IET_FIRST_PRESS && !m_bStepsChosen[input.pn] )
@@ -1505,10 +1508,13 @@ bool ScreenSelectMusic::MenuStart( const InputEventPlus &input )
 		}*/
 
 		//If we picked a routine steps, force enable p3 and p4
-		if (GAMEMAN->GetStepsTypeInfo(GAMESTATE->m_pCurSteps[PLAYER_1]->m_StepsType).m_StepsTypeCategory == StepsTypeCategory_Routine)
+		//Only check if more than one player is joined. Since both p1 and p2 have to select the same steps for routine let's just check p1 instead of master player
+		if (GAMESTATE->GetNumSidesJoined() > 1 && GAMEMAN->GetStepsTypeInfo(GAMESTATE->m_pCurSteps[PLAYER_1]->m_StepsType).m_StepsTypeCategory == StepsTypeCategory_Routine)
 		{
 			GAMESTATE->JoinPlayer(PLAYER_3);
 			GAMESTATE->JoinPlayer(PLAYER_4);
+			GAMESTATE->m_iPlayerStageTokens[PLAYER_3] = 999;
+			GAMESTATE->m_iPlayerStageTokens[PLAYER_4] = 999;
 			GAMESTATE->m_pCurSteps[PLAYER_3].Set( GAMESTATE->m_pCurSteps[PLAYER_1] );
 			GAMESTATE->m_pCurSteps[PLAYER_4].Set( GAMESTATE->m_pCurSteps[PLAYER_1] );
 		}

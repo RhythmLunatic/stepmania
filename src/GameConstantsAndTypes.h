@@ -157,6 +157,7 @@ LuaDeclareType( PlayMode );
 enum SortOrder 
 {
 	// song sorts
+	/*SORT_ALL_SONGS,*/ /**< It's like Title but without groups. */
 	SORT_PREFERRED, /**< Sort by the user's preferred settings. */
 	SORT_GROUP, /**< Sort by the groups the Songs are in. */
 	SORT_TITLE, /**< Sort by the Song's title. */
@@ -175,7 +176,7 @@ enum SortOrder
 	SORT_DOUBLE_MEDIUM_METER, /**< Sort by the difficulty of the double medium meter. */
 	SORT_DOUBLE_HARD_METER, /**< Sort by the difficulty of the double hard meter. */
 	SORT_DOUBLE_CHALLENGE_METER, /**< Sort by the difficulty of the double challenge meter. */
-	SORT_DOUBLE_ALL_DIFFICULTY_METER, /** Sort by meter, regardless of difficulties. */ 
+	SORT_DOUBLE_ALL_DIFFICULTY_METER, /** Sort by meter, regardless of difficulties. */
 	//
 	SORT_MODE_MENU, /**< Have access to the menu for choosing the sort. */
 	// course sorts

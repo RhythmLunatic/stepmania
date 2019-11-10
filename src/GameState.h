@@ -201,6 +201,11 @@ public:
 	int m_PreferredMeter; //For level sort
 	BroadcastOnChange<SortOrder>	m_SortOrder;			// set by MusicWheel
 	SortOrder	m_PreferredSortOrder;		// used by MusicWheel
+    /* PIU and DDR have "happy" or "basic" modes. Right now this is just a really crappy hack for Rave It Out's easy mode,
+     * but it should probably be improved one day.
+     * RIO easy mode is that only lv10 and below steps are selectable.
+     */
+	//bool m_IsBasicMode;
 	EditMode	m_EditMode;
 	bool		IsEditing() const { return m_EditMode != EditMode_Invalid; }
 	/**
