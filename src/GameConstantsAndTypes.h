@@ -65,9 +65,10 @@ LuaDeclareType( RadarCategory );
 /** @brief The different game categories available to play. */
 enum StepsTypeCategory
 {
-	StepsTypeCategory_Single, /**< One person plays on one side. */
-	StepsTypeCategory_Double, /**< One person plays on both sides. */
-	StepsTypeCategory_Couple, /**< Two players play on their own side. */
+	StepsTypeCategory_Single,  /**< One person plays on one side. */
+	StepsTypeCategory_Double,  /**< One person plays on both sides. */
+	StepsTypeCategory_Quad,     /**< One person plays on four sides. */
+	StepsTypeCategory_Couple,  /**< Two players play on their own side. */
 	StepsTypeCategory_Routine, /**< Two players share both sides together. */
 };
 
@@ -76,6 +77,7 @@ enum StepsType
 {
 	StepsType_dance_single = 0,
 	StepsType_dance_double,
+	//StepsType_dance_quad,
 	StepsType_dance_couple,
 	StepsType_dance_solo,
 	StepsType_dance_threepanel,
@@ -102,6 +104,7 @@ enum StepsType
 	StepsType_techno_single4,
 	StepsType_techno_single5,
 	StepsType_techno_single8,
+	StepsType_techno_single9,
 	StepsType_techno_double4,
 	StepsType_techno_double5,
 	StepsType_techno_double8,
@@ -157,7 +160,7 @@ LuaDeclareType( PlayMode );
 enum SortOrder 
 {
 	// song sorts
-	/*SORT_ALL_SONGS,*/ /**< It's like Title but without groups. */
+	SORT_ALL_SONGS, /**< It's like Title but without groups. */
 	SORT_PREFERRED, /**< Sort by the user's preferred settings. */
 	SORT_GROUP, /**< Sort by the groups the Songs are in. */
 	SORT_TITLE, /**< Sort by the Song's title. */
@@ -166,6 +169,7 @@ enum SortOrder
 	SORT_TOP_GRADES, /**< Sort by the highest grades earned on a Song. */
 	SORT_ARTIST, /**< Sort by the name of the artist of the Song. */
 	SORT_GENRE, /**< Sort by the Song's genre. */
+	SORT_ORIGIN, /**< Sort by the origin tag. (Only Rave It Out uses this) */
 	SORT_BEGINNER_METER, /**< Sort by the difficulty of the single beginner meter. */
 	SORT_EASY_METER, /**< Sort by the difficulty of the single easy meter. */
 	SORT_MEDIUM_METER, /**< Sort by the difficulty of the single medium meter. */
@@ -344,6 +348,8 @@ enum ProfileSlot
 {
 	ProfileSlot_Player1,
 	ProfileSlot_Player2,
+	ProfileSlot_Player3,
+	ProfileSlot_Player4,
 	ProfileSlot_Machine,
 	NUM_ProfileSlot,
 	ProfileSlot_Invalid
@@ -557,6 +563,7 @@ enum StyleType
 	StyleType_OnePlayerOneSide,		/**< Single style */
 	StyleType_TwoPlayersTwoSides,		/**< Versus style */
 	StyleType_OnePlayerTwoSides,		/**< Double style */
+	//StyleType_OnePlayerFourSides,		/**< Quad style */
 	StyleType_TwoPlayersSharedSides,	/**< Routine style */
 	NUM_StyleType,
 	StyleType_Invalid

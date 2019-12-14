@@ -17,6 +17,7 @@
 
 GameManager*	GAMEMAN = NULL;	// global and accessible from anywhere in our program
 
+//Having a limited number of tracks is such a bad idea
 enum 
 {
 	TRACK_1 = 0,
@@ -49,6 +50,7 @@ static const StepsTypeInfo g_StepsTypeInfos[] = {
 	// dance
 	{ "dance-single",	4,	true,	StepsTypeCategory_Single },
 	{ "dance-double",	8,	true,	StepsTypeCategory_Double },
+    //{ "dance-quad",     16, true,   StepsTypeCategory_Quad   },
 	{ "dance-couple",	8,	true,	StepsTypeCategory_Couple },
 	{ "dance-solo",		6,	true,	StepsTypeCategory_Single },
 	{ "dance-threepanel",	3,	true,	StepsTypeCategory_Single }, // thanks to kurisu
@@ -85,6 +87,7 @@ static const StepsTypeInfo g_StepsTypeInfos[] = {
 	{ "techno-single4",	4,	true,	StepsTypeCategory_Single },
 	{ "techno-single5",	5,	true,	StepsTypeCategory_Single },
 	{ "techno-single8",	8,	true,	StepsTypeCategory_Single },
+	{ "techno-single9", 9,	true,	StepsTypeCategory_Single },
 	{ "techno-double4",	8,	true,	StepsTypeCategory_Double },
 	{ "techno-double5",	10,	true,	StepsTypeCategory_Double },
 	{ "techno-double8",	16,	true,	StepsTypeCategory_Double },
@@ -252,6 +255,49 @@ static const Style g_Style_Dance_Double =
 	false, // m_bCanUseBeginnerHelper
 	false, // m_bLockDifficulties
 };
+
+/*static const Style g_Style_Dance_Quad =
+{	// STYLE_DANCE_DOUBLE
+        true,				// m_bUsedForGameplay
+        true,				// m_bUsedForEdit
+        true,				// m_bUsedForDemonstration
+        false,				// m_bUsedForHowToPlay
+        "quad",			// m_szName
+        StepsType_dance_quad,	// m_StepsType
+        StyleType_OnePlayerFourSides,		// m_StyleType
+        8,				// m_iColsPerPlayer
+        {	// m_ColumnInfo[NUM_PLAYERS][MAX_COLS_PER_PLAYER];
+                {	// PLAYER_1
+                        { TRACK_1,	-DANCE_COL_SPACING*3.5f, NULL },
+                        { TRACK_2,	-DANCE_COL_SPACING*2.5f, NULL },
+                        { TRACK_3,	-DANCE_COL_SPACING*1.5f, NULL },
+                        { TRACK_4,	-DANCE_COL_SPACING*0.5f, NULL },
+                        { TRACK_5,	+DANCE_COL_SPACING*0.5f, NULL },
+                        { TRACK_6,	+DANCE_COL_SPACING*1.5f, NULL },
+                        { TRACK_7,	+DANCE_COL_SPACING*2.5f, NULL },
+                        { TRACK_8,	+DANCE_COL_SPACING*3.5f, NULL },
+                },
+                {	// PLAYER_2
+                        { TRACK_1,	-DANCE_COL_SPACING*3.5f, NULL },
+                        { TRACK_2,	-DANCE_COL_SPACING*2.5f, NULL },
+                        { TRACK_3,	-DANCE_COL_SPACING*1.5f, NULL },
+                        { TRACK_4,	-DANCE_COL_SPACING*0.5f, NULL },
+                        { TRACK_5,	+DANCE_COL_SPACING*0.5f, NULL },
+                        { TRACK_6,	+DANCE_COL_SPACING*1.5f, NULL },
+                        { TRACK_7,	+DANCE_COL_SPACING*2.5f, NULL },
+                        { TRACK_8,	+DANCE_COL_SPACING*3.5f, NULL },
+                },
+        },
+        {	// m_iInputColumn[NUM_GameController][NUM_GameButton]
+                { 0, 3, 2, 1, Style::END_MAPPING },
+                { 4, 7, 6, 5, Style::END_MAPPING }
+        },
+        {	// m_iColumnDrawOrder[MAX_COLS_PER_PLAYER];
+                0,1,2,3,4,5,6,7
+        },
+        false, // m_bCanUseBeginnerHelper
+        false, // m_bLockDifficulties
+};*/
 
 static const Style g_Style_Dance_Couple =
 {	// STYLE_DANCE_COUPLE
@@ -2214,6 +2260,52 @@ static const Style g_Style_Techno_Single8 =
 	false, // m_bLockDifficulties
 };
 
+static const Style g_Style_Techno_Single9 =
+{	// STYLE_TECHNO_SINGLE8
+		true,				// m_bUsedForGameplay
+		true,				// m_bUsedForEdit
+		false,				// m_bUsedForDemonstration
+		true,				// m_bUsedForHowToPlay
+		"single9",			// m_szName
+		StepsType_techno_single9,	// m_StepsType
+		StyleType_OnePlayerOneSide,		// m_StyleType
+		9,				// m_iColsPerPlayer
+		{	// m_ColumnInfo[NUM_PLAYERS][MAX_COLS_PER_PLAYER];
+				{	// PLAYER_1
+						{ TRACK_1,	-TECHNO_COL_SPACING*4.0f, NULL },
+						{ TRACK_2,	-TECHNO_COL_SPACING*3.0f, NULL },
+						{ TRACK_3,	-TECHNO_COL_SPACING*2.0f, NULL },
+						{ TRACK_4,	-TECHNO_COL_SPACING*1.0f, NULL },
+						{ TRACK_5,	+TECHNO_COL_SPACING*0.0f, NULL },
+						{ TRACK_6,	+TECHNO_COL_SPACING*1.0f, NULL },
+						{ TRACK_7,	+TECHNO_COL_SPACING*2.0f, NULL },
+						{ TRACK_8,	+TECHNO_COL_SPACING*3.0f, NULL },
+						{ TRACK_9,	+TECHNO_COL_SPACING*4.0f, NULL },
+				},
+				{	// PLAYER_2
+						{ TRACK_1,	-TECHNO_COL_SPACING*4.0f, NULL },
+						{ TRACK_2,	-TECHNO_COL_SPACING*3.0f, NULL },
+						{ TRACK_3,	-TECHNO_COL_SPACING*2.0f, NULL },
+						{ TRACK_4,	-TECHNO_COL_SPACING*1.0f, NULL },
+						{ TRACK_5,	+TECHNO_COL_SPACING*0.0f, NULL },
+						{ TRACK_6,	+TECHNO_COL_SPACING*1.0f, NULL },
+						{ TRACK_7,	+TECHNO_COL_SPACING*2.0f, NULL },
+						{ TRACK_8,	+TECHNO_COL_SPACING*3.0f, NULL },
+						{ TRACK_9,	+TECHNO_COL_SPACING*4.0f, NULL },
+				},
+		},
+		{	// m_iInputColumn[NUM_GameController][NUM_GameButton]
+
+				{ 1, 8, 6, 3, 2, 5, 4, 7, 0, Style::END_MAPPING },
+				{ 1, 6, 4, 3, 2, 5, 8, 0, 7, Style::END_MAPPING },
+		},
+		{	// m_iColumnDrawOrder[MAX_COLS_PER_PLAYER];
+				0,1,2,3,4,5,6,7,8
+		},
+		false, // m_bCanUseBeginnerHelper
+		false, // m_bLockDifficulties
+};
+
 static const Style g_Style_Techno_Versus4 =
 {	// STYLE_TECHNO_VERSUS4
 	true,				// m_bUsedForGameplay
@@ -2499,6 +2591,7 @@ static const Style *g_apGame_Techno_Styles[] =
 	&g_Style_Techno_Single4,
 	&g_Style_Techno_Single5,
 	&g_Style_Techno_Single8,
+	&g_Style_Techno_Single9,
 	&g_Style_Techno_Versus4,
 	&g_Style_Techno_Versus5,
 	&g_Style_Techno_Versus8,

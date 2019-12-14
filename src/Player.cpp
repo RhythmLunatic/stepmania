@@ -565,7 +565,7 @@ static bool NeedsTapJudging( const TapNote &tn )
 	case TapNoteType_HoldHead:
 	case TapNoteType_Mine:
 	case TapNoteType_Lift:
-		return tn.result.tns == TNS_None;
+		return (tn.result.tns == TNS_None && !tn.isFakeNote);
 	case TapNoteType_HoldTail:
 	case TapNoteType_Attack:
 	case TapNoteType_AutoKeysound:
@@ -2672,7 +2672,7 @@ void Player::FlashGhostRow( int iRow )
 		const TapNote &tn = m_NoteData.GetTapNote( iTrack, iRow );
 
 		if(tn.type == TapNoteType_Empty || tn.type == TapNoteType_Mine ||
-			tn.type == TapNoteType_Fake || tn.result.bHidden)
+			tn.type == TapNoteType_Fake || tn.isFakeNote || tn.result.bHidden)
 		{
 			continue;
 		}
@@ -2762,6 +2762,7 @@ void Player::CrossedRows( int iLastRowCrossed, const RageTimer &now )
 		{
 			if (tn.type != TapNoteType_Empty &&
 				tn.type != TapNoteType_Fake &&
+				tn.isFakeNote == false &&
 				tn.type != TapNoteType_AutoKeysound &&
 				tn.result.tns == TNS_None &&
 				this->m_Timing->IsJudgableAtRow(iRow) )
@@ -2887,6 +2888,7 @@ void Player::HandleTapRowScore( unsigned row )
 		// Mines cannot be handled here.
 		if (tn.type == TapNoteType_Empty ||
 			tn.type == TapNoteType_Fake ||
+			tn.isFakeNote ||
 			tn.type == TapNoteType_Mine ||
 			tn.type == TapNoteType_AutoKeysound)
 			continue;

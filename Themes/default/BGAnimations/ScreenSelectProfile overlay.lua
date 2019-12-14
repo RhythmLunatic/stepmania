@@ -1,3 +1,10 @@
+local pnTable = {
+	["PlayerNumber_P1"] = 1,
+	["PlayerNumber_P2"] = 2,
+	["PlayerNumber_P3"] = 3,
+	["PlayerNumber_P4"] = 4
+}
+
 function GetLocalProfiles()
 	local t = {};
 
@@ -41,7 +48,7 @@ end
 function LoadPlayerStuff(Player)
 	local t = {};
 
-	local pn = (Player == PLAYER_1) and 1 or 2;
+	local pn = pnTable[Player]
 
 --[[ 	local t = LoadActor(THEME:GetPathB('', '_frame 3x3'), 'metal', 200, 230) .. {
 		Name = 'BigFrame';
@@ -106,7 +113,7 @@ function LoadPlayerStuff(Player)
 end;
 
 function UpdateInternal3(self, Player)
-	local pn = (Player == PLAYER_1) and 1 or 2;
+	local pn = pnTable[Player]
 	local frame = self:GetChild(string.format('P%uFrame', pn));
 	local scroller = frame:GetChild('Scroller');
 	local seltext = frame:GetChild('SelectedProfileText');
@@ -240,12 +247,14 @@ local t = Def.ActorFrame {
 	UpdateInternal2Command=function(self)
 		UpdateInternal3(self, PLAYER_1);
 		UpdateInternal3(self, PLAYER_2);
+		UpdateInternal3(self, "PlayerNumber_P3");
+		UpdateInternal3(self, "PlayerNumber_P4");
 	end;
 
 	children = {
 		Def.ActorFrame {
 			Name = 'P1Frame';
-			InitCommand=cmd(x,SCREEN_CENTER_X-160;y,SCREEN_CENTER_Y);
+			InitCommand=cmd(x,SCREEN_WIDTH*(1/8);y,SCREEN_CENTER_Y);
 			--OnCommand=cmd(zoom,0;bounceend,0.35;zoom,1);
 			OffCommand=cmd(decelerate,0.3;diffusealpha,0);
 			-- PlayerJoinedMessageCommand=function(self,param)
@@ -257,15 +266,23 @@ local t = Def.ActorFrame {
 		};
 		Def.ActorFrame {
 			Name = 'P2Frame';
-			InitCommand=cmd(x,SCREEN_CENTER_X+160;y,SCREEN_CENTER_Y);
-			--OnCommand=cmd(zoom,0;bounceend,0.35;zoom,1);
+			InitCommand=cmd(x,SCREEN_WIDTH*(3/8);y,SCREEN_CENTER_Y);
 			OffCommand=cmd(decelerate,0.3;diffusealpha,0);
-			-- PlayerJoinedMessageCommand=function(self,param)
-				-- if param.Player == PLAYER_2 then
-					-- (cmd(zoom,1.15;bounceend,0.175;zoom,1.0))(self);
-				-- end;
-			-- end;
 			children = LoadPlayerStuff(PLAYER_2);
+		};
+		
+		Def.ActorFrame {
+			Name = 'P3Frame';
+			InitCommand=cmd(x,SCREEN_WIDTH*(5/8);y,SCREEN_CENTER_Y);
+			OffCommand=cmd(decelerate,0.3;diffusealpha,0);
+			children = LoadPlayerStuff("PlayerNumber_P3");
+		};
+		
+		Def.ActorFrame {
+			Name = 'P4Frame';
+			InitCommand=cmd(x,SCREEN_WIDTH*(7/8);y,SCREEN_CENTER_Y);
+			OffCommand=cmd(decelerate,0.3;diffusealpha,0);
+			children = LoadPlayerStuff("PlayerNumber_P4");
 		};
 		-- sounds
 		LoadActor( THEME:GetPathS("Common","start") )..{

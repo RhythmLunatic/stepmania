@@ -635,6 +635,7 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 		case SORT_TOP_GRADES:
 		case SORT_ARTIST:
 		case SORT_GENRE:
+		case SORT_ORIGIN:
 		case SORT_BEGINNER_METER:
 		case SORT_EASY_METER:
 		case SORT_MEDIUM_METER:
@@ -677,6 +678,7 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 					else
 						bUseSections = GAMESTATE->m_sPreferredSongGroup == GROUP_ALL;
 					break;
+			    case SORT_ALL_SONGS:
 				case SORT_TITLE:
 					SongUtil::SortSongPointerArrayByTitle( arraySongs );
 					break;
@@ -697,6 +699,9 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 				case SORT_GENRE:
 					SongUtil::SortSongPointerArrayByGenre( arraySongs );
 					break;
+			    case SORT_ORIGIN:
+			        SongUtil::SortSongPointerArrayByOrigin( arraySongs );
+			        break;
 				case SORT_LENGTH:
 					SongUtil::SortSongPointerArrayByLength( arraySongs );
 					break;
@@ -738,6 +743,8 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 						bUseSections = false;
 					break;
 				default:
+				    if (so == SORT_ALL_SONGS)
+				        bUseSections = false;
 					break;
 			}
 

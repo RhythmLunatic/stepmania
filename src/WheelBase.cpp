@@ -446,7 +446,11 @@ void WheelBase::RebuildWheelItems( int iDist )
 	// find the first wheel item shown
 	iFirstVisibleIndex -= NUM_WHEEL_ITEMS/2;
 
-	ASSERT(data.size() != 0);
+	//ASSERT(data.size() != 0);
+	if (data.size() == 0)
+	{
+		sm_crash("This song group has no valid songs.");
+	};
 	wrap( iFirstVisibleIndex, data.size() );
 
 	// iIndex is now the index of the lowest WheelItem to draw

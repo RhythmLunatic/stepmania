@@ -107,6 +107,7 @@ enum TapNoteSubType
 	TapNoteSubType_Roll, /**< The start of a roll note that must be hit repeatedly. */
 	TapNoteSubType_Hidden, /**< This tap note disappears halfway through. */
 	TapNoteSubType_Sudden, /**< This tap note appears halfway through. */
+	TapNoteSubType_Stealth, /**< This tap note does not appear. May or may not be judged depending on fake bit being set. */
 	//TapNoteSubType_Mine,
 	NUM_TapNoteSubType,
 	TapNoteSubType_Invalid
@@ -140,6 +141,8 @@ struct TapNote
 	TapNoteResult	result;
 	/** @brief The Player that is supposed to hit this note. This is mainly for Routine Mode. */
 	PlayerNumber	pn;
+	/** @brief If this note is judged. The Fake note is limited in ability so this is used for everyting other than tap notes.. Consider the fake note type to be depreciated. */
+	bool isFakeNote;
 
 	// used only if Type == attack:
 	RString		sAttackModifiers;
@@ -171,6 +174,7 @@ struct TapNote
 		fAttackDurationSeconds = 0.f; 
 		iKeysoundIndex = -1;
 		iDuration = 0;
+		isFakeNote = false;
 	}
 	TapNote( 
 		TapNoteType type_,
@@ -230,9 +234,6 @@ extern TapNote TAP_ORIGINAL_FAKE;		// 'F'
 extern TapNote TAP_ADDITION_TAP;
 extern TapNote TAP_ADDITION_MINE;
 
-//Rave It Out additions
-extern TapNote TAP_ORIGINAL_TAP_HIDDEN; //H
-extern TapNote TAP_ORIGINAL_TAP_SUDDEN; //S
 
 /**
  * @brief The number of tracks allowed.

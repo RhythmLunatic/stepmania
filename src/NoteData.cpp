@@ -469,6 +469,7 @@ bool NoteData::IsTap(const TapNote &tn, const int row) const
 {
 	return (tn.type != TapNoteType_Empty && tn.type != TapNoteType_Mine
 			&& tn.type != TapNoteType_Lift && tn.type != TapNoteType_Fake
+			&& tn.isFakeNote == false
 			&& tn.type != TapNoteType_AutoKeysound
 			&& GAMESTATE->GetProcessedTimingData()->IsJudgableAtRow(row));
 }
@@ -488,6 +489,7 @@ bool NoteData::IsLift(const TapNote &tn, const int row) const
 bool NoteData::IsFake(const TapNote &tn, const int row) const
 {
 	return (tn.type == TapNoteType_Fake
+			|| tn.isFakeNote
 			|| !GAMESTATE->GetProcessedTimingData()->IsJudgableAtRow(row));
 }
 
@@ -582,6 +584,9 @@ bool NoteData::RowNeedsAtLeastSimultaneousPresses( int iMinSimultaneousPresses, 
 				continue;	// skip these types - they don't count
 			default: break;
 		}
+		//Doesn't count, so skip this.
+		if (tn.isFakeNote)
+			continue;
 		++iNumNotesThisIndex;
 	}
 
@@ -636,6 +641,7 @@ int NoteData::GetNumRowsWithSimultaneousTaps( int iMinTaps, int iStartIndex, int
 			if (tn.type != TapNoteType_Mine &&     // mines don't count.
 				tn.type != TapNoteType_Empty &&
 				tn.type != TapNoteType_Fake &&
+				tn.isFakeNote == false &&
 				tn.type != TapNoteType_AutoKeysound)
 				iNumNotesThisIndex++;
 		}

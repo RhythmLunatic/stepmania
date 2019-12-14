@@ -1374,6 +1374,12 @@ void NoteDisplay::DrawTap(const TapNote& tn,
 		part = NotePart_Addition;
 	}
 	*/
+
+	//Don't render invisible notes. (Maybe move this to the top so pActor and NotePart aren't created?)
+    if ( tn.subType == TapNoteSubType_Stealth )
+    {
+        return;
+    }
 	if( tn.type == TapNoteType_Lift )
 	{
 		pActor = GetTapActor( m_TapLift, NotePart_Lift, fBeat );
@@ -1434,6 +1440,14 @@ void NoteDisplay::DrawTap(const TapNote& tn,
 		msg.SetParam( "Modifiers", tn.sAttackModifiers );
 		pActor->HandleMessage( msg );
 	}
+
+	//TODO: FIX LATER!!!!
+	/*if (tn.subType == TapNoteSubType_Hidden )
+	{
+		Message msg( "SetAttack" );
+		msg.SetParam( "Modifiers", RString("Hidden") );
+		pActor->HandleMessage( msg );
+	}*/
 
 	const float fYOffset = ArrowEffects::GetYOffset( m_pPlayerState, column_args.column, fBeat );
 	// this is the line that forces the (1,1,1,x) part of the noteskin diffuse -aj

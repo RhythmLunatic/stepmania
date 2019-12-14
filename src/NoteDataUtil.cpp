@@ -116,8 +116,12 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 				TapNote tn;
 				char ch = *p;
 
+				/* In the style of {Note type|attribute|fake bit|unknown bit}
+				   For more info:
+				   https://github.com/stepmania/stepmania/wiki/Note-Types#stepf2-notes
+				   */
 				bool hasStepF2Annotation = ch == '{';
-				char stepF2Annotation, stepF2Annotation2, stepF2Annotation3;
+				char StepF2NoteType, StepF2FakeBit, SF2UnknownBit;
 
 				if(hasStepF2Annotation)
 				{
@@ -127,9 +131,9 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 					if(annotationEnd < endLine && *separator == '|' && *annotationEnd == '}')
 					{
 						ch = *(p + 1);
-						stepF2Annotation = *(p + 3);
-						stepF2Annotation2 = '0';
-						stepF2Annotation3 = '0';
+						StepF2NoteType = *(p + 3);
+						StepF2FakeBit = '0';
+						SF2UnknownBit = '0';
 						p = annotationEnd;
 					}
 					else
@@ -141,9 +145,9 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 						if(annotationEnd < endLine && *separator == '|' && *separator2 == '|' && *separator3 == '|' && *annotationEnd == '}')
 						{
 							ch = *(p + 1);
-							stepF2Annotation = *(p + 3);
-							stepF2Annotation2 = *(p + 5);
-							stepF2Annotation3 = *(p + 7);
+							StepF2NoteType = *(p + 3);
+							StepF2FakeBit = *(p + 5);
+							SF2UnknownBit = *(p + 7);
 							p = annotationEnd;
 						}
 						else
@@ -154,7 +158,7 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 					}
 				}
 
-				if(hasStepF2Annotation && stepF2Annotation3 != '0')
+				if(hasStepF2Annotation && SF2UnknownBit != '0')
 					isBadLine = true;
 
 				switch( ch )
@@ -166,44 +170,6 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 					break;
 				case '1':
 					tn = TAP_ORIGINAL_TAP;
-
-					if(hasStepF2Annotation)
-					{
-						switch(stepF2Annotation2)
-						{
-						case '0':
-							break;
-						case '1':
-							tn = TAP_ORIGINAL_FAKE;
-							break;
-						default:
-							isBadLine = true;
-							break;
-						}
-
-						switch(stepF2Annotation)
-						{
-						case '8':
-							tn = TAP_ORIGINAL_FAKE;
-							break;
-						case 'h':
-							//LOG->Warn( "TODO {1|h} - stealth not implemented" );
-							break;
-						case 'n':
-							tn = TAP_ORIGINAL_FAKE;
-							//LOG->Warn( "TODO {1|n} - hidden not implemented" );
-							break;
-						case 's':
-							//LOG->Warn( "TODO {1|s} - sudden not implemented" );
-							break;
-						case 'v':
-							//LOG->Warn( "TODO {1|v} - hidden not implemented" );
-							break;
-						default:
-							isBadLine = true;
-							break;
-						}
-					}
 
 					break;
 				case '2':
@@ -223,8 +189,6 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 					/* Set the hold note to have infinite length. We'll clamp
 					 * it when we hit the tail. */
 					tn.iDuration = MAX_NOTE_ROW;
-					if(hasStepF2Annotation)
-						isBadLine = true;
 					break;
 				case '3':
 				{
@@ -240,8 +204,6 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 						out.FindTapNote( iTrack, iHeadRow )->second.iDuration = iIndex - iHeadRow;
 					}
 
-					if(hasStepF2Annotation)
-						isBadLine = true;
 
 					// This won't write tn, but keep parsing normally anyway.
 					break;
@@ -251,24 +213,16 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 				// that's what we've been writing to disk.  -Chris
 				case 'M':
 					tn = TAP_ORIGINAL_MINE;
-					if(hasStepF2Annotation)
-						isBadLine = true;
 					break;
 				// case 'A': tn = TAP_ORIGINAL_ATTACK;			break;
 				case 'K':
 					tn = TAP_ORIGINAL_AUTO_KEYSOUND;
-					if(hasStepF2Annotation)
-						isBadLine = true;
 					break;
 				case 'L':
 					tn = TAP_ORIGINAL_LIFT;
-					if(hasStepF2Annotation)
-						isBadLine = true;
 					break;
 				case 'F':
 					tn = TAP_ORIGINAL_FAKE;
-					if(hasStepF2Annotation)
-						isBadLine = true;
 					break;
                         // case 'I': tn = TAP_ORIGINAL_ITEM;			break;
 				default: 
@@ -282,7 +236,46 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 					break;
 				}
 
-				p++;
+                if(hasStepF2Annotation)
+                {
+                    switch(StepF2FakeBit)
+                    {
+                        case '0':
+                            break;
+                        case '1':
+                            tn.isFakeNote = true;
+                            break;
+                        default:
+                            isBadLine = true;
+                            break;
+                    }
+
+                    switch(StepF2NoteType)
+                    {
+                        case '8':
+                            tn = TAP_ORIGINAL_FAKE;
+                            break;
+                        case 'h':
+                            //LOG->Warn( "TODO {1|h} - stealth attribute not implemented" );
+                            tn.subType = TapNoteSubType_Stealth;
+                            break;
+                        case 'n':
+                            //tn = TAP_ORIGINAL_FAKE;
+                            break;
+                        case 's':
+                            tn.subType = TapNoteSubType_Sudden;
+                            break;
+                        case 'v':
+                            tn.subType = TapNoteSubType_Hidden;
+                            break;
+                        default:
+                            isBadLine = true;
+                            break;
+                    }
+                }
+
+
+                p++;
 				// We won't scan past the end of the line so these are safe to do.
 #if 0
 				// look for optional attack info (e.g. "{tipsy,50% drunk:15.2}")
@@ -363,7 +356,7 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 			{
 				int n = intptr_t(endLine) - intptr_t(beginLine);
 				//shut up
-				//LOG->Warn( "While loading .sm/.ssc note data, found invalid data in \"%.*s\"", n, beginLine );
+				LOG->Warn( "While loading .sm/.ssc note data, found invalid data in \"%.*s\"", n, beginLine );
 			}
 		}
 	}

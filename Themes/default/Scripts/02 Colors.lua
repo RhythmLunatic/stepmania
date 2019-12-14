@@ -51,11 +51,15 @@ GameColor = {
     PlayerColors = {
         PLAYER_1 = color("#4B82DC"),
         PLAYER_2 = color("#DF4C47"),
+        PLAYER_3 = color("#ffb900"),
+        PLAYER_4 = color("#33ff00"),
 		both = color("#FFFFFF"),
     },
     PlayerDarkColors = {
         PLAYER_1 = color("#16386E"),
         PLAYER_2 = color("#65110F"),
+        PLAYER_3 = color("#bd8a00"),
+        PLAYER_4 = color("#009c10"),
 		both = color("#F5E1E1"),
     },
     Difficulty = {

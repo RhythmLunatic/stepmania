@@ -29,6 +29,7 @@ int LastTapNoteScoreTrack( const NoteData &in, unsigned iRow, PlayerNumber pn )
 		if (tn.type == TapNoteType_Empty ||
 			tn.type == TapNoteType_Mine ||
 			tn.type == TapNoteType_Fake ||
+			tn.isFakeNote ||
 			tn.type == TapNoteType_AutoKeysound) 
 			continue;
 		if( tn.pn != PLAYER_INVALID && tn.pn != pn && pn != PLAYER_INVALID )
@@ -132,6 +133,7 @@ TapNoteScore NoteDataWithScoring::MinTapNoteScore( const NoteData &in, unsigned 
 		if (tn.type == TapNoteType_Empty ||
 			tn.type == TapNoteType_Mine ||
 			tn.type == TapNoteType_Fake ||
+			tn.isFakeNote ||
 			tn.type == TapNoteType_AutoKeysound ||
 			( plnum != PlayerNumber_Invalid && tn.pn != plnum ) )
 			continue;

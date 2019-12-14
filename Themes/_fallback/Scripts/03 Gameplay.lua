@@ -100,7 +100,7 @@ function GameCompatibleModes()
 		para = "Single",
 		maniax = "Single,Double,Versus",
 		-- todo: add versus modes for technomotion
-		techno = "Single4,Single5,Single8,Double4,Double5,Double8",
+		techno = "Single4,Single5,Single8,Single9,Double4,Double5,Double8",
 		lights = "Single", -- lights shouldn't be playable
 	}
 	return Modes[CurGameName()]

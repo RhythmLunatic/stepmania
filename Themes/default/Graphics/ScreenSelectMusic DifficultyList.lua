@@ -80,10 +80,70 @@ return Def.ActorFrame {
 				OnCommand=cmd(zoom,0.5);
 			};
 		};
+		CursorP3 = Def.ActorFrame {
+			InitCommand=function(self)
+				self:x(174)
+				self:player(PLAYER_3)
+				arrow_bounce(self, -5, 0)
+			end,
+			PlayerJoinedMessageCommand=function(self, params)
+				if params.Player == PLAYER_3 then
+					self:visible(true);
+					(cmd(zoom,0;bounceend,1;zoom,1))(self);
+				end;
+			end;
+			PlayerUnjoinedMessageCommand=function(self, params)
+				if params.Player == PLAYER_3 then
+					self:visible(true);
+					(cmd(bouncebegin,1;zoom,0))(self);
+				end;
+			end;
+			LoadActor(THEME:GetPathG("_StepsDisplayListRow","Cursor")) .. {
+				InitCommand=cmd(diffuse,ColorLightTone(PlayerColor(PLAYER_2));x,-8;zoom,0.75;zoomx,-0.75);
+			};
+			LoadFont("_roboto condensed Bold 48px") .. {
+				Text="P3";
+				InitCommand=cmd(horizalign,center;x,-8;diffuse,ColorDarkTone(PlayerColor(PLAYER_3)));
+				OnCommand=cmd(zoom,0.5);
+			};
+		};
+		CursorP4 = Def.ActorFrame {
+			InitCommand=function(self)
+				self:x(174)
+				self:player(PLAYER_4)
+				arrow_bounce(self, -5, 0)
+			end,
+			PlayerJoinedMessageCommand=function(self, params)
+				if params.Player == PLAYER_4 then
+					self:visible(true);
+					(cmd(zoom,0;bounceend,1;zoom,1))(self);
+				end;
+			end;
+			PlayerUnjoinedMessageCommand=function(self, params)
+				if params.Player == PLAYER_4 then
+					self:visible(true);
+					(cmd(bouncebegin,1;zoom,0))(self);
+				end;
+			end;
+			LoadActor(THEME:GetPathG("_StepsDisplayListRow","Cursor")) .. {
+				InitCommand=cmd(diffuse,ColorLightTone(PlayerColor(PLAYER_4));x,-8;zoom,0.75;zoomx,-0.75);
+			};
+			LoadFont("_roboto condensed Bold 48px") .. {
+				Text="P2";
+				InitCommand=cmd(horizalign,center;x,-8;diffuse,ColorDarkTone(PlayerColor(PLAYER_4)));
+				OnCommand=cmd(zoom,0.5);
+			};
+		};
 		CursorP1Frame = Def.Actor{
 			ChangeCommand=cmd(stoptweening;decelerate,0.05);
 		};
 		CursorP2Frame = Def.Actor{
+			ChangeCommand=cmd(stoptweening;decelerate,0.05);
+		};
+		CursorP3Frame = Def.Actor{
+			ChangeCommand=cmd(stoptweening;decelerate,0.05);
+		};
+		CursorP4Frame = Def.Actor{
 			ChangeCommand=cmd(stoptweening;decelerate,0.05);
 		};
 	};

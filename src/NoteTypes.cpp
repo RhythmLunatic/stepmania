@@ -18,9 +18,6 @@ TapNote TAP_ORIGINAL_FAKE	( TapNoteType_Fake,	TapNoteSubType_Invalid,	TapNoteSou
 TapNote TAP_ADDITION_TAP	( TapNoteType_Tap,	TapNoteSubType_Invalid,	TapNoteSource_Addition, "", 0, -1 );
 TapNote TAP_ADDITION_MINE	( TapNoteType_Mine,	TapNoteSubType_Invalid,	TapNoteSource_Addition, "", 0, -1 );
 
-TapNote TAP_ORIGINAL_TAP_HIDDEN	( TapNoteType_Tap,	TapNoteSubType_Invalid,	TapNoteSource_Original, "Hidden", 0, -1 );
-TapNote TAP_ORIGINAL_TAP_SUDDEN	( TapNoteType_Tap,	TapNoteSubType_Invalid,	TapNoteSource_Original, "Sudden", 0, -1 );
-
 static const char *TapNoteTypeNames[] = {
 	"Empty",
 	"Tap",
@@ -41,6 +38,7 @@ static const char *TapNoteSubTypeNames[] = {
 	"Roll",
 	"Hidden",
 	"Sudden",
+	"Stealth",
 	//"Mine",
 };
 XToString( TapNoteSubType );

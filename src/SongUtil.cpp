@@ -518,6 +518,16 @@ void SongUtil::SortSongPointerArrayByGenre( vector<Song*> &vpSongsInOut )
 	stable_sort( vpSongsInOut.begin(), vpSongsInOut.end(), CompareSongPointersByGenre );
 }
 
+static int CompareSongPointersByOrigin(const Song *pSong1, const Song *pSong2)
+{
+    return pSong1->m_sOrigin < pSong2->m_sOrigin;
+}
+
+void SongUtil::SortSongPointerArrayByOrigin( vector<Song*> &vpSongsInOut )
+{
+    stable_sort( vpSongsInOut.begin(), vpSongsInOut.end(), CompareSongPointersByOrigin );
+}
+
 int SongUtil::CompareSongPointersByGroup(const Song *pSong1, const Song *pSong2)
 {
 	return pSong1->m_sGroupName < pSong2->m_sGroupName;
@@ -573,6 +583,7 @@ RString SongUtil::GetSectionNameFromSongAndSort( const Song* pSong, SortOrder so
         //There's no point in jumping to an open level folder since we'd probably want to go to a certain level
         //Also I was getting crashes because it was trying to open an invalid folder...
         return "";
+        //return RString();
 	case SORT_GROUP:
 		// guaranteed not empty	
 		return pSong->m_sGroupName;
@@ -602,6 +613,10 @@ RString SongUtil::GetSectionNameFromSongAndSort( const Song* pSong, SortOrder so
 		if( !pSong->m_sGenre.empty() )
 			return pSong->m_sGenre;
 		return SORT_NOT_AVAILABLE.GetValue();
+    case SORT_ORIGIN:
+        if( !pSong->m_sOrigin.empty() )
+            return pSong->m_sOrigin;
+        return SORT_NOT_AVAILABLE.GetValue();
 	case SORT_BPM:
 		{
 			if( SHOW_SECTIONS_IN_BPM_SORT )

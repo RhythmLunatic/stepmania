@@ -155,6 +155,7 @@ LuaXType( Premium );
 
 
 static const char *SortOrderNames[] = {
+	"AllSongs",
 	"Preferred",
 	"Group",
 	"Title",
@@ -163,6 +164,7 @@ static const char *SortOrderNames[] = {
 	"TopGrades",
 	"Artist",
 	"Genre",
+	"Origin",
 	"BeginnerMeter",
 	"EasyMeter",
 	"MediumMeter",
@@ -311,6 +313,8 @@ LuaXType( TapNoteScoreJudgeType );
 static const char *ProfileSlotNames[] = {
 	"Player1",
 	"Player2",
+	"Player3",
+	"Player4",
 	"Machine",
 };
 XToString( ProfileSlot );
@@ -422,6 +426,7 @@ static const char *StyleTypeNames[] = {
 	"OnePlayerOneSide",
 	"TwoPlayersTwoSides",
 	"OnePlayerTwoSides",
+	//"OnePlayerFourSides",
 	"TwoPlayersSharedSides",
 };
 XToString( StyleType );

@@ -1800,12 +1800,12 @@ map<int, vector<Song*>> SongManager::GenerateFoldersAllDifficultiesAllSteps(Step
 	}
     // prune duplicate songs, such as a song that has two S04 steps
     //TODO: It doesn't work right now
-    map<int, vector<Song*>>::iterator it;
-    for ( it = m_vAllStepsAllDifficultiesSort.begin(); it != m_vAllStepsAllDifficultiesSort.end(); it++ )
+    map<int, vector<Song*>>::iterator it = m_vAllStepsAllDifficultiesSort.begin();
+    while (it != m_vAllStepsAllDifficultiesSort.end())
     {
         vector<Song*> v = it->second;
         std::sort(v.begin(), v.end());
-        //shut up clang-tidy it's too old for auto
+        //shut up clang-tidy
         vector<Song *, std::allocator<Song *>>::iterator last = std::unique(v.begin(), v.end());
         v.erase(last, v.end());
     }
