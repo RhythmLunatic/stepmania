@@ -3,6 +3,7 @@
 
 #include "RageTypes.h"
 #include "PlayerNumber.h"
+#include "NoteTypes.h"
 
 class PlayerState;
 class PlayerOptions;
@@ -91,6 +92,7 @@ public:
 	// fAlpha is the transparency of the arrow.  It depends on fYPos and the 
 	// AppearanceType.
 	static float GetAlpha(const PlayerState* pPlayerState, int iCol, float fYPos, float fPercentFadeToFail, float fYReverseOffsetPixels, float fDrawDistanceBeforeTargetsPixels, float fFadeInPercentOfDrawFar);
+	static float GetAlpha(const PlayerState* pPlayerState, int iCol, float fYPos, float fPercentFadeToFail, float fYReverseOffsetPixels, float fDrawDistanceBeforeTargetsPixels, float fFadeInPercentOfDrawFar, const TapNote& tn);
 
 	// fAlpha is the transparency of the arrow.  It depends on fYPos and the 
 	// AppearanceType.

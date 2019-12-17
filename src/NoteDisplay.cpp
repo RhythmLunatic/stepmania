@@ -1255,8 +1255,9 @@ void NoteDisplay::DrawActor(const TapNote& tn, Actor* pActor, NotePart part,
 	float spline_beat= fBeat;
 	if(is_being_held) { spline_beat= column_args.song_beat; }
 
-	const float fAlpha= ArrowEffects::GetAlpha(m_pPlayerState, column_args.column, fYOffset, fPercentFadeToFail, m_fYReverseOffsetPixels, field_args.draw_pixels_before_targets, field_args.fade_before_targets);
+	const float fAlpha= ArrowEffects::GetAlpha(m_pPlayerState, column_args.column, fYOffset, fPercentFadeToFail, m_fYReverseOffsetPixels, field_args.draw_pixels_before_targets, field_args.fade_before_targets, tn);
 	const float fGlow= ArrowEffects::GetGlow(m_pPlayerState, column_args.column, fYOffset, fPercentFadeToFail, m_fYReverseOffsetPixels, field_args.draw_pixels_before_targets, field_args.fade_before_targets);
+	//const float fGlow = 0;
 	const RageColor diffuse	= RageColor(
 		column_args.diffuse.r * fColorScale,
 		column_args.diffuse.g * fColorScale,
@@ -1365,6 +1366,10 @@ void NoteDisplay::DrawTap(const TapNote& tn,
 	bool bOnSameRowAsHoldStart, bool bOnSameRowAsRollStart,
 	bool bIsAddition, float fPercentFadeToFail)
 {
+    //Don't render invisible notes.
+    if ( tn.subType == TapNoteSubType_Stealth )
+        return;
+
 	Actor* pActor = NULL;
 	NotePart part = NotePart_Tap;
 	/*
@@ -1375,11 +1380,7 @@ void NoteDisplay::DrawTap(const TapNote& tn,
 	}
 	*/
 
-	//Don't render invisible notes. (Maybe move this to the top so pActor and NotePart aren't created?)
-    if ( tn.subType == TapNoteSubType_Stealth )
-    {
-        return;
-    }
+
 	if( tn.type == TapNoteType_Lift )
 	{
 		pActor = GetTapActor( m_TapLift, NotePart_Lift, fBeat );

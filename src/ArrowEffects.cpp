@@ -81,6 +81,7 @@ static ThemeMetric<float>	TINY_PERCENT_GATE( "ArrowEffects", "TinyPercentGate" )
 static const PlayerOptions* curr_options= NULL;
 
 float ArrowGetPercentVisible(float fYPosWithoutReverse, int iCol, float fYOffset);
+float ArrowGetPercentVisible(float fYPosWithoutReverse, int iCol, float fYOffset, const TapNote& tn);
 
 static float GetNoteFieldHeight()
 {
@@ -1042,32 +1043,50 @@ static float GetHiddenSudden()
 //  ...invisible...
 //
 // TRICKY:  We fudge hidden and sudden to be farther apart if they're both on.
-static float GetHiddenEndLine()
+static float GetHiddenEndLine(bool isHiddenNote = false)
 {
+	if (isHiddenNote)
+		return GetCenterLine() +
+			   FADE_DIST_Y * SCALE( 0.0f, 0.f, 1.f, -1.0f, -1.25f ) +
+			   GetCenterLine() * curr_options->m_fAppearances[PlayerOptions::APPEARANCE_HIDDEN_OFFSET];
 	return GetCenterLine() +
 		FADE_DIST_Y * SCALE( GetHiddenSudden(), 0.f, 1.f, -1.0f, -1.25f ) +
 		GetCenterLine() * curr_options->m_fAppearances[PlayerOptions::APPEARANCE_HIDDEN_OFFSET];
 }
 
-static float GetHiddenStartLine()
+static float GetHiddenStartLine(bool isHiddenNote = false)
 {
+	//APPEARANCE_HIDDEN_OFFSET is 0 by default
+	//GetSuddenHidden() also returns 0 unless both Sudden and Hidden are on
+	if (isHiddenNote)
+		return GetCenterLine() +
+			   FADE_DIST_Y * SCALE( 0.0f, 0.f, 1.f, +0.0f, -0.25f )
+			   + GetCenterLine() * curr_options->m_fAppearances[PlayerOptions::APPEARANCE_HIDDEN_OFFSET];
 	return GetCenterLine() +
 		FADE_DIST_Y * SCALE( GetHiddenSudden(), 0.f, 1.f, +0.0f, -0.25f ) +
 		GetCenterLine() * curr_options->m_fAppearances[PlayerOptions::APPEARANCE_HIDDEN_OFFSET];
 }
 
-static float GetSuddenEndLine()
+static float GetSuddenEndLine(bool isSuddenNote = false)
 {
+	if (isSuddenNote)
+		return GetCenterLine() +
+			   FADE_DIST_Y * SCALE( 0.0f, 0.f, 1.f, -0.0f, +0.25f ) +
+			   GetCenterLine() * curr_options->m_fAppearances[PlayerOptions::APPEARANCE_SUDDEN_OFFSET];
 	return GetCenterLine() +
 		FADE_DIST_Y * SCALE( GetHiddenSudden(), 0.f, 1.f, -0.0f, +0.25f ) +
 		GetCenterLine() * curr_options->m_fAppearances[PlayerOptions::APPEARANCE_SUDDEN_OFFSET];
 }
 
-static float GetSuddenStartLine()
+static float GetSuddenStartLine(bool isSuddenNote = false)
 {
+	if (isSuddenNote)
+		return GetCenterLine() +
+			   FADE_DIST_Y * SCALE( 0.0f, 0.f, 1.f, +1.0f, +1.25f ) +
+			   GetCenterLine() * curr_options->m_fAppearances[PlayerOptions::APPEARANCE_SUDDEN_OFFSET];
 	return GetCenterLine() +
-		FADE_DIST_Y * SCALE( GetHiddenSudden(), 0.f, 1.f, +1.0f, +1.25f ) +
-		GetCenterLine() * curr_options->m_fAppearances[PlayerOptions::APPEARANCE_SUDDEN_OFFSET];
+		   FADE_DIST_Y * SCALE( GetHiddenSudden(), 0.f, 1.f, +1.0f, +1.25f ) +
+		   GetCenterLine() * curr_options->m_fAppearances[PlayerOptions::APPEARANCE_SUDDEN_OFFSET];
 }
 
 // used by ArrowGetAlpha and ArrowGetGlow below
@@ -1123,6 +1142,72 @@ float ArrowGetPercentVisible(float fYPosWithoutReverse, int iCol, float fYOffset
 	return clamp( 1+fVisibleAdjust, 0, 1 );
 }
 
+//Just kill me already
+float ArrowGetPercentVisible(float fYPosWithoutReverse, int iCol, float fYOffset, const TapNote& tn)
+{
+	const float fDistFromCenterLine = fYPosWithoutReverse - GetCenterLine();
+
+	float fYPos;
+	if( curr_options->m_bStealthType )
+		fYPos = fYOffset;
+	else
+		fYPos = fYPosWithoutReverse;
+
+
+	if( fYPos < 0 && curr_options->m_bStealthPastReceptors == false)	// past Gray Arrows
+		return 1;	// totally visible
+
+	const float* fAppearances = curr_options->m_fAppearances;
+
+	float fVisibleAdjust = 0;
+
+	if( fAppearances[PlayerOptions::APPEARANCE_HIDDEN] != 0)
+	{
+		float fHiddenVisibleAdjust = SCALE( fYPos, GetHiddenStartLine(), GetHiddenEndLine(), 0, -1 );
+		CLAMP( fHiddenVisibleAdjust, -1, 0 );
+		fVisibleAdjust += fAppearances[PlayerOptions::APPEARANCE_HIDDEN] * fHiddenVisibleAdjust;
+	}
+	else if (tn.subType == TapNoteSubType_Hidden)
+	{
+		float fHiddenVisibleAdjust = SCALE( fYPos, GetHiddenStartLine(true), GetHiddenEndLine(true), 0, -1 );
+		CLAMP( fHiddenVisibleAdjust, -1, 0 );
+		fVisibleAdjust += fHiddenVisibleAdjust;
+	}
+
+	if( fAppearances[PlayerOptions::APPEARANCE_SUDDEN] != 0)
+	{
+		float fSuddenVisibleAdjust = SCALE( fYPos, GetSuddenStartLine(), GetSuddenEndLine(), -1, 0 );
+		CLAMP( fSuddenVisibleAdjust, -1, 0 );
+		fVisibleAdjust += fAppearances[PlayerOptions::APPEARANCE_SUDDEN] * fSuddenVisibleAdjust;
+	}
+	else if(tn.subType == TapNoteSubType_Sudden)
+	{
+		float fSuddenVisibleAdjust = SCALE( fYPos, GetSuddenStartLine(true), GetSuddenEndLine(true), -1, 0 );
+		CLAMP( fSuddenVisibleAdjust, -1, 0 );
+		fVisibleAdjust += fSuddenVisibleAdjust;
+	}
+
+	if( fAppearances[PlayerOptions::APPEARANCE_STEALTH] != 0 )
+		fVisibleAdjust -= fAppearances[PlayerOptions::APPEARANCE_STEALTH];
+	if( curr_options->m_fStealth[iCol] != 0 ){
+		fVisibleAdjust -= curr_options->m_fStealth[iCol];
+	}
+	if( fAppearances[PlayerOptions::APPEARANCE_BLINK] != 0 )
+	{
+		float f = RageFastSin(ArrowEffects::GetTime()*10);
+		f = Quantize( f, BLINK_MOD_FREQUENCY );
+		fVisibleAdjust += SCALE( f, 0, 1, -1, 0 );
+	}
+	if( fAppearances[PlayerOptions::APPEARANCE_RANDOMVANISH] != 0 )
+	{
+		const float fRealFadeDist = 80;
+		fVisibleAdjust += SCALE( fabsf(fDistFromCenterLine), fRealFadeDist, 2*fRealFadeDist, -1, 0 )
+						  * fAppearances[PlayerOptions::APPEARANCE_RANDOMVANISH];
+	}
+
+	return clamp( 1+fVisibleAdjust, 0, 1 );
+}
+
 float ArrowEffects::GetAlpha( const PlayerState* pPlayerState, int iCol, float fYOffset, float fPercentFadeToFail, float fYReverseOffsetPixels, float fDrawDistanceBeforeTargetsPixels, float fFadeInPercentOfDrawFar)
 {
 	// Get the YPos without reverse (that is, factor in EFFECT_TIPSY).
@@ -1139,6 +1224,31 @@ float ArrowEffects::GetAlpha( const PlayerState* pPlayerState, int iCol, float f
 	{
 		float f = SCALE( fYPosWithoutReverse, fFullAlphaY, fDrawDistanceBeforeTargetsPixels, 1.0f, 0.0f );
 		return f;
+	}
+	return (fPercentVisible>0.5f) ? 1.0f : 0.0f;
+}
+
+float ArrowEffects::GetAlpha( const PlayerState* pPlayerState, int iCol, float fYOffset, float fPercentFadeToFail, float fYReverseOffsetPixels, float fDrawDistanceBeforeTargetsPixels, float fFadeInPercentOfDrawFar, const TapNote& tn)
+{
+	// Get the YPos without reverse (that is, factor in EFFECT_TIPSY).
+	float fYPosWithoutReverse = ArrowEffects::GetYPos(pPlayerState, iCol, fYOffset, fYReverseOffsetPixels, false );
+
+	float fPercentVisible = ArrowGetPercentVisible(fYPosWithoutReverse, iCol, fYOffset, tn);
+
+	if( fPercentFadeToFail != -1 )
+		fPercentVisible = 1 - fPercentFadeToFail;
+
+
+	float fFullAlphaY = fDrawDistanceBeforeTargetsPixels*(1-fFadeInPercentOfDrawFar);
+	if( fYPosWithoutReverse > fFullAlphaY )
+	{
+		float f = SCALE( fYPosWithoutReverse, fFullAlphaY, fDrawDistanceBeforeTargetsPixels, 1.0f, 0.0f );
+		return f;
+	}
+
+	if (tn.subType == TapNoteSubType_Hidden || tn.subType == TapNoteSubType_Sudden)
+	{
+		return fPercentVisible;
 	}
 	return (fPercentVisible>0.5f) ? 1.0f : 0.0f;
 }
