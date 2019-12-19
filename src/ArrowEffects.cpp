@@ -1167,7 +1167,7 @@ float ArrowGetPercentVisible(float fYPosWithoutReverse, int iCol, float fYOffset
 		CLAMP( fHiddenVisibleAdjust, -1, 0 );
 		fVisibleAdjust += fAppearances[PlayerOptions::APPEARANCE_HIDDEN] * fHiddenVisibleAdjust;
 	}
-	else if (tn.subType == TapNoteSubType_Hidden)
+	else if (tn.appearance == TapNoteAppearance_Hidden)
 	{
 		float fHiddenVisibleAdjust = SCALE( fYPos, GetHiddenStartLine(true), GetHiddenEndLine(true), 0, -1 );
 		CLAMP( fHiddenVisibleAdjust, -1, 0 );
@@ -1180,7 +1180,7 @@ float ArrowGetPercentVisible(float fYPosWithoutReverse, int iCol, float fYOffset
 		CLAMP( fSuddenVisibleAdjust, -1, 0 );
 		fVisibleAdjust += fAppearances[PlayerOptions::APPEARANCE_SUDDEN] * fSuddenVisibleAdjust;
 	}
-	else if(tn.subType == TapNoteSubType_Sudden)
+	else if(tn.appearance == TapNoteAppearance_Sudden)
 	{
 		float fSuddenVisibleAdjust = SCALE( fYPos, GetSuddenStartLine(true), GetSuddenEndLine(true), -1, 0 );
 		CLAMP( fSuddenVisibleAdjust, -1, 0 );
@@ -1246,7 +1246,7 @@ float ArrowEffects::GetAlpha( const PlayerState* pPlayerState, int iCol, float f
 		return f;
 	}
 
-	if (tn.subType == TapNoteSubType_Hidden || tn.subType == TapNoteSubType_Sudden)
+	if (tn.appearance == TapNoteAppearance_Hidden || tn.appearance == TapNoteAppearance_Sudden)
 	{
 		return fPercentVisible;
 	}

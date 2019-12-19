@@ -1161,6 +1161,10 @@ void NoteDisplay::DrawHold(const TapNote& tn,
 	const NoteColumnRenderArgs& column_args, int iRow, bool bIsBeingHeld,
 	const HoldNoteResult &Result, bool bIsAddition, float fPercentFadeToFail)
 {
+	//Don't render invisible notes.
+	if ( tn.appearance == TapNoteAppearance_Stealth )
+		return;
+	
 	int iEndRow = iRow + tn.iDuration;
 	float top_beat= NoteRowToVisibleBeat(m_pPlayerState, iRow);
 	float bottom_beat= NoteRowToVisibleBeat(m_pPlayerState, iEndRow);
@@ -1367,7 +1371,7 @@ void NoteDisplay::DrawTap(const TapNote& tn,
 	bool bIsAddition, float fPercentFadeToFail)
 {
     //Don't render invisible notes.
-    if ( tn.subType == TapNoteSubType_Stealth )
+    if ( tn.appearance == TapNoteAppearance_Stealth )
         return;
 
 	Actor* pActor = NULL;
@@ -1442,13 +1446,6 @@ void NoteDisplay::DrawTap(const TapNote& tn,
 		pActor->HandleMessage( msg );
 	}
 
-	//TODO: FIX LATER!!!!
-	/*if (tn.subType == TapNoteSubType_Hidden )
-	{
-		Message msg( "SetAttack" );
-		msg.SetParam( "Modifiers", RString("Hidden") );
-		pActor->HandleMessage( msg );
-	}*/
 
 	const float fYOffset = ArrowEffects::GetYOffset( m_pPlayerState, column_args.column, fBeat );
 	// this is the line that forces the (1,1,1,x) part of the noteskin diffuse -aj

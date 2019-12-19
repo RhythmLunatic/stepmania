@@ -105,9 +105,6 @@ enum TapNoteSubType
 {
 	TapNoteSubType_Hold, /**< The start of a traditional hold note. */
 	TapNoteSubType_Roll, /**< The start of a roll note that must be hit repeatedly. */
-	TapNoteSubType_Hidden, /**< This tap note disappears halfway through. */
-	TapNoteSubType_Sudden, /**< This tap note appears halfway through. */
-	TapNoteSubType_Stealth, /**< This tap note does not appear. May or may not be judged depending on fake bit being set. */
 	//TapNoteSubType_Mine,
 	NUM_TapNoteSubType,
 	TapNoteSubType_Invalid
@@ -115,6 +112,16 @@ enum TapNoteSubType
 const RString& TapNoteSubTypeToString( TapNoteSubType tnst );
 const RString& TapNoteSubTypeToLocalizedString( TapNoteSubType tnst );
 LuaDeclareType( TapNoteSubType );
+
+enum TapNoteAppearance
+{
+	TapNoteAppearance_Normal, //I don't know why the Init() of TapNote is being ignored but this is the default
+    TapNoteAppearance_Hidden, /**< This tap note disappears halfway through. */
+    TapNoteAppearance_Sudden, /**< This tap note appears halfway through. */
+    TapNoteAppearance_Stealth, /**< This tap note does not appear. May or may not be judged depending on fake bit being set. */
+    NUM_TapNoteAppearance,
+    TapNoteAppearance_Invalid
+};
 
 /** @brief The different places a TapNote could come from. */
 enum TapNoteSource
@@ -135,6 +142,8 @@ struct TapNote
 	TapNoteType		type;
 	/** @brief The sub type of the note. This is only used if the type is hold_head. */
 	TapNoteSubType		subType;
+	/** @brief the appearance of the note, for pump. Only used if there is an apperance attribute. */
+	TapNoteAppearance appearance;
 	/** @brief The originating source of the TapNote. */
 	TapNoteSource		source;
 	/** @brief The result of hitting or missing the TapNote. */
@@ -169,7 +178,8 @@ struct TapNote
 	{
 		type = TapNoteType_Empty;
 		subType = TapNoteSubType_Invalid; 
-		source = TapNoteSource_Original; 
+		source = TapNoteSource_Original;
+		//appearance= TapNoteAppearance_Invalid; //No need since it defaults to Normal anyways
 		pn = PLAYER_INVALID, 
 		fAttackDurationSeconds = 0.f; 
 		iKeysoundIndex = -1;

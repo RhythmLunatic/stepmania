@@ -36,9 +36,6 @@ LuaXType( TapNoteType );
 static const char *TapNoteSubTypeNames[] = {
 	"Hold",
 	"Roll",
-	"Hidden",
-	"Sudden",
-	"Stealth",
 	//"Mine",
 };
 XToString( TapNoteSubType );

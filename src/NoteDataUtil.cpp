@@ -257,16 +257,16 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
                             break;
                         case 'h':
                             //LOG->Warn( "TODO {1|h} - stealth attribute not implemented" );
-                            tn.subType = TapNoteSubType_Stealth;
+                            tn.appearance = TapNoteAppearance_Stealth;
                             break;
                         case 'n':
                             //tn = TAP_ORIGINAL_FAKE;
                             break;
                         case 's':
-                            tn.subType = TapNoteSubType_Sudden;
+                            tn.appearance = TapNoteAppearance_Sudden;
                             break;
                         case 'v':
-                            tn.subType = TapNoteSubType_Hidden;
+                            tn.appearance = TapNoteAppearance_Hidden;
                             break;
                         default:
                             isBadLine = true;
