@@ -1011,7 +1011,7 @@ void Player::Update( float fDeltaTime )
 		for( ; !iter.IsAtEnd() &&  iter.Row() <= iSongRow; ++iter )
 		{
 			TapNote &tn = *iter;
-			if( tn.type != TapNoteType_HoldHead )
+			if( tn.type != TapNoteType_HoldHead  || tn.isFakeNote)
 				continue;
 
 			int iTrack = iter.Track();
