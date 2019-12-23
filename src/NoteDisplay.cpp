@@ -1164,7 +1164,7 @@ void NoteDisplay::DrawHold(const TapNote& tn,
 	//Don't render invisible notes.
 	if ( tn.appearance == TapNoteAppearance_Stealth )
 		return;
-	
+
 	int iEndRow = iRow + tn.iDuration;
 	float top_beat= NoteRowToVisibleBeat(m_pPlayerState, iRow);
 	float bottom_beat= NoteRowToVisibleBeat(m_pPlayerState, iEndRow);
