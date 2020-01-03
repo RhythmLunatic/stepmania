@@ -198,3 +198,7 @@ BuildLog.htm
 # stuff
 src/NotesLoaderSecret.cpp
 src/NotesLoaderSecret.h
+src/NotesWriterSecret.cpp
+src/NotesWriterSecret.h
+UserPrefs/*
+
