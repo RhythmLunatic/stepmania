@@ -194,3 +194,7 @@ BuildLog.htm
 *.swp
 *.pc
 *.d
+
+# stuff
+src/NotesLoaderSecret.cpp
+src/NotesLoaderSecret.h
