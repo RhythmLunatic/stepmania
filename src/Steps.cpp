@@ -28,6 +28,11 @@
 #include "NotesLoaderDWI.h"
 #include "NotesLoaderKSF.h"
 #include "NotesLoaderBMS.h"
+#include "NotesLoaderUCS.h"
+#if defined(HAS_SECRET)
+#include "NotesLoaderSecret.h"
+#endif
+
 #include <algorithm>
 
 /* register DisplayBPM with StringConversion */
@@ -156,6 +161,18 @@ bool Steps::GetNoteDataFromSimfile()
 	{
 		return BMSLoader::LoadNoteDataFromSimfile(stepFile, *this);
 	}
+	else if (extension == "ucs")
+    {
+	    UCSLoader loader;
+	    return loader.LoadNoteDataFromSimfile(stepFile, *this);
+    }
+#if defined(HAS_SECRET)
+	else if (extension == "nx20" || extension == "nx")
+	{
+		SecretLoader loader;
+		return loader.LoadNoteDataFromSimfile(stepFile, *this);
+	}
+#endif
 	else if (extension == "edit")
 	{
 		// Try SSC, then fallback to SM.

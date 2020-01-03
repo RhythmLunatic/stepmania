@@ -121,7 +121,7 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 				   https://github.com/stepmania/stepmania/wiki/Note-Types#stepf2-notes
 				   */
 				bool hasStepF2Annotation = ch == '{';
-				char StepF2NoteType, StepF2FakeBit, SF2UnknownBit;
+				char StepF2NoteAppearance, StepF2FakeBit, SF2UnknownBit;
 
 				if(hasStepF2Annotation)
 				{
@@ -131,7 +131,7 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 					if(annotationEnd < endLine && *separator == '|' && *annotationEnd == '}')
 					{
 						ch = *(p + 1);
-						StepF2NoteType = *(p + 3);
+						StepF2NoteAppearance = *(p + 3);
 						StepF2FakeBit = '0';
 						SF2UnknownBit = '0';
 						p = annotationEnd;
@@ -145,7 +145,7 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 						if(annotationEnd < endLine && *separator == '|' && *separator2 == '|' && *separator3 == '|' && *annotationEnd == '}')
 						{
 							ch = *(p + 1);
-							StepF2NoteType = *(p + 3);
+							StepF2NoteAppearance = *(p + 3);
 							StepF2FakeBit = *(p + 5);
 							SF2UnknownBit = *(p + 7);
 							p = annotationEnd;
@@ -250,7 +250,7 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
                             break;
                     }
 
-                    switch(StepF2NoteType)
+                    switch(StepF2NoteAppearance)
                     {
                         case '8':
                             tn = TAP_ORIGINAL_FAKE;

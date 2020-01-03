@@ -46,6 +46,7 @@ public:
 
 	virtual RageFileBasic *Copy() const = 0;
 
+	//Returns -1 on error, 0 on EOF, 1 on success
 	virtual int GetLine( RString &out ) = 0;
 	virtual int PutLine( const RString &str ) = 0;
 

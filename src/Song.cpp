@@ -350,7 +350,7 @@ bool Song::LoadFromSongDir(RString sDir, bool load_autosave, ProfileSlot from_pr
 
 		if(!NotesLoader::LoadFromDir(sDir, *this, BlacklistedImages, load_autosave))
 		{
-			LOG->UserLog( "Song", sDir, "has no SSC, SM, SMA, DWI, BMS, or KSF files." );
+			LOG->UserLog( "Song", sDir, "has no SSC, SM, SMA, DWI, BMS, or KSF (or other valid) files." );
 
 			vector<RString> audios;
 			FILEMAN->GetDirListingWithMultipleExtensions(sDir,
@@ -1224,7 +1224,9 @@ void Song::Save(bool autosave)
 	{
 		SaveToSMFile();
 	}
-	//SaveToDWIFile();
+
+	//TODO: Write UCS? Option to save as UCS?
+
 
 	/* We've safely written our files and created backups. Rename non-SM and
 	 * non-DWI files to avoid confusion. */

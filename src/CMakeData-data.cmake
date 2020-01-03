@@ -69,6 +69,8 @@ list(APPEND SM_DATA_NOTELOAD_SRC
   "NotesLoaderSM.cpp"
   "NotesLoaderSMA.cpp"
   "NotesLoaderSSC.cpp"
+   "NotesLoaderUCS.cpp"
+
 )
 
 list(APPEND SM_DATA_NOTELOAD_HPP
@@ -80,7 +82,18 @@ list(APPEND SM_DATA_NOTELOAD_HPP
   "NotesLoaderSM.h"
   "NotesLoaderSMA.h"
   "NotesLoaderSSC.h"
+  "NotesLoaderUCS.h"
+
 )
+
+if (WITH_SECRET)
+  list(APPEND SM_DATA_NOTELOAD_SRC
+          "NotesLoaderSecret.cpp"
+          )
+  list(APPEND SM_DATA_NOTELOAD_HPP
+          "NotesLoaderSecret.h"
+          )
+endif()
 
 source_group("Data Structures\\\\Notes Loaders" FILES ${SM_DATA_NOTELOAD_SRC} ${SM_DATA_NOTELOAD_HPP})
 

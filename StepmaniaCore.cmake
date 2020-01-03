@@ -182,6 +182,11 @@ endif()
 # Dependencies go here.
 include(ExternalProject)
 
+if(WITH_SECRET)
+  message(STATUS "You are now entering completely darkness.")
+  set(HAS_SECRET TRUE)
+endif()
+
 if(NOT WITH_GPL_LIBS)
   message("Disabling GPL exclusive libraries: no MP3 support.")
   set(WITH_MP3 OFF)
@@ -220,6 +225,7 @@ if(WITH_OGG)
     endif()
   endif()
 endif()
+
 
 find_package(nasm)
 find_package(yasm)

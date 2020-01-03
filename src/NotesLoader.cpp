@@ -6,6 +6,10 @@
 #include "NotesLoaderDWI.h"
 #include "NotesLoaderBMS.h"
 #include "NotesLoaderKSF.h"
+#include "NotesLoaderUCS.h"
+#if defined(HAS_SECRET)
+#include "NotesLoaderSecret.h"
+#endif
 #include "RageUtil.h"
 
 void NotesLoader::GetMainAndSubTitlesFromFullTitle( const RString &sFullTitle, RString &sMainTitleOut, RString &sSubTitleOut )
@@ -57,9 +61,20 @@ bool NotesLoader::LoadFromDir( const RString &sPath, Song &out, set<RString> &Bl
 	if( !list.empty() )
 		return PMSLoader::LoadFromDir( sPath, out );
 	*/
+	UCSLoader loaderUCS;
+    loaderUCS.GetApplicableFiles(sPath, list);
+    if (!list.empty() )
+        return loaderUCS.LoadFromDir(sPath, out);
+#if defined(HAS_SECRET)
+    SecretLoader loader;
+	loader.GetApplicableFiles(sPath, list);
+	if (!list.empty() )
+		return loader.LoadFromDir(sPath, out);
+#endif
 	KSFLoader::GetApplicableFiles( sPath, list );
 	if( !list.empty() )
 		return KSFLoader::LoadFromDir( sPath, out );
+
 	return false;
 }
 

@@ -254,6 +254,11 @@ public:
 		AddSegment( TimeSignatureSegment(iNoteRow, iNum, iDen) );
 	}
 
+	/*
+	 * fBeat = beat to set it at
+	 * iNum = number of beats
+	 * iDen = ? (I think it's like the 4/4 or 5/4 thing, so usually 4)
+	 */
 	void SetTimeSignatureAtBeat( float fBeat, int iNum, int iDen )
 	{
 		SetTimeSignatureAtRow( BeatToNoteRow(fBeat), iNum, iDen );
