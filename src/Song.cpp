@@ -645,7 +645,7 @@ void Song::TidyUpData( bool from_cache, bool /* duringCache */ )
 
 	if(!from_cache)
 	{
-		if (this->m_sArtist == "The Dancing Monkeys Project" && this->m_sMainTitle.find_first_of('-') != string::npos)
+		/*if (this->m_sArtist == "The Dancing Monkeys Project" && this->m_sMainTitle.find_first_of('-') != string::npos)
 		{
 			// Dancing Monkeys had a bug/feature where the artist was replaced. Restore it.
 			vector<RString> titleParts;
@@ -655,7 +655,7 @@ void Song::TidyUpData( bool from_cache, bool /* duringCache */ )
 			titleParts.erase(titleParts.begin());
 			this->m_sMainTitle = join("-", titleParts);
 			Trim(this->m_sMainTitle);
-		}
+		}*/
 
 		Trim(m_sMainTitle);
 		Trim(m_sSubTitle);
@@ -1152,8 +1152,8 @@ void Song::ReCalculateRadarValuesAndLastSecond(bool fromCache, bool duringCache)
 		 * 2. Don't calculate with edits unless the song only contains an edit
 		 * chart, like those in Mungyodance 3. Otherwise, edits installed on
 		 * the machine could extend the length of the song. */
-		if( !pSteps->IsAutogen() &&
-				!( pSteps->IsAnEdit() && m_vpSteps.size() > 1 ) )
+		if( !pSteps->IsAutogen() /*&&
+				!( pSteps->IsAnEdit() && m_vpSteps.size() > 1 )*/ )
 		{
 			// Don't set first/last beat based on lights.  They often start very
 			// early and end very late.
