@@ -89,6 +89,7 @@ void MusicWheel::Load( RString sType )
 	SHOW_EASY_FLAG			.Load(sType,"UseEasyMarkerFlag");
 	USE_SECTIONS_WITH_PREFERRED_GROUP		.Load(sType,"UseSectionsWithPreferredGroup");
 	HIDE_INACTIVE_SECTIONS		.Load(sType,"OnlyShowActiveSection");
+	ALWAYS_SHOW_SORTORDERS.Load(sType,"AlwaysShowSortOrders");
 	HIDE_ACTIVE_SECTION_TITLE		.Load(sType,"HideActiveSectionTitle");
 	REMIND_WHEEL_POSITIONS		.Load(sType,"RemindWheelPositions");
 	vector<RString> vsModeChoiceNames;
@@ -985,6 +986,27 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 			WID.m_Flags.bEdits = WID.m_pCourse->IsAnEdit();
 			WID.m_Flags.iStagesForSong = 1;
 		}
+	}
+
+	//Shove these in at the end of the wheel
+	if (ALWAYS_SHOW_SORTORDERS)
+	{
+		vector<RString> vsNames;
+		split( MODE_MENU_CHOICE_NAMES, ",", vsNames );
+		for( unsigned i=0; i<vsNames.size(); ++i )
+		{
+			MusicWheelItemData wid( WheelItemDataType_Sort, NULL, "", NULL, SORT_MENU_COLOR, 0 );
+			wid.m_pAction = HiddenPtr<GameCommand>( new GameCommand );
+			wid.m_pAction->m_sName = vsNames[i];
+			wid.m_pAction->Load( i, ParseCommands(CHOICE.GetValue(vsNames[i])) );
+			wid.m_sLabel = WHEEL_TEXT( vsNames[i] );
+
+			if( !wid.m_pAction->IsPlayable() )
+				continue;
+
+			arrayWheelItemDatas.push_back( new MusicWheelItemData(wid) );
+		}
+
 	}
 }
 
