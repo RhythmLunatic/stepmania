@@ -193,6 +193,7 @@ public:
 	BroadcastOnChange1D<Difficulty,NUM_PLAYERS>		m_PreferredDifficulty;
 	BroadcastOnChange1D<CourseDifficulty,NUM_PLAYERS>	m_PreferredCourseDifficulty;// used in nonstop
 	BroadcastOnChange<SortOrder>	m_SortOrder;			// set by MusicWheel
+	int m_PreferredMeter; //For level sort
 	SortOrder	m_PreferredSortOrder;		// used by MusicWheel
 	EditMode	m_EditMode;
 	bool		IsEditing() const { return m_EditMode != EditMode_Invalid; }

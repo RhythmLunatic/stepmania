@@ -328,13 +328,41 @@ bool MusicWheel::SelectSong( const Song *p )
 
 	unsigned i;
 	vector<MusicWheelItemData *> &from = getWheelItemsData(GAMESTATE->m_SortOrder);
-	for( i=0; i<from.size(); i++ )
+	if (GAMESTATE->m_SortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER || GAMESTATE->m_SortOrder == SORT_ALL_DIFFICULTY_METER)
 	{
 		if( from[i]->m_pSong == p )
 		{
-			// make its group the currently expanded group
-			SetOpenSection( from[i]->m_sText );
-			break;
+			/*
+             * 1. First we have to find the song
+             * 2. Then we have to check if this song is in the folder we want to return to
+             * Luckily C++ does short circuit evaluations so this operation is cheap
+             */
+			RString folderName = ssprintf("%02d", GAMESTATE->m_PreferredMeter );
+			for( i=0; i<from.size(); i++ )
+			{
+				{
+					SetOpenSection( from[i]->m_sText );
+					if( from[i]->m_pSong == p && folderName.compare(from[i]->m_sText) == 0)
+						break;
+					{
+						// make its group the currently expanded group
+						SetOpenSection( from[i]->m_sText );
+						break;
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		for (i = 0; i < from.size(); i++)
+		{
+			if (from[i]->m_pSong == p)
+			{
+				// make its group the currently expanded group
+				SetOpenSection(from[i]->m_sText);
+				break;
+			}
 		}
 	}
 
@@ -553,6 +581,50 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 					continue;
 
 				arrayWheelItemDatas.push_back( new MusicWheelItemData(wid) );
+			}
+			break;
+		}
+		case SORT_ALL_DIFFICULTY_METER:
+		case SORT_DOUBLE_ALL_DIFFICULTY_METER:
+		{
+			map<int, vector<Song*>> AllStepsAllDifficultyGroups;
+			switch (so)
+			{
+				case SORT_ALL_DIFFICULTY_METER:
+				{
+					AllStepsAllDifficultyGroups = SONGMAN->GenerateFoldersAllDifficultiesAllSteps(StepsTypeCategory_Single);
+					break;
+				}
+				case SORT_DOUBLE_ALL_DIFFICULTY_METER:
+				{
+					AllStepsAllDifficultyGroups = SONGMAN->GenerateFoldersAllDifficultiesAllSteps(StepsTypeCategory_Double);
+					break;
+				}
+			}
+
+
+			vector<Song*> arraySongs;
+			// make WheelItemDatas with sections
+			int iSectionColorIndex = 0;
+			map<int, vector<Song*>>::iterator it;
+			for ( it = AllStepsAllDifficultyGroups.begin(); it != AllStepsAllDifficultyGroups.end(); it++ )
+			{
+
+
+				vector<Song*> v = it->second;
+				int iSectionCount = v.size()-1;
+				arraySongs.insert( arraySongs.end(), v.begin(), v.end() );
+				RageColor colorSection = SECTION_COLORS.GetValue(iSectionColorIndex);
+				iSectionColorIndex = (iSectionColorIndex+1) % NUM_SECTION_COLORS;
+				RString sectionName = ssprintf("%02d", it->first );
+				arrayWheelItemDatas.push_back( new MusicWheelItemData(WheelItemDataType_Section, NULL, sectionName, NULL, colorSection, iSectionCount) );
+				//For each song in the vector (it->second returns the vector)
+				//for (Song *s : vSongs)
+				//FOREACH_CONST( Song*, it->second, pSong )
+				for (Song *pSong : it->second)
+				{
+					arrayWheelItemDatas.push_back( new MusicWheelItemData(WheelItemDataType_Song, pSong, sectionName, NULL, SONGMAN->GetSongColor(pSong), 0) );
+				}
 			}
 			break;
 		}
@@ -1384,6 +1456,11 @@ void MusicWheel::SetOpenSection( RString group )
 	//LOG->Trace( "SetOpenSection %s", group.c_str() );
 	m_sExpandedSectionName = group;
 	GAMESTATE->sExpandedSectionName = group;
+	//If we're in the all difficulty sorts, save it in memory as 'preferred meter' so the first matching steps will be jumped to
+	if (GAMESTATE->m_PreferredSortOrder == SORT_ALL_DIFFICULTY_METER || GAMESTATE->m_PreferredSortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
+	{
+		sscanf(group.c_str(), "%d", &GAMESTATE->m_PreferredMeter);
+	}
 
 	// wheel positions = num song groups
 	if ( REMIND_WHEEL_POSITIONS && HIDE_INACTIVE_SECTIONS )

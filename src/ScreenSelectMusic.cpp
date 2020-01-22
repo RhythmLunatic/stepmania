@@ -1628,36 +1628,76 @@ void ScreenSelectMusic::SwitchToPreferredDifficulty()
 	{
 		FOREACH_HumanPlayer( pn )
 		{
-			// Find the closest match to the user's preferred difficulty and StepsType.
-			int iCurDifference = -1;
 			int &iSelection = m_iSelection[pn];
-			int i = 0;
-			for (Steps *s : m_vpSteps)
+			if (GAMESTATE->m_SortOrder == SORT_ALL_DIFFICULTY_METER || GAMESTATE->m_SortOrder == SORT_DOUBLE_ALL_DIFFICULTY_METER)
 			{
-				// If the current steps are listed, use them.
-				if( GAMESTATE->m_pCurSteps[pn] == s )
-				{
-					iSelection = i;
-					break;
-				}
 
-				if( GAMESTATE->m_PreferredDifficulty[pn] != Difficulty_Invalid  )
+				int pref = 0;
+				int i = 0;
+				//FOREACH_CONST( Steps*, m_vpSteps, s )
+				for(Steps* s : m_vpSteps)
 				{
-					int iDifficultyDifference = abs( s->GetDifficulty() - GAMESTATE->m_PreferredDifficulty[pn] );
-					int iStepsTypeDifference = 0;
-					if( GAMESTATE->m_PreferredStepsType != StepsType_Invalid )
-						iStepsTypeDifference = abs( s->m_StepsType - GAMESTATE->m_PreferredStepsType );
-					int iTotalDifference = iStepsTypeDifference * NUM_Difficulty + iDifficultyDifference;
+					//int i = s - m_vpSteps.begin();
 
-					if( iCurDifference == -1 || iTotalDifference < iCurDifference )
+					// If the current steps are listed, use them.
+					if( GAMESTATE->m_pCurSteps[pn] == s )
 					{
 						iSelection = i;
-						iCurDifference = iTotalDifference;
+						break;
+					}
+
+					if (GAMESTATE->m_SortOrder == SORT_ALL_DIFFICULTY_METER)
+					{
+						if (s->GetMeter() == GAMESTATE->m_PreferredMeter && GAMEMAN->GetStepsTypeInfo(s->m_StepsType).m_StepsTypeCategory == StepsTypeCategory_Single)
+						{
+							iSelection = pref;
+							break;
+						}
+					}
+					else
+					{
+						if (s->GetMeter() == GAMESTATE->m_PreferredMeter && GAMEMAN->GetStepsTypeInfo(s->m_StepsType).m_StepsTypeCategory == StepsTypeCategory_Double)
+						{
+							iSelection = pref;
+							break;
+						}
+					}
+					pref++;
+				}
+			}
+			else
+			{
+
+				// Find the closest match to the user's preferred difficulty and StepsType.
+				int iCurDifference = -1;
+				int i = 0;
+				for (Steps *s : m_vpSteps)
+				{
+					//int i = s - m_vpSteps.begin();
+
+					// If the current steps are listed, use them.
+					if( GAMESTATE->m_pCurSteps[pn] == s )
+					{
+						iSelection = i;
+						break;
+					}
+
+					if( GAMESTATE->m_PreferredDifficulty[pn] != Difficulty_Invalid  )
+					{
+						int iDifficultyDifference = abs( s->GetDifficulty() - GAMESTATE->m_PreferredDifficulty[pn] );
+						int iStepsTypeDifference = 0;
+						if( GAMESTATE->m_PreferredStepsType != StepsType_Invalid )
+							iStepsTypeDifference = abs( s->m_StepsType - GAMESTATE->m_PreferredStepsType );
+						int iTotalDifference = iStepsTypeDifference * NUM_Difficulty + iDifficultyDifference;
+
+						if( iCurDifference == -1 || iTotalDifference < iCurDifference )
+						{
+							iSelection = i;
+							iCurDifference = iTotalDifference;
+						}
 					}
 				}
-				i += 1;
 			}
-
 			CLAMP( iSelection, 0, m_vpSteps.size()-1 );
 		}
 	}

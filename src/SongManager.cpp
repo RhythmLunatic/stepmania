@@ -1726,6 +1726,51 @@ void SongManager::UpdatePreferredSort(RString sPreferredSongs, RString sPreferre
 	}
 }
 
+map<int, vector<Song*>> SongManager::GenerateFoldersAllDifficultiesAllSteps(StepsTypeCategory stc)
+{
+	vector<StepsType> validStepsTypes;
+	GAMEMAN->GetStepsTypesForGame(GAMESTATE->GetCurrentGame(), validStepsTypes);
+
+	map<int, vector<Song*>> m_vAllStepsAllDifficultiesSort;
+
+	const vector<Song*> &vSongs = GetAllSongs();
+	for( unsigned i=0; i<vSongs.size(); i++ )
+	{
+		Song* pSong = vSongs[i];
+		const vector<Steps*> &vpSteps = pSong->GetAllSteps();
+		for( unsigned j=0; j<vpSteps.size(); j++ )	// for each of the Song's Steps
+		{
+			//Hoping this if statement is faster than the k for loop
+			if (stc == GAMEMAN->GetStepsTypeInfo(vpSteps[j]->m_StepsType).m_StepsTypeCategory)
+			{
+				for (unsigned k=0; k<validStepsTypes.size(); k++)
+				{
+					if (validStepsTypes[k] == vpSteps[j]->m_StepsType)
+					{
+						m_vAllStepsAllDifficultiesSort[vpSteps[j]->GetMeter()].push_back(pSong);
+						break;
+					}
+				}
+			}
+		}
+	}
+	// prune duplicate songs, such as a song that has two S04 steps
+	//It doesn't work, so it's commented out.
+	/*map<int, vector<Song*>>::iterator it;
+	for ( it = m_vAllStepsAllDifficultiesSort.begin(); it != m_vAllStepsAllDifficultiesSort.end(); it++ )
+	{
+		vector<Song*> v = it->second;
+		std::sort(v.begin(), v.end());
+		vector<Song *, std::allocator<Song *>>::iterator last = std::unique(v.begin(), v.end());
+		v.erase(last, v.end());
+	}*/
+	// prune empty groups
+	/*for( int i=m_vPreferredCourseSort.size()-1; i>=0; i-- )
+        if( m_vPreferredCourseSort[i].empty() )
+            m_vPreferredCourseSort.erase( m_vPreferredCourseSort.begin()+i );*/
+	return m_vAllStepsAllDifficultiesSort;
+}
+
 void SongManager::SortSongs()
 {
 	SongUtil::SortSongPointerArrayByTitle( m_pSongs );

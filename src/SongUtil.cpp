@@ -658,6 +658,11 @@ RString SongUtil::GetSectionNameFromSongAndSort( const Song* pSong, SortOrder so
 				return ssprintf("%02d", pSteps->GetMeter() );
 			return SORT_NOT_AVAILABLE.GetValue();
 		}
+	case SORT_ALL_DIFFICULTY_METER:
+	case SORT_DOUBLE_ALL_DIFFICULTY_METER:
+			//There's no point in jumping to an open level folder since we'd probably want to go to a certain level
+			//Also I was getting crashes because it was trying to open an invalid folder...
+			return "";
 	case SORT_MODE_MENU:
 		return RString();
 	case SORT_ALL_COURSES:
