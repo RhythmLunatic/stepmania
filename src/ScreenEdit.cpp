@@ -2191,10 +2191,11 @@ bool ScreenEdit::InputEdit( const InputEventPlus &input, EditButton EditB )
 		{
 			switch ( m_selectedTap.type )
 			{
-				case TapNoteType_Tap:	m_selectedTap = TAP_ORIGINAL_FAKE;	break;
+				case TapNoteType_Tap:	m_selectedTap = TAP_ORIGINAL_BONUS;	break;
 				case TapNoteType_Mine:	m_selectedTap = TAP_ORIGINAL_TAP;	break;
 				case TapNoteType_Lift:	m_selectedTap = TAP_ORIGINAL_MINE;	break;
 				case TapNoteType_Fake:	m_selectedTap = TAP_ORIGINAL_LIFT;	break;
+                case TapNoteType_Bonus:	m_selectedTap = TAP_ORIGINAL_FAKE;	break;
 				DEFAULT_FAIL( m_selectedTap.type );
 			}
 			return true;
@@ -2206,7 +2207,8 @@ bool ScreenEdit::InputEdit( const InputEventPlus &input, EditButton EditB )
 				case TapNoteType_Tap:	m_selectedTap = TAP_ORIGINAL_MINE;	break;
 				case TapNoteType_Mine:	m_selectedTap = TAP_ORIGINAL_LIFT;	break;
 				case TapNoteType_Lift:	m_selectedTap = TAP_ORIGINAL_FAKE;	break;
-				case TapNoteType_Fake:	m_selectedTap = TAP_ORIGINAL_TAP;	break;
+                case TapNoteType_Fake:	m_selectedTap = TAP_ORIGINAL_BONUS;	break;
+				case TapNoteType_Bonus:	m_selectedTap = TAP_ORIGINAL_TAP;	break;
 				DEFAULT_FAIL( m_selectedTap.type );
 			}
 			return true;

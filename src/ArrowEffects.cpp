@@ -1019,6 +1019,8 @@ static float GetCenterLine()
 {
 	/* Another mini hack: if EFFECT_MINI is on, then our center line is at
 	 * eg. 320, not 160. */
+	/*if (curr_options == nullptr)
+	    return CENTER_LINE_Y;*/
 	const float fMiniPercent = curr_options->m_fEffects[PlayerOptions::EFFECT_MINI];
 	const float fZoom = 1 - fMiniPercent*0.5f;
 	return CENTER_LINE_Y / fZoom;

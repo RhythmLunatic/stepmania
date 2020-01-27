@@ -393,6 +393,7 @@ bool NoteData::IsHoldNoteAtRow( int iTrack, int iRow, int *pHeadRow ) const
 		case TapNoteType_Mine:
 		case TapNoteType_Attack:
 		case TapNoteType_Lift:
+		case TapNoteType_Bonus:
 		case TapNoteType_Fake:
 			return false;
 

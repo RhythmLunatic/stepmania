@@ -571,6 +571,7 @@ static bool NeedsTapJudging( const TapNote &tn )
 	case TapNoteType_AutoKeysound:
 	case TapNoteType_Fake:
 	case TapNoteType_Empty:
+	case TapNoteType_Bonus:
 		return false;
 	}
 }
@@ -585,7 +586,7 @@ static bool NeedsHoldJudging( const TapNote &tn )
 	{
 	DEFAULT_FAIL( tn.type );
 	case TapNoteType_HoldHead:
-		return tn.HoldResult.hns == HNS_None;
+		return (tn.result.tns == TNS_None && !tn.isFakeNote);
 	case TapNoteType_Tap:
 	case TapNoteType_HoldTail:
 	case TapNoteType_Mine:
@@ -594,6 +595,7 @@ static bool NeedsHoldJudging( const TapNote &tn )
 	case TapNoteType_AutoKeysound:
 	case TapNoteType_Fake:
 	case TapNoteType_Empty:
+	case TapNoteType_Bonus:
 		return false;
 	}
 }
@@ -2192,6 +2194,9 @@ void Player::Step( int col, int row, const RageTimer &tm, bool bHeld, bool bRele
 				   m_Timing->IsJudgableAtRow(iSongRow))
 					score = TNS_HitMine;   
 				break;
+			case TapNoteType_Bonus:
+				score = TNS_HitBonus;
+				break;
 			case TapNoteType_Attack:
 				if( !bRelease && fSecondsFromExact <= GetWindowSeconds(TW_Attack) && !pTN->result.bHidden )
 					score = AllowW1() ? TNS_W1 : TNS_W2; // sentinel
@@ -2889,9 +2894,11 @@ void Player::HandleTapRowScore( unsigned row )
 		if (tn.type == TapNoteType_Empty ||
 			tn.type == TapNoteType_Fake ||
 			tn.isFakeNote ||
+			tn.type == TapNoteType_Bonus ||
 			tn.type == TapNoteType_Mine ||
 			tn.type == TapNoteType_AutoKeysound)
 			continue;
+
 		if( m_pPrimaryScoreKeeper )
 			m_pPrimaryScoreKeeper->HandleTapScore( tn );
 		if( m_pSecondaryScoreKeeper )

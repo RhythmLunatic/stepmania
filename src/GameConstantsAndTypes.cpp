@@ -204,6 +204,7 @@ static const char *TapNoteScoreNames[] = {
 	"W2",
 	"W1",
 	"CheckpointHit",
+	"HitBonus"
 };
 struct tns_conversion_helper
 {

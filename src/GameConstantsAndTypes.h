@@ -235,6 +235,7 @@ enum TapNoteScore {
 	TNS_W2, /**< A note was hit off by just a miniscule amount. This used to be the best rating. */
 	TNS_W1, /**< A note was hit perfectly. */
 	TNS_CheckpointHit, /**< A checkpoint was held during a hold. */
+	TNS_HitBonus, /** The player hit a TapNoteType_Bonus. */
 	NUM_TapNoteScore, /**< The number of Tap Note Scores available. */
 	TapNoteScore_Invalid,
 };

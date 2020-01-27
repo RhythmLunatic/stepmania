@@ -118,7 +118,7 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 
 				/* In the style of {Note type|attribute|fake bit|unknown bit}
 				   For more info:
-				   https://github.com/stepmania/stepmania/wiki/Note-Types#stepf2-notes
+				   https://github.com/rhythmlunatic/stepmania/wiki/Note-Types#stepf2-notes
 				   */
 				bool hasStepF2Annotation = ch == '{';
 				char StepF2NoteAppearance, StepF2FakeBit, SF2UnknownBit;
@@ -224,7 +224,7 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 				case 'F':
 					tn = TAP_ORIGINAL_FAKE;
 					break;
-                        // case 'I': tn = TAP_ORIGINAL_ITEM;			break;
+                case 'B': tn = TAP_ORIGINAL_BONUS;			break;
 				default: 
 					/* Invalid data. We don't want to assert, since there might
 					 * simply be invalid data in an .SM, and we don't want to die
@@ -502,6 +502,7 @@ void NoteDataUtil::GetSMNoteDataString( const NoteData &in, RString &sRet )
 			{
 				for( int t = 0; t < nd->GetNumTracks(); ++t )
 				{
+					//TODO: Save SF2 notes
 					const TapNote &tn = nd->GetTapNote(t, r);
 					char c;
 					switch( tn.type )
@@ -525,6 +526,7 @@ void NoteDataUtil::GetSMNoteDataString( const NoteData &in, RString &sRet )
 					case TapNoteType_AutoKeysound:	c = 'K'; break;
 					case TapNoteType_Lift:			c = 'L'; break;
 					case TapNoteType_Fake:			c = 'F'; break;
+					case TapNoteType_Bonus:			c = 'B'; break;
 					default: 
 						c = '\0';
 						FAIL_M(ssprintf("Invalid tap note type: %i", tn.type));

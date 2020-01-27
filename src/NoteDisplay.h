@@ -22,6 +22,7 @@ enum NotePart
 	NotePart_Mine, /**< The part representing a mine. */
 	NotePart_Lift, /**< The part representing a lift note. */
 	NotePart_Fake, /**< The part representing a fake note. */
+	NotePart_TapBonus,
 	NotePart_HoldHead, /**< The part representing a hold head. */
 	NotePart_HoldTail, /**< The part representing a hold tail. */
 	NotePart_HoldTopCap, /**< The part representing a hold's top cap. */
@@ -265,6 +266,7 @@ private:
 	NoteMetricCache_t	*cache;
 
 	NoteColorActor		m_TapNote;
+	NoteColorActor      m_TapBonus;
 	NoteColorActor		m_TapMine;
 	NoteColorActor		m_TapLift;
 	NoteColorActor		m_TapFake;

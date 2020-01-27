@@ -82,6 +82,7 @@ struct HoldNoteResult
 };
 
 /** @brief What is the TapNote's core type? */
+//StepMania will segfault if you put something below fakes, so DON'T DO IT!
 enum TapNoteType
 {
 	TapNoteType_Empty, 		/**< There is no note here. */
@@ -92,6 +93,7 @@ enum TapNoteType
 	TapNoteType_Lift,		/**< Lift your foot up when it crosses the target area. */
 	TapNoteType_Attack,		/**< Hitting this note causes an attack to take place. */
 	TapNoteType_AutoKeysound,	/**< A special sound is played when this note crosses the target area. */
+    TapNoteType_Bonus,      /** This note is not scored, but it's added to TapNoteScore_HitBonus. Used only for missions and minigames. */
 	TapNoteType_Fake,		/**< This arrow can't be scored for or against the player. */
 	NUM_TapNoteType,
 	TapNoteType_Invalid
@@ -238,6 +240,7 @@ extern TapNote TAP_ORIGINAL_MINE;		// 'M'
 extern TapNote TAP_ORIGINAL_LIFT;		// 'L'
 extern TapNote TAP_ORIGINAL_ATTACK;		// 'A'
 extern TapNote TAP_ORIGINAL_AUTO_KEYSOUND;	// 'K'
+extern TapNote TAP_ORIGINAL_BONUS;      // 'B'
 extern TapNote TAP_ORIGINAL_FAKE;		// 'F'
 
 //extern TapNote TAP_ORIGINAL_MINE_HEAD;	// 'N' (tentative, we'll see when iDance gets ripped.)

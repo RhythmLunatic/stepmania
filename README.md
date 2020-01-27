@@ -10,6 +10,9 @@ Features:
 * BedrockSolid's PIUIO2Key for windows lights which may or may not work, I don't know, I don't have a PIUIO
 * PacDrive lights because it's been a year and it still hasn't been merged
 * Barely functional co-op x4 that happens to be very buggy
+* Support StepF2's note visibility and fake attributes.
+* All level, all difficulty sort
+* Ability to show SortOrders next to folders if you are using the built in group select. Check MusicWheel metrics for more information.
 * Card Reader support that will get finished one day
 
 ## Compiling
@@ -28,12 +31,15 @@ Check product ID with lsusb. Replace idProduct with the Product ID of your PacDr
 
 Hit us up on Facebook!
 
+The wiki has information about some SM-RIO features and theming help.
+
 ## Licensing, legal stuff
 
 Rave It Out is 100% open source. There is no encryption. There are no binary blobs. What you get here is what we use to test.
 
 For specific information/legalese:
 
+* Arduino card reader code written by Alex123123
 * All of the StepMania source code is under the [MIT license](http://opensource.org/licenses/MIT).
 * The [MAD library](http://www.underbit.com/products/mad/) and [FFmpeg codecs](https://www.ffmpeg.org/) when built with our code use the [GPL license](http://www.gnu.org).
 

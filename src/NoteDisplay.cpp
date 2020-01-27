@@ -29,6 +29,7 @@ static const char *NotePartNames[] = {
 	"TapMine",
 	"TapLift",
 	"TapFake",
+	"TapBonus",
 	"HoldHead",
 	"HoldTail",
 	"HoldTopCap",
@@ -430,6 +431,7 @@ void NoteDisplay::Load( int iColNum, const PlayerState* pPlayerState, float fYRe
 	m_TapMine.Load(		sButton, "Tap Mine", pn, GameI[0].controller );
 	m_TapLift.Load(		sButton, "Tap Lift", pn, GameI[0].controller );
 	m_TapFake.Load(		sButton, "Tap Fake", pn, GameI[0].controller );
+	m_TapBonus.Load(    sButton, "Tap Bonus",pn, GameI[0].controller );
 
 	// hold types
 	FOREACH_HoldType( ht )
@@ -1400,6 +1402,11 @@ void NoteDisplay::DrawTap(const TapNote& tn,
 		pActor = GetTapActor( m_TapFake, NotePart_Fake, fBeat );
 		part = NotePart_Fake;
 	}
+	else if (tn.type == TapNoteType_Bonus)
+	{
+		pActor = GetTapActor(m_TapBonus, NotePart_TapBonus, fBeat);
+		part = NotePart_TapBonus;
+	}
 	// TODO: Simplify all of the below.
 	else if (bOnSameRowAsHoldStart && bOnSameRowAsRollStart)
 	{
@@ -1559,6 +1566,7 @@ void NoteColumnRenderer::DrawPrimitives()
 			case TapNoteType_Attack:
 			case TapNoteType_AutoKeysound:
 			case TapNoteType_Fake:
+			case TapNoteType_Bonus:
 				if(!tn.result.bHidden)
 				{
 					taps[tn.pn].push_back(begin);
