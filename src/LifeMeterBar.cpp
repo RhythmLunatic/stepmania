@@ -122,6 +122,7 @@ void LifeMeterBar::ChangeLife( TapNoteScore score )
 	case TNS_None:		fDeltaLife = m_fLifePercentChange.GetValue(SE_Miss);	break;
 	case TNS_CheckpointHit:	fDeltaLife = m_fLifePercentChange.GetValue(SE_CheckpointHit);	break;
 	case TNS_CheckpointMiss:fDeltaLife = m_fLifePercentChange.GetValue(SE_CheckpointMiss);	break;
+	case TNS_HitBonus: break; //Do nothing for bonus notes
 	}
 
 	// this was previously if( IsHot()  &&  score < TNS_GOOD ) in 3.9... -freem

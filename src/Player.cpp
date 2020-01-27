@@ -2195,7 +2195,10 @@ void Player::Step( int col, int row, const RageTimer &tm, bool bHeld, bool bRele
 					score = TNS_HitMine;   
 				break;
 			case TapNoteType_Bonus:
-				score = TNS_HitBonus;
+				//score = TNS_HitBonus;
+                if (fSecondsFromExact <= GetWindowSeconds(TW_W3) &&
+                m_Timing->IsJudgableAtRow(iSongRow))
+                    score = TNS_HitBonus;
 				break;
 			case TapNoteType_Attack:
 				if( !bRelease && fSecondsFromExact <= GetWindowSeconds(TW_Attack) && !pTN->result.bHidden )
@@ -2558,6 +2561,7 @@ void Player::UpdateJudgedRows()
 						const TapNote &tn = m_NoteData.GetTapNote( iTrack, iRow );
 						if (tn.type == TapNoteType_Empty ||
 							tn.type == TapNoteType_Mine ||
+							tn.type == TapNoteType_Bonus ||
 							tn.type == TapNoteType_AutoKeysound) continue;
 						SetJudgment( iRow, iTrack, tn );
 					}
