@@ -728,6 +728,7 @@ int ScoreKeeperNormal::TapNoteScoreToDancePoints( TapNoteScore tns, bool bBeginn
 	switch( tns )
 	{
 	DEFAULT_FAIL( tns );
+    case TNS_HitBonus:
 	case TNS_None:		iWeight = 0;														break;
 	case TNS_HitMine:	iWeight = g_iPercentScoreWeight.GetValue(SE_HitMine);				break;
 	case TNS_Miss:		iWeight = g_iPercentScoreWeight.GetValue(SE_Miss);					break;
@@ -771,6 +772,7 @@ int ScoreKeeperNormal::TapNoteScoreToGradePoints( TapNoteScore tns, bool bBeginn
 	switch( tns )
 	{
 	DEFAULT_FAIL( tns );
+    case TNS_HitBonus:  iWeight = 0;                                                break;
 	case TNS_None:		iWeight = 0;												break;
 	case TNS_AvoidMine:	iWeight = 0;												break;
 	case TNS_HitMine:	iWeight = g_iGradeWeight.GetValue(SE_HitMine);				break;

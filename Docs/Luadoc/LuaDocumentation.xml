@@ -4281,7 +4281,7 @@ save yourself some time, copy this for undocumented things:
 	</Function>
 	<Function name='LocalProfileIDToDir' return='' arguments=''>
 	</Function>
-	<Function name='ProfileFromMemoryCardIsNew' return='bool' arguments=''>
+	<Function name='ProfileFromMemoryCardIsNew' return='bool' arguments='PlayerNumber pn'>
 		Returns <code>true</code> if the profile from the memory card is new.
 	</Function>
 	<Function name='ProfileWasLoadedFromMemoryCard' return='bool' arguments='PlayerNumber pn'>
