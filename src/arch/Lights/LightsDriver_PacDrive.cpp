@@ -5,6 +5,8 @@
 #include "LightsDriver_PacDrive.h"
 #include "windows.h"
 #include "RageUtil.h"
+#include "Game.h"
+#include "GameState.h"
 
 REGISTER_LIGHTS_DRIVER_CLASS(PacDrive);
 
@@ -18,6 +20,9 @@ PacShutdown* m_pacdone = NULL;
 typedef bool (WINAPI PacSetLEDStates)(int, short int);
 PacSetLEDStates* m_pacset = NULL;
 
+//Use different lights ordering in pump mode
+//Yes it requires you to restart the game
+bool isPump = false;
 
 LightsDriver_PacDrive::LightsDriver_PacDrive()
 {
@@ -46,6 +51,10 @@ LightsDriver_PacDrive::LightsDriver_PacDrive()
 	{
 		PacDriveConnected = true; // set connected 
 		m_pacset(0, 0x0);  // clear all lights for device i
+
+        RString sInput = GAMESTATE->GetCurrentGame()->m_InputScheme.m_szName;
+        if (sInput.EqualsNoCase("pump"))
+            isPump = true;
 	}
 }
 
@@ -67,16 +76,32 @@ void LightsDriver_PacDrive::Set( const LightsState *ls )
 	if (ls->m_bCabinetLights[LIGHT_MARQUEE_LR_LEFT]) outb|=BIT(2);
 	if (ls->m_bCabinetLights[LIGHT_MARQUEE_LR_RIGHT]) outb|=BIT(3);
 	if (ls->m_bCabinetLights[LIGHT_BASS_LEFT] || ls->m_bCabinetLights[LIGHT_BASS_RIGHT]) outb|=BIT(4);
-	if (ls->m_bGameButtonLights[GameController_1][DANCE_BUTTON_LEFT]) outb|=BIT(5);
-	if (ls->m_bGameButtonLights[GameController_1][DANCE_BUTTON_RIGHT]) outb|=BIT(6);
-	if (ls->m_bGameButtonLights[GameController_1][DANCE_BUTTON_UP]) outb|=BIT(7);
-	if (ls->m_bGameButtonLights[GameController_1][DANCE_BUTTON_DOWN]) outb|=BIT(8);
-	if (ls->m_bGameButtonLights[GameController_1][GAME_BUTTON_START]) outb|=BIT(9);
-	if (ls->m_bGameButtonLights[GameController_2][DANCE_BUTTON_LEFT]) outb|=BIT(10);
-	if (ls->m_bGameButtonLights[GameController_2][DANCE_BUTTON_RIGHT]) outb|=BIT(11);
-	if (ls->m_bGameButtonLights[GameController_2][DANCE_BUTTON_UP]) outb|=BIT(12);
-	if (ls->m_bGameButtonLights[GameController_2][DANCE_BUTTON_DOWN]) outb|=BIT(13);
-	if (ls->m_bGameButtonLights[GameController_2][GAME_BUTTON_START]) outb|=BIT(14);
+	if (isPump)
+    {
+        if (ls->m_bGameButtonLights[GameController_1][PUMP_BUTTON_DOWNLEFT]) outb|=BIT(5);
+        if (ls->m_bGameButtonLights[GameController_1][PUMP_BUTTON_DOWNRIGHT]) outb|=BIT(6);
+        if (ls->m_bGameButtonLights[GameController_1][PUMP_BUTTON_UPRIGHT]) outb|=BIT(7);
+        if (ls->m_bGameButtonLights[GameController_1][PUMP_BUTTON_UPLEFT]) outb|=BIT(8);
+        if (ls->m_bGameButtonLights[GameController_1][GAME_BUTTON_START]) outb|=BIT(9);
+        if (ls->m_bGameButtonLights[GameController_2][PUMP_BUTTON_DOWNLEFT]) outb|=BIT(10);
+        if (ls->m_bGameButtonLights[GameController_2][PUMP_BUTTON_DOWNRIGHT]) outb|=BIT(11);
+        if (ls->m_bGameButtonLights[GameController_2][PUMP_BUTTON_UPRIGHT]) outb|=BIT(12);
+        if (ls->m_bGameButtonLights[GameController_2][PUMP_BUTTON_UPLEFT]) outb|=BIT(13);
+        if (ls->m_bGameButtonLights[GameController_2][GAME_BUTTON_START]) outb|=BIT(14);
+    }
+    else
+    {
+        if (ls->m_bGameButtonLights[GameController_1][DANCE_BUTTON_LEFT]) outb|=BIT(5);
+        if (ls->m_bGameButtonLights[GameController_1][DANCE_BUTTON_RIGHT]) outb|=BIT(6);
+        if (ls->m_bGameButtonLights[GameController_1][DANCE_BUTTON_UP]) outb|=BIT(7);
+        if (ls->m_bGameButtonLights[GameController_1][DANCE_BUTTON_DOWN]) outb|=BIT(8);
+        if (ls->m_bGameButtonLights[GameController_1][GAME_BUTTON_START]) outb|=BIT(9);
+        if (ls->m_bGameButtonLights[GameController_2][DANCE_BUTTON_LEFT]) outb|=BIT(10);
+        if (ls->m_bGameButtonLights[GameController_2][DANCE_BUTTON_RIGHT]) outb|=BIT(11);
+        if (ls->m_bGameButtonLights[GameController_2][DANCE_BUTTON_UP]) outb|=BIT(12);
+        if (ls->m_bGameButtonLights[GameController_2][DANCE_BUTTON_DOWN]) outb|=BIT(13);
+        if (ls->m_bGameButtonLights[GameController_2][GAME_BUTTON_START]) outb|=BIT(14);
+    }
 	m_pacset(0,outb);
 }
 

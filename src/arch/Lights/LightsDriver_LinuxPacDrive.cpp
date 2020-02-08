@@ -5,8 +5,12 @@
 #include "RageLog.h"
 #include "io/PacDrive.h"
 #include "LightsDriver_LinuxPacDrive.h"
+#include "Game.h"
+#include "GameState.h"
 
 REGISTER_LIGHTS_DRIVER_CLASS( LinuxPacDrive );
+
+bool isPump = false;
 
 LightsDriver_LinuxPacDrive::LightsDriver_LinuxPacDrive()
 {
@@ -20,6 +24,10 @@ LightsDriver_LinuxPacDrive::LightsDriver_LinuxPacDrive()
 
 	// clear all lights
 	Board.Write( 0 );
+
+	RString sInput = GAMESTATE->GetCurrentGame()->m_InputScheme.m_szName;
+	if (sInput.EqualsNoCase("pump"))
+		isPump = true;
 }
 
 LightsDriver_LinuxPacDrive::~LightsDriver_LinuxPacDrive()
