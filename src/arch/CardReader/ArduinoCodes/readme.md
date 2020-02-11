@@ -15,7 +15,7 @@ Note: MFRC522 only supports MIFARE, so only Nesica, Aime, Banapass will work. AM
 
 ## Setup
 ### For MFRC522:
-| Signal | MFRC522 Reader/\nPCD Pin | Arduino Leonardo/\nMicro Pin | Arduino Pro Micro Pin | Arduino Nano |
+| Signal | MFRC522 Reader/<br>PCD Pin | Arduino Leonardo/<br>Micro Pin | Arduino Pro Micro Pin | Arduino Nano |
 | ------ | ------------------------ | ---------------------------- | --------------------- | ------------ |
 | RST/Reset | RST | RESET/ICSP-5 | RST | RST |
 | SPI SS | SDA(SS) | A0 | A0 | A0 |
@@ -49,3 +49,11 @@ TODO...
 You must implement card reader support in YOUR THEME. The card reader will only trigger CardScannedMessageCommand with params `{player=PlayerNumber,card=cardid}`. PlayerNumber = PlayerNumber enum, cardid = string.
 
 That means you can hide local profiles and create local profiles based on the scanned card, or whatever else you want really. This is mostly for Rave It Out after all, you gotta do it yourself if you want something else.
+
+Use `PROFILEMAN:CreateLocalProfileByID(String name,String id)` to create profiles.
+
+If you want a complete example, start from here:
+
+https://github.com/RhythmLunatic/raveitout/blob/master/Graphics/ScreenAttract%20cardInserted.lua
+
+https://github.com/RhythmLunatic/raveitout/blob/master/BGAnimations/ScreenSelectProfile%20overlay/default.lua#L813-L866

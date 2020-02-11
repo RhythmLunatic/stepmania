@@ -58,12 +58,12 @@ void LightsDriver_LinuxPacDrive::Set( const LightsState *ls )
 		if (ls->m_bGameButtonLights[GameController_1][PUMP_BUTTON_DOWNRIGHT]) outb|=BIT(6);
 		if (ls->m_bGameButtonLights[GameController_1][PUMP_BUTTON_UPRIGHT]) outb|=BIT(7);
 		if (ls->m_bGameButtonLights[GameController_1][PUMP_BUTTON_UPLEFT]) outb|=BIT(8);
-		if (ls->m_bGameButtonLights[GameController_1][GAME_BUTTON_START]) outb|=BIT(9);
+		if (ls->m_bGameButtonLights[GameController_1][PUMP_BUTTON_CENTER]) outb|=BIT(9);
 		if (ls->m_bGameButtonLights[GameController_2][PUMP_BUTTON_DOWNLEFT]) outb|=BIT(10);
 		if (ls->m_bGameButtonLights[GameController_2][PUMP_BUTTON_DOWNRIGHT]) outb|=BIT(11);
 		if (ls->m_bGameButtonLights[GameController_2][PUMP_BUTTON_UPRIGHT]) outb|=BIT(12);
 		if (ls->m_bGameButtonLights[GameController_2][PUMP_BUTTON_UPLEFT]) outb|=BIT(13);
-		if (ls->m_bGameButtonLights[GameController_2][GAME_BUTTON_START]) outb|=BIT(14);
+		if (ls->m_bGameButtonLights[GameController_2][PUMP_BUTTON_CENTER]) outb|=BIT(14);
 	}
 	else
 	{

@@ -2127,7 +2127,7 @@ save yourself some time, copy this for undocumented things:
 		Returns the path to the Course's banner.
 	</Function>
 	<Function name='GetCourseDir' return='string' arguments=''>
-		Returns the Course's directory.
+		Returns the Course's .crs file. (Why this function is named "GetCourseDir" is a mystery)
 	</Function>
 	<Function name='GetCourseEntries' return='{CourseEntry}' arguments=''>
 		Returns a table of CourseEntry items.
@@ -2770,8 +2770,8 @@ save yourself some time, copy this for undocumented things:
 	<Function name='GetPlayMode' return='PlayMode' arguments=''>
 		Returns the current PlayMode.
 	</Function>
-	<Function name='GetPreferredDifficulty' return='Difficulty' arguments=''>
-		Returns the preferred difficulty.
+	<Function name='GetPreferredDifficulty' return='Difficulty' arguments='PlayerNumber pn'>
+		Returns the preferred difficulty for player <code>pn</code>.
 	</Function>
 	<Function name='GetPreferredSong' return='Song' arguments=''>
 		Returns the preferred song.
@@ -4511,7 +4511,7 @@ save yourself some time, copy this for undocumented things:
 	<Function name='GetPath' return='string' arguments=''>
 		Returns the path to the texture's file.
 	</Function>
-	<Function name='GetTextureCoordRect' return='{float}' arguments=''>
+	<Function name='GetTextureCoordRect' return='{float}' arguments='int iFrameNo'>
 		Return the texture coordinate rectangle as <code>{left, top, right, bottom}</code>.
 	</Function>
 	<Function name='loop' return='void' arguments='bool bLoop'>
@@ -4874,7 +4874,7 @@ save yourself some time, copy this for undocumented things:
 		Returns the displayed main title of the song.
 	</Function>
 	<Function name='GetDisplaySubTitle' return='string' arguments=''>
-		Returns the displayed subtitle of the song.
+		Returns the displayed subtitle of the song. Returns "" on blank.
 	</Function>
 	<Function name='GetFirstBeat' return='float' arguments=''>
 		Returns the first beat of the song.
@@ -5048,7 +5048,7 @@ save yourself some time, copy this for undocumented things:
 		Returns a Course if one matching <code>sCourse</code> is found.
 	</Function>
 	<Function name='FindSong' return='Song' arguments='string sSong'>
-		Returns a Song if one matching <code>sSong</code> is found.
+		Returns a Song if one matching <code>sSong</code> is found. Can search within song groups using a slash, such as <code>MyGroup/MySong</code>
 	</Function>
 	<Function name='GetAllCourses' return='{Course}' arguments='bool bIncludeAutogen'>
 		Returns an array of all the installed courses.
@@ -5952,7 +5952,8 @@ save yourself some time, copy this for undocumented things:
 		Moves the wheel by <code>n</code>.
 	</Function>
 	<Function name='SetOpenSection' return='void' arguments='string sSection'>
-		Attempts to set the open section to <code>sSection</code>.
+		Attempts to set the open section to <code>sSection</code>. Using "" as the argument will close the section.<br />
+		<code>SCREENMAN:GetTopScreen():PostScreenMessage( 'SM_SongChanged', 0.5 );</code> must be run after this to update the current selection.
 	</Function>
 </Class>
 <Class name='WheelItemBase'>

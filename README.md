@@ -3,17 +3,19 @@ StepMania-RaveItOut
 
 This is a custom version of StepMania with various features. The theme is available [here](https://github.com/raveitoutofficial/raveitout)
 
-Features:
+## Features
 * OptionsList implements more features that the regular options menu supports.
 * ~~Update checker~~ Eventually
 * ~~Windows PIUIO ported from OpenITG (thx to pk for the libUSB shit)~~ It doesn't work
-* BedrockSolid's PIUIO2Key for windows lights which may or may not work, I don't know, I don't have a PIUIO
-* PacDrive lights because it's been a year and it still hasn't been merged
+* ~~BedrockSolid's PIUIO2Key for windows lights which may or may not work, I don't know, I don't have a PIUIO~~ It's not even in the CMakeLists right now
+* PacDrive lights for both Windows and Linux.
+* ^ Including the correct mappings for pump mode
 * Barely functional co-op x4 that happens to be very buggy
 * Support StepF2's note visibility and fake attributes.
+* Bonus note for modcharts/missions that does not affect life (Check the wiki)
 * All level, all difficulty sort
 * Ability to show SortOrders next to folders if you are using the built in group select. Check MusicWheel metrics for more information.
-* Card Reader support that will get finished one day
+* ~~Card Reader support~~ Need to redo, doesn't flush the buffer correctly right now and only works on Linux
 
 ## Compiling
 
@@ -41,5 +43,6 @@ For specific information/legalese:
 
 * Arduino card reader code written by Alex123123
 * All of the StepMania source code is under the [MIT license](http://opensource.org/licenses/MIT).
+* The wiki is [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 * The [MAD library](http://www.underbit.com/products/mad/) and [FFmpeg codecs](https://www.ffmpeg.org/) when built with our code use the [GPL license](http://www.gnu.org).
 
