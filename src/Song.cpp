@@ -33,6 +33,9 @@
 #include "NotesWriterJson.h"
 #include "NotesWriterSM.h"
 #include "NotesWriterSSC.h"
+#if defined(HAS_SECRET)
+#include "NotesWriterSecret.h"
+#endif
 #include "UnlockManager.h"
 #include "LyricsLoader.h"
 #include "ActorUtil.h"
@@ -1224,7 +1227,9 @@ void Song::Save(bool autosave)
 	{
 		SaveToSMFile();
 	}
-
+#if defined(HAS_SECRET)
+	SaveToSecretFile();
+#endif
 	//TODO: Write UCS? Option to save as UCS?
 
 
@@ -1280,6 +1285,46 @@ bool Song::SaveToSMFile()
 	return NotesWriterSM::Write( sPath, *this, vpStepsToSave );
 
 }
+
+#if defined(HAS_SECRET)
+bool Song::SaveToSecretFile()
+{
+	LOG->Trace( "Song::SaveToSecretFile(%s)", m_sSongDir.c_str() );
+
+	bool bReturn = false;
+
+	for( vector<Steps*>::const_iterator it = GetAllSteps().begin(); it != GetAllSteps().end(); it++ )
+	{
+		const Steps& step = *(*it);
+		switch( step.m_StepsType )
+		{
+			case StepsType_pump_single:
+			case StepsType_pump_double:
+			{
+				RString sFile = SetExtension(
+						ssprintf(
+								"%s/%s %s %d",
+								m_sSongDir.c_str(),
+								GAMEMAN->GetStepsTypeInfo( step.m_StepsType ).szName,
+								DifficultyToString( step.GetDifficulty() ).c_str(),
+								step.GetMeter()
+						),
+						"nx"
+				);
+                if( step.GetDifficulty() == Difficulty_Edit )
+                    sFile += ssprintf( " %d", step.GetMeter() );
+				// If the file exists, make a backup.
+				if( IsAFile( sFile ) )
+					FileCopy( sFile, sFile + ".old" );
+
+				bReturn |= NotesWriterSecret::WriteSteps( sFile, step );
+			}
+		}
+	}
+
+	return bReturn;
+}
+#endif
 
 bool Song::SaveToSSCFile( RString sPath, bool bSavingCache, bool autosave )
 {

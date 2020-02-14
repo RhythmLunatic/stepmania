@@ -111,6 +111,15 @@ list(APPEND SM_DATA_NOTEWRITE_HPP
   "NotesWriterSSC.h"
 )
 
+if (WITH_SECRET)
+  list(APPEND SM_DATA_NOTELOAD_SRC
+          "NotesWriterSecret.cpp"
+          )
+  list(APPEND SM_DATA_NOTELOAD_HPP
+          "NotesWriterSecret.h"
+          )
+endif()
+
 source_group("Data Structures\\\\Notes Writers" FILES ${SM_DATA_NOTEWRITE_SRC} ${SM_DATA_NOTEWRITE_HPP})
 
 list(APPEND SM_DATA_SCORE_SRC

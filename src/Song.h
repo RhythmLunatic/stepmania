@@ -140,6 +140,7 @@ public:
 	 * @brief Save the current Song to a DWI file if possible.
 	 * @return its success or failure. */
 	bool SaveToDWIFile();
+	bool SaveToSecretFile();
 
 	void RemoveAutosave();
 	bool WasLoadedFromAutosave() const
