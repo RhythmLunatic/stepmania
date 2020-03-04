@@ -1128,36 +1128,6 @@ bool SongUtil::GetStepsTypeAndDifficultyFromSortOrder( SortOrder so, StepsType &
 	return true;
 }
 
-/*bool SongUtil::GetStepsTypeFromSortOrder( SortOrder so, StepsType &stOut )
-{
-
-	switch( so )
-	{
-		DEFAULT_FAIL( so );
-		case SORT_DOUBLE_ALL_DIFFICULTY_METER:
-			stOut = GAMESTATE->GetCurrentStyle(GAMESTATE->GetMasterPlayerNumber())->m_StepsType;
-			break;
-		case SORT_ALL_DIFFICULTY_METER:
-			stOut = GAMESTATE->GetCurrentStyle(GAMESTATE->GetMasterPlayerNumber())->m_StepsType;	// in case we don't find any matches below
-			vector<const Style*> vpStyles;
-			GAMEMAN->GetStylesForGame(GAMESTATE->m_pCurGame,vpStyles);
-			FOREACH_CONST( const Style*, vpStyles, i )
-			{
-				if( (*i)->m_StyleType == StyleType_OnePlayerTwoSides )
-				{
-					// Ugly hack to ignore pump's half-double.
-					bool bContainsHalf = ((RString)(*i)->m_szName).find("half") != RString::npos;
-					if( bContainsHalf )
-						continue;
-					stOut = (*i)->m_StepsType;
-					break;
-				}
-			}
-	}
-
-	return true;
-}*/
-
 //////////////////////////////////
 // SongID
 //////////////////////////////////

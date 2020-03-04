@@ -118,13 +118,18 @@ public:
 	 * @return the songs within the game that have at least one valid Step. */
 	const vector<Song *> &GetAllSongsOfCurrentGame() const;
 
+
+    struct PreferredSortSection
+    {
+        RString sName;
+        vector<Song*> vpSongs;
+    };
 	void GetPreferredSortSongs( vector<Song*> &AddTo ) const;
 	RString SongToPreferredSortSectionName( const Song *pSong ) const;
+    const vector<PreferredSortSection>* GetPreferredSortVector() const;
+
     map<int, vector<Song*>> GetAllStepsAllDifficultySortSongs();
-    //Because SM does not keep the last opened folders in memory
-    RString lastOpenedLevelSort;
-    //RString SongToAllStepsAllDifficultySortSectionName( const Song *pSong ) const;
-	const vector<Course*> &GetPopularCourses( CourseType ct ) const { return m_pPopularCourses[ct]; }
+    const vector<Course*> &GetPopularCourses( CourseType ct ) const { return m_pPopularCourses[ct]; }
 	Song *FindSong( RString sPath ) const;
 	Song *FindSong( RString sGroup, RString sSong ) const;
 	Course *FindCourse( RString sPath ) const;
@@ -196,13 +201,7 @@ protected:
 	vector<Song*>		m_pPopularSongs;
 	//vector<Song*>		m_pRecentSongs;	// songs recently played on the machine
 	vector<Song*>		m_pShuffledSongs;	// used by GetRandomSong
-	struct PreferredSortSection
-	{
-		RString sName;
-		vector<Song*> vpSongs;
-	};
 	vector<PreferredSortSection> m_vPreferredSongSort;
-	//map<int, vector<Song*>> m_vAllStepsAllDifficultiesSort;
 
 	vector<RString>		m_sSongGroupNames;
 	vector<RString>		m_sSongGroupBannerPaths; // each song group may have a banner associated with it

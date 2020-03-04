@@ -96,6 +96,7 @@ void PlayerOptions::Init()
 	m_bZBuffer = false;
 	m_bCosecant = false;
 	m_sNoteSkin = "";
+	//No idea what these do
 	ZERO( m_fMovesX );		ONE( m_SpeedfMovesX );
 	ZERO( m_fMovesY );		ONE( m_SpeedfMovesY );
 	ZERO( m_fMovesZ );		ONE( m_SpeedfMovesZ );
@@ -107,6 +108,7 @@ void PlayerOptions::Init()
 	ZERO( m_fTiny );		ONE( m_SpeedfTiny );
 	ZERO( m_fBumpy );		ONE( m_SpeedfBumpy );
 	ZERO( m_fReverse );		ONE( m_SpeedfReverse );
+	ZERO( m_fXmode );		ONE( m_SpeedfXmode );
 	
 }
 
@@ -169,6 +171,8 @@ void PlayerOptions::Approach( const PlayerOptions& other, float fDeltaSeconds )
 	    APPROACH( fBumpy[i] );
 	for( int i=0; i<16; i++)
 	    APPROACH( fReverse[i] );
+	for( int i=0; i<16; i++)
+		APPROACH( fXmode[i] );
 
 	DO_COPY( m_bSetScrollSpeed );
 	for( int i=0; i<NUM_TURNS; i++ )
@@ -423,28 +427,40 @@ void PlayerOptions::GetMods( vector<RString> &AddTo, bool bForceNoteSkin ) const
 	for( int i=0; i<16; i++)
 	{
 		RString s = ssprintf( "MoveX%d", i+1 );
-		
 		AddPart( AddTo, m_fMovesX[i],				s );
+
 		s = ssprintf( "MoveY%d", i+1 );
 		AddPart( AddTo, m_fMovesY[i],				s );
+
 		s = ssprintf( "MoveZ%d", i+1 );
 		AddPart( AddTo, m_fMovesZ[i],				s );
+
 		s = ssprintf( "ConfusionOffset%d", i+1);
 		AddPart( AddTo, m_fConfusionX[i],				s );
+
 		s = ssprintf( "ConfusionYOffset%d", i+1 );
 		AddPart( AddTo, m_fConfusionY[i],				s );
+
 		s = ssprintf( "ConfusionZOffset%d", i+1 );
 		AddPart( AddTo, m_fConfusionZ[i],				s );
+
 		s = ssprintf( "Dark%d", i+1 );
 		AddPart( AddTo, m_fDarks[i],				s );
+
 		s = ssprintf( "Stealth%d", i+1 );
 		AddPart( AddTo, m_fStealth[i],				s );
+
 		s = ssprintf( "Tiny%d", i+1 );
 		AddPart( AddTo, m_fTiny[i],				s );
+
 		s = ssprintf( "Bumpy%d", i+1 );
 		AddPart( AddTo, m_fBumpy[i],				s );
+
 		s = ssprintf( "Reverse%d", i+1 );
 		AddPart( AddTo, m_fReverse[i],				s );
+
+		s = ssprintf( "XMode%d", i+1 );
+		AddPart( AddTo, m_fXmode[i],				s );
 	}
 
 	AddPart( AddTo, m_fAppearances[APPEARANCE_HIDDEN],			"Hidden" );
@@ -953,7 +969,24 @@ bool PlayerOptions::FromOneModString( const RString &sOneMod, RString &sErrorOut
 	    else if( sBit == "attenuatey" )			SET_FLOAT( fEffects[EFFECT_ATTENUATE_Y] )
 	    else if( sBit == "attenuatez" )			SET_FLOAT( fEffects[EFFECT_ATTENUATE_Z] )
 	}
-	else if( sBit == "xmode" )				SET_FLOAT( fEffects[EFFECT_XMODE] )
+	//else if( sBit == "xmode" )				SET_FLOAT( fEffects[EFFECT_XMODE] )
+	else if( sBit.find("xmode") != sBit.npos )
+	{
+		//LOG->Warn("%f %s",level, sBit.c_str());
+		if( sBit == "xmode" )				SET_FLOAT( fEffects[EFFECT_XMODE] )
+		else
+		{
+			for (int i=0; i<16; i++)
+			{
+				sMod = ssprintf( "xmode%d", i+1 );
+				if( sBit == sMod)
+				{
+					SET_FLOAT( fXmode[i] )
+					break;
+				}
+			}
+		}
+	}
 	else if( sBit == "twirl" )				SET_FLOAT( fEffects[EFFECT_TWIRL] )
 	else if( sBit == "roll" )				SET_FLOAT( fEffects[EFFECT_ROLL] )
 	else if( sBit == "hidden" )				SET_FLOAT( fAppearances[APPEARANCE_HIDDEN] )
@@ -1411,6 +1444,8 @@ bool PlayerOptions::operator==( const PlayerOptions &other ) const
 		COMPARE(m_fBumpy[i]);
 	for( int i = 0; i < 16; ++i )
 		COMPARE(m_fReverse[i]);
+	for( int i = 0; i < 16; ++i )
+		COMPARE(m_fXmode[i]);
 #undef COMPARE
 	return true;
 }
@@ -1522,6 +1557,10 @@ PlayerOptions& PlayerOptions::operator=(PlayerOptions const& other)
 	for( int i = 0; i < 16; ++i )
 	{
 		CPY_SPEED(fReverse[i]);
+	}
+	for( int i = 0; i < 16; ++i )
+	{
+		CPY_SPEED(fXmode[i]);
 	}
 #undef CPY
 #undef CPY_SPEED
@@ -1932,6 +1971,7 @@ public:
 	MULTICOL_FLOAT_INTERFACE(Tiny, Tiny, true);
 	MULTICOL_FLOAT_INTERFACE(Bumpy, Bumpy, true);
 	MULTICOL_FLOAT_INTERFACE(Reverse, Reverse, true);
+	MULTICOL_FLOAT_INTERFACE(Xmode, Xmode, true);
 	
 	BOOL_INTERFACE(StealthType, StealthType);
 	BOOL_INTERFACE(StealthPastReceptors, StealthPastReceptors);
@@ -2490,6 +2530,7 @@ public:
 		ADD_MULTICOL_METHOD(Tiny);
 		ADD_MULTICOL_METHOD(Bumpy);
 		ADD_MULTICOL_METHOD(Reverse);
+		ADD_MULTICOL_METHOD(Xmode);
 		
 
 		ADD_METHOD(NoteSkin);

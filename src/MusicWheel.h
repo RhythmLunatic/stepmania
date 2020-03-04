@@ -112,6 +112,7 @@ private:
 	vector<MusicWheelItemData *> m__WheelItemDatas[NUM_SortOrder];
 	vector<MusicWheelItemData *> m__UnFilteredWheelItemDatas[NUM_SortOrder];
 
+	void AddCustomWheelItems(vector<MusicWheelItemData *> &arrayWheelItemDatas);
 	void BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelItems, SortOrder so );
 	void FilterWheelItemDatas(vector<MusicWheelItemData *> &aUnFilteredDatas, vector<MusicWheelItemData *> &aFilteredData, SortOrder so );
 };

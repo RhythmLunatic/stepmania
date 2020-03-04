@@ -850,6 +850,8 @@ float ArrowEffects::GetXPos( const PlayerState* pPlayerState, int iColNum, float
 			DEFAULT_FAIL(pStyle->m_StyleType);
 		}
 	}
+	if( curr_options->m_fXmode[iColNum] != 0 )
+		fPixelOffsetFromCenter += curr_options->m_fXmode[iColNum] * fYOffset;
 
 	fPixelOffsetFromCenter += pCols[iColNum].fXOffset * pPlayerState->m_NotefieldZoom;
 

@@ -103,6 +103,7 @@ public:
 		ZERO( m_fTiny );	ONE( m_SpeedfTiny );
 		ZERO( m_fBumpy );	ONE( m_SpeedfBumpy );
 		ZERO( m_fReverse );	ONE( m_SpeedfReverse );
+		ZERO( m_fXmode );		ONE( m_SpeedfXmode );
 	};
 	void Init();
 	void Approach( const PlayerOptions& other, float fDeltaSeconds );
@@ -375,6 +376,7 @@ public:
 	float	m_fTiny[16],			m_SpeedfTiny[16];
 	float	m_fBumpy[16],			m_SpeedfBumpy[16];
 	float	m_fReverse[16],			m_SpeedfReverse[16];
+	float	m_fXmode[16],			m_SpeedfXmode[16];
 
 	bool		m_bTurns[NUM_TURNS];
 	bool		m_bTransforms[NUM_TRANSFORMS];

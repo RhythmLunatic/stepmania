@@ -739,6 +739,12 @@ const vector<Song*> &SongManager::GetSongs( const RString &sGroupName ) const
 	return vEmpty;
 }
 
+const vector<SongManager::PreferredSortSection>* SongManager::GetPreferredSortVector() const
+{
+	return &m_vPreferredSongSort;
+}
+
+//Mostly depreciated
 void SongManager::GetPreferredSortSongs( vector<Song*> &AddTo ) const
 {
 	if( m_vPreferredSongSort.empty() )
@@ -751,6 +757,7 @@ void SongManager::GetPreferredSortSongs( vector<Song*> &AddTo ) const
 		AddTo.insert( AddTo.end(), v->vpSongs.begin(), v->vpSongs.end() );
 }
 
+//Mostly depreciated
 RString SongManager::SongToPreferredSortSectionName( const Song *pSong ) const
 {
 	FOREACH_CONST( PreferredSortSection, m_vPreferredSongSort, v )
@@ -1616,6 +1623,7 @@ void SongManager::UpdatePreferredSort(RString sPreferredSongs, RString sPreferre
 					section = PreferredSortSection();
 				}
 
+				//Trim the '---' off the name
 				section.sName = sLine.Right( sLine.length() - RString("---").length() );
 				TrimLeft( section.sName );
 				TrimRight( section.sName );

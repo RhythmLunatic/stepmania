@@ -97,9 +97,11 @@ void MusicWheel::Load( RString sType )
 	CHOICE				.Load(sType,CHOICE_NAME,vsModeChoiceNames);
 	SECTION_COLORS			.Load(sType,SECTION_COLORS_NAME,NUM_SECTION_COLORS);
 
+	//This is honestly garbage -RhythmLunatic
 	CUSTOM_WHEEL_ITEM_NAMES		.Load(sType,"CustomWheelItemNames");
 	vector<RString> vsCustomItemNames;
 	split( CUSTOM_WHEEL_ITEM_NAMES, ",", vsCustomItemNames );
+
 	CUSTOM_CHOICES.Load(sType,CUSTOM_WHEEL_ITEM_NAME,vsCustomItemNames);
 	CUSTOM_CHOICE_COLORS.Load(sType,CUSTOM_WHEEL_ITEM_COLOR,vsCustomItemNames);
 
@@ -561,6 +563,26 @@ void MusicWheel::GetSongList( vector<Song*> &arraySongs, SortOrder so )
 	}
 }
 
+void MusicWheel::AddCustomWheelItems(vector<MusicWheelItemData *> &arrayWheelItemDatas)
+{
+	// add custom wheel items
+	vector<RString> vsNames;
+	split( CUSTOM_WHEEL_ITEM_NAMES, ",", vsNames );
+	for( unsigned i=0; i<vsNames.size(); ++i )
+	{
+		MusicWheelItemData wid( WheelItemDataType_Custom, NULL, "", NULL, CUSTOM_CHOICE_COLORS.GetValue(vsNames[i]), 0 );
+		wid.m_pAction = HiddenPtr<GameCommand>( new GameCommand );
+		wid.m_pAction->m_sName = vsNames[i];
+		wid.m_pAction->Load( i, ParseCommands(CUSTOM_CHOICES.GetValue(vsNames[i])) );
+		wid.m_sLabel = CUSTOM_ITEM_WHEEL_TEXT( vsNames[i] );
+
+		if( !wid.m_pAction->IsPlayable() )
+			continue;
+
+		arrayWheelItemDatas.push_back( new MusicWheelItemData(wid) );
+	}
+}
+
 void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelItemDatas, SortOrder so )
 {
 	switch( so )
@@ -604,30 +626,71 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
             }
 
 
-            vector<Song*> arraySongs;
+            //vector<Song*> arraySongs;
             // make WheelItemDatas with sections
             int iSectionColorIndex = 0;
+
+            //For all the groups in the AllStepsAllDifficultyGroups
             map<int, vector<Song*>>::iterator it;
             for ( it = AllStepsAllDifficultyGroups.begin(); it != AllStepsAllDifficultyGroups.end(); it++ )
             {
 
-
+                //Grab the vector of songs from the group
                 vector<Song*> v = it->second;
+                //Number of songs..
                 int iSectionCount = v.size()-1;
-                arraySongs.insert( arraySongs.end(), v.begin(), v.end() );
-                RageColor colorSection = SECTION_COLORS.GetValue(iSectionColorIndex);
+
+                //I forgot why I needed this to be honest, I'm not sure I actually need it
+                //arraySongs.insert( arraySongs.end(), v.begin(), v.end() );
+                //Color the section (it's the default color)
+                RageColor colorSection = SECTION_COLORS.GetValue(0);
                 iSectionColorIndex = (iSectionColorIndex+1) % NUM_SECTION_COLORS;
-                RString sectionName = ssprintf("%02d", it->first );
+
+                //Add the folder object to the wheel.
+                RString sectionName = ssprintf("%02d", it->first ); //01,02,03,04,...99,999,9999
                 arrayWheelItemDatas.push_back( new MusicWheelItemData(WheelItemDataType_Section, NULL, sectionName, NULL, colorSection, iSectionCount) );
+
                 //For each song in the vector (it->second returns the vector)
+                //Add all songs in the group to the wheel
                 FOREACH_CONST( Song*, it->second, pSong )
                 {
                     arrayWheelItemDatas.push_back( new MusicWheelItemData(WheelItemDataType_Song, *pSong, sectionName, NULL, SONGMAN->GetSongColor(*pSong), 0) );
                 }
             }
+
+			AddCustomWheelItems(arrayWheelItemDatas);
             break;
         }
+        //Same thing as the all difficulty sorts, but for preferred sort.
 		case SORT_PREFERRED:
+		{
+			int iSectionColorIndex = 0;
+			const vector<SongManager::PreferredSortSection>* preferredSortGroups = SONGMAN->GetPreferredSortVector();
+			/*
+			#define FOREACH_CONST( elemType, vect, var ) 	\
+			for( vector<elemType>::const_iterator var = (vect).begin(); var != (vect).end(); ++var ) */
+			//FOREACH_CONST(SongManager::PreferredSortSection,preferredSortGroups,pGroup)
+			//vector<SongManager::PreferredSortSection>::const_iterator pGroup
+			for (auto pGroup = preferredSortGroups->begin(); pGroup != preferredSortGroups->end(); ++pGroup)
+			{
+				//Color the section (it's the default color)
+				RageColor colorSection = SECTION_COLORS.GetValue(0);
+				iSectionColorIndex = (iSectionColorIndex+1) % NUM_SECTION_COLORS;
+
+				//Add the folder object to the wheel.
+				RString sectionName = pGroup->sName;
+				arrayWheelItemDatas.push_back( new MusicWheelItemData(WheelItemDataType_Section, NULL, sectionName, NULL, colorSection, pGroup->vpSongs.size()) );
+				//Add all songs to the wheel/folder.
+				FOREACH_CONST( Song*, pGroup->vpSongs, pSong)
+				{
+					arrayWheelItemDatas.push_back( new MusicWheelItemData(WheelItemDataType_Song, *pSong, sectionName, NULL, SONGMAN->GetSongColor(*pSong), 0) );
+				}
+			}
+
+			AddCustomWheelItems(arrayWheelItemDatas);
+			break;
+		}
+
 		case SORT_ROULETTE:
 		case SORT_GROUP:
 		case SORT_TITLE:
@@ -823,21 +886,7 @@ void MusicWheel::BuildWheelItemDatas( vector<MusicWheelItemData *> &arrayWheelIt
 					arrayWheelItemDatas.push_back( new MusicWheelItemData(WheelItemDataType_Portal, NULL, "", NULL, PORTAL_COLOR, 0) );
 
 				// add custom wheel items
-				vector<RString> vsNames;
-				split( CUSTOM_WHEEL_ITEM_NAMES, ",", vsNames );
-				for( unsigned i=0; i<vsNames.size(); ++i )
-				{
-					MusicWheelItemData wid( WheelItemDataType_Custom, NULL, "", NULL, CUSTOM_CHOICE_COLORS.GetValue(vsNames[i]), 0 );
-					wid.m_pAction = HiddenPtr<GameCommand>( new GameCommand );
-					wid.m_pAction->m_sName = vsNames[i];
-					wid.m_pAction->Load( i, ParseCommands(CUSTOM_CHOICES.GetValue(vsNames[i])) );
-					wid.m_sLabel = CUSTOM_ITEM_WHEEL_TEXT( vsNames[i] );
-
-					if( !wid.m_pAction->IsPlayable() )
-						continue;
-
-					arrayWheelItemDatas.push_back( new MusicWheelItemData(wid) );
-				}
+				AddCustomWheelItems(arrayWheelItemDatas);
 			}
 
 			if( GAMESTATE->IsAnExtraStageAndSelectionLocked() )
