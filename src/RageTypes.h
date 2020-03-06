@@ -52,6 +52,7 @@ enum EffectMode
 	EffectMode_Screen,
 	EffectMode_YUYV422,
 	EffectMode_DistanceField,
+	EffectMode_Saturation,
 	NUM_EffectMode,
 	EffectMode_Invalid
 };

@@ -317,8 +317,9 @@ GLhandleARB CompileShader( GLenum ShaderType, RString sFile, vector<RString> asD
 		apData.push_back( s->data() );
 		aiLength.push_back( s->size() );
 	}
-	apData.push_back( "#line 1\n" );
-	aiLength.push_back( 8 );
+	//There is no reason to have this
+	//apData.push_back( "#line 1\n" );
+	//aiLength.push_back( 8 );
 
 	apData.push_back( sBuffer.data() );
 	aiLength.push_back( sBuffer.size() );
@@ -408,6 +409,7 @@ static GLhandleARB g_hYUYV422Shader = 0;
 static GLhandleARB g_gShellShader = 0;
 static GLhandleARB g_gCelShader = 0;
 static GLhandleARB g_gDistanceFieldShader = 0;
+static GLhandleARB g_gSaturationShader = 0;
 
 void InitShaders()
 {
@@ -433,6 +435,7 @@ void InitShaders()
 	g_hOverlayShader		= LoadShader( GL_FRAGMENT_SHADER_ARB, "Data/Shaders/GLSL/Overlay.frag", asDefines );
 	g_hScreenShader		= LoadShader( GL_FRAGMENT_SHADER_ARB, "Data/Shaders/GLSL/Screen.frag", asDefines );
 	g_hYUYV422Shader		= LoadShader( GL_FRAGMENT_SHADER_ARB, "Data/Shaders/GLSL/YUYV422.frag", asDefines );
+	g_gSaturationShader		= LoadShader( GL_FRAGMENT_SHADER_ARB, "Data/Shaders/GLSL/Saturation.frag", asDefines );
 	
 	// Bind attributes.
 	if (g_bTextureMatrixShader)
@@ -1804,6 +1807,9 @@ void RageDisplay_Legacy::SetEffectMode( EffectMode effect )
 			break;
 		case EffectMode_DistanceField:
 			hShader = g_gDistanceFieldShader;
+			break;
+		case EffectMode_Saturation:
+			hShader = g_gSaturationShader;
 		default:
 			break;
 	}
@@ -1852,6 +1858,8 @@ bool RageDisplay_Legacy::IsEffectModeSupported( EffectMode effect )
 			return g_hYUYV422Shader != 0;
 		case EffectMode_DistanceField:
 			return g_gDistanceFieldShader != 0;
+		case EffectMode_Saturation:
+			return g_gSaturationShader != 0;
 		default:
 			return false;
 	}

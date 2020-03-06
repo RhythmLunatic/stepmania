@@ -185,7 +185,8 @@ static const char *EffectModeNames[] =
 
 	"YUYV422",
 	/* Draws a graphic from a signed distance field. */
-	"DistanceField"
+	"DistanceField",
+	"Saturation"
 };
 XToString( EffectMode );
 LuaXType( EffectMode );
