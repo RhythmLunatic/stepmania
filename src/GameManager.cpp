@@ -3450,7 +3450,12 @@ void GameManager::GetCompatibleStyles( const Game *pGame, int iNumPlayers, vecto
 			break;
 		}
 
-		if( iNumPlayers != iNumPlayersRequired )
+		//Awful hack to get it to stop crashing when we pick a routine chart and there's 4 players
+		//Adding routine by making this game four players was probably one of my less good ideas
+		if (styleType == StyleType_TwoPlayersSharedSides && iNumPlayers > 2)
+			iNumPlayersRequired = iNumPlayers;
+
+		if( iNumPlayers != iNumPlayersRequired)
 			continue;
 
 		for( int s=0; pGame->m_apStyles[s]; ++s ) 

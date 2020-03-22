@@ -1174,16 +1174,22 @@ void GameState::ForceOtherPlayersToCompatibleSteps(PlayerNumber main)
 		Steps* steps_to_match= m_pCurSteps[main].Get();
 		if(steps_to_match == NULL) { return; }
 		int num_players= GAMESTATE->GetNumPlayersEnabled();
-		StyleType styletype_to_match= GAMEMAN->GetFirstCompatibleStyle(
-			GAMESTATE->GetCurrentGame(), num_players, steps_to_match->m_StepsType)
-			->m_StyleType;
+		const Style* firstCompatStyle = GAMEMAN->GetFirstCompatibleStyle(
+				GAMESTATE->GetCurrentGame(), num_players, steps_to_match->m_StepsType);
+		StyleType styletype_to_match;
+		if (firstCompatStyle != NULL)
+			styletype_to_match = firstCompatStyle->m_StyleType;
+		else
+			return;
 		RString music_to_match= steps_to_match->GetMusicFile();
 		FOREACH_EnabledPlayer(pn)
 		{
+			//Gets the steps of the current player for some reason
 			Steps* pn_steps= m_pCurSteps[pn].Get();
 			bool match_failed= pn_steps == NULL;
 			if(steps_to_match != pn_steps && pn_steps != NULL)
 			{
+				//Checks first compatible style based on current style.
 				StyleType pn_styletype= GAMEMAN->GetFirstCompatibleStyle(
 					GAMESTATE->GetCurrentGame(), num_players, pn_steps->m_StepsType)
 					->m_StyleType;

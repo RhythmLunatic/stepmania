@@ -436,6 +436,7 @@ void InitShaders()
 	g_hScreenShader		= LoadShader( GL_FRAGMENT_SHADER_ARB, "Data/Shaders/GLSL/Screen.frag", asDefines );
 	g_hYUYV422Shader		= LoadShader( GL_FRAGMENT_SHADER_ARB, "Data/Shaders/GLSL/YUYV422.frag", asDefines );
 	g_gSaturationShader		= LoadShader( GL_FRAGMENT_SHADER_ARB, "Data/Shaders/GLSL/Saturation.frag", asDefines );
+
 	
 	// Bind attributes.
 	if (g_bTextureMatrixShader)
@@ -1810,6 +1811,7 @@ void RageDisplay_Legacy::SetEffectMode( EffectMode effect )
 			break;
 		case EffectMode_Saturation:
 			hShader = g_gSaturationShader;
+			break;
 		default:
 			break;
 	}
