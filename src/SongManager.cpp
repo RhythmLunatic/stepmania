@@ -1860,6 +1860,17 @@ void SongManager::RefreshCourseGroupInfo()
 	// TODO: Search for course group banners
 	FOREACHM( RString, CourseGroupInfo, m_mapCourseGroupToInfo, iter )
 	{
+		// Look for a group banner in this group folder
+		//Doesn't work yet since iter->first is just the name, not the path
+		//vector<RString> arrayGroupBanners;
+		//GetDirListing( iter->first+"/*.png", arrayGroupBanners );
+		//GetDirListing( iter->first+"/*.jpg", arrayGroupBanners );
+		//GetDirListing( iter->first+"/*.jpeg", arrayGroupBanners );
+		//GetDirListing( iter->first+"/*.gif", arrayGroupBanners );
+		//GetDirListing( iter->first+"/*.bmp", arrayGroupBanners );
+
+		//if( !arrayGroupBanners.empty() )
+		//	iter->second.m_sBannerPath = iter->first+"/"+arrayGroupBanners[0] ;
 	}
 }
 

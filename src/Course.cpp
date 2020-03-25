@@ -1291,6 +1291,14 @@ public:
 		LuaHelpers::CreateTableFromArray<Trail*>( v, L );
 		return 1;
 	}
+	static int GetTrails( T* p, lua_State *L )
+    {
+	    vector<Trail*> v;
+        StepsType st = Enum::Check<StepsType>(L, 1);
+	    p->GetTrails(v, st);
+        LuaHelpers::CreateTableFromArray<Trail*>( v, L );
+        return 1;
+    }
 	static int GetBannerPath( T* p, lua_State *L )		{ RString s = p->GetBannerPath(); if( s.empty() ) return 0; LuaHelpers::Push(L, s); return 1; }
 	static int GetBackgroundPath( T* p, lua_State *L )		{ RString s = p->GetBackgroundPath(); if( s.empty() ) return 0; LuaHelpers::Push(L, s); return 1; }
 	static int GetCourseDir( T* p, lua_State *L )			{ lua_pushstring(L, p->m_sPath ); return 1; }
@@ -1337,6 +1345,7 @@ public:
 		ADD_METHOD( GetCourseEntries );
 		ADD_METHOD(GetNumCourseEntries);
 		ADD_METHOD( GetAllTrails );
+        ADD_METHOD( GetTrails );
 		ADD_METHOD( GetBannerPath );
 		ADD_METHOD( GetBackgroundPath );
 		ADD_METHOD( GetCourseDir );
