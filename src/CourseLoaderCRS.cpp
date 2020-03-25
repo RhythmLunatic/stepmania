@@ -277,7 +277,7 @@ bool CourseLoaderCRS::LoadFromMsd( const RString &sPath, const MsdFile &msd, Cou
 				new_entry.stepsCriteria.m_difficulty = StringToDifficulty( sParams[2] );
 			//If the entry contains only a number instead of steps difficulty, set the criteria instead.
 			//This is necessary for pump charts since the majority of them don't have difficulties set at all.
-			if (sParams[2].find_first_not_of("0123456789") == std::string::npos )
+			if (!sParams[2].empty() && sParams[2].find_first_not_of("0123456789") == std::string::npos )
 			{
 				new_entry.stepsCriteria.m_iLowMeter = max(std::stoi(sParams[2]),1);
 				new_entry.stepsCriteria.m_iHighMeter = new_entry.stepsCriteria.m_iLowMeter;

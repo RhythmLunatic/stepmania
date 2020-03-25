@@ -2,6 +2,6 @@
 #SCRIPTER:Rhythm Lunatic;
 #DESCRIPTION:This course demonstrates picking steps by level. Please note that this limits you to one gamemode and style.;
 
-#SONG:StepMania 5\Springtime:21;
+#SONG:StepMania 5\Springtime:21:nodifficult;
 
-#SONG:StepMania 5\MechaTribe Assault:19;
+#SONG:StepMania 5\MechaTribe Assault:19:nodifficult;
