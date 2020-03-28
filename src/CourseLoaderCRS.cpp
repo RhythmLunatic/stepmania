@@ -275,15 +275,10 @@ bool CourseLoaderCRS::LoadFromMsd( const RString &sPath, const MsdFile &msd, Cou
 			//most CRS files use old-style difficulties, but Difficulty enum values can be used in SM5. Test for those too.
 			if( new_entry.stepsCriteria.m_difficulty == Difficulty_Invalid )
 				new_entry.stepsCriteria.m_difficulty = StringToDifficulty( sParams[2] );
-			//If the entry contains only a number instead of steps difficulty, set the criteria instead.
-			//This is necessary for pump charts since the majority of them don't have difficulties set at all.
-			if (!sParams[2].empty() && sParams[2].find_first_not_of("0123456789") == std::string::npos )
+
+			if( new_entry.stepsCriteria.m_difficulty == Difficulty_Invalid )
 			{
-				new_entry.stepsCriteria.m_iLowMeter = max(std::stoi(sParams[2]),1);
-				new_entry.stepsCriteria.m_iHighMeter = new_entry.stepsCriteria.m_iLowMeter;
-			}
-			else if( new_entry.stepsCriteria.m_difficulty == Difficulty_Invalid )
-			{
+			    //Check for numbers in the format of 'num..num' instead of a difficulty name
 				int retval = sscanf( sParams[2], "%d..%d", &new_entry.stepsCriteria.m_iLowMeter, &new_entry.stepsCriteria.m_iHighMeter );
 				if( retval == 1 )
 					new_entry.stepsCriteria.m_iHighMeter = new_entry.stepsCriteria.m_iLowMeter;
