@@ -6,7 +6,7 @@
 #include "NotesLoaderDWI.h"
 #include "NotesLoaderBMS.h"
 #include "NotesLoaderKSF.h"
-#include "NotesLoaderUCS.h"
+//#include "NotesLoaderUCS.h"
 #if defined(HAS_SECRET)
 #include "NotesLoaderSecret.h"
 #endif
@@ -60,11 +60,12 @@ bool NotesLoader::LoadFromDir( const RString &sPath, Song &out, set<RString> &Bl
 	PMSLoader::GetApplicableFiles( sPath, list );
 	if( !list.empty() )
 		return PMSLoader::LoadFromDir( sPath, out );
-	*/
+
 	UCSLoader loaderUCS;
     loaderUCS.GetApplicableFiles(sPath, list);
     if (!list.empty() )
         return loaderUCS.LoadFromDir(sPath, out);
+	*/
 #if defined(HAS_SECRET)
     SecretLoader loader;
 	loader.GetApplicableFiles(sPath, list);

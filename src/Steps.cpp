@@ -161,11 +161,11 @@ bool Steps::GetNoteDataFromSimfile()
 	{
 		return BMSLoader::LoadNoteDataFromSimfile(stepFile, *this);
 	}
-	else if (extension == "ucs")
+	/*else if (extension == "ucs")
     {
 	    UCSLoader loader;
 	    return loader.LoadNoteDataFromSimfile(stepFile, *this);
-    }
+    }*/
 #if defined(HAS_SECRET)
 	else if (extension == "nx20" || extension == "nx")
 	{

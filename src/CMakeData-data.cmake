@@ -69,7 +69,7 @@ list(APPEND SM_DATA_NOTELOAD_SRC
   "NotesLoaderSM.cpp"
   "NotesLoaderSMA.cpp"
   "NotesLoaderSSC.cpp"
-   "NotesLoaderUCS.cpp"
+   # "NotesLoaderUCS.cpp"
 
 )
 
@@ -82,7 +82,7 @@ list(APPEND SM_DATA_NOTELOAD_HPP
   "NotesLoaderSM.h"
   "NotesLoaderSMA.h"
   "NotesLoaderSSC.h"
-  "NotesLoaderUCS.h"
+  # "NotesLoaderUCS.h"
 
 )
 
