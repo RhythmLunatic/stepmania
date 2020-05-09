@@ -11,7 +11,7 @@
 #include "archutils/win32/RestartProgram.h"
 #include "archutils/win32/GotoURL.h"
 #include "archutils/Win32/RegistryAccess.h"
-#include "psapi.h"
+//#include "psapi.h"
 
 static HANDLE g_hInstanceMutex;
 static bool g_bIsMultipleInstance = false;
@@ -239,7 +239,7 @@ RString ArchHooks_Win32::GetClipboard()
 	return ret;
 }
 
-unsigned long ArchHooks::GetSystemAvailRam()
+/*unsigned long ArchHooks::GetSystemAvailRam()
 {
 	MEMORYSTATUSEX statex;
 	statex.dwLength = sizeof(statex);
@@ -255,7 +255,7 @@ unsigned long ArchHooks::GetSystemAvailRam()
 
 	// return difference between total ram on the system and the memory currently in use.
 	return (statex.ullAvailPhys / (1024 * 1024)) - MemUse;
-}
+}*/
 /*
  * (c) 2003-2004 Glenn Maynard, Chris Danford
  * All rights reserved.

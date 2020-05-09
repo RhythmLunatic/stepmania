@@ -73,7 +73,7 @@
 #include "Foreach.h"
 #include "ActorUtil.h"
 #include "InputEventPlus.h"
-#include "arch/ArchHooks/ArchHooks.h"
+//#include "arch/ArchHooks/ArchHooks.h"
 
 ScreenManager*	SCREENMAN = NULL;	// global and accessible from anywhere in our program
 
@@ -81,8 +81,8 @@ static Preference<bool> g_bDelayedScreenLoad( "DelayedScreenLoad", false );
 //static Preference<bool> g_bPruneFonts( "PruneFonts", true );
 
 // settings for the watchdog to oversee that we don't remain in attract for too long while RAM is low
-static Preference<float> g_fAttractWatchdogTimeout( "AttractWatchdogTimeout", 0.0 );
-static Preference<int> g_iAttractWatchdogRAMThreshold( "AttractWatchdogRAMThreshold", 256 );
+//static Preference<float> g_fAttractWatchdogTimeout( "AttractWatchdogTimeout", 0.0 );
+//static Preference<int> g_iAttractWatchdogRAMThreshold( "AttractWatchdogRAMThreshold", 256 );
 
 // Screen registration
 static map<RString,CreateScreenFn>	*g_pmapRegistrees = NULL;
@@ -111,7 +111,7 @@ namespace ScreenManagerUtil
 
 	Actor				*g_pSharedBGA;  // BGA object that's persistent between screens
 	RString				m_sPreviousTopScreen;
-	ScreenType			m_stPrevScreenType;
+	//ScreenType			m_stPrevScreenType;
 	vector<LoadedScreen>	g_ScreenStack;  // bottommost to topmost
 	vector<Screen*>		g_OverlayScreens;
 	set<RString>		g_setGroupedScreens;
@@ -122,7 +122,7 @@ namespace ScreenManagerUtil
 
 	RageTimer 				m_tAttractWatchdog;
 
-	void CheckOnAttractWatchdog(const LoadedScreen &ls)
+	/*void CheckOnAttractWatchdog(const LoadedScreen &ls)
 	{
 		//Check to see if the arcade operator wants to timeout during the attract sequence and reset.
 		if(g_fAttractWatchdogTimeout > 0)
@@ -153,7 +153,7 @@ namespace ScreenManagerUtil
 				}
 			}
 		}
-	}
+	}*/
 
 	// Add a screen to g_ScreenStack. This is the only function that adds to g_ScreenStack.
 	void PushLoadedScreen( const LoadedScreen &ls )
@@ -162,7 +162,7 @@ namespace ScreenManagerUtil
 		LOG->MapLog( "ScreenManager::TopScreen", "Top Screen: %s", ls.m_pScreen->GetName().c_str() );
 
 		// Check on all the screens passing through to see if we are staying on attract for too long
-		CheckOnAttractWatchdog(ls);
+		//CheckOnAttractWatchdog(ls);
 
 		// Be sure to push the screen first, so GetTopScreen returns the screen
 		// during BeginScreen.
@@ -179,7 +179,7 @@ namespace ScreenManagerUtil
 		if( g_ScreenStack.size() == 1 )
 		{
 			m_sPreviousTopScreen = ls.m_pScreen->GetName();
-			m_stPrevScreenType = ls.m_pScreen->GetScreenType();
+			//m_stPrevScreenType = ls.m_pScreen->GetScreenType();
 		}
 
 

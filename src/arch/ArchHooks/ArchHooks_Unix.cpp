@@ -17,7 +17,7 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <sys/sysinfo.h>
+//#include <sys/sysinfo.h>
 
 #if defined(CRASH_HANDLER)
 #include "archutils/Unix/CrashHandler.h"
@@ -420,7 +420,7 @@ void ArchHooks::MountUserFilesystems( const RString &sDirOfExecutable )
 	FILEMAN->Mount( "dir", sUserDataPath + "/Themes", "/Themes" );
 }
 
-unsigned long ArchHooks::GetSystemAvailRam()
+/*unsigned long ArchHooks::GetSystemAvailRam()
 {
 	// find out how much memory the system is using
 	// modified from MrThatKid
@@ -449,7 +449,7 @@ unsigned long ArchHooks::GetSystemAvailRam()
 
 	// /proc/MemAvailable is in kB, so let's convert to mB
 	return (MemAvail / 1024);
-}
+}*/
 /*
  * (c) 2003-2004 Glenn Maynard
  * All rights reserved.
