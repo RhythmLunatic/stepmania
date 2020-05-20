@@ -251,6 +251,11 @@ static RageSurface *RageSurface_Load_PNG( RageFile *f, const char *fn, char erro
 	png_read_end( png, info_ptr );
 	png_destroy_read_struct( &png, &info_ptr, NULL );
 
+	if(row_pointers != nullptr) //Thx 2 dinsfire for fixing this memory leak
+	{
+		delete[] row_pointers;
+	}
+
 	return img;
 }
 
