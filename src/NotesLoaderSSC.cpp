@@ -192,6 +192,8 @@ void SetSelectable(SongTagInfo& info)
 	{ info.song->m_SelectionDisplay = info.song->SHOW_ALWAYS; }
 	else if((*info.params)[1].EqualsNoCase("NO"))
 	{ info.song->m_SelectionDisplay = info.song->SHOW_NEVER; }
+	else if((*info.params)[1].EqualsNoCase("EASY"))
+	{ info.song->m_SelectionDisplay = info.song->SHOW_EASY; }
 	// ROULETTE from 3.9 is no longer in use.
 	else if((*info.params)[1].EqualsNoCase("ROULETTE"))
 	{ info.song->m_SelectionDisplay = info.song->SHOW_ALWAYS; }

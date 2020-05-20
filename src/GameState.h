@@ -203,9 +203,10 @@ public:
 	SortOrder	m_PreferredSortOrder;		// used by MusicWheel
     /* PIU and DDR have "happy" or "basic" modes. Right now this is just a really crappy hack for Rave It Out's easy mode,
      * but it should probably be improved one day.
-     * RIO easy mode is that only lv10 and below steps are selectable.
+     * RIO easy mode is that only songs with the EASY tag are selectable. Kind of. It's actually just a hidden group.
      */
-	//bool m_IsBasicMode;
+	bool m_bIsBasicMode;
+
 	EditMode	m_EditMode;
 	bool		IsEditing() const { return m_EditMode != EditMode_Invalid; }
 	/**

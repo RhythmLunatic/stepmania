@@ -157,6 +157,10 @@ int UnlockManager::SongIsLocked( const Song *pSong ) const
 	if( PREFSMAN->m_bHiddenSongs && pSong->m_SelectionDisplay == Song::SHOW_NEVER )
 		iRet |= LOCKED_SELECTABLE;
 
+	//If hidden songs is enabled, the song's selectable tag is set to EASY, and we're not in basic mode
+	if( PREFSMAN->m_bHiddenSongs && pSong->m_SelectionDisplay == Song::SHOW_EASY && !GAMESTATE->m_bIsBasicMode)
+		iRet |= LOCKED_SELECTABLE;
+
 	if( !pSong->m_bEnabled )
 		iRet |= LOCKED_DISABLED;
 

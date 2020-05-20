@@ -76,6 +76,7 @@ public:
 	enum SelectionDisplay
 	{ 
 		SHOW_ALWAYS,	/**< always show on the wheel. */
+		SHOW_EASY, //Show only if the var from GAMESTATE:SetEasyMode() is set.
 		SHOW_NEVER	/**< never show on the wheel (unless song hiding is turned off). */
 	} m_SelectionDisplay;
 

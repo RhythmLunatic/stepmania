@@ -3174,6 +3174,11 @@ public:
 		p->m_bFailTypeWasExplicitlySet= true;
 		COMMON_RETURN_SELF;
 	}
+    static int SetBasicMode(T* p, lua_State* L)
+    {
+        p->m_bIsBasicMode= true;
+        COMMON_RETURN_SELF;
+    }
 
 	static int StoreRankingName( T* p, lua_State *L )
 	{
@@ -3481,6 +3486,7 @@ public:
 		ADD_METHOD( HaveProfileToLoad );
 		ADD_METHOD( HaveProfileToSave );
 		ADD_METHOD( SetFailTypeExplicitlySet );
+		ADD_METHOD( SetBasicMode );
 		ADD_METHOD( StoreRankingName );
 		ADD_METHOD( SetCurrentStyle );
 		ADD_METHOD( SetCurrentPlayMode );
