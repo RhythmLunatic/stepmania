@@ -99,6 +99,7 @@ list(APPEND SMDATA_SCREEN_REST_SRC
   "ScreenUnlockCelebrate.cpp"
   "ScreenUnlockStatus.cpp"
   "ScreenWithMenuElements.cpp"
+   "ScreenWithOptionsList.cpp"
 )
 list(APPEND SMDATA_SCREEN_REST_HPP
   "Screen.h"
@@ -153,6 +154,7 @@ list(APPEND SMDATA_SCREEN_REST_HPP
   "ScreenUnlockCelebrate.h"
   "ScreenUnlockStatus.h"
   "ScreenWithMenuElements.h"
+   "ScreenWithOptionsList.h"
 )
 
 source_group("Screens\\\\Others" FILES ${SMDATA_SCREEN_REST_SRC} ${SMDATA_SCREEN_REST_HPP})
