@@ -321,10 +321,12 @@ source_group("Arch Specific\\\\Loading Window" FILES ${SMDATA_ARCH_LOADING_SRC} 
 list(APPEND SMDATA_ARCH_LIGHTS_SRC
   "arch/Lights/LightsDriver.cpp"
   "arch/Lights/LightsDriver_SystemMessage.cpp"
+        "arch/Lights/LightsDriver_Broadcast.cpp"
 )
 list(APPEND SMDATA_ARCH_LIGHTS_HPP
   "arch/Lights/LightsDriver.h"
   "arch/Lights/LightsDriver_SystemMessage.h"
+        "arch/Lights/LightsDriver_Broadcast.h"
 )
 
 list(APPEND SMDATA_ARCH_LIGHTS_SRC

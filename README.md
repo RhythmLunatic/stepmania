@@ -15,11 +15,15 @@ This is a custom version of StepMania with various features. The theme is availa
 * Bonus note for modcharts/missions that does not affect life (Check the wiki)
 * All level, all difficulty sort
 * Ability to show SortOrders next to folders if you are using the built in group select. Check MusicWheel metrics for more information.
+* Hide charts with #SELECTABLE:EASY when not in Easy Mode.
 * ~~Card Reader support~~ Need to redo, doesn't flush the buffer correctly right now and only works on Linux
+* Windows XP support, since this is based on chrispable's "starworlds" StepMania fork.
 
 ## Compiling
 
-Do this because it has libUSB: `apt-get install libusb-dev libusb-1.0.0 libusb-0.1-4`
+Linux users, do this because it has libUSB: `apt-get install libusb-dev libusb-1.0.0 libusb-0.1-4`
+
+Windows users, you need to use Visual Studio 2013 build tools if you want Windows XP support.
 
 Then follow the rest like normal: https://github.com/stepmania/stepmania/wiki/Compiling-StepMania
 
@@ -28,6 +32,11 @@ In preferences.ini: `LightsDriver=Linux_PacDrive`
 
 Check product ID with lsusb. Replace idProduct with the Product ID of your PacDrive and the OWNER="raveitout" with the name of your linux account. Then run this command.
 `sudo echo SUBSYSTEMS=="usb", ATTRS{idVendor}=="d209", ATTRS{idProduct}=="1500", SYMLINK+="pacdrive", OWNER="raveitout" > /etc/udev/rules.d/90-pacdrive.rules`
+
+## Debugging Lights
+In preferences.ini: `DebugLights=1`, `LightsDriver=Broadcast`.
+
+Use the RIO theme to show the lights debug.
 
 ## Resources
 

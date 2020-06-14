@@ -438,11 +438,12 @@ void LightsManager::Update( float fDeltaTime )
 	}
 
 	//RGB support -- every 1/60th of a second update the RGB lights because of the way we generate patterns
-	if (m_RGBLightTimer.Ago() >= 0.0166667f)
+	//TODO: Only update when the LightsDriver is an RGB one.
+	/*if (m_RGBLightTimer.Ago() >= 0.0166667f)
 	{
 		updateRGBLights();
 		m_RGBLightTimer.Touch();
-	}
+	}*/
 
 	
 
