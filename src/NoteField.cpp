@@ -92,6 +92,7 @@ void NoteField::Unload()
 	memset( m_pDisplays, 0, sizeof(m_pDisplays) );
 }
 
+//This function loads your noteskins!
 void NoteField::CacheNoteSkin( const RString &sNoteSkin_ )
 {
 	RString sNoteSkinLower = sNoteSkin_;
@@ -100,17 +101,61 @@ void NoteField::CacheNoteSkin( const RString &sNoteSkin_ )
 	if( m_NoteDisplays.find(sNoteSkinLower) != m_NoteDisplays.end() )
 		return;
 
+	//Prevent the noteskin from changing???? Why does this even exist
 	LockNoteSkin l( sNoteSkinLower );
 
 	LOG->Trace("NoteField::CacheNoteSkin: cache %s", sNoteSkinLower.c_str() );
+
+	//Create NoteDisplayCols... Creates as many columns as would be needed for this style, of course.
 	NoteDisplayCols *nd = new NoteDisplayCols( GAMESTATE->GetCurrentStyle(m_pPlayerState->m_PlayerNumber)->m_iColsPerPlayer );
 
 	for( int c=0; c<GAMESTATE->GetCurrentStyle(m_pPlayerState->m_PlayerNumber)->m_iColsPerPlayer; c++ )
-		nd->display[c].Load( c, m_pPlayerState, m_fYReverseOffsetPixels );
-	nd->m_ReceptorArrowRow.Load( m_pPlayerState, m_fYReverseOffsetPixels );
-	nd->m_GhostArrowRow.Load( m_pPlayerState, m_fYReverseOffsetPixels );
+		nd->display[c].Load(0, c, m_pPlayerState, m_fYReverseOffsetPixels );
+	nd->m_ReceptorArrowRow.Load(m_pPlayerState, m_fYReverseOffsetPixels );
+	nd->m_GhostArrowRow.Load(m_pPlayerState, m_fYReverseOffsetPixels );
 
 	m_NoteDisplays[ sNoteSkinLower ] = nd;
+}
+
+void NoteField::CacheNoteSkin( vector<RString> noteSkinsToLoad )
+{
+
+
+    LOG->Warn("NoteField::CacheNoteSkin: Loading multiple noteskins for  %s", PlayerNumberToString(m_pPlayerState->m_PlayerNumber).c_str() );
+    //Create NoteDisplayCols... Creates as many columns as would be needed for this style, of course.
+    unsigned char noteskinNum = 0;
+    for (auto noteSkin : noteSkinsToLoad)
+    {
+
+        NoteDisplayCols *nd = new NoteDisplayCols( GAMESTATE->GetCurrentStyle(m_pPlayerState->m_PlayerNumber)->m_iColsPerPlayer );
+
+        //I can't be bothered to refactor the ghost arrow row or receptors to work with multiple noteskins and they should only use the first noteskin anyways
+
+		RString sNoteSkinLower = noteSkin;
+		sNoteSkinLower.MakeLower();
+
+		//Prevent the noteskin from changing???? Why does this even exist
+		LockNoteSkin l( sNoteSkinLower );
+
+        for( int c=0; c<GAMESTATE->GetCurrentStyle(m_pPlayerState->m_PlayerNumber)->m_iColsPerPlayer; c++ )
+            nd->display[c].Load(noteskinNum, c, m_pPlayerState, m_fYReverseOffsetPixels );
+
+		//These really shouldn't be loaded with multiple noteskins per player
+        nd->m_ReceptorArrowRow.Load( m_pPlayerState, m_fYReverseOffsetPixels );
+        nd->m_GhostArrowRow.Load( m_pPlayerState, m_fYReverseOffsetPixels );
+        m_NoteDisplays[ sNoteSkinLower ] = nd;
+        LOG->Warn("Cached player noteskin %i with name %s",nd->display[0].GetPNNoteskinNum(),sNoteSkinLower.c_str());
+        noteskinNum++;
+    }
+
+    RString sNoteSkinLower = noteSkinsToLoad.back();
+    sNoteSkinLower.MakeLower();
+    //Subtract 1 since it will be numNS+1 after the for loop since we start at 0 but the ++ is at the end
+    if (noteskinNum-1 != m_NoteDisplays[sNoteSkinLower]->display[0].GetPNNoteskinNum())
+        LOG->Warn("Last drawn column doesn't match player!!! Don't force the same noteskin twice! Expected %i, got %i",(int)noteskinNum,m_NoteDisplays[sNoteSkinLower]->display[0].GetPNNoteskinNum());
+
+
+
 }
 
 void NoteField::UncacheNoteSkin( const RString &sNoteSkin_ )
@@ -124,6 +169,7 @@ void NoteField::UncacheNoteSkin( const RString &sNoteSkin_ )
 	m_NoteDisplays.erase( sNoteSkinLower );
 }
 
+//This function really isn't a good idea since it just loads columns for every noteskin...
 void NoteField::CacheAllUsedNoteSkins()
 {
 	// If we're in Routine mode, apply our per-player noteskins.
@@ -144,39 +190,74 @@ void NoteField::CacheAllUsedNoteSkins()
 		s->MakeLower();
 	}
 
-	for( unsigned i=0; i < asSkinsLower.size(); ++i )
-		CacheNoteSkin( asSkinsLower[i] );
+	vector<RString> forcedNoteskins = GAMESTATE->m_pCurSteps[m_pPlayerState->m_PlayerNumber]->m_sForcedNoteskins;
+	if (!forcedNoteskins.empty())
+    {
+        CacheNoteSkin(forcedNoteskins);
 
-	/* If we're changing note skins in the editor, we can have old note skins lying
-	 * around.  Remove them so they don't accumulate. */
-	set<RString> setNoteSkinsToUnload;
-	FOREACHM( RString, NoteDisplayCols *, m_NoteDisplays, d )
+        //I have no idea what this code below does but the game will crash without it
+        RString sCurrentNoteSkinLower = forcedNoteskins.front();
+        NOTESKIN->ValidateNoteSkinName(sCurrentNoteSkinLower);
+        sCurrentNoteSkinLower.MakeLower();
+
+        map<RString, NoteDisplayCols *>::iterator it = m_NoteDisplays.find( sCurrentNoteSkinLower );
+        ASSERT_M( it != m_NoteDisplays.end(), sCurrentNoteSkinLower );
+        m_pCurDisplay = it->second;
+        memset( m_pDisplays, 0, sizeof(m_pDisplays) );
+
+        FOREACH_EnabledPlayer( pn )
+        {
+            //WTF? What does this do? Why is it doing this?
+            RString sNoteSkinLower;
+            vector<RString> forcedNoteskinPerPlayer = GAMESTATE->m_pCurSteps[pn]->m_sForcedNoteskins;
+            if (!forcedNoteskinPerPlayer.empty())
+                sNoteSkinLower = forcedNoteskinPerPlayer.front();
+            else
+                sNoteSkinLower = GAMESTATE->m_pPlayerState[pn]->m_PlayerOptions.GetCurrent().m_sNoteSkin;
+            NOTESKIN->ValidateNoteSkinName(sNoteSkinLower);
+            sNoteSkinLower.MakeLower();
+            it = m_NoteDisplays.find( sNoteSkinLower );
+            ASSERT_M( it != m_NoteDisplays.end(), sNoteSkinLower );
+            m_pDisplays[pn] = it->second;
+        }
+    }
+	else
 	{
-		bool unused = find(asSkinsLower.begin(), asSkinsLower.end(), d->first) == asSkinsLower.end();
-		if( unused )
-			setNoteSkinsToUnload.insert( d->first );
+		for( unsigned i=0; i < asSkinsLower.size(); ++i )
+			CacheNoteSkin( asSkinsLower[i] );
+
+		/* If we're changing note skins in the editor, we can have old note skins lying
+         * around.  Remove them so they don't accumulate. */
+		set<RString> setNoteSkinsToUnload;
+		FOREACHM( RString, NoteDisplayCols *, m_NoteDisplays, d )
+		{
+			bool unused = find(asSkinsLower.begin(), asSkinsLower.end(), d->first) == asSkinsLower.end();
+			if( unused )
+				setNoteSkinsToUnload.insert( d->first );
+		}
+		FOREACHS( RString, setNoteSkinsToUnload, s )
+			UncacheNoteSkin( *s );
+
+		RString sCurrentNoteSkinLower = m_pPlayerState->m_PlayerOptions.GetCurrent().m_sNoteSkin;
+		NOTESKIN->ValidateNoteSkinName(sCurrentNoteSkinLower);
+		sCurrentNoteSkinLower.MakeLower();
+
+		map<RString, NoteDisplayCols *>::iterator it = m_NoteDisplays.find( sCurrentNoteSkinLower );
+		ASSERT_M( it != m_NoteDisplays.end(), sCurrentNoteSkinLower );
+		m_pCurDisplay = it->second;
+		memset( m_pDisplays, 0, sizeof(m_pDisplays) );
+
+		FOREACH_EnabledPlayer( pn )
+		{
+			RString sNoteSkinLower = GAMESTATE->m_pPlayerState[pn]->m_PlayerOptions.GetCurrent().m_sNoteSkin;
+			NOTESKIN->ValidateNoteSkinName(sNoteSkinLower);
+			sNoteSkinLower.MakeLower();
+			it = m_NoteDisplays.find( sNoteSkinLower );
+			ASSERT_M( it != m_NoteDisplays.end(), sNoteSkinLower );
+			m_pDisplays[pn] = it->second;
+		}
 	}
-	FOREACHS( RString, setNoteSkinsToUnload, s )
-		UncacheNoteSkin( *s );
 
-	RString sCurrentNoteSkinLower = m_pPlayerState->m_PlayerOptions.GetCurrent().m_sNoteSkin;
-	NOTESKIN->ValidateNoteSkinName(sCurrentNoteSkinLower);
-	sCurrentNoteSkinLower.MakeLower();
-
-	map<RString, NoteDisplayCols *>::iterator it = m_NoteDisplays.find( sCurrentNoteSkinLower );
-	ASSERT_M( it != m_NoteDisplays.end(), sCurrentNoteSkinLower );
-	m_pCurDisplay = it->second;
-	memset( m_pDisplays, 0, sizeof(m_pDisplays) );
-
-	FOREACH_EnabledPlayer( pn )
-	{
-		RString sNoteSkinLower = GAMESTATE->m_pPlayerState[pn]->m_PlayerOptions.GetCurrent().m_sNoteSkin;
-		NOTESKIN->ValidateNoteSkinName(sNoteSkinLower);
-		sNoteSkinLower.MakeLower();
-		it = m_NoteDisplays.find( sNoteSkinLower );
-		ASSERT_M( it != m_NoteDisplays.end(), sNoteSkinLower );
-		m_pDisplays[pn] = it->second;
-	}
 
 	InitColumnRenderers();
 }
@@ -233,8 +314,13 @@ void NoteField::Load(
 	InitColumnRenderers();
 }
 
+
+//Ensures the columns have a noteskin? Who knows. -RL
 void NoteField::ensure_note_displays_have_skin()
 {
+    //I don't care
+    if (!GAMESTATE->m_pCurSteps[m_pPlayerState->m_PlayerNumber]->m_sForcedNoteskins.empty())
+        return;
 	// The NoteSkin may have changed at the beginning of a new course song.
 	RString sNoteSkinLower = m_pPlayerState->m_PlayerOptions.GetCurrent().m_sNoteSkin;
 

@@ -538,6 +538,261 @@ RString NoteSkinManager::GetPathFromDirAndFile( const RString &sDir, const RStri
 	return matches[0];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////
+// NoteSkin
+///////////////////////////////////////////////////////////////////////////////////////
+
+NoteSkin::NoteSkin(const RString &NoteSkin, PlayerNumber playerNumber, GameController gameController) {
+	m_sCurrentNoteSkin = NoteSkin;
+	m_PlayerNumber = playerNumber;
+	m_GameController = gameController;
+
+	m_sCurrentNoteSkinLowercase = m_sCurrentNoteSkin;
+	m_sCurrentNoteSkinLowercase.MakeLower();
+	//If the noteskin doesn't exist this will set it to the default.
+	NOTESKIN->ValidateNoteSkinName(m_sCurrentNoteSkinLowercase);
+}
+
+RString NoteSkin::GetMetric( const RString &sButtonName, const RString &sValue )
+{
+	map<RString,NoteSkinData>::const_iterator it = g_mapNameToData.find(m_sCurrentNoteSkinLowercase);
+	const NoteSkinData& data = it->second;
+
+	RString sReturn;
+	if( data.metrics.GetValue( sButtonName, sValue, sReturn ) )
+		return sReturn;
+	if( !data.metrics.GetValue( "NoteDisplay", sValue, sReturn ) )
+	{
+		LuaHelpers::ReportScriptError("Could not read metric \"" + sButtonName +
+									  "::" + sValue + "\" or \"NoteDisplay::" + sValue + "\" in \"" +
+									  m_sCurrentNoteSkin + "\".", "NOTESKIN_ERROR");
+		return "";
+	}
+	return sReturn;
+}
+
+int NoteSkin::GetMetricI( const RString &sButtonName, const RString &sValueName )
+{
+	return StringToInt( GetMetric(sButtonName,sValueName) );
+}
+
+float NoteSkin::GetMetricF( const RString &sButtonName, const RString &sValueName )
+{
+	return StringToFloat( GetMetric(sButtonName,sValueName) );
+}
+
+bool NoteSkin::GetMetricB( const RString &sButtonName, const RString &sValueName )
+{
+	// Could also call GetMetricI here...hmm.
+	return StringToInt( GetMetric(sButtonName,sValueName) ) != 0;
+}
+
+apActorCommands NoteSkin::GetMetricA( const RString &sButtonName, const RString &sValueName )
+{
+	return ActorUtil::ParseActorCommands( GetMetric(sButtonName,sValueName) );
+}
+
+RString NoteSkin::GetPath( const RString &sButtonName, const RString &sElement )
+{
+	const RString CacheString = m_sCurrentNoteSkin + "/" + sButtonName + "/" + sElement;
+	map<RString,RString>::iterator it = g_PathCache.find( CacheString );
+	if( it != g_PathCache.end() )
+		return it->second;
+
+	map<RString,NoteSkinData>::const_iterator iter = g_mapNameToData.find( m_sCurrentNoteSkinLowercase );
+	ASSERT( iter != g_mapNameToData.end() );
+	const NoteSkinData &data = iter->second;
+
+	RString sPath;	// fill this in below
+	FOREACH_CONST( RString, data.vsDirSearchOrder, lIter )
+	{
+		if( sButtonName.empty() )
+			sPath = GetPathFromDirAndFile( *lIter, sElement );
+		else
+			sPath = GetPathFromDirAndFile( *lIter, sButtonName+" "+sElement );
+		if( !sPath.empty() )
+			break;	// done searching
+	}
+
+	if( sPath.empty() )
+	{
+		FOREACH_CONST( RString, data.vsDirSearchOrder, lIter )
+		{
+			if( !sButtonName.empty() )
+				sPath = GetPathFromDirAndFile( *lIter, "Fallback "+sElement );
+			if( !sPath.empty() )
+				break;	// done searching
+		}
+	}
+
+	if( sPath.empty() )
+	{
+		RString sPaths;
+		FOREACH_CONST( RString, data.vsDirSearchOrder, dir )
+		{
+			if( !sPaths.empty() )
+				sPaths += ", ";
+
+			sPaths += *dir;
+		}
+
+		RString message = ssprintf(
+				"The NoteSkin element \"%s %s\" could not be found in any of the following directories:\n%s",
+				sButtonName.c_str(), sElement.c_str(),
+				sPaths.c_str() );
+
+		switch(LuaHelpers::ReportScriptError(message, "NOTESKIN_ERROR", true))
+		{
+			case Dialog::retry:
+				FOREACH_CONST(RString, data.vsDirSearchOrder, dir)
+					FILEMAN->FlushDirCache(*dir);
+				g_PathCache.clear();
+				return GetPath(sButtonName, sElement);
+			case Dialog::abort:
+				RageException::Throw("%s", message.c_str());
+			case Dialog::ignore:
+				return "";
+			default:
+				break;
+		}
+	}
+
+	int iLevel = 0;
+	while( GetExtension(sPath) == "redir" )
+	{
+		iLevel++;
+		if(iLevel >= 100)
+		{
+			LuaHelpers::ReportScriptError("Infinite recursion while looking up " +
+										  sButtonName + " - " + sElement, "NOTESKIN_ERROR");
+			return "";
+		}
+		RString sNewFileName;
+		GetFileContents( sPath, sNewFileName, true );
+		RString sRealPath;
+
+		FOREACH_CONST( RString, data.vsDirSearchOrder, lIter )
+		{
+			sRealPath = GetPathFromDirAndFile( *lIter, sNewFileName );
+			if( !sRealPath.empty() )
+				break;	// done searching
+		}
+
+		if( sRealPath == "" )
+		{
+			RString message = ssprintf(
+					"NoteSkinManager:  The redirect \"%s\" points to the file \"%s\", which does not exist. "
+					"Verify that this redirect is correct.",
+					sPath.c_str(), sNewFileName.c_str());
+
+			switch(LuaHelpers::ReportScriptError(message, "NOTESKIN_ERROR", true))
+			{
+				case Dialog::retry:
+					FOREACH_CONST(RString, data.vsDirSearchOrder, dir)
+						FILEMAN->FlushDirCache(*dir);
+					g_PathCache.clear();
+					return GetPath(sButtonName, sElement);
+				case Dialog::abort:
+					RageException::Throw("%s", message.c_str());
+				case Dialog::ignore:
+					return "";
+				default:
+					break;
+			}
+		}
+
+		sPath = sRealPath;
+	}
+
+	g_PathCache[CacheString] = sPath;
+	return sPath;
+}
+
+bool NoteSkin::PushActorTemplate( Lua *L, const RString &sButton, const RString &sElement, bool bSpriteOnly )
+{
+	map<RString,NoteSkinData>::const_iterator iter = g_mapNameToData.find( m_sCurrentNoteSkin );
+	if(iter == g_mapNameToData.end())
+	{
+		LuaHelpers::ReportScriptError("No current noteskin set!", "NOTESKIN_ERROR");
+		return false;
+	}
+	const NoteSkinData &data = iter->second;
+
+	LuaThreadVariable varPlayer( "Player", LuaReference::Create(m_PlayerNumber) );
+	LuaThreadVariable varController( "Controller", LuaReference::Create(m_GameController) );
+	LuaThreadVariable varButton( "Button", sButton );
+	LuaThreadVariable varElement( "Element", sElement );
+	LuaThreadVariable varSpriteOnly( "SpriteOnly", LuaReference::Create(bSpriteOnly) );
+
+	if(data.m_Loader.IsNil())
+	{
+		LuaHelpers::ReportScriptError("No loader for noteskin!", "NOTESKIN_ERROR");
+		return false;
+	}
+	data.m_Loader.PushSelf( L );
+	lua_remove( L, -2 );
+	lua_getfield( L, -1, "Load" );
+
+	return ActorUtil::LoadTableFromStackShowErrors(L);
+}
+
+Actor *NoteSkin::LoadActor( const RString &sButton, const RString &sElement, Actor *pParent, bool bSpriteOnly )
+{
+	Lua *L = LUA->Get();
+
+	if( !PushActorTemplate(L, sButton, sElement, bSpriteOnly) )
+	{
+		LUA->Release( L );
+		// ActorUtil will warn about the error
+		return Sprite::NewBlankSprite();
+	}
+
+	auto_ptr<XNode> pNode( XmlFileUtil::XNodeFromTable(L) );
+	if( pNode.get() == NULL )
+	{
+		LUA->Release( L );
+		// XNode will warn about the error
+		return Sprite::NewBlankSprite();
+	}
+
+	LUA->Release( L );
+
+	Actor *pRet = ActorUtil::LoadFromNode( pNode.get(), pParent );
+
+	if( bSpriteOnly )
+	{
+		// Make sure pActor is a Sprite (or something derived from Sprite).
+		Sprite *pSprite = dynamic_cast<Sprite *>( pRet );
+		if( pSprite == NULL )
+		{
+			LuaHelpers::ReportScriptErrorFmt("%s: %s %s must be a Sprite", m_sCurrentNoteSkin.c_str(), sButton.c_str(), sElement.c_str());
+			delete pRet;
+			return Sprite::NewBlankSprite();
+		}
+	}
+
+	return pRet;
+}
+
+RString NoteSkin::GetPathFromDirAndFile( const RString &sDir, const RString &sFileName )
+{
+	vector<RString> matches;		// fill this with the possible files
+
+	GetDirListing( sDir+sFileName+"*",		matches, false, true );
+
+	if( matches.empty() )
+		return RString();
+
+	if( matches.size() > 1 )
+	{
+		RString sError = "Multiple files match '"+sDir+sFileName+"'.  Please remove all but one of these files: ";
+		sError+= join(", ", matches);
+		LuaHelpers::ReportScriptError(sError, "NOTESKIN_ERROR");
+	}
+
+	return matches[0];
+}
+
 // lua start
 #include "LuaBinding.h"
 

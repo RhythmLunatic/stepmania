@@ -80,6 +80,7 @@ struct SSCLoader : public SMLoader
 	void ProcessStops( TimingData &, const RString );
 	void ProcessWarps( TimingData &, const RString, const float );
 	void ProcessLabels( TimingData &, const RString );
+	void ProcessNoteskins( vector<RString>&, const RString );
 	virtual void ProcessCombos( TimingData &, const RString, const int = -1 );
 	void ProcessScrolls( TimingData &, const RString );
 };

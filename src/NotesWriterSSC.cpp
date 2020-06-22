@@ -363,6 +363,9 @@ static RString GetSSCNoteData( const Song &song, const Steps &in, bool bSavingCa
 	lines.push_back( ssprintf( "#CHARTSTYLE:%s;", SmEscape(in.GetChartStyle()).c_str() ) );
 	lines.push_back( ssprintf( "#DIFFICULTY:%s;", DifficultyToString(in.GetDifficulty()).c_str() ) );
 	lines.push_back( ssprintf( "#METER:%d;", in.GetMeter() ) );
+	//Have to cache this because noteskin override data needs to be loaded from the start
+	//because if it wasn't cached it would be loaded after the note receptors are created
+	lines.push_back( ssprintf( "#NOTESKINS:%s;", join(",",in.m_sForcedNoteskins).c_str()));
 
 	const RString& music= in.GetMusicFile();
 	if(!music.empty())

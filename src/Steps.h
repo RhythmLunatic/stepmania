@@ -106,6 +106,12 @@ public:
 	 */
 	RString GetCredit() const			{ return Real()->m_sCredit; }
 
+	//vector<RString> GetForcedNoteskins() const { return m_sForcedNoteskins; }
+	//void SetForcedNoteskins( vector<RString> forcedNoteskins ) { m_sForcedNoteskins = forcedNoteskins; }
+	//List of forced noteskins
+	vector<RString> m_sForcedNoteskins;
+	bool HasForcedNoteskins() const { return !m_sForcedNoteskins.empty(); }
+
 	/** @brief The list of attacks. */
 	AttackArray m_Attacks;
 	/** @brief The stringified list of attacks. */

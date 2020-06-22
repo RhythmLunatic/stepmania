@@ -172,6 +172,31 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 					tn = TAP_ORIGINAL_TAP;
 
 					break;
+                //StepF2 notes.
+                case 'X':
+                    tn = TAP_ORIGINAL_TAP;
+                    tn.noteskinNumber = 1;
+                    break;
+                case 'x':
+                    tn = TAP_ORIGINAL_HOLD_HEAD;
+                    tn.noteskinNumber = 1;
+                    break;
+                case 'Y':
+                    tn = TAP_ORIGINAL_TAP;
+                    tn.noteskinNumber = 2;
+                    break;
+                case 'y':
+                    tn = TAP_ORIGINAL_HOLD_HEAD;
+                    tn.noteskinNumber = 2;
+                    break;
+                case 'Z':
+                    tn = TAP_ORIGINAL_TAP;
+                    tn.noteskinNumber = 3;
+                    break;
+                case 'z':
+                    tn = TAP_ORIGINAL_HOLD_HEAD;
+                    tn.noteskinNumber = 3;
+                    break;
 				case '2':
 				case '4':
 				// case 'N': // minefield
@@ -2947,7 +2972,7 @@ void NoteDataUtil::AddTapAttacks( NoteData &nd, Song* pSong )
 			TapNoteSource_Original, 
 			szAttacks[RandomInt(ARRAYLEN(szAttacks))],
 			15.0f, 
-			-1 );
+			-1);
 		nd.SetTapNote( iTrack, BeatToNoteRow(fBeat), tn );
 	}
 	nd.RevalidateATIs(vector<int>(), false);

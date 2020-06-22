@@ -25,6 +25,7 @@ struct StepsTagInfo
 	Song* song;
 	Steps* steps;
 	TimingData* timing;
+	//vector<RString> forcedNoteskins;
 	const MsdFile::value_t* params;
 	const RString& path;
 	bool has_own_timing;
@@ -58,6 +59,7 @@ enum LoadNoteDataTagIDs
 	LNDID_difficulty,
 	LNDID_meter,
 	LNDID_credit,
+	LNDID_noteskins,
 	LNDID_notes,
 	LNDID_notes2,
 	LNDID_notedata
@@ -489,6 +491,13 @@ void SetStepsLabels(StepsTagInfo& info)
 	}
 	info.ssc_format= true;
 }
+
+void SetStepsNoteskins(StepsTagInfo& info)
+{
+    info.loader->ProcessNoteskins(info.steps->m_sForcedNoteskins, (*info.params)[1]);
+    info.ssc_format= true;
+}
+
 void SetStepsAttacks(StepsTagInfo& info)
 {
 	if(info.song->m_fVersion >= VERSION_SPLIT_TIMING || info.for_load_edit)
@@ -626,6 +635,7 @@ struct ssc_parser_helper_t
 		steps_tag_handlers["ATTACKS"]= &SetStepsAttacks;
 		steps_tag_handlers["OFFSET"]= &SetStepsOffset;
 		steps_tag_handlers["DISPLAYBPM"]= &SetStepsDisplayBPM;
+        steps_tag_handlers["NOTESKINS"]=&SetStepsNoteskins;
 
 		load_note_data_handlers["VERSION"]= LNDID_version;
 		load_note_data_handlers["STEPSTYPE"]= LNDID_stepstype;
@@ -637,6 +647,7 @@ struct ssc_parser_helper_t
 		load_note_data_handlers["NOTES"]= LNDID_notes;
 		load_note_data_handlers["NOTES2"]= LNDID_notes2;
 		load_note_data_handlers["NOTEDATA"]= LNDID_notedata;
+		//load_note_data_handlers["NOTESKINS"] = LNDID_noteskins;
 	}
 };
 ssc_parser_helper_t parser_helper;
@@ -780,6 +791,27 @@ void SSCLoader::ProcessLabels( TimingData &out, const RString sParam )
 	}
 }
 
+void SSCLoader::ProcessNoteskins( vector<RString> &out, const RString sParam )
+{
+    split( sParam, ",", out );
+
+    // If odd and greater than 1
+    // Maybe it's not needed? I say it should either be one forced noteskin (For singleplayer)
+    // or however many is needed for multiplayer routine so each player loads
+    // the same number of noteskins.
+    // Ex. Regular routine chart, #NOTESKINS:rio-perfor-p1,rio-perfor-p2,rio-perfor-p3,perfor-p4
+    // Then Player 1 gets perfor1 and perfor2 and player 2 gets perfor3 and perfor4 and that's how you'd do CO-OP 4X
+    // There won't be any limit on how many noteskins you can have loaded as long as it's even (PIU stops at 6 players)
+    if (out.size() > 1 && out.size() & 1)
+    {
+        LOG->UserLog("Song file",
+                     this->GetSongTitle(),
+                     "has an invalid #NOTESKINS value \"%s\" (must be an even number of noteskins), ignored.",
+                     sParam.c_str() );
+        out.clear();
+    }
+}
+
 void SSCLoader::ProcessCombos( TimingData &out, const RString line, const int rowsPerBeat )
 {
 	vector<RString> arrayComboExpressions;
@@ -897,6 +929,10 @@ bool SSCLoader::LoadNoteDataFromSimfile( const RString & cachePath, Steps &out )
 						else if(out.GetDescription() != matcher)
 						{ tryingSteps = false; }
 						break;
+                    //Doing it here is a bad idea. LNDID isn't processed until after the notefield is drawn.
+				    /*case LNDID_noteskins:
+                        ProcessNoteskins(out.m_sForcedNoteskins, matcher);
+                        break;*/
 					case LNDID_difficulty:
 						// Accept any difficulty if it's an edit because LoadEditFromMsd
 						// forces edits onto Edit difficulty even if they have a difficulty
@@ -1009,6 +1045,7 @@ bool SSCLoader::LoadFromSimfile( const RString &sPath, Song &out, bool bFromCach
 			}
 			case GETTING_STEP_INFO:
 			{
+				//Load all those tags!
 				reused_steps_info.params= &sParams;
 				steps_handler_map_t::iterator handler=
 					parser_helper.steps_tag_handlers.find(sValueName);

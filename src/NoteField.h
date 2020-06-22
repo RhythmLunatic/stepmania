@@ -66,6 +66,7 @@ public:
 
 protected:
 	void CacheNoteSkin( const RString &sNoteSkin );
+    void CacheNoteSkin( vector<RString> noteSkinsToLoad );
 	void UncacheNoteSkin( const RString &sNoteSkin );
 
 	bool IsOnScreen( float fBeat, int iCol, int iDrawDistanceAfterTargetsPixels, int iDrawDistanceBeforeTargetsPixels ) const;

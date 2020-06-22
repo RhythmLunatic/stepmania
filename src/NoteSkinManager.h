@@ -60,6 +60,8 @@ protected:
 
 extern NoteSkinManager*	NOTESKIN;	// global and accessible from anywhere in our program
 
+//Used in for loops to prevent NOTESKIN->SetCurrentNoteSkin being called in code and causing it to be changed halfway through...
+
 class LockNoteSkin
 {
 public:
@@ -67,6 +69,35 @@ public:
 	~LockNoteSkin() { NOTESKIN->SetCurrentNoteSkin( RString() ); }
 };
 
+
+// IT'S A NOTESKIN AND UNLIKE NSMAN IT DOESN'T CHANGE ITS STATE
+// YOU CREATE THE NOTESKIN OBJECT. IT HOLDS A NOTESKIN. THE NOTESKIN DOESN'T CHANGE. THAT'S ALL YOU NEED!!!!!!!!!!!!!!!
+// -Rhythm Lunatic
+class NoteSkin
+{
+public:
+
+	explicit NoteSkin(const RString &NoteSkin, PlayerNumber playerNumber = PlayerNumber_Invalid, GameController gameController = GameController_Invalid );
+	const RString &GetName() { return m_sCurrentNoteSkin; }
+	const RString &GetNameLower() { return m_sCurrentNoteSkinLowercase; }
+
+	RString		GetMetric( const RString &sButtonName, const RString &sValue );
+	int		GetMetricI( const RString &sButtonName, const RString &sValueName );
+	float		GetMetricF( const RString &sButtonName, const RString &sValueName );
+	bool		GetMetricB( const RString &sButtonName, const RString &sValueName );
+	apActorCommands	GetMetricA( const RString &sButtonName, const RString &sValueName );
+	RString GetPath( const RString &sButtonName, const RString &sElement );
+	bool PushActorTemplate( Lua *L, const RString &sButton, const RString &sElement, bool bSpriteOnly );
+	Actor *LoadActor( const RString &sButton, const RString &sElement, Actor *pParent = NULL, bool bSpriteOnly = false );
+	RString GetPathFromDirAndFile( const RString &sDir, const RString &sFileName );
+private:
+	RString m_sCurrentNoteSkin;
+	RString m_sCurrentNoteSkinLowercase;
+
+	//These two are only ever used for lua within noteskins and has no effect on the game engine.
+	PlayerNumber m_PlayerNumber;
+	GameController m_GameController;
+};
 
 #endif
 

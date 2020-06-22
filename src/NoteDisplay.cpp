@@ -412,8 +412,9 @@ NoteDisplay::~NoteDisplay()
 	delete cache;
 }
 
-void NoteDisplay::Load( int iColNum, const PlayerState* pPlayerState, float fYReverseOffsetPixels )
+void NoteDisplay::Load(unsigned char noteskinNum, int iColNum, const PlayerState* pPlayerState, float fYReverseOffsetPixels )
 {
+	m_pnNoteskinNumber = noteskinNum;
 	m_pPlayerState = pPlayerState;
 	m_fYReverseOffsetPixels = fYReverseOffsetPixels;
 
@@ -1163,8 +1164,8 @@ void NoteDisplay::DrawHold(const TapNote& tn,
 	const NoteColumnRenderArgs& column_args, int iRow, bool bIsBeingHeld,
 	const HoldNoteResult &Result, bool bIsAddition, float fPercentFadeToFail)
 {
-	//Don't render invisible notes.
-	if ( tn.appearance == TapNoteAppearance_Stealth )
+	//Don't render invisible notes. Don't render notes not for this noteskin.
+	if ( tn.appearance == TapNoteAppearance_Stealth || tn.noteskinNumber != m_pnNoteskinNumber)
 		return;
 
 	int iEndRow = iRow + tn.iDuration;
@@ -1373,8 +1374,11 @@ void NoteDisplay::DrawTap(const TapNote& tn,
 	bool bIsAddition, float fPercentFadeToFail)
 {
     //Don't render invisible notes.
-    if ( tn.appearance == TapNoteAppearance_Stealth )
+	if (tn.noteskinNumber > 0)
+		LOG->Trace("alt noteskin %i, this noteskin is %i",tn.noteskinNumber,m_pnNoteskinNumber);
+    if ( tn.appearance == TapNoteAppearance_Stealth || tn.noteskinNumber != m_pnNoteskinNumber)
         return;
+
 
 	Actor* pActor = NULL;
 	NotePart part = NotePart_Tap;
@@ -1532,6 +1536,7 @@ void NoteColumnRenderer::UpdateReceptorGhostStuff(Actor* receptor) const
 	receptor->SetInternalGlow(m_column_render_args.glow);
 }
 
+//Called within NoteField::DrawPrimitives near the end
 void NoteColumnRenderer::DrawPrimitives()
 {
 	m_column_render_args.song_beat= m_field_render_args->player_state->GetDisplayedPosition().m_fSongBeatVisible;

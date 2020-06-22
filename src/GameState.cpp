@@ -2005,6 +2005,7 @@ void GameState::GetAllUsedNoteSkins( vector<RString> &out ) const
 {
 	FOREACH_EnabledPlayer( pn )
 	{
+	    //TODO: If forced noteskins was used there's no need to load current noteskin since it's never used
 		out.push_back( m_pPlayerState[pn]->m_PlayerOptions.GetCurrent().m_sNoteSkin );
 
 		// Add noteskins that are used in courses.
@@ -2019,9 +2020,27 @@ void GameState::GetAllUsedNoteSkins( vector<RString> &out ) const
 				po.FromString( e->Modifiers );
 				if( !po.m_sNoteSkin.empty() )
 					out.push_back( po.m_sNoteSkin );
+
+                //If the #NOTESKINS tag was used, load those too (For course mode)
+                for ( auto &noteskin : e->pSteps->m_sForcedNoteskins)
+                {
+                    out.push_back(noteskin);
+                }
 			}
 		}
+		else
+        {
+            //If the #NOTESKINS tag was used, load those too
+            for ( auto &noteskin : m_pCurSteps[pn]->m_sForcedNoteskins)
+            {
+                out.push_back(noteskin);
+            }
+		}
+
+
+
 	}
+
 
 	// Remove duplicates.
 	sort( out.begin(), out.end() );

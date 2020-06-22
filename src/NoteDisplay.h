@@ -180,7 +180,7 @@ public:
 	NoteDisplay();
 	~NoteDisplay();
 
-	void Load( int iColNum, const PlayerState* pPlayerState, float fYReverseOffsetPixels );
+	void Load(unsigned char noteskinNum, int iColNum, const PlayerState* pPlayerState, float fYReverseOffsetPixels );
 
 	static void Update( float fDeltaTime );
 
@@ -216,6 +216,8 @@ public:
 
 	bool DrawHoldHeadForTapsOnSameRow() const;
 	bool DrawRollHeadForTapsOnSameRow() const;
+
+	unsigned char GetPNNoteskinNum() { return m_pnNoteskinNumber; }
 
 private:
 	void SetActiveFrame( float fNoteBeat, Actor &actorToSet, float fAnimationLength, bool bVivid );
@@ -276,6 +278,8 @@ private:
 	NoteColorSprite		m_HoldBottomCap[NUM_HoldType][NUM_ActiveType];
 	NoteColorActor		m_HoldTail[NUM_HoldType][NUM_ActiveType];
 	float			m_fYReverseOffsetPixels;
+
+	unsigned char             m_pnNoteskinNumber; //PIU has multiple noteskins per player.
 };
 
 // So, this is a bit screwy, and it's partly because routine forces rendering
