@@ -62,6 +62,11 @@ public:
 
 	// m_ColumnRenderers belongs in the protected section, but it's here in
 	// public so that the Lua API can access it. -Kyz
+	// This holds all the columns that need rendering.
+	// From NoteDisplay.h:
+	// NoteColumnRenderer exists to hold all the data needed for rendering a
+	// column and apply any transforms from that column's actor to the
+	// NoteDisplays that render the notes.
 	vector<NoteColumnRenderer> m_ColumnRenderers;
 
 protected:
@@ -97,10 +102,10 @@ protected:
 	// This exists so that the board can be drawn underneath combo/judge. -Kyz
 	bool m_drawing_board_primitive;
 
-	// color arrows
+	//A struct which holds all the columns needed for a player
 	struct NoteDisplayCols
 	{
-		NoteDisplay		*display;
+		NoteDisplay		*display; //This is an array...
 		ReceptorArrowRow	m_ReceptorArrowRow;
 		GhostArrowRow		m_GhostArrowRow;
 		NoteDisplayCols( int iNumCols ) { display = new NoteDisplay[iNumCols]; }
@@ -109,10 +114,27 @@ protected:
 
 	NoteFieldRenderArgs m_FieldRenderArgs;
 
-	/* All loaded note displays, mapped by their name. */
+	/* All loaded note displays, mapped by their name.
+	 * I don't know why.
+	 */
 	map<RString, NoteDisplayCols *> m_NoteDisplays;
-	NoteDisplayCols		*m_pCurDisplay;
-	NoteDisplayCols		*m_pDisplays[NUM_PlayerNumber];
+
+	//Pointer to the current player's note displays. Kind of. vectors & arrays are already pointers
+	//so there's no need for *, you can just assign m_pCurDisplays = m_pDisplays[PLAYER_1]
+	//vector<NoteDisplayCols*>		m_pCurDisplays;
+	NoteDisplayCols* m_pCurDisplay;
+
+	/* An array of vectors.
+	 * It looks like this:
+	 * m_pDisplays
+	 * {
+	 *     PLAYER_1 = {NoteDisplayCols1, NoteDisplayCols2, etc},
+	 *     PLAYER_2 = {NoteDisplayCols1, NoteDisplayCols2, etc}
+	 * }
+	 */
+	//vector<NoteDisplayCols*>		m_pDisplays[NUM_PlayerNumber];
+
+	NoteDisplayCols* m_pDisplays[NUM_PlayerNumber];
 
 	// decorations, mostly used in MODE_EDIT
 	AutoActor	m_sprBoard;

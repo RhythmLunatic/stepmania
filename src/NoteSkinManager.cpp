@@ -10,7 +10,6 @@
 #include "RageDisplay.h"
 #include "arch/Dialog/Dialog.h"
 #include "PrefsManager.h"
-#include "Foreach.h"
 #include "ActorUtil.h"
 #include "XmlFileUtil.h"
 #include "Sprite.h"
@@ -311,7 +310,7 @@ RString NoteSkinManager::GetMetric( const RString &sButtonName, const RString &s
 
 int NoteSkinManager::GetMetricI( const RString &sButtonName, const RString &sValueName )
 {
-	return StringToInt( GetMetric(sButtonName,sValueName) );
+	return std::stoi( GetMetric(sButtonName,sValueName) );
 }
 
 float NoteSkinManager::GetMetricF( const RString &sButtonName, const RString &sValueName )
@@ -322,7 +321,7 @@ float NoteSkinManager::GetMetricF( const RString &sButtonName, const RString &sV
 bool NoteSkinManager::GetMetricB( const RString &sButtonName, const RString &sValueName )
 {
 	// Could also call GetMetricI here...hmm.
-	return StringToInt( GetMetric(sButtonName,sValueName) ) != 0;
+	return std::stoi( GetMetric(sButtonName,sValueName) ) != 0;
 }
 
 apActorCommands NoteSkinManager::GetMetricA( const RString &sButtonName, const RString &sValueName )
@@ -349,22 +348,22 @@ RString NoteSkinManager::GetPath( const RString &sButtonName, const RString &sEl
 	const NoteSkinData &data = iter->second;
 
 	RString sPath;	// fill this in below
-	FOREACH_CONST( RString, data.vsDirSearchOrder, lIter )
+	for (RString const &directory : data.vsDirSearchOrder)
 	{
 		if( sButtonName.empty() )
-			sPath = GetPathFromDirAndFile( *lIter, sElement );
+			sPath = GetPathFromDirAndFile( directory, sElement );
 		else
-			sPath = GetPathFromDirAndFile( *lIter, sButtonName+" "+sElement );
+			sPath = GetPathFromDirAndFile( directory, sButtonName+" "+sElement );
 		if( !sPath.empty() )
 			break;	// done searching
 	}
 
 	if( sPath.empty() )
 	{
-		FOREACH_CONST( RString, data.vsDirSearchOrder, lIter )
+		for (RString const &directory : data.vsDirSearchOrder)
 		{
 			if( !sButtonName.empty() )
-				sPath = GetPathFromDirAndFile( *lIter, "Fallback "+sElement );
+				sPath = GetPathFromDirAndFile( directory, "Fallback "+sElement );
 			if( !sPath.empty() )
 				break;	// done searching
 		}
@@ -373,12 +372,13 @@ RString NoteSkinManager::GetPath( const RString &sButtonName, const RString &sEl
 	if( sPath.empty() )
 	{
 		RString sPaths;
-		FOREACH_CONST( RString, data.vsDirSearchOrder, dir )
+		// TODO: Find a more elegant way of doing this.
+		for (RString const &dir : data.vsDirSearchOrder)
 		{
 			if( !sPaths.empty() )
 				sPaths += ", ";
 
-			sPaths += *dir;
+			sPaths += dir;
 		}
 
 		RString message = ssprintf(

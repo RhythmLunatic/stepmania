@@ -25,6 +25,7 @@
 #include "CharacterManager.h"
 #include "NetworkSyncManager.h"
 #include "MsdFile.h"
+#include "ver.h"
 
 ProfileManager*	PROFILEMAN = NULL;	// global and accessible from anywhere in our program
 static Preference<RString> pScoreBroadcastURL("ScoreBroadcastURL", "");
@@ -972,8 +973,13 @@ void ProfileManager::AddStepsScore( const Song* pSong, const Steps* pSteps, Play
 			RString sArtist = URLEncode(pSong->GetDisplayArtist(), true);
 			RString sDir(URLEncode(pSong->GetSongDir()));
 
+			//Difficulty is irrelevant in PIU so meter is better. Unless we have two songs with the same meter. In which case I hope that never ever happens. -RL
+			std::sprintf(temp, "%d", pSteps->GetMeter());
+			RString sDifficultyNum = URLEncode(temp);
+
 			std::sprintf(temp, "%d", pSteps->GetDifficulty());
 			RString sDifficulty = URLEncode(temp);
+
 
 			StepsType st = pSteps->m_StepsType;
 			RString sStepType = "0";
@@ -1000,6 +1006,8 @@ void ProfileManager::AddStepsScore( const Song* pSong, const Steps* pSteps, Play
 			RString sGrade = URLEncode(temp);
 			std::sprintf(temp, "%f", hs.GetPercentDP());
 			RString sPercent = URLEncode(temp);
+			std::sprintf(temp, "%d", hs.GetMaxCombo());
+			RString sMaxCombo = URLEncode(temp);
 
 			std::sprintf(temp, "%d", hs.GetScore());
 			RString sScore = URLEncode(temp);
@@ -1008,8 +1016,21 @@ void ProfileManager::AddStepsScore( const Song* pSong, const Steps* pSteps, Play
 			sprintf(temp, "%d", GAMESTATE->GetNumSidesJoined());
 			RString sNumPlayers = URLEncode(temp);
 
+
+			std::sprintf(temp, "%d", hs.GetTapNoteScore(TNS_W1));
+			RString sNumPerfects = URLEncode(temp);
+			std::sprintf(temp, "%d", hs.GetTapNoteScore(TNS_W2));
+			RString sNumGreats = URLEncode(temp);
+			std::sprintf(temp, "%d", hs.GetTapNoteScore(TNS_W3));
+			RString sNumGoods = URLEncode(temp);
+			std::sprintf(temp, "%d", hs.GetTapNoteScore(TNS_W4));
+			RString sNumBads = URLEncode(temp);
+			std::sprintf(temp, "%d", hs.GetTapNoteScore(TNS_Miss));
+			RString sNumMisses = URLEncode(temp);
+
+
 			//if we have a valid profile and it was loaded from usb, populate player guid
-			if (pProfile && PROFILEMAN->ProfileWasLoadedFromMemoryCard(pn))
+			if (pProfile /*&& PROFILEMAN->ProfileWasLoadedFromMemoryCard(pn)*/)
 			{
 				sPlayerGUID = URLEncode(PROFILEMAN->GetProfile(pn)->m_sGuid);
 			}
@@ -1025,14 +1046,14 @@ void ProfileManager::AddStepsScore( const Song* pSong, const Steps* pSteps, Play
 				sMD5Sum.append(sMachineGUID);
 			}
 			sMD5Sum = URLEncode(NSMAN->MD5Hex(sMD5Sum));
-			RString sDataToSend = "machineguid=" + sMachineGUID + "&path=" + sDir + "&sscfilemd5=" + sMD5Sum + "&title=" + sTitle + "&artist=" + sArtist + "&playerguid=" + sPlayerGUID + "&eventmode=" + sEventMode + "&difficulty=" + sDifficulty + "&steptype=" + sStepType + "&name=" + sHSName + "&score=" + sScore + "&percent=" + sPercent + "&grade=" + sGrade + "&numplayers=" + sNumPlayers;
+			RString sDataToSend = "machineguid=" + sMachineGUID + "&gameversion="+ RString(product_version) +"&path=" + sDir + "&sscfilemd5=" + sMD5Sum + "&title=" + sTitle + "&artist=" + sArtist + "&playerguid=" + sPlayerGUID + "&eventmode=" + sEventMode + "&difficulty=" + sDifficulty + + "&sdifficultynum= " + sDifficultyNum + "&steptype=" + sStepType + "&name=" + sHSName + "&score=" + sScore + "&percent=" + sPercent + "&perfects=" + sNumPerfects + "&greats=" + sNumGreats + "&goods=" + sNumGoods + "&bads="+ sNumBads + "&misses=" + sNumMisses + "&maxcombo=" + sMaxCombo;
 
-			//LOG->Info("ProfileManager::AddStepsScore Want to send %s to %s",sDataToSend.c_str(), m_sScoreBroadcastURL.c_str());
+			LOG->Info("ProfileManager::AddStepsScore Want to send %s to %s",sDataToSend.c_str(), m_sScoreBroadcastURL.c_str());
 
 			m_ScoreBroadcastHTTP->Threaded_SubmitPostRequest(m_sScoreBroadcastURL, sDataToSend);
-			//LOG->Info("ProfileManager::AddStepsScore sent!!");
-			//RString res = m_ScoreBroadcastHTTP->GetThreadedResult();
-			//LOG->Info("ProfileManager::AddStepsScore res: %s",res.c_str());
+			LOG->Info("ProfileManager::AddStepsScore sent!!");
+			RString res = m_ScoreBroadcastHTTP->GetThreadedResult();
+			LOG->Info("ProfileManager::AddStepsScore res: %s",res.c_str());
 
 
 		}
