@@ -190,7 +190,10 @@ void NoteField::CacheAllUsedNoteSkins()
 		s->MakeLower();
 	}
 
-	vector<RString> forcedNoteskins = GAMESTATE->m_pCurSteps[m_pPlayerState->m_PlayerNumber]->m_sForcedNoteskins;
+	//StepMania will segfault in course mode because there are no CurSteps... I'll have to figure it out later.
+	vector<RString> forcedNoteskins;
+	if (!GAMESTATE->IsCourseMode())
+		forcedNoteskins = GAMESTATE->m_pCurSteps[m_pPlayerState->m_PlayerNumber]->m_sForcedNoteskins;
 	if (!forcedNoteskins.empty())
     {
         CacheNoteSkin(forcedNoteskins);
