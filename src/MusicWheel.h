@@ -52,7 +52,7 @@ public:
 
 	virtual void ReloadSongList();
 
-	void GetCurrentSections(vector<RString> &sections);
+	void GetCurrentSections(vector<RString> &sections, vector<int> &sectionCounts);
 	// Lua
 	void PushSelf( lua_State *L );
 

@@ -1623,14 +1623,16 @@ void MusicWheel::SetOpenSection( RString group )
 }
 
 //TODO: Maybe optimize and use an array instead. Need to check later.
-void MusicWheel::GetCurrentSections(vector<RString> &sections)
+void MusicWheel::GetCurrentSections(vector<RString> &sections, vector<int> &sectionCounts)
 {
 	vector<MusicWheelItemData *> &wiWheelItems = getWheelItemsData(GAMESTATE->m_SortOrder);
 	for( unsigned i = 0; i < wiWheelItems.size(); i++ )
 	{
-		//MusicWheelItemData &d = *from[i];
 		if ( wiWheelItems[i]->m_Type == WheelItemDataType_Section && !wiWheelItems[i]->m_sText.empty())
-			sections.push_back(wiWheelItems[i]->m_sText);
+        {
+            sections.push_back(wiWheelItems[i]->m_sText);
+            sectionCounts.push_back(wiWheelItems[i]->m_iSectionCount);
+        }
 	}
 }
 
@@ -1867,8 +1869,25 @@ public:
 	static int GetCurrentSections( T* p, lua_State *L )
 	{
 		vector<RString> v;
-		p->GetCurrentSections(v);
-		LuaHelpers::CreateTableFromArray<RString>( v, L );
+		vector<int> vi;
+		p->GetCurrentSections(v,vi);
+		int size = (int)vi.size();
+
+        //I have no idea what this does, I took it from get_coefficients
+        //Create table to hold tables
+		lua_createtable(L, size,0);
+		for (size_t i = 0; i < size; ++i)
+        {
+		    lua_createtable(L, 2, 0); //Create table inside the table
+		    lua_pushstring(L, v[i]);
+			lua_rawseti(L, -2, 1);
+		    lua_pushnumber(L, vi[i]);
+			lua_rawseti(L, -2, 2);
+			
+		    lua_rawseti(L, -2, i+1);
+        }
+
+		//LuaHelpers::CreateTableFromArray<RString>( v, L );
 		return 1;
 	
 	}
