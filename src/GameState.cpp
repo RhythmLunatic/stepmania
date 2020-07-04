@@ -2022,10 +2022,10 @@ void GameState::GetAllUsedNoteSkins( vector<RString> &out ) const
 					out.push_back( po.m_sNoteSkin );
 
                 //If the #NOTESKINS tag was used, load those too (For course mode)
-                for ( auto &noteskin : e->pSteps->m_sForcedNoteskins)
+                /*for ( auto &noteskin : e->pSteps->m_sForcedNoteskins)
                 {
                     out.push_back(noteskin);
-                }
+                }*/
 			}
 		}
 		else

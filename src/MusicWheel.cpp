@@ -1878,13 +1878,16 @@ public:
 		lua_createtable(L, size,0);
 		for (size_t i = 0; i < size; ++i)
         {
-		    lua_createtable(L, 2, 0); //Create table inside the table
-		    lua_pushstring(L, v[i]);
-			lua_rawseti(L, -2, 1);
-		    lua_pushnumber(L, vi[i]);
-			lua_rawseti(L, -2, 2);
+			//Create table inside the table.
+			// I think the size is required in advance for rawseti to know what index to put the pushed thing into.
 			
-		    lua_rawseti(L, -2, i+1);
+		    lua_createtable(L, 2, 0);
+		    lua_pushstring(L, v[i]);
+			lua_rawseti(L, -2, 1); //It's setting the string to index 1 of the table here
+		    lua_pushnumber(L, vi[i]);
+			lua_rawseti(L, -2, 2); //And now index 2
+
+		    lua_rawseti(L, -2, i+1); //Since the previous table was size 2 it's pushing the created table into the index of the previously made table?
         }
 
 		//LuaHelpers::CreateTableFromArray<RString>( v, L );
