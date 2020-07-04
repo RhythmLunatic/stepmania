@@ -170,6 +170,7 @@ void NoteField::UncacheNoteSkin( const RString &sNoteSkin_ )
 }
 
 //This function really isn't a good idea since it just loads columns for every noteskin...
+//Idk why but this function is also called from Player::CacheAllUsedNoteSkins()
 void NoteField::CacheAllUsedNoteSkins()
 {
 	// If we're in Routine mode, apply our per-player noteskins.
@@ -248,16 +249,17 @@ void NoteField::CacheAllUsedNoteSkins()
 		map<RString, NoteDisplayCols *>::iterator it = m_NoteDisplays.find( sCurrentNoteSkinLower );
 		ASSERT_M( it != m_NoteDisplays.end(), sCurrentNoteSkinLower );
 		m_pCurDisplay = it->second;
+		//LOG->Trace("Assigned NoteSkin %s to m_pCurDisplay",it->first.c_str());
 		memset( m_pDisplays, 0, sizeof(m_pDisplays) );
 
 		FOREACH_EnabledPlayer( pn )
 		{
-			RString sNoteSkinLower = GAMESTATE->m_pPlayerState[pn]->m_PlayerOptions.GetCurrent().m_sNoteSkin;
-			NOTESKIN->ValidateNoteSkinName(sNoteSkinLower);
-			sNoteSkinLower.MakeLower();
-			it = m_NoteDisplays.find( sNoteSkinLower );
-			ASSERT_M( it != m_NoteDisplays.end(), sNoteSkinLower );
-			m_pDisplays[pn] = it->second;
+            RString sNoteSkinLower = GAMESTATE->m_pPlayerState[pn]->m_PlayerOptions.GetCurrent().m_sNoteSkin;
+            NOTESKIN->ValidateNoteSkinName(sNoteSkinLower);
+            sNoteSkinLower.MakeLower();
+            it = m_NoteDisplays.find( sNoteSkinLower );
+            ASSERT_M( it != m_NoteDisplays.end(), sNoteSkinLower );
+            m_pDisplays[pn] = it->second;
 		}
 	}
 
@@ -265,6 +267,12 @@ void NoteField::CacheAllUsedNoteSkins()
 	InitColumnRenderers();
 }
 
+/*
+ * 1. Init function called
+ * 2. All noteskins are loaded with CacheAllUsedNoteSkins()
+ * 3. Load is called at some point afterwards from Player or ScreenEdit and the NoteField is set up
+ * 4. Column Renderers are set up from InitColumnRenderers()
+ */
 void NoteField::Init( const PlayerState* pPlayerState, float fYReverseOffsetPixels, bool use_states_zoom )
 {
 	m_pPlayerState = pPlayerState;
@@ -366,6 +374,26 @@ void NoteField::ensure_note_displays_have_skin()
 		it = m_NoteDisplays.find( sNoteSkinLower );
 		ASSERT_M( it != m_NoteDisplays.end(), sNoteSkinLower );
 		m_pDisplays[pn] = it->second;
+        //LOG->Trace("Assigned NoteSkin %s to %s",it->first.c_str(),PlayerNumberToString(m_pPlayerState->m_PlayerNumber).c_str());
+
+		//Hack to fix forced noteskins in courses
+		//This wastes CPU so don't try it -RL
+		if (GAMESTATE->IsCourseMode())
+		{
+			FOREACH_CONST( TrailEntry, GAMESTATE->m_pCurTrail[pn]->m_vEntries, e )
+			{
+				PlayerOptions po;
+				po.FromString( e->Modifiers );
+				if( !po.m_sNoteSkin.empty() )
+				{
+				    sNoteSkinLower = po.m_sNoteSkin;
+                    sNoteSkinLower.MakeLower();
+                    it = m_NoteDisplays.find( sNoteSkinLower );
+					m_pCurDisplay = it->second; //Assign the forced noteskin
+					break;
+				}
+			}
+		}
 	}
 }
 

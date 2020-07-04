@@ -1509,7 +1509,8 @@ bool ScreenSelectMusic::MenuStart( const InputEventPlus &input )
 
 		//If we picked a routine steps, force enable p3 and p4
 		//Only check if more than one player is joined. Since both p1 and p2 have to select the same steps for routine let's just check p1 instead of master player
-		if (GAMESTATE->GetNumSidesJoined() > 1 && GAMEMAN->GetStepsTypeInfo(GAMESTATE->m_pCurSteps[PLAYER_1]->m_StepsType).m_StepsTypeCategory == StepsTypeCategory_Routine)
+		//Also don't check in course mode because in course mode there's no routines... I hope... God help me if there is, let's just pretend routine in course mode isn't supported
+		if (!GAMESTATE->IsCourseMode() && GAMESTATE->GetNumSidesJoined() > 1 && GAMEMAN->GetStepsTypeInfo(GAMESTATE->m_pCurSteps[PLAYER_1]->m_StepsType).m_StepsTypeCategory == StepsTypeCategory_Routine)
 		{
 			GAMESTATE->JoinPlayer(PLAYER_3);
 			GAMESTATE->JoinPlayer(PLAYER_4);
