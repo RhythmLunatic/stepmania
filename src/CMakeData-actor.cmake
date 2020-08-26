@@ -17,6 +17,7 @@ list(APPEND SMDATA_ACTOR_BASE_SRC
   "Quad.cpp"
   "RollingNumbers.cpp"
   "Sprite.cpp"
+        "SpriteAsync.cpp"
   "Tween.cpp"
 )
 list(APPEND SMDATA_ACTOR_BASE_HPP
@@ -38,6 +39,7 @@ list(APPEND SMDATA_ACTOR_BASE_HPP
   "Quad.h"
   "RollingNumbers.h"
   "Sprite.h"
+        "SpriteAsync.h"
   "Tween.h"
 )
 

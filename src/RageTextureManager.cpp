@@ -170,6 +170,8 @@ RageTexture* RageTextureManager::LoadTextureInternal( RageTextureID ID )
 	}
 	else
 	{
+	    //Loading is done inside here:
+	    // The constructor calls the Create() function of the class
 		pTexture = new RageBitmapTexture( ID );
 	}
 

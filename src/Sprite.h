@@ -100,7 +100,7 @@ public:
 	bool m_use_effect_clock_for_texcoords;
 
 protected:
-	void LoadFromTexture( RageTextureID ID );
+	virtual void LoadFromTexture( RageTextureID ID );
 
 private:
 	void LoadStatesFromTexture();

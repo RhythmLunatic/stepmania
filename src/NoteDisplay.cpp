@@ -390,7 +390,10 @@ void NoteColumnRenderArgs::SetPRZForActor(Actor* actor,
 	const RageVector3& sp_rot, const RageVector3& ae_rot,
 	const RageVector3& sp_zoom, const RageVector3& ae_zoom) const
 {
+    //sp_pos is never set, so whatever it was meant for doesn't do anything. ae_pos is the Vector3 that matters.
 	actor->SetX(sp_pos.x + ae_pos.x);
+	//if (ae_pos.x > 50)
+	//	actor->SetX(rand() % 500);
 	actor->SetY(sp_pos.y + ae_pos.y);
 	actor->SetZ(sp_pos.z + ae_pos.z);
 	actor->SetRotationX(sp_rot.x * PI_180R + ae_rot.x);
@@ -1324,6 +1327,11 @@ void NoteDisplay::DrawActor(const TapNote& tn, Actor* pActor, NotePart part,
 			break;
 	}
 	column_args.spae_zoom_for_beat(m_pPlayerState, spline_beat, sp_zoom, ae_zoom, column_args.column, fYOffset);
+
+	//musWave meme
+	//sp_pos.x is never used so don't worry about this breaking anything.
+	sp_pos.x = ((int)tn.xOffset) * 10;
+
 	column_args.SetPRZForActor(pActor, sp_pos, ae_pos, sp_rot, ae_rot, sp_zoom, ae_zoom);
 	// [AJ] this two lines (and how they're handled) piss off many people:
 	pActor->SetDiffuse( diffuse );
@@ -1373,10 +1381,14 @@ void NoteDisplay::DrawTap(const TapNote& tn,
 	bool bOnSameRowAsHoldStart, bool bOnSameRowAsRollStart,
 	bool bIsAddition, float fPercentFadeToFail)
 {
+
+    //Multiple noteskins isn't working so don't bother
+	/*if (tn.noteskinNumber > 0)
+		LOG->Trace("alt noteskin %i, this noteskin is %i",tn.noteskinNumber,m_pnNoteskinNumber);*/
+
     //Don't render invisible notes.
-	if (tn.noteskinNumber > 0)
-		LOG->Trace("alt noteskin %i, this noteskin is %i",tn.noteskinNumber,m_pnNoteskinNumber);
-    if ( tn.appearance == TapNoteAppearance_Stealth || tn.noteskinNumber != m_pnNoteskinNumber)
+    // || tn.noteskinNumber != m_pnNoteskinNumber
+    if ( tn.appearance == TapNoteAppearance_Stealth )
         return;
 
 

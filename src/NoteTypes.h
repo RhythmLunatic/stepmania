@@ -144,7 +144,7 @@ struct TapNote
 	TapNoteType		type;
 	/** @brief The sub type of the note. This is only used if the type is hold_head. */
 	TapNoteSubType		subType;
-	/** @brief the appearance of the note, for pump. Only used if there is an apperance attribute. */
+	/** @brief the appearance of the note, for pump. If an attribute is set it can be hidden,sudden,or stealth. */
 	TapNoteAppearance appearance;
 	/** @brief The originating source of the TapNote. */
 	TapNoteSource		source;
@@ -158,6 +158,9 @@ struct TapNote
 	// Which noteskin to use if there are forced noteskins in this steps.
 	// automatically determined for holds.
     unsigned char noteskinNumber;
+
+    //musWave meme
+    signed char xOffset;
 
 	// used only if Type == attack:
 	RString		sAttackModifiers;
@@ -187,6 +190,7 @@ struct TapNote
 		source = TapNoteSource_Original;
 		//appearance= TapNoteAppearance_Invalid; //No need since it defaults to Normal anyways
 		noteskinNumber = 0;
+		xOffset = 0;
 		pn = PLAYER_INVALID, 
 		fAttackDurationSeconds = 0.f; 
 		iKeysoundIndex = -1;

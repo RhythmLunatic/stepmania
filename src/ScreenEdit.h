@@ -61,6 +61,17 @@ enum EditButton
 	EDIT_BUTTON_CYCLE_TAP_LEFT, /**< Rotate the available tap notes once to the "left". */
 	EDIT_BUTTON_CYCLE_TAP_RIGHT, /**< Rotate the available tap notes once to the "right". */
 
+	// Change the note appearance between hidden, sudden, or stealth
+	EDIT_BUTTON_CYCLE_APPEARANCE_LEFT,
+	EDIT_BUTTON_CYCLE_APPEARANCE_RIGHT,
+
+	//Press key to switch between fake notes or real ones
+	EDIT_BUTTON_CHANGE_JUDGE_TYPE,
+
+	//musWave meme
+	EDIT_BUTTON_DECREASE_XOFFSET,
+	EDIT_BUTTON_INCREASE_XOFFSET,
+
 	EDIT_BUTTON_CYCLE_SEGMENT_LEFT, /**< Select one segment to the left for jumping. */
 	EDIT_BUTTON_CYCLE_SEGMENT_RIGHT, /**< Select one segment to the right for jumping. */
 	

@@ -170,6 +170,7 @@ RageTextureID Sprite::SongBannerTexture( RageTextureID ID )
 	return ID;
 }
 
+// :thinking: Unload is never called... So what happens when you call Load multiple times in a row? -RL
 void Sprite::Load( RageTextureID ID )
 {
 	if( !ID.filename.empty() ) 
@@ -356,6 +357,7 @@ void Sprite::LoadFromTexture( RageTextureID ID )
 	// LOG->Trace( "Sprite::LoadFromTexture( %s )", ID.filename.c_str() );
 
 	RageTexture *pTexture = NULL;
+	//Check if the texture we are loading is not the same as the texture currently set to this sprite
 	if( m_pTexture && m_pTexture->GetID() == ID )
 		pTexture = m_pTexture;
 	else

@@ -121,34 +121,52 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 				   https://github.com/rhythmlunatic/stepmania/wiki/Note-Types#stepf2-notes
 				   */
 				bool hasStepF2Annotation = ch == '{';
-				char StepF2NoteAppearance, StepF2FakeBit, SF2UnknownBit;
+				char StepF2NoteAppearance, StepF2FakeBit;
+				signed char SF2UnknownBit;
 
 				if(hasStepF2Annotation)
 				{
-					const char* separator = p + 2;
-					const char* annotationEnd = p + 4;
+					const char* separator = p + 2; //The first separator in "{a|b|c|d}"
+					const char* annotationEnd = p + 4; //Check if string is "{a|b}" ?
 
 					if(annotationEnd < endLine && *separator == '|' && *annotationEnd == '}')
 					{
 						ch = *(p + 1);
-						StepF2NoteAppearance = *(p + 3);
+						StepF2NoteAppearance = *(p + 3); //Get char three past p (so 'b' in {a|b})
 						StepF2FakeBit = '0';
-						SF2UnknownBit = '0';
+						SF2UnknownBit = 0;
 						p = annotationEnd;
 					}
 					else
 					{
 						const char* separator2 = p + 4;
 						const char* separator3 = p + 6;
-						annotationEnd = p + 8;
+						//annotationEnd = p + 8;
 
-						if(annotationEnd < endLine && *separator == '|' && *separator2 == '|' && *separator3 == '|' && *annotationEnd == '}')
+						//Sanity checking
+						//Due to using the 4th bit as free data containing possible data from -127 to 127, we can't assume it ends at p+8
+						// && *annotationEnd == '}'
+						if(annotationEnd < endLine && *separator == '|' && *separator2 == '|' && *separator3 == '|')
 						{
 							ch = *(p + 1);
 							StepF2NoteAppearance = *(p + 3);
 							StepF2FakeBit = *(p + 5);
-							SF2UnknownBit = *(p + 7);
-							p = annotationEnd;
+
+							//Scan until we find the end tag
+							unsigned char endTagOffset = 7; //Start at 7 so we know the size of the 4th bit... This probably isn't a good idea
+							while (*(p+endTagOffset) != '}') //Normally it's at p+8 but the size of the SF2UnknownBit can be up to 4 characters long ("-127" to "127")
+							{
+								if (endTagOffset > 7+4) //If we've scanned past the max size of a string "{a|b|c|-ddd}" give up
+								{
+									isBadLine = true;
+									break;
+								}
+								endTagOffset+=1;
+							}
+							std::string unknownBitString = std::string(p+7,p+endTagOffset);
+							SF2UnknownBit = std::stoi(unknownBitString);
+
+							p = p+endTagOffset;
 						}
 						else
 						{
@@ -158,8 +176,8 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
 					}
 				}
 
-				if(hasStepF2Annotation && SF2UnknownBit != '0')
-					isBadLine = true;
+				/*if(hasStepF2Annotation && SF2UnknownBit != '0')
+					isBadLine = true;*/
 
 				switch( ch )
 				{
@@ -297,6 +315,8 @@ static void LoadFromSMNoteDataStringWithPlayer( NoteData& out, const RString &sS
                             isBadLine = true;
                             break;
                     }
+
+					tn.xOffset = SF2UnknownBit;
                 }
 
 
@@ -527,7 +547,6 @@ void NoteDataUtil::GetSMNoteDataString( const NoteData &in, RString &sRet )
 			{
 				for( int t = 0; t < nd->GetNumTracks(); ++t )
 				{
-					//TODO: Save SF2 notes
 					const TapNote &tn = nd->GetTapNote(t, r);
 					char c;
 					switch( tn.type )
@@ -556,7 +575,25 @@ void NoteDataUtil::GetSMNoteDataString( const NoteData &in, RString &sRet )
 						c = '\0';
 						FAIL_M(ssprintf("Invalid tap note type: %i", tn.type));
 					}
-					sRet.append( 1, c );
+
+					//Check for SF2 attributes
+					if (tn.isFakeNote || tn.appearance != TapNoteAppearance_Normal || tn.xOffset != 0)
+					{
+						char c2;
+						switch (tn.appearance)
+						{
+							case TapNoteAppearance_Normal: c2 = 'n'; break;
+							case TapNoteAppearance_Hidden: c2 = 'v'; break;
+							case TapNoteAppearance_Sudden: c2 = 's'; break;
+							case TapNoteAppearance_Stealth: c2 = 'h'; break;
+							default:
+								FAIL_M(ssprintf("Invalid tap note appearance: %i", tn.appearance));
+
+						}
+						sRet.append( ssprintf("{%c|%c|%i|%i}",c,c2,tn.isFakeNote,tn.xOffset) );
+					}
+					else
+						sRet.append( 1, c );
 
 					if( tn.type == TapNoteType_Attack )
 					{

@@ -51,7 +51,8 @@ Rave It Out is 100% open source. There is no encryption. There are no binary blo
 For specific information/legalese:
 
 * Arduino card reader code written by Alex123123
-* All of the StepMania source code is under the [MIT license](http://opensource.org/licenses/MIT).
+* ~~All of the StepMania source code is under the [MIT license](http://opensource.org/licenses/MIT).~~
+* StepMania-RaveItOut is currently GPLv3. It may be relicensed when encryption is added.
 * The wiki is [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 * The [MAD library](http://www.underbit.com/products/mad/) and [FFmpeg codecs](https://www.ffmpeg.org/) when built with our code use the [GPL license](http://www.gnu.org).
 

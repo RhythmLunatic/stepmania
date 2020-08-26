@@ -152,6 +152,15 @@ void ScreenEdit::InitEditMappings()
 	name_to_edit_button["CYCLE_TAP_LEFT"]= EDIT_BUTTON_CYCLE_TAP_LEFT;
 	name_to_edit_button["CYCLE_TAP_RIGHT"]= EDIT_BUTTON_CYCLE_TAP_RIGHT;
 
+	name_to_edit_button["CYCLE_APPEARANCE_LEFT"] = EDIT_BUTTON_CYCLE_APPEARANCE_LEFT;
+	name_to_edit_button["CYCLE_APPEARANCE_RIGHT"] = EDIT_BUTTON_CYCLE_APPEARANCE_RIGHT;
+
+	name_to_edit_button["CHANGE_JUDGE_TYPE"] = EDIT_BUTTON_CHANGE_JUDGE_TYPE;
+
+	//musWave meme
+	name_to_edit_button["DECREASE_XOFFSET"] = EDIT_BUTTON_DECREASE_XOFFSET;
+	name_to_edit_button["INCREASE_XOFFSET"] = EDIT_BUTTON_INCREASE_XOFFSET;
+
 	name_to_edit_button["CYCLE_SEGMENT_LEFT"]= EDIT_BUTTON_CYCLE_SEGMENT_LEFT;
 	name_to_edit_button["CYCLE_SEGMENT_RIGHT"]= EDIT_BUTTON_CYCLE_SEGMENT_RIGHT;
 
@@ -428,6 +437,15 @@ void ScreenEdit::InitEditMappings()
 	m_EditMappingsDeviceInput.button[EDIT_BUTTON_CYCLE_TAP_LEFT][0] = DeviceInput(DEVICE_KEYBOARD, KEY_Cn);
 	m_EditMappingsDeviceInput.button[EDIT_BUTTON_CYCLE_TAP_RIGHT][0] = DeviceInput(DEVICE_KEYBOARD, KEY_Cm);
 
+	m_EditMappingsDeviceInput.button[EDIT_BUTTON_CYCLE_APPEARANCE_LEFT][0] = DeviceInput(DEVICE_KEYBOARD, KEY_Cj);
+	m_EditMappingsDeviceInput.button[EDIT_BUTTON_CYCLE_APPEARANCE_RIGHT][0] = DeviceInput(DEVICE_KEYBOARD, KEY_Ck);
+
+	m_EditMappingsDeviceInput.button[EDIT_BUTTON_CHANGE_JUDGE_TYPE][0] = DeviceInput(DEVICE_KEYBOARD, KEY_Cf);
+
+	//musWave meme
+	m_EditMappingsDeviceInput.button[EDIT_BUTTON_DECREASE_XOFFSET][0] = DeviceInput(DEVICE_KEYBOARD, KEY_Cz);
+	m_EditMappingsDeviceInput.button[EDIT_BUTTON_INCREASE_XOFFSET][0] = DeviceInput(DEVICE_KEYBOARD, KEY_Cx);
+
 	m_EditMappingsDeviceInput.button[EDIT_BUTTON_CYCLE_SEGMENT_LEFT][0] = DeviceInput(DEVICE_KEYBOARD, KEY_Cn);
 	m_EditMappingsDeviceInput.hold[EDIT_BUTTON_CYCLE_SEGMENT_LEFT][0] = DeviceInput(DEVICE_KEYBOARD, KEY_LCTRL);
 	m_EditMappingsDeviceInput.hold[EDIT_BUTTON_CYCLE_SEGMENT_LEFT][1] = DeviceInput(DEVICE_KEYBOARD, KEY_RCTRL);
@@ -436,7 +454,7 @@ void ScreenEdit::InitEditMappings()
 	m_EditMappingsDeviceInput.hold[EDIT_BUTTON_CYCLE_SEGMENT_RIGHT][0] = DeviceInput(DEVICE_KEYBOARD, KEY_LCTRL);
 	m_EditMappingsDeviceInput.hold[EDIT_BUTTON_CYCLE_SEGMENT_RIGHT][1] = DeviceInput(DEVICE_KEYBOARD, KEY_RCTRL);
 	
-	m_EditMappingsDeviceInput.button    [EDIT_BUTTON_SCROLL_SPEED_UP][0] = DeviceInput(DEVICE_KEYBOARD, KEY_UP);
+	m_EditMappingsDeviceInput.button[EDIT_BUTTON_SCROLL_SPEED_UP][0] = DeviceInput(DEVICE_KEYBOARD, KEY_UP);
 	m_EditMappingsDeviceInput.hold[EDIT_BUTTON_SCROLL_SPEED_UP][0] = DeviceInput(DEVICE_KEYBOARD, KEY_LCTRL);
 	m_EditMappingsDeviceInput.hold[EDIT_BUTTON_SCROLL_SPEED_UP][1] = DeviceInput(DEVICE_KEYBOARD, KEY_RCTRL);
 
@@ -2213,6 +2231,54 @@ bool ScreenEdit::InputEdit( const InputEventPlus &input, EditButton EditB )
 			}
 			return true;
 		}
+	case EDIT_BUTTON_CYCLE_APPEARANCE_LEFT:
+	{
+		switch (m_selectedTap.appearance)
+		{
+			case TapNoteAppearance_Normal: m_selectedTap.appearance = TapNoteAppearance_Hidden; break;
+			case TapNoteAppearance_Hidden: m_selectedTap.appearance = TapNoteAppearance_Sudden; break;
+			case TapNoteAppearance_Sudden: m_selectedTap.appearance = TapNoteAppearance_Stealth; break;
+			case TapNoteAppearance_Stealth: m_selectedTap.appearance = TapNoteAppearance_Normal; break;
+			DEFAULT_FAIL( m_selectedTap.appearance );
+		}
+		return true;
+	}
+	case EDIT_BUTTON_CYCLE_APPEARANCE_RIGHT:
+	{
+		switch (m_selectedTap.appearance)
+		{
+			case TapNoteAppearance_Normal: m_selectedTap.appearance = TapNoteAppearance_Stealth; break;
+			case TapNoteAppearance_Stealth: m_selectedTap.appearance = TapNoteAppearance_Sudden; break;
+			case TapNoteAppearance_Sudden: m_selectedTap.appearance = TapNoteAppearance_Hidden; break;
+			case TapNoteAppearance_Hidden: m_selectedTap.appearance = TapNoteAppearance_Normal; break;
+			DEFAULT_FAIL( m_selectedTap.appearance );
+		}
+		return true;
+	}
+	case EDIT_BUTTON_CHANGE_JUDGE_TYPE:
+	{
+		m_selectedTap.isFakeNote = !m_selectedTap.isFakeNote;
+		return true;
+	}
+	//musWave meme
+    case EDIT_BUTTON_DECREASE_XOFFSET:
+    {
+        if (m_selectedTap.xOffset == -127)
+            m_selectedTap.xOffset = 127;
+        else
+            m_selectedTap.xOffset--;
+		//LOG->Trace("%i",m_selectedTap.xOffset);
+        return true;
+    }
+    case EDIT_BUTTON_INCREASE_XOFFSET:
+    {
+        if (m_selectedTap.xOffset == 127)
+            m_selectedTap.xOffset = -127;
+        else
+            m_selectedTap.xOffset++;
+		//LOG->Trace("%i",m_selectedTap.xOffset);
+        return true;
+    }
 	case EDIT_BUTTON_CYCLE_SEGMENT_LEFT:
 	{
 		int tmp = enum_add2( this->currentCycleSegment, -1 );
