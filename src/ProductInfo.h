@@ -8,7 +8,7 @@
  *
  * As an example, use "StepMania" here, not "StepMania4".
  */
-#define PRODUCT_FAMILY_BARE StepMania
+#define PRODUCT_FAMILY_BARE StepMania-RaveItOut
 
 /**
  * @brief A unique name for each application that you might want installed side-by-side with other applications.
@@ -16,7 +16,7 @@
  * As an example, use "StepMania4" here, not "StepMania".
  * It would cause a conflict with older versions such as StepMania 3.X.
  */
-#define PRODUCT_ID_BARE StepMania 5.1
+#define PRODUCT_ID_BARE StepMania-RaveItOut
 
 // These cannot be #undef'd so make them unlikely to conflict with anything
 #define PRODUCT_STRINGIFY(x) #x
@@ -27,8 +27,8 @@
 
 #define VIDEO_TROUBLESHOOTING_URL "http://old.stepmania.com/stepmaniawiki.php?title=Video_Driver_Troubleshooting"
 /** @brief The URL to report bugs on the program. */
-#define REPORT_BUG_URL "https://github.com/stepmania/stepmania/issues"
-#define SM_DOWNLOAD_URL "https://www.stepmania.com/download/"
+#define REPORT_BUG_URL "https://github.com/RhythmLunatic/stepmania/issues"
+#define SM_DOWNLOAD_URL "https://github.com/RhythmLunatic/stepmania"
 
 #define CAN_INSTALL_PACKAGES true
 
