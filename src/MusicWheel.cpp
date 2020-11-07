@@ -1868,10 +1868,10 @@ public:
 	DEFINE_METHOD(GetSelectedSection, GetSelectedSection());
 	static int GetCurrentSections( T* p, lua_State *L )
 	{
-		vector<RString> v;
-		vector<int> vi;
-		p->GetCurrentSections(v,vi);
-		int size = (int)vi.size();
+		vector<RString> sections; //vector of the names of sections
+		vector<int> sectionCounts; //vector of number of songs in each section
+		p->GetCurrentSections(sections,sectionCounts);
+		int size = (int)sectionCounts.size();
 
         //I have no idea what this does, I took it from get_coefficients
         //Create table to hold tables
@@ -1882,15 +1882,15 @@ public:
 			// I think the size is required in advance for rawseti to know what index to put the pushed thing into.
 			
 		    lua_createtable(L, 2, 0);
-		    lua_pushstring(L, v[i]);
+		    lua_pushstring(L, sections[i]);
 			lua_rawseti(L, -2, 1); //It's setting the string to index 1 of the table here
-		    lua_pushnumber(L, vi[i]);
+		    lua_pushnumber(L, sectionCounts[i]);
 			lua_rawseti(L, -2, 2); //And now index 2
 
 		    lua_rawseti(L, -2, i+1); //Since the previous table was size 2 it's pushing the created table into the index of the previously made table?
         }
 
-		//LuaHelpers::CreateTableFromArray<RString>( v, L );
+		//LuaHelpers::CreateTableFromArray<RString>( sections, L );
 		return 1;
 	
 	}

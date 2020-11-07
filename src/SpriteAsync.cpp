@@ -1,5 +1,7 @@
 //
 // "I don't understand polymorphism or C++" - Rhythm Lunatic
+// "Who needs thread safety" - Rhythm Lunatic
+// "Why does the game keep crashing on the music wheel" - Rhythm Lunatic
 //
 #include "global.h"
 #include <cassert>
@@ -380,6 +382,7 @@ void SpriteAsync::Load( RageTextureID ID)
         else
         {
             //pTexture = TEXTUREMAN->LoadTexture( ID );
+            //std::thread threadObj(LoadFromTexture, ID);
             LoadFromTexture(ID);
             LoadStatesFromTexture();
         }

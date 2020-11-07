@@ -137,7 +137,11 @@ public:
 	 * @return the metric's value. */
 	const T& GetValue() const
 	{
+#if defined(DEBUG)
+	    ASSERT_M(m_sName != "","Attempted to obtain a blank metric. You probably forgot to run the Init() function of the base class when making a derived one!");
+#else
 		ASSERT( m_sName != "" );
+#endif
 		ASSERT_M( m_Value.IsSet(), m_sGroup + " " + m_sName );
 
 		if( m_bCallEachTime )
