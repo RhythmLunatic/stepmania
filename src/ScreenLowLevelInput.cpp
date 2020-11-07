@@ -64,15 +64,17 @@ void ScreenLowLevelInput::Update( float fDeltaTime)
         Lua* L= LUA->Get();
 
         //Push the input callback onto the stack
-        inputCallback.PushSelf(L); //-3
+        inputCallback.PushSelf(L); //-4
 
-        LuaHelpers::CreateTableFromArray<RString>( mappedInputArray, L ); //-2
-        LuaHelpers::CreateTableFromArray<RString>( rawInputArray, L ); //-1
+
+        LuaHelpers::CreateTableFromArray<RString>( mappedInputArray, L ); //-3
+        LuaHelpers::CreateTableFromArray<RString>( rawInputArray, L ); //-2
+        lua_pushnumber(L, fDeltaTime); //-1
 
         RString error= "Error running input callback: ";
         //bool LuaHelpers::RunScriptOnStack( Lua *L, RString &Error, int Args, int ReturnValues, bool ReportError )
         //it runs whatever is on the stack at position numargs-1, so -3 in this case
-        LuaHelpers::RunScriptOnStack(L, error, 2, 1, true);
+        LuaHelpers::RunScriptOnStack(L, error, 3, 1, true);
         //pop inputCallback from stack (arrays are already popped after being used for RunScriptOnStack)
         lua_pop(L, 1);
 
