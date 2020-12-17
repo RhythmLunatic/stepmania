@@ -50,7 +50,7 @@ static const StepsTypeInfo g_StepsTypeInfos[] = {
 	// dance
 	{ "dance-single",	4,	true,	StepsTypeCategory_Single },
 	{ "dance-double",	8,	true,	StepsTypeCategory_Double },
-    //{ "dance-quad",     16, true,   StepsTypeCategory_Quad   },
+    { "dance-quad",     16, true,   StepsTypeCategory_Quad   },
 	{ "dance-couple",	8,	true,	StepsTypeCategory_Couple },
 	{ "dance-solo",		6,	true,	StepsTypeCategory_Single },
 	{ "dance-threepanel",	3,	true,	StepsTypeCategory_Single }, // thanks to kurisu
@@ -256,7 +256,7 @@ static const Style g_Style_Dance_Double =
 	false, // m_bLockDifficulties
 };
 
-/*static const Style g_Style_Dance_Quad =
+static const Style g_Style_Dance_Quad =
 {	// STYLE_DANCE_DOUBLE
         true,				// m_bUsedForGameplay
         true,				// m_bUsedForEdit
@@ -265,39 +265,55 @@ static const Style g_Style_Dance_Double =
         "quad",			// m_szName
         StepsType_dance_quad,	// m_StepsType
         StyleType_OnePlayerFourSides,		// m_StyleType
-        8,				// m_iColsPerPlayer
+        16,				// m_iColsPerPlayer
         {	// m_ColumnInfo[NUM_PLAYERS][MAX_COLS_PER_PLAYER];
                 {	// PLAYER_1
-                        { TRACK_1,	-DANCE_COL_SPACING*3.5f, NULL },
-                        { TRACK_2,	-DANCE_COL_SPACING*2.5f, NULL },
-                        { TRACK_3,	-DANCE_COL_SPACING*1.5f, NULL },
-                        { TRACK_4,	-DANCE_COL_SPACING*0.5f, NULL },
-                        { TRACK_5,	+DANCE_COL_SPACING*0.5f, NULL },
-                        { TRACK_6,	+DANCE_COL_SPACING*1.5f, NULL },
-                        { TRACK_7,	+DANCE_COL_SPACING*2.5f, NULL },
-                        { TRACK_8,	+DANCE_COL_SPACING*3.5f, NULL },
+                        { TRACK_1,	-DANCE_COL_SPACING*7.5f, NULL },
+                        { TRACK_2,	-DANCE_COL_SPACING*6.5f, NULL },
+                        { TRACK_3,	-DANCE_COL_SPACING*5.5f, NULL },
+                        { TRACK_4,	-DANCE_COL_SPACING*4.5f, NULL },
+                        { TRACK_5,	-DANCE_COL_SPACING*3.5f, NULL },
+                        { TRACK_6,	-DANCE_COL_SPACING*2.5f, NULL },
+                        { TRACK_7,	-DANCE_COL_SPACING*1.5f, NULL },
+                        { TRACK_8,	-DANCE_COL_SPACING*0.5f, NULL },
+                        { TRACK_9,	+DANCE_COL_SPACING*0.5f, NULL },
+                        { TRACK_10,	+DANCE_COL_SPACING*1.5f, NULL },
+                        { TRACK_11,	+DANCE_COL_SPACING*2.5f, NULL },
+                        { TRACK_12,	+DANCE_COL_SPACING*3.5f, NULL },
+                        { TRACK_13,	+DANCE_COL_SPACING*4.5f, NULL },
+                        { TRACK_14,	+DANCE_COL_SPACING*5.5f, NULL },
+                        { TRACK_15,	+DANCE_COL_SPACING*6.5f, NULL },
+                        { TRACK_16,	+DANCE_COL_SPACING*7.5f, NULL },
                 },
                 {	// PLAYER_2
-                        { TRACK_1,	-DANCE_COL_SPACING*3.5f, NULL },
-                        { TRACK_2,	-DANCE_COL_SPACING*2.5f, NULL },
-                        { TRACK_3,	-DANCE_COL_SPACING*1.5f, NULL },
-                        { TRACK_4,	-DANCE_COL_SPACING*0.5f, NULL },
-                        { TRACK_5,	+DANCE_COL_SPACING*0.5f, NULL },
-                        { TRACK_6,	+DANCE_COL_SPACING*1.5f, NULL },
-                        { TRACK_7,	+DANCE_COL_SPACING*2.5f, NULL },
-                        { TRACK_8,	+DANCE_COL_SPACING*3.5f, NULL },
+                        { TRACK_1,	-DANCE_COL_SPACING*7.5f, NULL },
+                        { TRACK_2,	-DANCE_COL_SPACING*6.5f, NULL },
+                        { TRACK_3,	-DANCE_COL_SPACING*5.5f, NULL },
+                        { TRACK_4,	-DANCE_COL_SPACING*4.5f, NULL },
+                        { TRACK_5,	-DANCE_COL_SPACING*3.5f, NULL },
+                        { TRACK_6,	-DANCE_COL_SPACING*2.5f, NULL },
+                        { TRACK_7,	-DANCE_COL_SPACING*1.5f, NULL },
+                        { TRACK_8,	-DANCE_COL_SPACING*0.5f, NULL },
+                        { TRACK_9,	+DANCE_COL_SPACING*0.5f, NULL },
+                        { TRACK_10,	+DANCE_COL_SPACING*1.5f, NULL },
+                        { TRACK_11,	+DANCE_COL_SPACING*2.5f, NULL },
+                        { TRACK_12,	+DANCE_COL_SPACING*3.5f, NULL },
+                        { TRACK_13,	+DANCE_COL_SPACING*4.5f, NULL },
+                        { TRACK_14,	+DANCE_COL_SPACING*5.5f, NULL },
+                        { TRACK_15,	+DANCE_COL_SPACING*6.5f, NULL },
+                        { TRACK_16,	+DANCE_COL_SPACING*7.5f, NULL },
                 },
         },
-        {	// m_iInputColumn[NUM_GameController][NUM_GameButton]
-                { 0, 3, 2, 1, Style::END_MAPPING },
-                { 4, 7, 6, 5, Style::END_MAPPING }
+        {    // m_iInputColumn[NUM_GameController][NUM_GameButton]
+                {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, Style::END_MAPPING},
+                {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, Style::END_MAPPING},
         },
         {	// m_iColumnDrawOrder[MAX_COLS_PER_PLAYER];
-                0,1,2,3,4,5,6,7
+                0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
         },
         false, // m_bCanUseBeginnerHelper
         false, // m_bLockDifficulties
-};*/
+};
 
 static const Style g_Style_Dance_Couple =
 {	// STYLE_DANCE_COUPLE
@@ -535,6 +551,7 @@ static const Style *g_apGame_Dance_Styles[] =
 	&g_Style_Dance_Single,
 	&g_Style_Dance_Versus,
 	&g_Style_Dance_Double,
+	&g_Style_Dance_Quad,
 	&g_Style_Dance_Couple,
 	&g_Style_Dance_Solo,
 	&g_Style_Dance_Couple_Edit,

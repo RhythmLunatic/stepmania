@@ -77,7 +77,7 @@ enum StepsType
 {
 	StepsType_dance_single = 0,
 	StepsType_dance_double,
-	//StepsType_dance_quad,
+	StepsType_dance_quad,
 	StepsType_dance_couple,
 	StepsType_dance_solo,
 	StepsType_dance_threepanel,
@@ -565,7 +565,7 @@ enum StyleType
 	StyleType_OnePlayerOneSide,		/**< Single style */
 	StyleType_TwoPlayersTwoSides,		/**< Versus style */
 	StyleType_OnePlayerTwoSides,		/**< Double style */
-	//StyleType_OnePlayerFourSides,		/**< Quad style */
+	StyleType_OnePlayerFourSides,		/**< Quad style */
 	StyleType_TwoPlayersSharedSides,	/**< Routine style */
 	NUM_StyleType,
 	StyleType_Invalid
