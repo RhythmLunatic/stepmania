@@ -1779,7 +1779,9 @@ bool GameState::IsHumanPlayer( PlayerNumber pn ) const
 		return true;
 	case StyleType_OnePlayerOneSide:
 	case StyleType_OnePlayerTwoSides:
+#if defined(FOUR_PLAYERS)
 	case StyleType_OnePlayerFourSides:
+#endif
 		return pn == this->GetMasterPlayerNumber();
 	default:
 		FAIL_M(ssprintf("Invalid style type: %i", type));
@@ -2032,10 +2034,11 @@ void GameState::GetAllUsedNoteSkins( vector<RString> &out ) const
 		else
         {
             //If the #NOTESKINS tag was used, load those too
-            for ( auto &noteskin : m_pCurSteps[pn]->m_sForcedNoteskins)
+            //TODO: It crashes because m_sForcedNoteskins wasn't init? Whatever just disable it
+            /*for ( auto &noteskin : m_pCurSteps[pn]->m_sForcedNoteskins)
             {
                 out.push_back(noteskin);
-            }
+            }*/
 		}
 
 

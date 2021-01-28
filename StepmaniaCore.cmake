@@ -187,6 +187,11 @@ if(WITH_SECRET)
   set(HAS_SECRET TRUE)
 endif()
 
+if(WITH_FOURPLAYERS)
+  message(STATUS "Compiling with 4-player support.")
+  set(FOUR_PLAYERS TRUE)
+endif()
+
 if(NOT WITH_GPL_LIBS)
   message("Disabling GPL exclusive libraries: no MP3 support.")
   set(WITH_MP3 OFF)

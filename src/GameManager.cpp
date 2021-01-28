@@ -50,7 +50,9 @@ static const StepsTypeInfo g_StepsTypeInfos[] = {
 	// dance
 	{ "dance-single",	4,	true,	StepsTypeCategory_Single },
 	{ "dance-double",	8,	true,	StepsTypeCategory_Double },
+#if defined(FOUR_PLAYERS)
     { "dance-quad",     16, true,   StepsTypeCategory_Quad   },
+#endif
 	{ "dance-couple",	8,	true,	StepsTypeCategory_Couple },
 	{ "dance-solo",		6,	true,	StepsTypeCategory_Single },
 	{ "dance-threepanel",	3,	true,	StepsTypeCategory_Single }, // thanks to kurisu
@@ -256,6 +258,7 @@ static const Style g_Style_Dance_Double =
 	false, // m_bLockDifficulties
 };
 
+#if defined(FOUR_PLAYERS)
 static const Style g_Style_Dance_Quad =
 {	// STYLE_DANCE_DOUBLE
         true,				// m_bUsedForGameplay
@@ -314,6 +317,7 @@ static const Style g_Style_Dance_Quad =
         false, // m_bCanUseBeginnerHelper
         false, // m_bLockDifficulties
 };
+#endif
 
 static const Style g_Style_Dance_Couple =
 {	// STYLE_DANCE_COUPLE
@@ -551,7 +555,9 @@ static const Style *g_apGame_Dance_Styles[] =
 	&g_Style_Dance_Single,
 	&g_Style_Dance_Versus,
 	&g_Style_Dance_Double,
+#if defined(FOUR_PLAYERS)
 	&g_Style_Dance_Quad,
+#endif
 	&g_Style_Dance_Couple,
 	&g_Style_Dance_Solo,
 	&g_Style_Dance_Couple_Edit,

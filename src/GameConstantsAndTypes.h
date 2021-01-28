@@ -67,7 +67,9 @@ enum StepsTypeCategory
 {
 	StepsTypeCategory_Single,  /**< One person plays on one side. */
 	StepsTypeCategory_Double,  /**< One person plays on both sides. */
+#if defined(FOUR_PLAYERS)
 	StepsTypeCategory_Quad,     /**< One person plays on four sides. */
+#endif
 	StepsTypeCategory_Couple,  /**< Two players play on their own side. */
 	StepsTypeCategory_Routine, /**< Two players share both sides together. */
 };
@@ -77,7 +79,9 @@ enum StepsType
 {
 	StepsType_dance_single = 0,
 	StepsType_dance_double,
+#if defined(FOUR_PLAYERS)
 	StepsType_dance_quad,
+#endif
 	StepsType_dance_couple,
 	StepsType_dance_solo,
 	StepsType_dance_threepanel,
@@ -565,7 +569,9 @@ enum StyleType
 	StyleType_OnePlayerOneSide,		/**< Single style */
 	StyleType_TwoPlayersTwoSides,		/**< Versus style */
 	StyleType_OnePlayerTwoSides,		/**< Double style */
+#if defined(FOUR_PLAYERS)
 	StyleType_OnePlayerFourSides,		/**< Quad style */
+#endif
 	StyleType_TwoPlayersSharedSides,	/**< Routine style */
 	NUM_StyleType,
 	StyleType_Invalid

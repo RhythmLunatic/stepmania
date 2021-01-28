@@ -51,7 +51,12 @@ void Style::StyleInputToGameInput( int iCol, PlayerNumber pn, vector<GameInput>&
 {
 	ASSERT_M( pn < NUM_PLAYERS  &&  iCol < MAX_COLS_PER_PLAYER,
 		ssprintf("P%i C%i", pn, iCol) );
-	bool bUsingOneSide = m_StyleType != StyleType_OnePlayerTwoSides && m_StyleType != StyleType_TwoPlayersSharedSides && m_StyleType != StyleType_OnePlayerFourSides;
+
+#if defined(FOUR_PLAYERS)
+    bool bUsingOneSide = m_StyleType != StyleType_OnePlayerTwoSides && m_StyleType != StyleType_TwoPlayersSharedSides && m_StyleType != StyleType_OnePlayerFourSides;
+#else
+	bool bUsingOneSide = m_StyleType != StyleType_OnePlayerTwoSides && m_StyleType != StyleType_TwoPlayersSharedSides;
+#endif
 
 	FOREACH_ENUM( GameController, gc)
 	{
