@@ -883,6 +883,7 @@ void Song::TidyUpData( bool from_cache, bool /* duringCache */ )
 			bool has_cdimage= HasCDImage();
 			bool has_disc= HasDisc();
 			bool has_cdtitle= HasCDTitle();
+			bool has_preview = HasPreviewVid();
 
 			// First, check the file name for hints.
 			if(!m_bHasBanner)
@@ -949,6 +950,14 @@ void Song::TidyUpData( bool from_cache, bool /* duringCache */ )
 				vector<RString> contains(1, "cdtitle");
 				has_cdtitle= FindFirstFilenameContaining(image_list,
 					m_sCDTitleFile, empty_list, contains, empty_list);
+			}
+
+			if(!has_preview)
+			{
+				// find a video file with "preview" in the file name
+				vector<RString> contains(1, "preview");
+				has_preview= FindFirstFilenameContaining(movie_list,
+														 m_sPreviewVidFile, empty_list, contains, empty_list);
 			}
 
 			/* Now, For the images we still haven't found,
@@ -1094,6 +1103,7 @@ void Song::TidyUpData( bool from_cache, bool /* duringCache */ )
 			CLEAR_NOT_HAS(has_cdimage, m_sCDFile);
 			CLEAR_NOT_HAS(has_disc, m_sDiscFile);
 			CLEAR_NOT_HAS(has_cdtitle, m_sCDTitleFile);
+			CLEAR_NOT_HAS(has_preview, m_sPreviewVidFile);
 #undef CLEAR_NOT_HAS
 		}
 		// Don't allow multiple Steps of the same StepsType and Difficulty
@@ -1888,6 +1898,10 @@ RString Song::GetCDImagePath() const
 
 RString Song::GetPreviewVidPath() const
 {
+	//Check RIO SongPreviews folder first just in case..
+	RString sRelPath = "/SongPreviews/"+m_sPreviewVidFile;
+	if( DoesFileExist(sRelPath) )
+		return sRelPath;
 	return GetSongAssetPath( m_sPreviewVidFile, m_sSongDir );
 }
 
