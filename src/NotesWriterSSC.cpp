@@ -258,6 +258,16 @@ static void WriteGlobalTags( RageFile &f, const Song &out )
 	}
 	f.PutLine( ";" );
 
+	//Only write if override is present.
+	switch(out.m_SongLengthOverride)
+	{
+		case Song::length_shortcut: f.PutLine("#SONGTYPE:SHORTCUT;"); break;
+		case Song::length_normal: f.PutLine("#SONGTYPE:ARCADE;"); break;
+		case Song::length_remix: f.PutLine("#SONGTYPE:REMIX;"); break;
+		case Song::length_long: f.PutLine("#SONGTYPE:FULLSONG;"); break;
+		case Song::length_marathon: f.PutLine("#SONGTYPE:MUSICTRAIN;"); break;
+	}
+
 	switch( out.m_DisplayBPMType )
 	{
 		case DISPLAY_BPM_ACTUAL:

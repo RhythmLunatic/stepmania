@@ -208,6 +208,30 @@ void SetSelectable(SongTagInfo& info)
 	else
 	{ LOG->UserLog("Song file", info.path, "has an unknown #SELECTABLE value, \"%s\"; ignored.", (*info.params)[1].c_str()); }
 }
+void SetSongLengthOverride(SongTagInfo& info)
+{
+    if((*info.params)[1].EqualsNoCase("SHORTCUT"))
+    {
+        info.song->m_SongLengthOverride = info.song->length_shortcut;
+    }
+    else if((*info.params)[1].EqualsNoCase("ARCADE"))
+    {
+        info.song->m_SongLengthOverride = info.song->length_normal;
+    }
+    else if((*info.params)[1].EqualsNoCase("REMIX"))
+    {
+        info.song->m_SongLengthOverride = info.song->length_remix;
+    }
+    else if((*info.params)[1].EqualsNoCase("FULLSONG"))
+    {
+        info.song->m_SongLengthOverride = info.song->length_long;
+    }
+    else if((*info.params)[1].EqualsNoCase("MUSICTRAIN"))
+    {
+        info.song->m_SongLengthOverride = info.song->length_marathon;
+    }
+}
+
 void SetBGChanges(SongTagInfo& info)
 {
 	info.loader->ProcessBGChanges(*info.song, (*info.params)[0], info.path, (*info.params)[1]);
@@ -572,6 +596,7 @@ struct ssc_parser_helper_t
 		song_tag_handlers["SAMPLELENGTH"]= &SetSampleLength;
 		song_tag_handlers["DISPLAYBPM"]= &SetDisplayBPM;
 		song_tag_handlers["SELECTABLE"]= &SetSelectable;
+		song_tag_handlers["SONGTYPE"]=&SetSongLengthOverride;
 		// It's a bit odd to have the tag that exists for backwards compatibility
 		// in this list and not the replacement, but the BGCHANGES tag has a
 		// number on the end, allowing up to NUM_BackgroundLayer tags, so it

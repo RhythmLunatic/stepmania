@@ -247,6 +247,8 @@ public:
 
 	/** @brief The length of the music file. */
 	float	m_fMusicLengthSeconds;
+    //Overrides IsLong(), IsMarathon() if set. Gets set by #SONGTYPE tag in ssc.
+	enum SongLengthOverride : unsigned char { length_unset=0, length_shortcut, length_normal, length_remix, length_long, length_marathon} m_SongLengthOverride = length_unset;
 	float	m_fMusicSampleStartSeconds;
 	float	m_fMusicSampleLengthSeconds;
 	DisplayBPM m_DisplayBPMType;
@@ -330,6 +332,7 @@ private:
 	float lastSecond;
 	/** @brief The last second of the song for playing purposes. */
 	float specifiedLastSecond;
+
 	/**
 	 * @brief The background changes (sorted by layer) that are for this Song.
 	 * This uses an AutoPtr instead of a raw pointer so that the

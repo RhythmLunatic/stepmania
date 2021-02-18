@@ -2148,11 +2148,17 @@ float Song::GetStepsSeconds() const
 
 bool Song::IsLong() const
 {
+    if (m_SongLengthOverride == length_long)
+    {
+        return true;
+    }
 	return !IsMarathon() && m_fMusicLengthSeconds >= g_fLongVerSongSeconds;
 }
 
 bool Song::IsMarathon() const
 {
+    if (m_SongLengthOverride == length_marathon)
+        return true;
 	return m_fMusicLengthSeconds >= g_fMarathonVerSongSeconds;
 }
 
@@ -2362,6 +2368,18 @@ public:
 		lua_pushboolean(L, p->IsMarathon());
 		return 1;
 	}
+    static int GetPIUStageCost( T* p, lua_State *L )
+    {
+	    if (p->m_SongLengthOverride != p->length_unset)
+            lua_pushnumber(L, p->m_SongLengthOverride);
+	    else if (p->IsLong())
+            lua_pushnumber(L, 4);
+	    else if (p->IsMarathon())
+            lua_pushnumber(L, 6);
+        else
+            lua_pushnumber(L, 2);
+        return 1;
+    }
 	static int HasStepsType( T* p, lua_State *L )
 	{
 		StepsType st = Enum::Check<StepsType>(L, 1);
@@ -2561,6 +2579,7 @@ public:
 		ADD_METHOD( GetSampleLength );
 		ADD_METHOD( IsLong );
 		ADD_METHOD( IsMarathon );
+		ADD_METHOD( GetPIUStageCost );
 		ADD_METHOD( HasStepsType );
 		ADD_METHOD( HasStepsTypeAndDifficulty );
 		ADD_METHOD( GetOneSteps );
