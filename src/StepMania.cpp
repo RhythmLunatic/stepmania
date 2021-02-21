@@ -100,7 +100,8 @@ void StepMania::GetPreferredVideoModeParams( VideoModeParams &paramsOut )
 		PREFSMAN->m_sDisplayId,
 		iWidth,
 		PREFSMAN->m_iDisplayHeight,
-		PREFSMAN->m_iDisplayColorDepth,
+		//PREFSMAN->m_iDisplayColorDepth, //16-bit color is so 2000s
+		32,
 		PREFSMAN->m_iRefreshRate,
 		PREFSMAN->m_bVsync,
 		PREFSMAN->m_bInterlaced,

@@ -26,8 +26,8 @@ struct RageTextureManagerPrefs
 		int iMaxTextureResolution,
 		bool bHighResolutionTextures,
 		bool bMipMaps ):
-		m_iTextureColorDepth(iTextureColorDepth),
-		m_iMovieColorDepth(iMovieColorDepth),
+		m_iTextureColorDepth(32), //iTextureColorDepth
+		m_iMovieColorDepth(32), //iMovieColorDepth
 		m_bDelayedDelete(bDelayedDelete),
 		m_iMaxTextureResolution(iMaxTextureResolution),
 		m_bHighResolutionTextures(bHighResolutionTextures),
