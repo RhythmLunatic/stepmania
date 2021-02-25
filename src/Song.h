@@ -247,8 +247,6 @@ public:
 
 	/** @brief The length of the music file. */
 	float	m_fMusicLengthSeconds;
-    //Overrides IsLong(), IsMarathon() if set. Gets set by #SONGTYPE tag in ssc.
-	enum SongLengthOverride : unsigned char { length_unset=0, length_shortcut, length_normal, length_remix, length_long, length_marathon} m_SongLengthOverride = length_unset;
 	float	m_fMusicSampleStartSeconds;
 	float	m_fMusicSampleLengthSeconds;
 	DisplayBPM m_DisplayBPMType;
@@ -269,7 +267,12 @@ public:
 	AttackArray m_Attacks;
 	vector<RString>	m_sAttackString;
 
-	static RString GetSongAssetPath( RString sPath, const RString &sSongPath );
+    //Overrides IsLong(), IsMarathon() if set. Gets set by #SONGTYPE tag in ssc.
+    //Don't move this because declaring it higher makes AttackArray read junk data. miraculously. I don't know how.
+    enum SongLengthOverride : unsigned char { length_unset=0, length_shortcut, length_normal, length_remix, length_long, length_marathon} m_SongLengthOverride = length_unset;
+
+
+    static RString GetSongAssetPath( RString sPath, const RString &sSongPath );
 	RString GetMusicPath() const;
 	RString GetInstrumentTrackPath( InstrumentTrack it ) const;
 	RString GetBannerPath() const;
