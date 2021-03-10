@@ -745,11 +745,21 @@ int GameState::GetNumStagesMultiplierForSong( const Song* pSong )
 {
 	int iNumStages = 1;
 
+	//Why is it multiplying when it always starts at 1?
 	ASSERT( pSong != NULL );
 	if( pSong->IsMarathon() )
 		iNumStages *= 3;
 	if( pSong->IsLong() )
 		iNumStages *= 2;
+
+	//DEBUG_ASSERT_M(iNumStages>3,"IsLong() and IsMarathon() both returned true when only one should be");
+#ifdef DEBUG
+	if (iNumStages > 3)
+	{
+		LOG->Warn("IsLong() and IsMarathon() both returned true for %s when only one should be true",pSong->GetTranslitFullTitle().c_str());
+		LOG->Warn("Song override is %i",pSong->m_SongLengthOverride);
+	}
+#endif
 
 	return iNumStages;
 }

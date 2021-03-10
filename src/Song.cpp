@@ -2152,14 +2152,14 @@ bool Song::IsLong() const
     {
         return true;
     }
-	return !IsMarathon() && m_fMusicLengthSeconds >= g_fLongVerSongSeconds;
+	return m_SongLengthOverride == length_unset && !IsMarathon() && m_fMusicLengthSeconds >= g_fLongVerSongSeconds;
 }
 
 bool Song::IsMarathon() const
 {
     if (m_SongLengthOverride == length_marathon)
         return true;
-	return m_fMusicLengthSeconds >= g_fMarathonVerSongSeconds;
+	return (m_SongLengthOverride == length_unset && m_fMusicLengthSeconds >= g_fMarathonVerSongSeconds);
 }
 
 // lua start

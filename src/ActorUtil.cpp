@@ -546,17 +546,20 @@ void ActorUtil::InitFileTypeLists()
 
 	// ffmpeg takes care of loading videos, not sure whether this list should
 	// have everything ffmpeg supports.
-	ExtensionToFileType["avi"]= FT_Movie;
-	ExtensionToFileType["f4v"]= FT_Movie;
-	ExtensionToFileType["flv"]= FT_Movie;
-	ExtensionToFileType["mkv"]= FT_Movie;
-	ExtensionToFileType["mp4"]= FT_Movie;
+	ExtensionToFileType["avi"]=  FT_Movie;
+	ExtensionToFileType["f4v"]=  FT_Movie;
+	ExtensionToFileType["flv"]=  FT_Movie;
+	ExtensionToFileType["mkv"]=  FT_Movie;
+	ExtensionToFileType["mp4"]=  FT_Movie;
 	ExtensionToFileType["mpeg"]= FT_Movie;
-	ExtensionToFileType["mpg"]= FT_Movie;
-	ExtensionToFileType["mov"]= FT_Movie;
-	ExtensionToFileType["ogv"]= FT_Movie;
+	ExtensionToFileType["mpg"]=  FT_Movie;
+	ExtensionToFileType["m2v"]=  FT_Movie; //mpeg2 no audio
+	//ExtensionToFileType["pam"]=  FT_Movie; //mpeg2 sony audio (we don't play audio anyways)
+	ExtensionToFileType["bik"]=  FT_Movie; //yeah, ffmpeg can actually play this
+	ExtensionToFileType["mov"]=  FT_Movie;
+	ExtensionToFileType["ogv"]=  FT_Movie;
 	ExtensionToFileType["webm"]= FT_Movie;
-	ExtensionToFileType["wmv"]= FT_Movie;
+	ExtensionToFileType["wmv"]=  FT_Movie;
 
 	ExtensionToFileType["sprite"]= FT_Sprite;
 
