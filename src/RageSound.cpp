@@ -412,7 +412,15 @@ void RageSound::Play(bool is_action, const RageSoundParams *pParams)
 
 	if( IsPlaying() )
 	{
-		PlayCopy(is_action, pParams);
+		//Looping sounds never stop. We don't want memory leaks, so ignore any requests to play another looping sound.
+		if (GetStopMode() == RageSoundParams::M_LOOP)
+		{
+			LOG->Trace("RageSound::Play: This looping sound is already playing, ignoring request to generate another");
+		}
+		else
+		{
+			PlayCopy(is_action, pParams);
+		}
 		return;
 	}
 
