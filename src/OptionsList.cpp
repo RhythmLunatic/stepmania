@@ -311,7 +311,9 @@ int OptionsList::GetOneSelection( RString sRow, bool bAllowFail ) const
 			return i;
 	}
 
-	ASSERT( bAllowFail );	// shouldn't call this if not expecting one to be selected
+	//This pretty much only happens when you don't have a noteskin set
+	ASSERT_M(bAllowFail,RString("bAllowFail is false but this row has nothing selected: "+sRow).c_str());
+
 	return -1;
 }
 

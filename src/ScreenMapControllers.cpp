@@ -125,11 +125,12 @@ void ScreenMapControllers::Init()
 	}
 
 	// normal rows
-	for( unsigned b=0; b<m_KeysToMap.size(); b++ )
+	for( unsigned b=0; b<m_KeysToMap.size(); b++ ) //For each key to map, generate a row...
 	{
-		m_Line.push_back(new ActorFrame);
+		m_Line.push_back(new ActorFrame); //From this point m_Line.back() refers to the ActorFrame that was just created
 		KeyToMap *pKey = &m_KeysToMap[b];
 
+		//No, not the primary and secondary headers. Primary meaning the button's primary function.
 		{
 			BitmapText *pName = new BitmapText;
 			pName->SetName( "Primary" );
@@ -139,6 +140,7 @@ void ScreenMapControllers::Init()
 			ActorUtil::LoadAllCommands( *pName, m_sName );
 			m_Line.back()->AddChild( pName );
 		}
+		//Usually blank, it's the text under the game pad buttons that shows their secondary function
 		{
 			BitmapText *pSecondary = new BitmapText;
 			pSecondary->SetName( "Secondary" );

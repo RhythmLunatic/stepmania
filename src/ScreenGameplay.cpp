@@ -2258,6 +2258,11 @@ void ScreenGameplay::UpdateLights()
 					}
 				}
 			}
+
+			if (true)
+            {
+                LIGHTSMAN->m_LightSpirePercentage[pi->m_pn]=pi->m_pLifeMeter->GetLife();
+            }
 		}
 
 		iRowLastCrossed = iSongRow;

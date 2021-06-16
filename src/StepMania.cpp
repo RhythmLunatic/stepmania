@@ -888,6 +888,13 @@ void StepMania::InitializeCurrentGame( const Game* g )
 		PREFSMAN->m_sLanguage.Set(sLanguage);
 	}
 
+	RString argTestScreen;
+	if( GetCommandlineArgument(	"screen",&argTestScreen) )
+	{
+		LOG->Trace("Set initial screen to %s",argTestScreen.c_str());
+		PREFSMAN->m_sTestInitialScreen.Set(argTestScreen);
+	}
+
 	// it's OK to call these functions with names that don't exist.
 	ANNOUNCER->SwitchAnnouncer( sAnnouncer );
 	THEME->SwitchThemeAndLanguage( sTheme, sLanguage, PREFSMAN->m_bPseudoLocalize );
@@ -943,6 +950,9 @@ static void WriteLogHeader()
 
 	LOG->Info( "Log starting %.4d-%.2d-%.2d %.2d:%.2d:%.2d",
 		1900+now.tm_year, now.tm_mon+1, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec );
+#if defined(DEBUG)
+	LOG->Info("You are running a debug build. Trace messages will always be printed.");
+#endif
 	LOG->Trace( " " );
 
 	if( g_argc > 1 )
@@ -963,7 +973,11 @@ static void WriteLogHeader()
 
 static void ApplyLogPreferences()
 {
+#if defined(DEBUG)
+    LOG->SetShowLogOutput(true); //Why would this ever be disabled in a debug build?
+#else
 	LOG->SetShowLogOutput( PREFSMAN->m_bShowLogOutput );
+#endif
 	LOG->SetLogToDisk( PREFSMAN->m_bLogToDisk );
 	LOG->SetInfoToDisk( true );
 	LOG->SetUserLogToDisk( true );

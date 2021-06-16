@@ -135,6 +135,8 @@ private:
 	RageSound	m_sndBackspace;
 
 	RageTimer	m_timerToggleCursor;
+
+	//ThemeMetric<bool> CAN_PRESS_BACK;
 };
 
 /** @brief Displays a text entry box and keyboard over the top of another screen. */

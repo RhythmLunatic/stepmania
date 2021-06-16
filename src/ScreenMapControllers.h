@@ -51,6 +51,30 @@ private:
 	RageTimer m_WaitingForPress;
 	DeviceInput m_DeviceIToMap;
 
+private:
+
+
+	/*
+     * This vector looks something like:
+     * m_KeysToMap = [
+     * 	 [
+     * 	  m_GameButton,
+     *	  m_textMappedTo = [
+     *	    [ //Player 1
+     *	      *Primary Column Actor,
+     *	      *Secondary Column Actor,
+     *	      *Default Column Actor
+     *	    ],
+     *	    [ //Player 2
+     *	      *Primary Column,
+     *	      *Secondary Column,
+     *	      *Default Column
+     *	    ],
+     *	    (...) //Extend for number of players
+     *	  ],
+     *	  (...) //Extend for number of mappable buttons
+     *  ]
+     */
 	struct KeyToMap
 	{
 		GameButton m_GameButton;
@@ -60,6 +84,7 @@ private:
 	};
 	vector<KeyToMap> m_KeysToMap;
 
+protected:
 	BitmapText m_textDevices;
 
 	BitmapText m_textLabel[NUM_GameController];
@@ -118,7 +143,9 @@ private:
 
 	vector<ActionRow> m_Actions;
 
+	//Holds every BitmapText actor
 	vector<ActorFrame*> m_Line;
+	//Holds the rows. Each row contains an ActorFrame with an array of actors inside it, these make up the columns on the screen.
 	ActorScroller m_LineScroller;
 
 	RageSound m_soundChange;

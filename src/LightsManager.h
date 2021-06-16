@@ -93,6 +93,9 @@ public:
 	CabinetLight	GetFirstLitCabinetLight();
 	GameInput	GetFirstLitGameButtonLight();
 
+	bool lightSpiresEnabled;
+    float m_LightSpirePercentage[NUM_PLAYERS];
+
 private:
 	void ChangeTestCabinetLight( int iDir );
 	void ChangeTestGameButtonLight( int iDir );
@@ -128,6 +131,7 @@ private:
 	bool rgb_pNeon = false;
 	int rgb_neon_switch_count = 0;
 	int rgb_randBase = 0;
+
 
 	#define RGB_X 0 //nothing
 	#define RGB_R 1 //red

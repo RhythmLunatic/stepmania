@@ -374,6 +374,7 @@ list(APPEND SMDATA_ARCH_LIGHTS_HPP
         "arch/Lights/LightsDriver_LinuxWeedTech.cpp"
         "arch/Lights/LightsDriver_LinuxParallel.cpp"
         "arch/Lights/LightsDriver_LinuxPacDrive.cpp"
+              "arch/Lights/LightsDriver_WS2812B.cpp"
         "io/PacDrive.cpp"
       )
       list(APPEND SMDATA_ARCH_LIGHTS_HPP
@@ -382,6 +383,7 @@ list(APPEND SMDATA_ARCH_LIGHTS_HPP
         "arch/Lights/LightsDriver_LinuxWeedTech.h"
         "arch/Lights/LightsDriver_LinuxParallel.h"
         "arch/Lights/LightsDriver_LinuxPacDrive.h"
+              "arch/Lights/LightsDriver_WS2812B.h"
         "io/PacDrive.h"
       )
       if (WITH_PARALLEL_PORT)

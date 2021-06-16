@@ -147,6 +147,8 @@ void ScreenTextEntry::Init()
 
 	m_sndType.Load( THEME->GetPathS(m_sName,"type"), true );
 	m_sndBackspace.Load( THEME->GetPathS(m_sName,"backspace"), true );
+
+	//CAN_PRESS_BACK.Load(m_sName,"CanPressBack");
 }
 
 void ScreenTextEntry::BeginScreen()

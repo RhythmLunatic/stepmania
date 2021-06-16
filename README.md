@@ -1,7 +1,7 @@
-StepMania-RaveItOut
+StepAMWorks
 =========
 
-This is a custom version of StepMania with various features. The theme is available [here](https://github.com/raveitoutofficial/raveitout)
+This is a fork of StepMania with various features.
 
 ## Features
 * OptionsList implements more features that the regular options menu supports.
@@ -40,19 +40,15 @@ Use the RIO theme to show the lights debug.
 
 ## Resources
 
-Hit us up on Facebook!
-
-The wiki has information about some SM-RIO features and theming help.
+Check the wiki.
 
 ## Licensing, legal stuff
 
-Rave It Out is 100% open source. There is no encryption. There are no binary blobs. What you get here is what we use to test.
+StepAMW is GPLv3.
 
 For specific information/legalese:
-
-* Arduino card reader code written by Alex123123
-* StepMania-RaveItOut is GPLv3. It may be relicensed when encryption is added. (Seeing as client side encryption/obfuscation goes against the principles of free software, this is unlikely to ever happen)
-* The original MIT licensed code, if you would like to use it, is before this commit https://github.com/RhythmLunatic/stepmania/commit/476ecaed98b47ba4c9b12ee22c6f0d4de0434af3
+* Arduino card reader code written by Alex123123, used with permission.
+* The original MIT licensed code for StepAMW, if you would like to use it, is before this commit https://github.com/RhythmLunatic/stepmania/commit/476ecaed98b47ba4c9b12ee22c6f0d4de0434af3
 * The wiki is [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 * The [MAD library](http://www.underbit.com/products/mad/) and [FFmpeg codecs](https://www.ffmpeg.org/) when built with our code use the [GPL license](http://www.gnu.org).
 
