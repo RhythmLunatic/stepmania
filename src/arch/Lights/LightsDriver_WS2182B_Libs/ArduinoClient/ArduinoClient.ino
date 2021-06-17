@@ -55,7 +55,7 @@ void loop() {
       Serial.print(buffer[i]);
     }*/
     //Serial.print(buffer[5]);
-    if (buffer[0]==BYTE_SETLEDS)
+    if (buffer[0]==BYTE_SETLEDS && buffer[1]==0x01) //Ignore player 2
       setLEDs(buffer[2],buffer[3],buffer[4],buffer[5]);
   }
 }

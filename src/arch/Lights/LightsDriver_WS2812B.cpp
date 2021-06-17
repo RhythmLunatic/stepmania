@@ -50,21 +50,26 @@ void LightsDriver_WS2812B::Set( const LightsState *ls)
     {
         if (!arduino.isOpen())
         {
-            LOG->Trace("Arduino is not open");
+            LOG->Trace("Arduino is not open!!");
             return;
             //arduino.open();
         }
 
+
         lightBuffer[0]=2; //setLED type packet
-        lightBuffer[1]=1; //player
         lightBuffer[2]=1; //r
         lightBuffer[3]=1; //g
         lightBuffer[4]=1; //b
-        //COBS when?
-        //LOG->Trace("%f",LIGHTSMAN->m_LightSpirePercentage[0]);
-        lightBuffer[5]=clamp((int)(LIGHTSMAN->m_LightSpirePercentage[0]*255),1,255);
-        //LOG->Trace("%i",lightBuffer[5]);
-        arduino.write(lightBuffer,6);
+        for (int i=0;i<2;i++)
+        {
+            lightBuffer[1]=1+i; //player
+
+            //COBS when?
+            //LOG->Trace("%f",LIGHTSMAN->m_LightSpirePercentage[0]);
+            lightBuffer[5]=clamp((int)(LIGHTSMAN->m_LightSpirePercentage[i]*255),1,255);
+            //LOG->Trace("%i",lightBuffer[5]);
+            arduino.write(lightBuffer,6);
+        }
     }
     else
     {
