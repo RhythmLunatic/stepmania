@@ -2261,7 +2261,15 @@ void ScreenGameplay::UpdateLights()
 
 			if (true)
             {
-                LIGHTSMAN->m_LightSpirePercentage[pi->m_pn]=pi->m_pLifeMeter->GetLife();
+			    //Luckily the current beat is a float so we just need the decimal value to determine how much to
+			    //fill the lights.
+                double* junk; //Discard this value
+                float percent = SCALE(modf(fSongBeat,junk),0,1,0,pi->m_pLifeMeter->GetLife());
+
+                if ((int)fSongBeat & 1) //If on an even beat, go down instead of up
+                    percent=pi->m_pLifeMeter->GetLife()-percent;
+
+                LIGHTSMAN->m_LightSpirePercentage[pi->m_pn]=percent;
             }
 		}
 
