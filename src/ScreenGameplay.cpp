@@ -2261,6 +2261,8 @@ void ScreenGameplay::UpdateLights()
 
 			if (true)
             {
+			    if (fSongBeat<0) //It acts weird on negative beats
+			        return;
 			    //Luckily the current beat is a float so we just need the decimal value to determine how much to
 			    //fill the lights.
                 double* junk; //Discard this value
@@ -2270,6 +2272,7 @@ void ScreenGameplay::UpdateLights()
                     percent=pi->m_pLifeMeter->GetLife()-percent;
 
                 LIGHTSMAN->m_LightSpirePercentage[pi->m_pn]=percent;
+                LIGHTSMAN->b_LightsAreRainbow[pi->m_pn]=pi->m_pLifeMeter->GetLife()==1;
             }
 		}
 

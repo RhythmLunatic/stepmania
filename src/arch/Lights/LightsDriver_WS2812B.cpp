@@ -7,6 +7,7 @@
 #include "ScreenManager.h"
 #include "PrefsManager.h"
 #include "RageLog.h"
+#include "GameState.h"
 
 REGISTER_LIGHTS_DRIVER_CLASS(WS2812B);
 
@@ -38,6 +39,7 @@ LightsDriver_WS2812B::LightsDriver_WS2812B() {
         arduino.open();
     }
 }
+
 void LightsDriver_WS2812B::Set( const LightsState *ls)
 {
     /*
@@ -45,36 +47,86 @@ void LightsDriver_WS2812B::Set( const LightsState *ls)
      * but since Set() is called every time the main thread calls update() it's good
      * way to update the LEDs.
      */
-
+    if (!arduino.isOpen())
+    {
+        LOG->Trace("Arduino is not open!!");
+        return;
+        //arduino.open();
+    }
+    lightBuffer[0]=LM_REGULAR;
     if (LIGHTSMAN->GetLightsMode() == LIGHTSMODE_GAMEPLAY)
     {
-        if (!arduino.isOpen())
-        {
-            LOG->Trace("Arduino is not open!!");
-            return;
-            //arduino.open();
-        }
 
-
-        lightBuffer[0]=2; //setLED type packet
         lightBuffer[2]=1; //r
         lightBuffer[3]=1; //g
         lightBuffer[4]=1; //b
-        for (int i=0;i<2;i++)
-        {
-            lightBuffer[1]=1+i; //player
 
-            //COBS when?
-            //LOG->Trace("%f",LIGHTSMAN->m_LightSpirePercentage[0]);
-            lightBuffer[5]=clamp((int)(LIGHTSMAN->m_LightSpirePercentage[i]*255),1,255);
-            //LOG->Trace("%i",lightBuffer[5]);
-            arduino.write(lightBuffer,6);
+        if (GAMESTATE->GetNumSidesJoined() > 1)
+        {
+            for (int i=0;i<NUM_PLAYERS;i++)
+            {
+                //It was actually faster just to have the arduino handle rainbow lights... So that's mode 3.
+                lightBuffer[0]=LIGHTSMAN->b_LightsAreRainbow[i] ? LM_RAINBOW : LM_REGULAR;
+                lightBuffer[1]=1+i; //player
+                lightBuffer[5]=clamp((int)(LIGHTSMAN->m_LightSpirePercentage[i]*255),1,255);
+
+                arduino.write(lightBuffer,6);
+
+                //LOG->Trace("%i",lightBuffer[5]);
+            }
         }
+        else
+        {
+            lightBuffer[0]=LIGHTSMAN->b_LightsAreRainbow[GAMESTATE->GetMasterPlayerNumber()] ? LM_RAINBOW : LM_REGULAR;
+            lightBuffer[5]=clamp((int)(LIGHTSMAN->m_LightSpirePercentage[GAMESTATE->GetMasterPlayerNumber()]*255),1,255);
+            //LOG->Trace("%i",lightBuffer[5]);
+            //LOG->Trace("%i %i %i",lightBuffer[2],lightBuffer[3],lightBuffer[4]);
+            for (int i=0;i<NUM_PLAYERS;i++)
+            {
+                lightBuffer[1]=1+i; //player
+                arduino.write(lightBuffer,6);
+            }
+        }
+
+
     }
     else
     {
-        lightBuffer[2]=10; //r
-        lightBuffer[5]=255; //make it full
+        if (ls->m_bCabinetLights[LIGHT_MARQUEE_UP_LEFT] && ls->m_bCabinetLights[LIGHT_MARQUEE_LR_LEFT])
+            lightBuffer[5]=255;
+        else if(ls->m_bCabinetLights[LIGHT_MARQUEE_UP_LEFT])
+        {
+            lightBuffer[0]=LM_REVERSED;
+            lightBuffer[5]=128;
+        }
+        else if (ls->m_bCabinetLights[LIGHT_MARQUEE_LR_LEFT])
+        {
+            lightBuffer[5]=128;
+        }
+        else
+        {
+            lightBuffer[5]=0;
+        }
+        lightBuffer[1]=1; //Left spire
+        arduino.write(lightBuffer,6);
+
+
+        if (ls->m_bCabinetLights[LIGHT_MARQUEE_LR_RIGHT] && ls->m_bCabinetLights[LIGHT_MARQUEE_UP_RIGHT])
+            lightBuffer[5]=255;
+        else if(ls->m_bCabinetLights[LIGHT_MARQUEE_UP_RIGHT])
+        {
+            lightBuffer[0]=LM_REVERSED;
+            lightBuffer[5]=128;
+        }
+        else if (ls->m_bCabinetLights[LIGHT_MARQUEE_LR_RIGHT])
+        {
+            lightBuffer[5]=128;
+        }
+        else
+        {
+            lightBuffer[5]=0;
+        }
+        lightBuffer[1]=2; //Right spire
         arduino.write(lightBuffer,6);
     }
 }

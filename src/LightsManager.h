@@ -95,6 +95,7 @@ public:
 
 	bool lightSpiresEnabled;
     float m_LightSpirePercentage[NUM_PLAYERS];
+    bool b_LightsAreRainbow[NUM_PLAYERS]; //I don't know where to put this
 
 private:
 	void ChangeTestCabinetLight( int iDir );
