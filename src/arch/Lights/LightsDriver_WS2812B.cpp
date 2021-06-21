@@ -32,18 +32,11 @@ LightsDriver_WS2812B::LightsDriver_WS2812B() {
     if(m_ARDUINO_COM_PORT.Get().length() > 1)
     {
         arduino.setPort(m_ARDUINO_COM_PORT.Get().c_str());
-        arduino.setBaudrate(9600);
+        arduino.setBaudrate(19200); //My arduino won't go any higher
         static serial::Timeout timeout;
         timeout=serial::Timeout::simpleTimeout(1000);
         arduino.setTimeout(timeout);
-        if (arduino.available())
-        {
-            arduino.open();
-        }
-        else
-        {
-            LOG->Warn("The arduino is not connected. WS2812B lights cannot start.");
-        }
+        arduino.open();
     }
 }
 
@@ -70,7 +63,7 @@ void LightsDriver_WS2812B::Set( const LightsState *ls)
 
         if (GAMESTATE->GetNumSidesJoined() > 1)
         {
-            for (int i=0;i<NUM_PLAYERS;i++)
+            for (int i=0;i<2;i++)
             {
                 //It was actually faster just to have the arduino handle rainbow lights... So that's mode 3.
                 lightBuffer[0]=LIGHTSMAN->b_LightsAreRainbow[i] ? LM_RAINBOW : LM_REGULAR;
@@ -88,7 +81,7 @@ void LightsDriver_WS2812B::Set( const LightsState *ls)
             lightBuffer[5]=clamp((int)(LIGHTSMAN->m_LightSpirePercentage[GAMESTATE->GetMasterPlayerNumber()]*255),1,255);
             //LOG->Trace("%i",lightBuffer[5]);
             //LOG->Trace("%i %i %i",lightBuffer[2],lightBuffer[3],lightBuffer[4]);
-            for (int i=0;i<NUM_PLAYERS;i++)
+            for (int i=0;i<2;i++) //Any more than 2 and it drops packets... Should probably just send 12 bytes at a time
             {
                 lightBuffer[1]=1+i; //player
                 arduino.write(lightBuffer,6);
@@ -112,7 +105,7 @@ void LightsDriver_WS2812B::Set( const LightsState *ls)
         }
         else
         {
-            lightBuffer[5]=0;
+            lightBuffer[5]=1;
         }
         lightBuffer[1]=1; //Left spire
         arduino.write(lightBuffer,6);
@@ -127,11 +120,12 @@ void LightsDriver_WS2812B::Set( const LightsState *ls)
         }
         else if (ls->m_bCabinetLights[LIGHT_MARQUEE_LR_RIGHT])
         {
+            lightBuffer[0]=LM_REGULAR;
             lightBuffer[5]=128;
         }
         else
         {
-            lightBuffer[5]=0;
+            lightBuffer[5]=1;
         }
         lightBuffer[1]=2; //Right spire
         arduino.write(lightBuffer,6);

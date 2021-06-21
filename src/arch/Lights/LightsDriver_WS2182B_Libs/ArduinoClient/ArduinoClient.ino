@@ -18,7 +18,7 @@
 #define MODE_REVERSE 0x03
 #define MODE_RAINBOW 0x04
 
-#define NUMPIXELS 20
+#define NUMPIXELS 29
 
 //Black cabinets have 6 spires so we should really be using 6. And there should be some way to determine which ones belong in p1 and which ones belong in p2, maybe a struct or class will help.
 #define NUM_SPIRES 2
@@ -36,7 +36,7 @@ struct RGB {
 
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(19200); //19200 is the minimum needed for 2 spires.
   //pkSerial.setStream(&Serial);
   //pkSerial.begin(9600);
   //pkSerial.setPacketHandler(&handlePacket);
