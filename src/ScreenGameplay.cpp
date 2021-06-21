@@ -2262,17 +2262,21 @@ void ScreenGameplay::UpdateLights()
 			if (true)
             {
 			    if (fSongBeat<0) //It acts weird on negative beats
-			        return;
+			        break;
+			    LOG->Trace("GetLife");
+			    float pLife = pi->m_pLifeMeter->GetLife();
 			    //Luckily the current beat is a float so we just need the decimal value to determine how much to
 			    //fill the lights.
-                double* junk; //Discard this value
-                float percent = SCALE(modf(fSongBeat,junk),0,1,0,pi->m_pLifeMeter->GetLife());
+                LOG->Trace("Get percent to fill");
+			    double* junk; //Discard this value
+                float percent = SCALE(modf(fSongBeat,junk),0,1,0,pLife);
 
+                LOG->Trace("Get song beat.");
                 if ((int)fSongBeat & 1) //If on an even beat, go down instead of up
-                    percent=pi->m_pLifeMeter->GetLife()-percent;
-
+                    percent=pLife-percent;
+                LOG->Trace("Insert percent and life values into Player %i",pi->m_pn);
                 LIGHTSMAN->m_LightSpirePercentage[pi->m_pn]=percent;
-                LIGHTSMAN->b_LightsAreRainbow[pi->m_pn]=pi->m_pLifeMeter->GetLife()==1;
+                LIGHTSMAN->b_LightsAreRainbow[pi->m_pn]=pLife==1;
             }
 		}
 

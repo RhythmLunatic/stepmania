@@ -18,11 +18,11 @@
 #define MODE_REVERSE 0x03
 #define MODE_RAINBOW 0x04
 
-#define PIN        7
 #define NUMPIXELS 20
 
-//Black cabinets have 6 spires so we should really be using 6
-Adafruit_NeoPixel spire_P1(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+//Black cabinets have 6 spires so we should really be using 6. And there should be some way to determine which ones belong in p1 and which ones belong in p2, maybe a struct or class will help.
+#define NUM_SPIRES 2
+Adafruit_NeoPixel spires[NUM_SPIRES] = {Adafruit_NeoPixel(NUMPIXELS, 6, NEO_GRB + NEO_KHZ800), Adafruit_NeoPixel(NUMPIXELS, 7, NEO_GRB + NEO_KHZ800)};
 //Adafruit_NeoPixel spire_P2(NUMPIXELS, 8, NEO_GRB + NEO_KHZ800);
 PacketSerial pkSerial;
 byte buffer[6]; //max size of 6
@@ -44,18 +44,27 @@ void setup() {
     clock_prescale_set(clock_div_1);
   #endif
 
-  spire_P1.begin();
+  for (byte i=0;i<NUM_SPIRES;i++)
+    spires[i].begin();
   pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN,LOW);
   
 }
 
 void loop() {
-  /*for(int i=0; i<NUMspire_P1; i++) {
-
-    spire_P1.setPixelColor(i, spire_P1.Color(0, 150, 0));
-    spire_P1.show();
-    delay(DELAYVAL);
-  }*/
+  
+  /*for (byte p=0;p<NUM_SPIRES;p++){
+    spires[p].clear();
+    uint32_t color = p==1 ? spires[p].Color(0, 50, 0) : spires[p].Color(0, 0, 50);
+    for(int i=0; i<NUMPIXELS; i++) {
+  
+      spires[p].setPixelColor(i, color);
+      spires[p].show();
+      delay(100);
+    }
+  }
+  return;*/
+  
   //Serial.print("aa");
   //pkSerial.update();
 
@@ -63,47 +72,51 @@ void loop() {
   while (Serial.available()>2)
   {
     Serial.readBytesUntil(0,buffer,6);
+    int spNum = buffer[1]-1;
+    //Serial.print(spNum);
     /*for(int i=0;i<6;i++){
       Serial.print(buffer[i]);
     }*/
     //Serial.print(buffer[5]);
-    if (buffer[0]==MODE_REGULAR && buffer[1]==0x01) //Ignore player 2
-      setLEDs(buffer[2],buffer[3],buffer[4],buffer[5]);
-    else if (buffer[0]==MODE_REVERSE && buffer[1]==0x01) //Ignore player 2
-      setLEDsReversed(buffer[2],buffer[3],buffer[4],buffer[5]);
-    else if (buffer[0] == MODE_TRAVEL && buffer[1]==0x01)
+    if (buffer[0]==MODE_REGULAR)
+      setLEDs(&spires[spNum],buffer[2],buffer[3],buffer[4],buffer[5]);
+    else if (buffer[0]==MODE_REVERSE)
+      setLEDsReversed(&spires[spNum],buffer[2],buffer[3],buffer[4],buffer[5]);
+    else if (buffer[0] == MODE_TRAVEL)
     {
       digitalWrite(LED_BUILTIN, HIGH);
-      spire_P1.clear();
-      spire_P1.setPixelColor(SCALE(buffer[5],1,255,0,NUMPIXELS), spire_P1.Color(buffer[2],buffer[3],buffer[4]));
-      spire_P1.show();
+      Adafruit_NeoPixel *spire = &spires[spNum];
+      spire->clear();
+      spire->setPixelColor(SCALE(buffer[5],1,255,0,NUMPIXELS), spire->Color(buffer[2],buffer[3],buffer[4]));
+      spire->show();
     }
-    else if (buffer[0]==MODE_RAINBOW && buffer[1]==0x01)
-      setLEDsRainbow(buffer[5]);
+    else if (buffer[0]==MODE_RAINBOW)
+      setLEDsRainbow(&spires[spNum],buffer[5]);
+  digitalWrite(LED_BUILTIN,LOW);
   }
 }
 
-void setLEDs(int r,int g,int b,int percent)
+void setLEDs(Adafruit_NeoPixel *spire, int r,int g,int b,int percent)
 {
     digitalWrite(LED_BUILTIN, HIGH);
-    spire_P1.clear();
+    spire->clear();
     int percentToShow = SCALE(percent,1,255,0,NUMPIXELS);
     for(int i=0; i<percentToShow; i++) {
   
-      spire_P1.setPixelColor(i, spire_P1.Color(r, g, b));
+      spire->setPixelColor(i, spire->Color(r, g, b));
     }
-    spire_P1.show();
+    spire->show();
 }
-void setLEDsReversed(int r,int g,int b,int percent)
+void setLEDsReversed(Adafruit_NeoPixel *spire, int r,int g,int b,int percent)
 {
     digitalWrite(LED_BUILTIN, HIGH);
-    spire_P1.clear();
+    spire->clear();
     int percentToShow = SCALE(percent,1,255,0,NUMPIXELS);
     for(int i=NUMPIXELS; i>percentToShow; i--) {
   
-      spire_P1.setPixelColor(i, spire_P1.Color(r, g, b));
+      spire->setPixelColor(i, spire->Color(r, g, b));
     }
-    spire_P1.show();
+    spire->show();
 }
 
 /*float* hsv2rgb(float h, float s, float b, float* rgb) {
@@ -114,18 +127,18 @@ void setLEDsReversed(int r,int g,int b,int percent)
 }*/
 
 uint32_t firstPixelHue = 0;
-void setLEDsRainbow(int percent)
+void setLEDsRainbow(Adafruit_NeoPixel *spire, int percent)
 {
-  spire_P1.clear();
+  spire->clear();
   int percentToShow = SCALE(percent,1,255,0,NUMPIXELS);
   for (int i = 0; i < NUMPIXELS; i++) { //We still want to calculate for the entire span of spire_P1 even if they aren't shown
     int pixelHue = firstPixelHue + (i * 65536L / NUMPIXELS);
     //This calculation takes so long that the arduino starts to drop commands...
     if (i<percentToShow)
-      spire_P1.setPixelColor(i,Adafruit_NeoPixel::ColorHSV(pixelHue,255,10));
+      spire->setPixelColor(i,Adafruit_NeoPixel::ColorHSV(pixelHue,255,10));
     
   }
-  spire_P1.show();
+  spire->show();
   firstPixelHue += 100; // Advance just a little along the color wheel
 }
 

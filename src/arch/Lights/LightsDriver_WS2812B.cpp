@@ -12,7 +12,7 @@
 REGISTER_LIGHTS_DRIVER_CLASS(WS2812B);
 
 #if defined(WINDOWS) || defined(WIN32) || defined(_WIN32) || defined(_WINDOWS)
-static Preference<RString> m_EXTIO_COMPORT("ArduinoComPort", "COM1"); //default on windows
+static Preference<RString> m_ARDUINO_COM_PORT("ArduinoComPort", "COM1"); //default on windows
 #else
 static Preference<RString> m_ARDUINO_COM_PORT("ArduinoComPort", "/dev/ttyACM0"); //default on *nix?
 #endif
@@ -36,7 +36,14 @@ LightsDriver_WS2812B::LightsDriver_WS2812B() {
         static serial::Timeout timeout;
         timeout=serial::Timeout::simpleTimeout(1000);
         arduino.setTimeout(timeout);
-        arduino.open();
+        if (arduino.available())
+        {
+            arduino.open();
+        }
+        else
+        {
+            LOG->Warn("The arduino is not connected. WS2812B lights cannot start.");
+        }
     }
 }
 
@@ -130,3 +137,21 @@ void LightsDriver_WS2812B::Set( const LightsState *ls)
         arduino.write(lightBuffer,6);
     }
 }
+
+/*  (c) 2021 Rhythm Lunatic.
+
+    This file is part of StepAMWorks.
+
+    StepAMWorks is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    StepAMWorks is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with StepAMWorks.  If not, see <https://www.gnu.org/licenses/>.
+*/
