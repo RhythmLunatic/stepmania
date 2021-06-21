@@ -321,12 +321,14 @@ source_group("Arch Specific\\\\Loading Window" FILES ${SMDATA_ARCH_LOADING_SRC} 
 list(APPEND SMDATA_ARCH_LIGHTS_SRC
   "arch/Lights/LightsDriver.cpp"
   "arch/Lights/LightsDriver_SystemMessage.cpp"
-        "arch/Lights/LightsDriver_Broadcast.cpp"
+  "arch/Lights/LightsDriver_Broadcast.cpp"
+  "arch/Lights/LightsDriver_WS2812B.cpp"
 )
 list(APPEND SMDATA_ARCH_LIGHTS_HPP
   "arch/Lights/LightsDriver.h"
   "arch/Lights/LightsDriver_SystemMessage.h"
-        "arch/Lights/LightsDriver_Broadcast.h"
+  "arch/Lights/LightsDriver_Broadcast.h"
+  "arch/Lights/LightsDriver_WS2812B.h"
 )
 
 list(APPEND SMDATA_ARCH_LIGHTS_SRC
@@ -374,7 +376,6 @@ list(APPEND SMDATA_ARCH_LIGHTS_HPP
         "arch/Lights/LightsDriver_LinuxWeedTech.cpp"
         "arch/Lights/LightsDriver_LinuxParallel.cpp"
         "arch/Lights/LightsDriver_LinuxPacDrive.cpp"
-              "arch/Lights/LightsDriver_WS2812B.cpp"
         "io/PacDrive.cpp"
       )
       list(APPEND SMDATA_ARCH_LIGHTS_HPP
@@ -383,7 +384,6 @@ list(APPEND SMDATA_ARCH_LIGHTS_HPP
         "arch/Lights/LightsDriver_LinuxWeedTech.h"
         "arch/Lights/LightsDriver_LinuxParallel.h"
         "arch/Lights/LightsDriver_LinuxPacDrive.h"
-              "arch/Lights/LightsDriver_WS2812B.h"
         "io/PacDrive.h"
       )
       if (WITH_PARALLEL_PORT)
