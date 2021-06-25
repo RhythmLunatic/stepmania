@@ -201,4 +201,3 @@ src/NotesLoaderSecret.h
 src/NotesWriterSecret.cpp
 src/NotesWriterSecret.h
 UserPrefs/*
-

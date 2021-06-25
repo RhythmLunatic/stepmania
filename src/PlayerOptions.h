@@ -386,6 +386,7 @@ public:
 	bool		m_bDizzyHolds;
 	bool		m_bZBuffer;
 	bool		m_bCosecant;
+	//bool        m_bComboUnderField;
 	/** @brief The method for which a player can fail a song. */
 	FailType m_FailType;
 	TapNoteScore m_MinTNSToHideNotes;

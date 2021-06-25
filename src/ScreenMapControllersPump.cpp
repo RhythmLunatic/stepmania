@@ -55,6 +55,8 @@ ScreenMapControllersPump::~ScreenMapControllersPump()
 
 void ScreenMapControllersPump::Init()
 {
+    USERSCROLLER_TRANSFORM.Load( m_sName, "UserScrollerTransformFunction" );
+
     LOG->Trace("Init function starting!");
     //ScreenMapControllersPump::Init();
     LOG->Trace("Init base screen!");
@@ -192,6 +194,7 @@ void ScreenMapControllersPump::Init()
     m_UserScroller.SetName("UserScroller");
     m_UserScroller.SetNumItemsToDraw((float)m_UserScroller.GetNumChildren()*2);
     m_UserScroller.Load2();
+    m_UserScroller.SetTransformFromReference(USERSCROLLER_TRANSFORM);
     LOAD_ALL_COMMANDS_AND_SET_XY(m_UserScroller);
     this->AddChild(&m_UserScroller);
 
@@ -227,7 +230,7 @@ void ScreenMapControllersPump::BeginScreen()
     LOG->Trace("Call AfterChangeFocus!");
     AfterChangeFocus();
     LOG->Trace("BeginScreen finish");
-    m_fLockInputSecs= 2.5f;
+    //m_fLockInputSecs= 2.5f;
     m_AutoDismissNoSetListPromptSecs= 0.0f;
     m_AutoDismissSanitySecs= 0.0f;
 }
@@ -626,8 +629,7 @@ bool ScreenMapControllersPump::CursorCanGoLeft()
 
 bool ScreenMapControllersPump::CursorCanGoRight()
 {
-    return !CursorOnAction() && (m_CurSlot < NUM_CHANGABLE_SLOTS-1 ||
-                                 m_CurController < NUM_GameController-1);
+    return !CursorOnAction() && (m_CurSlot < NUM_CHANGABLE_SLOTS-1);
 }
 
 int ScreenMapControllersPump::CurKeyIndex()

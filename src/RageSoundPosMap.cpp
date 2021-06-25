@@ -190,9 +190,9 @@ int64_t pos_map_queue::Search( int64_t iSourceFrame, bool *bApproximate ) const
 	if( last.PeekDeltaTime() >= 1.0f )
 	{
 		last.GetDeltaTime();
-		LOG->Trace( "Approximate sound time: driver frame " I64F ", m_pImpl->m_Queue frame " I64F ".." I64F " (dist " I64F "), closest position is " I64F,
+		/*LOG->Trace( "Approximate sound time: driver frame " I64F ", m_pImpl->m_Queue frame " I64F ".." I64F " (dist " I64F "), closest position is " I64F,
 			iSourceFrame, pClosestBlock->m_iDestFrame, pClosestBlock->m_iDestFrame+pClosestBlock->m_iFrames,
-			iClosestPositionDist, iClosestPosition );
+			iClosestPositionDist, iClosestPosition );*/
 	}
 
 	if( bApproximate )

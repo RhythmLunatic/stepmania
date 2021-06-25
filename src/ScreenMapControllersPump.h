@@ -82,6 +82,7 @@ private:
     float m_AutoDismissSanitySecs;
     AutoActor m_SanityMessage;
 
+    ThemeMetric<LuaReference> USERSCROLLER_TRANSFORM;
     ActorScroller m_UserScroller; //User handled actors
     vector<AutoActor> m_UserScrollerActors;
 

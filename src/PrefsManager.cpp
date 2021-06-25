@@ -299,13 +299,8 @@ PrefsManager::PrefsManager() :
 
 	/* Debug: */
 	m_bLogToDisk			( "LogToDisk",		true ),
-#if defined(DEBUG)
-	m_bForceLogFlush		( "ForceLogFlush",	true ),
-	m_bShowLogOutput		( "ShowLogOutput",	true ),
-#else
-	m_bForceLogFlush		( "ForceLogFlush",	false ),
-	m_bShowLogOutput		( "ShowLogOutput",	false ),
-#endif
+	m_bForceLogFlush		( "ForceLogFlush",	TRUE_IF_DEBUG ),
+	m_bShowLogOutput		( "ShowLogOutput",	TRUE_IF_DEBUG ),
 	m_bLogSkips			( "LogSkips",		false ),
 	m_bLogCheckpoints		( "LogCheckpoints",	false ),
 	m_bShowLoadingWindow		( "ShowLoadingWindow",	true ),

@@ -445,10 +445,14 @@ void ScreenSelectMaster::UpdateSelectableChoices()
 	{
 		RString command= "Enabled";
 		bool disabled= false;
-		if(!m_aGameCommands[c].IsPlayable())
+		RString WhyNot;
+		if(!m_aGameCommands[c].IsPlayable(&WhyNot))
 		{
 			command= "Disabled";
 			disabled= true;
+#ifdef DEBUG
+            LOG->Warn("This choice is not available: %s",WhyNot.c_str());
+#endif
 		}
 		else if(first_playable == -1)
 		{
