@@ -318,106 +318,117 @@ endif()
 
 source_group("Arch Specific\\\\Loading Window" FILES ${SMDATA_ARCH_LOADING_SRC} ${SMDATA_ARCH_LOADING_HPP})
 
+#Debugger lights
+#These are always included because SM won't compile without at least one...
 list(APPEND SMDATA_ARCH_LIGHTS_SRC
   "arch/Lights/LightsDriver.cpp"
   "arch/Lights/LightsDriver_SystemMessage.cpp"
   "arch/Lights/LightsDriver_Broadcast.cpp"
-  "arch/Lights/LightsDriver_WS2812B.cpp"
 )
 list(APPEND SMDATA_ARCH_LIGHTS_HPP
   "arch/Lights/LightsDriver.h"
   "arch/Lights/LightsDriver_SystemMessage.h"
   "arch/Lights/LightsDriver_Broadcast.h"
-  "arch/Lights/LightsDriver_WS2812B.h"
 )
 
-list(APPEND SMDATA_ARCH_LIGHTS_SRC
-  "arch/Lights/LightsDriver_SextetStream.cpp"
-  "arch/Lights/LightsDriver_Satellite.cpp"
-  "arch/Lights/LightsDriver_EXTIO.cpp"
-)
-list(APPEND SMDATA_ARCH_LIGHTS_HPP
-  "arch/Lights/LightsDriver_SextetStream.h"
-  "arch/Lights/LightsDriver_Satellite.h"
-  "arch/Lights/LightsDriver_EXTIO.h"
-)
-
-# TODO: Confirm if Apple can use the export.
-#if(NOT APPLE)
+if (NOT CS_BUILD)
+  #Non-debug cross platform lights
   list(APPEND SMDATA_ARCH_LIGHTS_SRC
-    "arch/Lights/LightsDriver_Export.cpp"
+    "arch/Lights/LightsDriver_SextetStream.cpp"
+    "arch/Lights/LightsDriver_Satellite.cpp"
+    "arch/Lights/LightsDriver_EXTIO.cpp"
+          "arch/Lights/LightsDriver_WS2812B.cpp"
   )
   list(APPEND SMDATA_ARCH_LIGHTS_HPP
-    "arch/Lights/LightsDriver_Export.h"
+    "arch/Lights/LightsDriver_SextetStream.h"
+    "arch/Lights/LightsDriver_Satellite.h"
+    "arch/Lights/LightsDriver_EXTIO.h"
+          "arch/Lights/LightsDriver_WS2812B.h"
   )
 
-  if(WIN32)
+  # TODO: Confirm if Apple can use the export.
+  #if(NOT APPLE)
     list(APPEND SMDATA_ARCH_LIGHTS_SRC
-      "arch/Lights/LightsDriver_Win32Parallel.cpp"
-      "arch/Lights/LightsDriver_PacDrive.cpp"
+      "arch/Lights/LightsDriver_Export.cpp"
     )
     list(APPEND SMDATA_ARCH_LIGHTS_HPP
-      "arch/Lights/LightsDriver_Win32Parallel.h"
-      "arch/Lights/LightsDriver_PacDrive.cpp"
+      "arch/Lights/LightsDriver_Export.h"
     )
-    if (WITH_MINIMAID)
+
+    if(WIN32)
       list(APPEND SMDATA_ARCH_LIGHTS_SRC
-        "arch/Lights/LightsDriver_Win32Minimaid.cpp"
+        "arch/Lights/LightsDriver_Win32Parallel.cpp"
+        "arch/Lights/LightsDriver_PacDrive.cpp"
       )
       list(APPEND SMDATA_ARCH_LIGHTS_HPP
-        "arch/Lights/LightsDriver_Win32Minimaid.h"
+        "arch/Lights/LightsDriver_Win32Parallel.h"
+        "arch/Lights/LightsDriver_PacDrive.cpp"
       )
-    endif()
-  else() # Unix/Linux TODO: Linux HAVE_PARALLEL_PORT
-    if(LINUX)
-      list(APPEND SMDATA_ARCH_LIGHTS_SRC
-        "arch/Lights/LightsDriver_Linux_PIUIO.cpp"
-        "arch/Lights/LightsDriver_Linux_PIUIO_Leds.cpp"
-        "arch/Lights/LightsDriver_LinuxWeedTech.cpp"
-        "arch/Lights/LightsDriver_LinuxParallel.cpp"
-        "arch/Lights/LightsDriver_LinuxPacDrive.cpp"
-        "io/PacDrive.cpp"
-      )
-      list(APPEND SMDATA_ARCH_LIGHTS_HPP
-        "arch/Lights/LightsDriver_Linux_PIUIO.h"
-        "arch/Lights/LightsDriver_Linux_PIUIO_Leds.h"
-        "arch/Lights/LightsDriver_LinuxWeedTech.h"
-        "arch/Lights/LightsDriver_LinuxParallel.h"
-        "arch/Lights/LightsDriver_LinuxPacDrive.h"
-        "io/PacDrive.h"
-      )
-      if (WITH_PARALLEL_PORT)
-        list(APPEND SMDATA_ARCH_LIGHTS_SRC
-          "arch/Lights/LightsDriver_LinuxParallel.cpp"
-        )
-        list(APPEND SMDATA_ARCH_LIGHTS_HPP
-          "arch/Lights/LightsDriver_LinuxParallel.h"
-        )
-      endif()
       if (WITH_MINIMAID)
         list(APPEND SMDATA_ARCH_LIGHTS_SRC
-          "arch/Lights/LightsDriver_LinuxMinimaid.cpp"
+          "arch/Lights/LightsDriver_Win32Minimaid.cpp"
         )
         list(APPEND SMDATA_ARCH_LIGHTS_HPP
-          "arch/Lights/LightsDriver_LinuxMinimaid.h"
+          "arch/Lights/LightsDriver_Win32Minimaid.h"
         )
       endif()
-    endif()
-  endif(WIN32)
-#endif(NOT APPLE)
-
+    else() # Unix/Linux TODO: Linux HAVE_PARALLEL_PORT
+      if(LINUX)
+        list(APPEND SMDATA_ARCH_LIGHTS_SRC
+          "arch/Lights/LightsDriver_Linux_PIUIO.cpp"
+          "arch/Lights/LightsDriver_Linux_PIUIO_Leds.cpp"
+          "arch/Lights/LightsDriver_LinuxWeedTech.cpp"
+          "arch/Lights/LightsDriver_LinuxParallel.cpp"
+          "arch/Lights/LightsDriver_LinuxPacDrive.cpp"
+          "io/PacDrive.cpp"
+        )
+        list(APPEND SMDATA_ARCH_LIGHTS_HPP
+          "arch/Lights/LightsDriver_Linux_PIUIO.h"
+          "arch/Lights/LightsDriver_Linux_PIUIO_Leds.h"
+          "arch/Lights/LightsDriver_LinuxWeedTech.h"
+          "arch/Lights/LightsDriver_LinuxParallel.h"
+          "arch/Lights/LightsDriver_LinuxPacDrive.h"
+          "io/PacDrive.h"
+        )
+        if (WITH_PARALLEL_PORT)
+          list(APPEND SMDATA_ARCH_LIGHTS_SRC
+            "arch/Lights/LightsDriver_LinuxParallel.cpp"
+          )
+          list(APPEND SMDATA_ARCH_LIGHTS_HPP
+            "arch/Lights/LightsDriver_LinuxParallel.h"
+          )
+        endif()
+        if (WITH_MINIMAID)
+          list(APPEND SMDATA_ARCH_LIGHTS_SRC
+            "arch/Lights/LightsDriver_LinuxMinimaid.cpp"
+          )
+          list(APPEND SMDATA_ARCH_LIGHTS_HPP
+            "arch/Lights/LightsDriver_LinuxMinimaid.h"
+          )
+        endif()
+      endif()
+    endif(WIN32)
+  #endif(NOT APPLE)
+endif()
 source_group("Arch Specific\\\\Lights" FILES ${SMDATA_ARCH_LIGHTS_SRC} ${SMDATA_ARCH_LIGHTS_HPP})
+
 
 list(APPEND SMDATA_ARCH_INPUT_SRC
   "arch/InputHandler/InputHandler.cpp"
   "arch/InputHandler/InputHandler_MonkeyKeyboard.cpp"
-  "arch/InputHandler/InputHandler_Python23IO.cpp"
 )
 list(APPEND SMDATA_ARCH_INPUT_HPP
   "arch/InputHandler/InputHandler.h"
   "arch/InputHandler/InputHandler_MonkeyKeyboard.h"
-  "arch/InputHandler/InputHandler_Python23IO.h"
 )
+if(NOT CS_BUILD)
+list(APPEND SMDATA_ARCH_INPUT_SRC
+        "arch/InputHandler/InputHandler_Python23IO.cpp"
+        )
+list(APPEND SMDATA_ARCH_INPUT_HPP
+        "arch/InputHandler/InputHandler_Python23IO.h"
+        )
+endif()
 
 if(WIN32)
   list(APPEND SMDATA_ARCH_INPUT_SRC

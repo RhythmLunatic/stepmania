@@ -224,7 +224,9 @@ bool Screen::Input( const InputEventPlus &input )
 			return false;
 		case GAME_BUTTON_START:  return this->MenuStart ( input );
 		case GAME_BUTTON_SELECT: return this->MenuSelect( input );
+#if !defined(NO_PAY_MODE)
 		case GAME_BUTTON_COIN:   return this->MenuCoin  ( input );
+#endif
 		default: return false;
 	}
 }

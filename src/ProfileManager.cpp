@@ -620,7 +620,7 @@ bool ProfileManager::CreateLocalProfileByID( RString sName, RString sProfileIDIn
     }
 
     AddLocalProfileByID(pProfile, sProfileIDIn);
-    LOG->Trace(ssprintf("Created a local profile with ID of %s in %s.",sProfileIDIn.c_str(),sProfileDir.c_str()));
+    LOG->Trace("Created a local profile with ID of %s in %s.",sProfileIDIn.c_str(),sProfileDir.c_str());
     return true;
 }
 
@@ -915,24 +915,15 @@ void ProfileManager::AddStepsScore( const Song* pSong, const Steps* pSteps, Play
 
 	iPersonalIndexOut = -1;
 	iMachineIndexOut = -1;
-
-	// In event mode, set the score's name immediately to the Profile's last
-	// used name.  If no profile last used name exists, use "EVNT".
-	if( GAMESTATE->IsEventMode() )
-	{
-		Profile* pProfile = GetProfile(pn);
-		if( pProfile && !pProfile->m_sLastUsedHighScoreName.empty() )
-			hs.SetName( pProfile->m_sLastUsedHighScoreName );
-		else
-			hs.SetName( "EVNT" );
-	}
-	else
-	{
-		hs.SetName( RANKING_TO_FILL_IN_MARKER[pn] );
-	}
+	
+    Profile* pProfile = GetProfile(pn);
+    if( pProfile && !pProfile->m_sDisplayName.empty() )
+        hs.SetName( pProfile->m_sDisplayName );
+    else
+        hs.SetName( RANKING_TO_FILL_IN_MARKER[pn] );
 
 	//
-	// save high score	
+	// save high score
 	//
 	if( IsPersistentProfile(pn) )
 		GetProfile(pn)->AddStepsHighScore( pSong, pSteps, hs, iPersonalIndexOut );

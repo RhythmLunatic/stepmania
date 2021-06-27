@@ -104,7 +104,7 @@ namespace
 					return CREDITS_PRESS_START.GetValue();
 				else
 					return CREDITS_NOT_PRESENT.GetValue();
-
+#ifndef NO_PAY_MODE
 			case CoinMode_Pay:
 			// GCC is picky and needs this to be bracketed
 			{
@@ -120,6 +120,7 @@ namespace
 					sCredits += "  " + CREDITS_MAX.GetValue();
 				return sCredits;
 			}
+#endif
 			default: // CoinMode_Free
 				if( GAMESTATE->PlayersCanJoin() )
 					return CREDITS_FREE_PLAY.GetValue();

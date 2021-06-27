@@ -40,6 +40,8 @@ option(WITH_OGG "Build with OGG/Vorbis Support." ON)
 
 option(WITH_SECRET "Don't touch it." OFF)
 
+option(CS_BUILD "Only compile with support for PC. No lights drivers or pay mode." OFF)
+
 # Turn this option on to log every segment added or removed.
 option(WITH_LOGGING_TIMING_DATA "Build with logging all Add and Erase Segment calls." OFF)
 

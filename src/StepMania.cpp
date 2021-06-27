@@ -1290,6 +1290,7 @@ RString StepMania::SaveScreenshot( RString Dir, bool SaveCompressed, bool MakeSi
 
 void StepMania::InsertCoin( int iNum, bool bCountInBookkeeping )
 {
+#if !defined(NO_PAY_MODE)
 	if( bCountInBookkeeping )
 	{
 		LIGHTSMAN->PulseCoinCounter();
@@ -1341,6 +1342,7 @@ void StepMania::InsertCoin( int iNum, bool bCountInBookkeeping )
 	//msg.SetParam( "Inserted", iNum );
 	//msg.SetParam( "MaxCredits", bMaxCredits );
 	MESSAGEMAN->Broadcast( msg );
+#endif
 }
 
 void StepMania::InsertCredit()
@@ -1392,7 +1394,7 @@ bool HandleGlobalInputs( const InputEventPlus &input )
 				SCREENMAN->SetNewScreen( CommonMetrics::OPERATOR_MENU_SCREEN );
 			}
 			return true;
-
+#if !defined(NO_PAY_MODE)
 		case GAME_BUTTON_COIN:
 			// Handle a coin insertion.
 			if( GAMESTATE->IsEditing() )	// no coins while editing
@@ -1402,6 +1404,7 @@ bool HandleGlobalInputs( const InputEventPlus &input )
 			}
 			StepMania::InsertCoin();
 			return false; // Attract needs to know because it goes to TitleMenu on > 1 credit
+#endif
 		default: break;
 	}
 

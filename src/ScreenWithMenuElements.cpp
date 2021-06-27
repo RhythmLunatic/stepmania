@@ -134,7 +134,8 @@ void ScreenWithMenuElements::BeginScreen()
 
 	/* Evaluate FirstUpdateCommand. */
 	this->PlayCommand( "FirstUpdate" );
-	
+
+#ifndef NO_PAY_MODE
 	/* If AutoJoin and a player is already joined, then try to join a player.  (If no players
 	 * are joined, they'll join on the first JoinInput.) */
 	if( GAMESTATE->GetCoinMode() == CoinMode_Pay && GAMESTATE->m_bAutoJoin.Get() )
@@ -142,6 +143,7 @@ void ScreenWithMenuElements::BeginScreen()
 		if( GAMESTATE->GetNumSidesJoined() > 0 && GAMESTATE->JoinPlayers() )
 			SCREENMAN->PlayStartSound();
 	}
+#endif
 }
 
 void ScreenWithMenuElements::HandleScreenMessage( const ScreenMessage SM )

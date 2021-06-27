@@ -135,7 +135,9 @@ LuaXType( StageResult );
 
 static const char *CoinModeNames[] = {
 	"Home",
+#ifndef NO_PAY_MODE
 	"Pay",
+#endif
 	"Free",
 };
 XToString( CoinMode );

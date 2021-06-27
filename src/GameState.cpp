@@ -419,6 +419,9 @@ void GameState::JoinPlayer( PlayerNumber pn )
 			}
 		}
 	}
+#if defined(NO_PAY_MODE)
+    m_iPlayerStageTokens[pn] = PREFSMAN->m_iSongsPerPlay;
+#else
 	/* If joint premium and we're not taking away a credit for the 2nd join,
 	 * give the new player the same number of stage tokens that the old player
 	 * has. */
@@ -426,6 +429,7 @@ void GameState::JoinPlayer( PlayerNumber pn )
 		m_iPlayerStageTokens[pn] = m_iPlayerStageTokens[this->GetMasterPlayerNumber()];
 	else
 		m_iPlayerStageTokens[pn] = PREFSMAN->m_iSongsPerPlay;
+#endif
 
 	m_bSideIsJoined[pn] = true;
 
@@ -570,6 +574,9 @@ bool GameState::JoinPlayers()
 
 int GameState::GetCoinsNeededToJoin() const
 {
+#ifdef NO_PAY_MODE
+    return 0;
+#else
 	int iCoinsToCharge = 0;
 
 	if( GetCoinMode() == CoinMode_Pay )
@@ -581,6 +588,7 @@ int GameState::GetCoinsNeededToJoin() const
 		iCoinsToCharge = 0;
 
 	return iCoinsToCharge;
+#endif
 }
 
 void GameState::HTTPBroadcastSongInProgress(bool bNoSong)
@@ -1893,6 +1901,8 @@ EarnedExtraStage GameState::CalculateEarnedExtraStage() const
 			break;
 		}
 
+		//TODO: There's essentially no reason for this to be C++, especially when themes need to be able to
+		//have their own extra stage system.
 		if( IsExtraStage() )
 		{
 			if( ALLOW_EXTRA_2  &&  STATSMAN->m_CurStageStats.m_player[pn].GetGrade() <= GRADE_TIER_FOR_EXTRA_2 )
@@ -2655,11 +2665,15 @@ bool GameState::IsEventMode() const
 
 CoinMode GameState::GetCoinMode() const
 {
+#ifdef NO_PAY_MODE
+    return GamePreferences::m_CoinMode;
+#else
 	// XXX: Event mode shouldn't be valid if CoinMode_Pay
 	if( IsEventMode() && GamePreferences::m_CoinMode == CoinMode_Pay )
 		return CoinMode_Free;
 	else
 		return GamePreferences::m_CoinMode;
+#endif
 }
 
 ThemeMetric<bool> DISABLE_PREMIUM_IN_EVENT_MODE("GameState","DisablePremiumInEventMode");

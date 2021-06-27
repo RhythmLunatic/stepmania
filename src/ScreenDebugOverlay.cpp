@@ -701,12 +701,19 @@ class DebugLineCoinMode : public IDebugLine
 	virtual bool IsEnabled() { return true; }
 	virtual void DoAndLog( RString &sMessageOut )
 	{
+#ifdef NO_PAY_MODE
+        if (GAMESTATE->GetCoinMode() == CoinMode_Home)
+            GamePreferences::m_CoinMode.Set(CoinMode_Free);
+        else
+            GamePreferences::m_CoinMode.Set(CoinMode_Home);
+#else
 		if (GAMESTATE->GetCoinMode() == CoinMode_Home)
 			GamePreferences::m_CoinMode.Set(CoinMode_Free);
 		else if (GAMESTATE->GetCoinMode() == CoinMode_Free && !GAMESTATE->IsEventMode())
 			GamePreferences::m_CoinMode.Set(CoinMode_Pay);
 		else
 			GamePreferences::m_CoinMode.Set(CoinMode_Home);
+#endif
 		SCREENMAN->RefreshCreditsMessages();
 		IDebugLine::DoAndLog( sMessageOut );
 	}

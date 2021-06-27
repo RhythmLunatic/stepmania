@@ -499,6 +499,9 @@ int GetNumCreditsPaid()
 
 int GetCreditsRequiredToPlayStyle( const Style *style )
 {
+#ifdef NO_PAY_MODE
+    return 0;
+#else
 	// GameState::GetCoinsNeededToJoin returns 0 if the coin mode isn't
 	// CoinMode_Pay, which means the theme can't make sure that there are
 	// enough credits available.
@@ -522,6 +525,7 @@ int GetCreditsRequiredToPlayStyle( const Style *style )
 		return (GAMESTATE->GetPremium() == Premium_DoubleFor1Credit) ? 1 : 2;
 	DEFAULT_FAIL( style->m_StyleType );
 	}
+#endif
 }
 
 static bool AreStyleAndPlayModeCompatible( const Style *style, PlayMode pm )
@@ -559,11 +563,15 @@ bool GameCommand::IsPlayable( RString *why ) const
 
 	if ( m_pStyle )
 	{
+#ifdef NO_PAY_MODE
+	    int iCredits=NUM_PLAYERS;
+#else
 		int iCredits;
 		if( GAMESTATE->GetCoinMode() == CoinMode_Pay )
 			iCredits = GAMESTATE->m_iCoins / PREFSMAN->m_iCoinsPerCredit;
 		else
 			iCredits = NUM_PLAYERS;
+#endif
 
 		const int iNumCreditsPaid = GetNumCreditsPaid();
 		const int iNumCreditsRequired = GetCreditsRequiredToPlayStyle(m_pStyle);
@@ -708,6 +716,7 @@ void GameCommand::ApplySelf( const vector<PlayerNumber> &vpns ) const
 	{
 		GAMESTATE->SetCurrentStyle( m_pStyle, GAMESTATE->GetMasterPlayerNumber() );
 
+#ifndef NO_PAY_MODE
 		// It's possible to choose a style that didn't have enough players joined.
 		// If enough players aren't joined, then  we need to subtract credits
 		// for the sides that will be joined as a result of applying this option.
@@ -723,6 +732,7 @@ void GameCommand::ApplySelf( const vector<PlayerNumber> &vpns ) const
             //Credit Used, make sure to update CoinsFile
             BOOKKEEPER->WriteCoinsFile(GAMESTATE->m_iCoins.Get());
 		}
+#endif
 		
 		// If only one side is joined and we picked a style that requires both
 		// sides, join the other side.

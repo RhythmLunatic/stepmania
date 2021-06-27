@@ -845,7 +845,11 @@ static void InitializeConfOptions()
 
 	// Machine options
 	ADD( ConfOption( "MenuTimer",			MovePref<bool>,		"Off","On" ) );
+#ifndef NO_PAY_MODE
 	ADD( ConfOption( "CoinMode",			MovePref<CoinMode>,	"Home","Pay","Free Play" ) );
+#else
+    ADD( ConfOption( "CoinMode",			MovePref<CoinMode>,	"Home","Free Play" ) );
+#endif
 	ADD( ConfOption( "CoinModeNoHome",		CoinModeNoHome,		"Pay","Free Play" ) );
 	g_ConfOptions.back().m_sPrefName = "CoinMode";
 	ADD( ConfOption( "CoinsPerCredit",		CoinsPerCredit,		"|1","|2","|3","|4","|5","|6","|7","|8","|9","|10","|11","|12","|13","|14","|15","|16" ) );

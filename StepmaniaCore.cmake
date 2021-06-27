@@ -187,6 +187,11 @@ if(WITH_SECRET)
   set(HAS_SECRET TRUE)
 endif()
 
+if(CS_BUILD)
+  message(STATUS "Compiling a consumer build of StepAMW. No lights support!")
+  add_definitions(-DNO_PAY_MODE)
+endif()
+
 if(WITH_FOURPLAYERS)
   message(STATUS "Compiling with 4-player support.")
   set(FOUR_PLAYERS TRUE)
