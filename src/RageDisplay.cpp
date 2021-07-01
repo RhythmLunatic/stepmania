@@ -78,6 +78,8 @@ RString RageDisplay::SetVideoMode( VideoModeParams p, bool &bNeedReloadTextures 
 
 	// fall back to settings that will most likely work
 	p.bpp = 16;
+	p.width=640;
+	p.height=480;
 	if( (err = this->TryVideoMode(p,bNeedReloadTextures)) == "" )
 		return RString();
 	vs.push_back( err );

@@ -293,6 +293,7 @@ void ScreenMapControllers::Update( float fDeltaTime )
 		
 		GameInput curGameI( (GameController)m_CurController, pKey->m_GameButton );
 
+		LOG->Trace("Applying mapping %s",m_DeviceIToMap.ToString().c_str());
 		INPUTMAPPER->SetInputMap( m_DeviceIToMap, curGameI, m_CurSlot );
 		INPUTMAPPER->AddDefaultMappingsForCurrentGameIfUnmapped();
 		m_ChangeOccurred= true;

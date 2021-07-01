@@ -84,6 +84,7 @@ public:
 		m_bStealthType(false), m_bStealthPastReceptors(false),
 		m_bDizzyHolds(false), m_bZBuffer(false),
 		m_bCosecant(false),
+		m_bComboUnderField(false),
 		m_MinTNSToHideNotes(PREFSMAN->m_MinTNSToHideNotes)
 	{
 		m_sNoteSkin = "";
@@ -346,8 +347,8 @@ public:
 	float	m_fEffects[NUM_EFFECTS],	m_SpeedfEffects[NUM_EFFECTS];
 	float	m_fAppearances[NUM_APPEARANCES],m_SpeedfAppearances[NUM_APPEARANCES];
 	float	m_fScrolls[NUM_SCROLLS],	m_SpeedfScrolls[NUM_SCROLLS];
-	float	m_fDark,			m_SpeedfDark;
-	float	m_fBlind,			m_SpeedfBlind;
+	float	m_fDark,			m_SpeedfDark; //Hide receptor row
+	float	m_fBlind,			m_SpeedfBlind; //Hide current combo
 	float	m_fCover,			m_SpeedfCover;	// hide the background per-player--can't think of a good name
 	float	m_fRandAttack,			m_SpeedfRandAttack;
 	float	m_fNoAttack,			m_SpeedfNoAttack;
@@ -386,7 +387,7 @@ public:
 	bool		m_bDizzyHolds;
 	bool		m_bZBuffer;
 	bool		m_bCosecant;
-	//bool        m_bComboUnderField;
+	bool        m_bComboUnderField;
 	/** @brief The method for which a player can fail a song. */
 	FailType m_FailType;
 	TapNoteScore m_MinTNSToHideNotes;

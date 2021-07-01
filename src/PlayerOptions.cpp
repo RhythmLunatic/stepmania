@@ -57,6 +57,11 @@ static const float CMOD_DEFAULT= 200.0f;
 // this file, but nothing else has a named constant for its default value.
 // -Kyz
 
+/* The init function is only called in the "FromOneModString" function and
+ * used to reset all the player options. I'm pretty sure this function
+ * isn't supposed to be used at all since there's already a ResetPrefs() function
+ * but I'm not going to bother rewriting it. -RL
+ */
 void PlayerOptions::Init()
 {
 	m_LifeType = LifeType_Bar;
@@ -95,6 +100,7 @@ void PlayerOptions::Init()
 	m_bDizzyHolds = false;
 	m_bZBuffer = false;
 	m_bCosecant = false;
+	m_bComboUnderField = false;
 	m_sNoteSkin = "";
 	//No idea what these do
 	ZERO( m_fMovesX );		ONE( m_SpeedfMovesX );
@@ -112,12 +118,15 @@ void PlayerOptions::Init()
 	
 }
 
+/* Approach 'tweens' modifiers by tweening them from 'other' towards this instance.
+ * Booleans must also be copied since it is used to copy from ModsLevel_Song to ModsLevel_Current in ModsGroup.h
+ */
 void PlayerOptions::Approach( const PlayerOptions& other, float fDeltaSeconds )
 {
 #define APPROACH( opt ) \
-	fapproach( m_ ## opt, other.m_ ## opt, fDeltaSeconds * other.m_Speed ## opt );
+	fapproach( m_ ## opt, other.m_ ## opt, fDeltaSeconds * other.m_Speed ## opt )
 #define DO_COPY( x ) \
-	x = other.x;
+	x = other.x
 
 	DO_COPY( m_LifeType );
 	DO_COPY( m_DrainType );
@@ -185,6 +194,8 @@ void PlayerOptions::Approach( const PlayerOptions& other, float fDeltaSeconds )
 	DO_COPY( m_bDizzyHolds );
 	DO_COPY( m_bZBuffer );
 	DO_COPY( m_bCosecant );
+	DO_COPY( m_bComboUnderField );
+	DO_COPY( m_bStealthPastReceptors );
 	DO_COPY( m_FailType );
 	DO_COPY( m_MinTNSToHideNotes );
 	DO_COPY( m_sNoteSkin );
@@ -423,6 +434,7 @@ void PlayerOptions::GetMods( vector<RString> &AddTo, bool bForceNoteSkin ) const
 	AddPart( AddTo, m_bDizzyHolds,				"DizzyHolds");
 	AddPart( AddTo, m_bZBuffer,				"ZBuffer");
 	AddPart( AddTo, m_bCosecant,				"Cosecant");
+	AddPart( AddTo, m_bComboUnderField, "ComboUnderField");
 	
 	for( int i=0; i<16; i++)
 	{
@@ -591,7 +603,7 @@ void PlayerOptions::FromString( const RString &sMultipleMods )
 
 bool PlayerOptions::FromOneModString( const RString &sOneMod, RString &sErrorOut )
 {
-	ASSERT_M( NOTESKIN != NULL, "The Noteskin Manager must be loaded in order to process mods." );
+	ASSERT_M( NOTESKIN != nullptr, "The Noteskin Manager must be loaded in order to process mods." );
 
 	RString sBit = sOneMod;
 	RString sMod = "";
@@ -1158,6 +1170,7 @@ bool PlayerOptions::FromOneModString( const RString &sOneMod, RString &sErrorOut
 	}
 	else if( sBit == "zbuffer" )				m_bZBuffer = on;
 	else if( sBit == "cosecant" )				m_bCosecant = on;
+	else if (sBit == "combounderfield")         m_bComboUnderField = on;
 	// deprecated mods/left in for compatibility
 	else if( sBit == "converge" )				SET_FLOAT( fScrolls[SCROLL_CENTERED] )
 	// end of the list
@@ -1394,6 +1407,7 @@ bool PlayerOptions::operator==( const PlayerOptions &other ) const
 	COMPARE(m_bDizzyHolds);
 	COMPARE(m_bZBuffer);
 	COMPARE(m_bCosecant);
+	COMPARE(m_bComboUnderField);
 	COMPARE(m_fDark);
 	COMPARE(m_fBlind);
 	COMPARE(m_fCover);
@@ -1477,6 +1491,7 @@ PlayerOptions& PlayerOptions::operator=(PlayerOptions const& other)
 	CPY(m_bDizzyHolds);
 	CPY(m_bZBuffer);
 	CPY(m_bCosecant);
+	CPY(m_bComboUnderField);
 	CPY_SPEED(fDark);
 	CPY_SPEED(fBlind);
 	CPY_SPEED(fCover);
@@ -1717,6 +1732,7 @@ RString PlayerOptions::GetSavedPrefsString() const
 	SAVE( m_bTransforms[TRANSFORM_NOFAKES] );
 	SAVE( m_bMuteOnError );
 	SAVE( m_sNoteSkin );
+	SAVE( m_bComboUnderField );
 #undef SAVE
 	return po_prefs.GetString();
 }
@@ -1750,6 +1766,7 @@ void PlayerOptions::ResetPrefs( ResetPrefsType type )
 	CPY(m_bDizzyHolds);
 	CPY(m_bZBuffer);
 	CPY(m_bCosecant);
+	CPY(m_bComboUnderField);
 	CPY(m_MinTNSToHideNotes);
 
 	CPY( m_fPerspectiveTilt );
@@ -1978,6 +1995,7 @@ public:
 	BOOL_INTERFACE(DizzyHolds, DizzyHolds);
 	BOOL_INTERFACE(ZBuffer, ZBuffer);
 	BOOL_INTERFACE(Cosecant, Cosecant);
+	BOOL_INTERFACE(ComboUnderField, ComboUnderField);
 	BOOL_INTERFACE(TurnNone, Turns[PlayerOptions::TURN_NONE]);
 	BOOL_INTERFACE(Mirror, Turns[PlayerOptions::TURN_MIRROR]);
 	BOOL_INTERFACE(Backwards, Turns[PlayerOptions::TURN_BACKWARDS]);
@@ -2479,6 +2497,7 @@ public:
 		ADD_METHOD(DizzyHolds);
 		ADD_METHOD(ZBuffer);
 		ADD_METHOD(Cosecant);
+		ADD_METHOD(ComboUnderField);
 		ADD_METHOD(RandAttack);
 		ADD_METHOD(NoAttack);
 		ADD_METHOD(PlayerAutoPlay);
@@ -2559,27 +2578,46 @@ public:
 LUA_REGISTER_CLASS( PlayerOptions )
 // lua end
 
-/*
- * (c) 2001-2004 Chris Danford, Glenn Maynard
- * All rights reserved.
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, and/or sell copies of the Software, and to permit persons to
- * whom the Software is furnished to do so, provided that the above
- * copyright notice(s) and this permission notice appear in all copies of
- * the Software and that both the above copyright notice(s) and this
- * permission notice appear in supporting documentation.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
- * THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS
- * INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT
- * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
- * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
- * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
+/*  (c) 2021 Rhythm Lunatic.
+
+    This file is part of StepAMWorks.
+
+    StepAMWorks is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    StepAMWorks is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with StepAMWorks.  If not, see <https://www.gnu.org/licenses/>.
+
+    This file incorporates work covered by the following copyright and
+    permission notice:
+
+     * (c) 2001-2004 Chris Danford, Glenn Maynard
+     * All rights reserved.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a
+     * copy of this software and associated documentation files (the
+     * "Software"), to deal in the Software without restriction, including
+     * without limitation the rights to use, copy, modify, merge, publish,
+     * distribute, and/or sell copies of the Software, and to permit persons to
+     * whom the Software is furnished to do so, provided that the above
+     * copyright notice(s) and this permission notice appear in all copies of
+     * the Software and that both the above copyright notice(s) and this
+     * permission notice appear in supporting documentation.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+     * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+     * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
+     * THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS
+     * INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT
+     * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+     * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+     * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+     * PERFORMANCE OF THIS SOFTWARE.
  */

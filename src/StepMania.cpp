@@ -618,7 +618,7 @@ struct VideoCardDefaults
 	VideoCardDefaults(
 		"OpenGL",	// This matches all drivers in Mac and Linux. -Chris
 		"opengl",
-		640,480,
+		1280,720,
 		16,16,16,
 		2048,
 		true // Right now, they've got to have NVidia or ATi Cards anyway..
@@ -628,7 +628,7 @@ struct VideoCardDefaults
 		// This must be the very last entry!
 		"",
 		"opengl,d3d",
-		640,480,
+		1280,720,
 		32,32,32,
 		2048,
 		false  // AA is slow on some cards, so let's selectively enable HW accelerated cards.

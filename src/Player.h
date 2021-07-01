@@ -238,9 +238,9 @@ protected:
 	ThemeMetric<float>	HOLD_JUDGMENT_Y_STANDARD;
 	ThemeMetric<float>	HOLD_JUDGMENT_Y_REVERSE;
 	ThemeMetric<int>	BRIGHT_GHOST_COMBO_THRESHOLD;
-	ThemeMetric<bool>	TAP_JUDGMENTS_UNDER_FIELD;
-	ThemeMetric<bool>	HOLD_JUDGMENTS_UNDER_FIELD;
-	ThemeMetric<bool>	COMBO_UNDER_FIELD;
+	//ThemeMetric<bool>	TAP_JUDGMENTS_UNDER_FIELD;
+	//ThemeMetric<bool>	HOLD_JUDGMENTS_UNDER_FIELD;
+	//ThemeMetric<bool>	COMBO_UNDER_FIELD;
 	ThemeMetric<int>	DRAW_DISTANCE_AFTER_TARGET_PIXELS;
 	ThemeMetric<int>	DRAW_DISTANCE_BEFORE_TARGET_PIXELS;
 

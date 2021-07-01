@@ -314,9 +314,8 @@ void Player::Init(
 	HOLD_JUDGMENT_Y_STANDARD.Load(			sType, "HoldJudgmentYStandard" );
 	HOLD_JUDGMENT_Y_REVERSE.Load(			sType, "HoldJudgmentYReverse" );
 	BRIGHT_GHOST_COMBO_THRESHOLD.Load(		sType, "BrightGhostComboThreshold" );
-	TAP_JUDGMENTS_UNDER_FIELD.Load(			sType, "TapJudgmentsUnderField" );
-	HOLD_JUDGMENTS_UNDER_FIELD.Load(		sType, "HoldJudgmentsUnderField" );
-	COMBO_UNDER_FIELD.Load(		sType, "ComboUnderField" );
+	//TAP_JUDGMENTS_UNDER_FIELD.Load(			sType, "TapJudgmentsUnderField" );
+	//HOLD_JUDGMENTS_UNDER_FIELD.Load(		sType, "HoldJudgmentsUnderField" );
 	DRAW_DISTANCE_AFTER_TARGET_PIXELS.Load(		sType, "DrawDistanceAfterTargetsPixels" );
 	DRAW_DISTANCE_BEFORE_TARGET_PIXELS.Load(	sType, "DrawDistanceBeforeTargetsPixels" );
 
@@ -1555,7 +1554,7 @@ void Player::DrawPrimitives()
 	}
 
 	// Draw these below everything else.
-	if( COMBO_UNDER_FIELD && curr_options.m_fBlind == 0 )
+	if( curr_options.m_bComboUnderField && curr_options.m_fBlind == 0 )
 	{
 		if( m_sprCombo )
 			m_sprCombo->Draw();
@@ -1564,11 +1563,11 @@ void Player::DrawPrimitives()
 	if( m_pAttackDisplay )
 		m_pAttackDisplay->Draw();
 
-	if( TAP_JUDGMENTS_UNDER_FIELD )
-		DrawTapJudgments();
-
-	if( HOLD_JUDGMENTS_UNDER_FIELD )
-		DrawHoldJudgments();
+	if( curr_options.m_bComboUnderField && curr_options.m_fBlind == 0)
+    {
+        DrawTapJudgments();
+        DrawHoldJudgments();
+    }
 
 	if(draw_notefield)
 	{
@@ -1577,15 +1576,15 @@ void Player::DrawPrimitives()
 	}
 
 	// m_pNoteField->m_sprBoard->GetVisible()
-	if( !COMBO_UNDER_FIELD && curr_options.m_fBlind == 0 )
-		if( m_sprCombo )
-			m_sprCombo->Draw();
 
-	if( !(bool)TAP_JUDGMENTS_UNDER_FIELD )
-		DrawTapJudgments();
+	if( !curr_options.m_bComboUnderField && curr_options.m_fBlind == 0)
+    {
+        if( m_sprCombo )
+            m_sprCombo->Draw();
+        DrawTapJudgments();
+        DrawHoldJudgments();
+    }
 
-	if( !(bool)HOLD_JUDGMENTS_UNDER_FIELD )
-		DrawHoldJudgments();
 }
 
 void Player::PushPlayerMatrix(float x, float skew, float center_y)

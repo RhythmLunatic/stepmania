@@ -915,7 +915,7 @@ void ProfileManager::AddStepsScore( const Song* pSong, const Steps* pSteps, Play
 
 	iPersonalIndexOut = -1;
 	iMachineIndexOut = -1;
-	
+
     Profile* pProfile = GetProfile(pn);
     if( pProfile && !pProfile->m_sDisplayName.empty() )
         hs.SetName( pProfile->m_sDisplayName );

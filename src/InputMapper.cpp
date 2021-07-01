@@ -1280,6 +1280,7 @@ void InputMappings::WriteMappings( const InputScheme *pInputScheme, RString sFil
 void InputMappings::SetInputMap( const DeviceInput &DeviceI, const GameInput &GameI, int iSlotIndex )
 {
 	// remove the old input
+	//TODO: SM shouldn't force one mapping per button, but there needs to be separate mapping profiles
 	ClearFromInputMap( DeviceI );
 	ClearFromInputMap( GameI, iSlotIndex );
 	
