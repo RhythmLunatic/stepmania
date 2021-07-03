@@ -408,6 +408,7 @@ void NoteColumnRenderArgs::SetPRZForActor(Actor* actor,
 NoteDisplay::NoteDisplay()
 {
 	cache = new NoteMetricCache_t;
+	m_bSupportsShaders= DISPLAY->GetApiDescription()!="D3D";
 }
 
 NoteDisplay::~NoteDisplay()
@@ -1293,8 +1294,8 @@ void NoteDisplay::DrawActor(const TapNote& tn, Actor* pActor, NotePart part,
 	// receptors is black.  However, I looked through the github history and
 	// it's been down here, disabled, since at least SM5 beta 1a.  I don't
 	// know if we should bring that behavior back now. -Kyz
-	if( tn.type != TapNoteType_HoldHead )
-	{ fColorScale *= ArrowEffects::GetBrightness(m_pPlayerState, fBeat); }
+	/*if( tn.type != TapNoteType_HoldHead )
+	{ fColorScale *= ArrowEffects::GetBrightness(m_pPlayerState, fBeat); }*/
 
 	// same logical structure as in UpdateReceptorGhostStuff, I just haven't
 	// figured out a good way to combine them. -Kyz
@@ -1328,14 +1329,17 @@ void NoteDisplay::DrawActor(const TapNote& tn, Actor* pActor, NotePart part,
 	}
 	column_args.spae_zoom_for_beat(m_pPlayerState, spline_beat, sp_zoom, ae_zoom, column_args.column, fYOffset);
 
-	//musWave meme
 	//sp_pos.x is never used so don't worry about this breaking anything.
-	sp_pos.x = ((int)tn.xOffset) * 10;
+	//sp_pos.x = ((int)tn.xOffset) * 10;
+	sp_pos.x=0;
 
 	column_args.SetPRZForActor(pActor, sp_pos, ae_pos, sp_rot, ae_rot, sp_zoom, ae_zoom);
 	// [AJ] this two lines (and how they're handled) piss off many people:
 	pActor->SetDiffuse( diffuse );
 	pActor->SetGlow( glow );
+	// && (m_pPlayerState->m_PlayerOptions.GetCurrent().m_fAppearances[PlayerOptions::APPEARANCE_HIDDEN] != 0)
+	/*if (pActor->canUseShaders())
+	    pActor->SetEffectMode( EffectMode_Saturation );*/
 
 	bool bNeedsTranslate = (bIsAddition && !IsVectorZero(cache->m_fAdditionTextureCoordOffset[part])) || !IsVectorZero(cache->m_fNoteColorTextureCoordSpacing[part]);
 	if( bNeedsTranslate )

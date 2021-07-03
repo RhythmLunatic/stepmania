@@ -57,7 +57,7 @@ public:
     void GetActiveTextureCoords(float fTexCoordsOut[8]) const;
     void StretchTexCoords( float fX, float fY );
     void AddImageCoords( float fX, float fY ); // in image pixel space
-    void SetEffectMode( EffectMode em ) { m_EffectMode = em; }
+    virtual void SetEffectMode( EffectMode em ) { m_EffectMode = em; }
 
     //void LoadFromCached( const RString &sDir, const RString &sPath );
 

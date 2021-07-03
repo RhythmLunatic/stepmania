@@ -280,6 +280,7 @@ private:
 	float			m_fYReverseOffsetPixels;
 
 	unsigned char             m_pnNoteskinNumber; //PIU has multiple noteskins per player.
+	bool m_bSupportsShaders; //If true then use shader Hidden/Sudden
 };
 
 // So, this is a bit screwy, and it's partly because routine forces rendering

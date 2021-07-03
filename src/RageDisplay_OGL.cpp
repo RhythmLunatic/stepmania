@@ -1820,6 +1820,9 @@ void RageDisplay_Legacy::SetEffectMode( EffectMode effect )
 	glUseProgramObjectARB( hShader );
 	if (hShader == 0)
 		return;
+
+	/*I have no idea what this is doing. I'm pretty sure it's passing in
+	 * 0 and 1 as Texture1 and Texture2. -RL */
 	GLint iTexture1 = glGetUniformLocationARB( hShader, "Texture1" );
 	GLint iTexture2 = glGetUniformLocationARB( hShader, "Texture2" );
 	glUniform1iARB( iTexture1, 0 );
@@ -1832,10 +1835,16 @@ void RageDisplay_Legacy::SetEffectMode( EffectMode effect )
 		glGetTexLevelParameteriv( GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &iWidth );
 		glUniform1iARB( iTextureWidthUniform, iWidth );
 	}
+	else if (effect == EffectMode_Saturation)
+    {
+	    GLint iScreenHeightUniform = glGetUniformLocationARB(hShader, "ViewportHeight");
+	    glUniform1iARB(iScreenHeightUniform,g_pWind->GetActualVideoModeParams().height);
+    }
 
 	DebugAssertNoGLError();
 }
 
+//Used in the Movie decoder in case the video is YUYV422.
 bool RageDisplay_Legacy::IsEffectModeSupported( EffectMode effect )
 {
 	switch( effect )

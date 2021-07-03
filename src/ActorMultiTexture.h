@@ -27,7 +27,7 @@ public:
 
 	void SetSizeFromTexture( RageTexture *pTexture );
 	void SetTextureCoords( const RectF &r );
-	void SetEffectMode( EffectMode em ) { m_EffectMode = em; }
+	virtual void SetEffectMode( EffectMode em ) { m_EffectMode = em; }
 
 	virtual void PushSelf( lua_State *L );
 

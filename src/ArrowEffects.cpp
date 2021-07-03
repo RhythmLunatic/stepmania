@@ -1163,7 +1163,7 @@ float ArrowGetPercentVisible(float fYPosWithoutReverse, int iCol, float fYOffset
 		fYPos = fYPosWithoutReverse;
 
 
-	if( fYPos < 0 && curr_options->m_bStealthPastReceptors == false)	// past Gray Arrows
+	if( fYPos < 0 && !curr_options->m_bStealthPastReceptors)	// past Gray Arrows
 		return 1;	// totally visible
 
 	const float* fAppearances = curr_options->m_fAppearances;

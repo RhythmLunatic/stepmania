@@ -121,6 +121,12 @@ public:
 	static void SetPlayerBGMBeat( PlayerNumber pn, float fBeat, float fBeatNoOffset );
 	static void SetBGMLight( int iLightNumber, float fCabinetLights );
 
+	/*
+	 * This is only ever used in NoteDisplay.cpp because only the sprite classes support
+	 * shaders and there's no other way of checking if the noteskin is a sprite or a 3D object.
+	 */
+    virtual void SetEffectMode( EffectMode em ) {  } //What could go wrong
+    virtual bool canUseShaders() { return false; }
 	/**
 	 * @brief The list of the different effects.
 	 *
