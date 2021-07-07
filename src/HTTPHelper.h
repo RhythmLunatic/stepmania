@@ -20,6 +20,7 @@ public:
 	//True if proper string, false if improper
 	static bool ParseHTTPAddress( const RString & URL, RString & Proto, RString & Server, int & Port, RString & Addy );
 	static RString StripOutContainers( const RString & In );	//Strip off "'s and ''s
+	static RString SubmitGetRequest( const RString &URL );
 	static RString SubmitPostRequest( const RString &URL, const RString &PostData ); // Sends a URL Post Request
 	void Threaded_SubmitPostRequest( const RString &URL, const RString &PostData ); // Sends a URL Post Request
 	RString GetThreadedResult();

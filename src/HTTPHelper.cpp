@@ -1,6 +1,77 @@
 #include "global.h"
 #include "HTTPHelper.h"
 
+RString HTTPHelper::SubmitGetRequest(const RString &URL) {
+    RString sBUFFER = "";
+#if !defined(WITHOUT_NETWORKING)
+    EzSockets wSocket;
+    //w
+    RString Proto;
+    RString Server;
+    int Port=80;
+    RString sAddress;
+
+
+    if( HTTPHelper::ParseHTTPAddress( URL, Proto, Server, Port, sAddress)  )
+    {
+        //sAddress = HTTPHelper::URLEncode( sAddress );
+
+        if ( sAddress != "/" )
+            sAddress = "/" + sAddress;
+
+        wSocket.close();
+        wSocket.create();
+        wSocket.setTimeout(0,250000); //acceptable timeout
+        wSocket.setBlocking(true);
+
+        if( !wSocket.connect( Server, (short) Port ) )
+        {
+            LOG->Warn("HTTPHelper::SubmitPostRequest failed to connect to %s:%d ", Server.c_str(),Port);
+            return sBUFFER;
+        }
+        //Produce HTTP POST broadcast
+
+        RString Header="";
+
+        Header = "GET "+ sAddress + " HTTP/1.1\r\n";
+        Header+= "Host: " + Server + "\r\n";
+        Header+= "User-Agent: OpenITG/1.0.0\r\n";
+        Header+= "Accept: */*\r\n";
+        //Header+= "Content-Length: " + SSTR( strlen(GetData.c_str() ) ) + "\r\n";
+        //Header+= "Content-Type: application/x-www-form-urlencoded\r\n";
+        //Header+= GetData;
+
+        wSocket.SendData( Header.c_str(), Header.length() );
+
+        wSocket.setBlocking(false);
+        int BytesGot=0;
+
+        while(1)
+        {
+            char res[HTTP_CHUNK_SIZE];
+
+            //WHY IS THIS BLOCKING UNTIL TIMEOUT OCCURS?!
+            int iSize = wSocket.ReadData( res, HTTP_CHUNK_SIZE );
+            if( iSize <= 0 )
+                break;
+
+
+            sBUFFER.append( res, iSize );
+            BytesGot += iSize;
+            if( iSize < HTTP_CHUNK_SIZE )
+                break;
+        }
+        wSocket.close();
+    }
+    else
+    {
+        LOG->Warn("HTTPHelper::SubmitGetRequest could not parse %s ", URL.c_str());
+    }
+#endif
+
+    return sBUFFER;
+}
+
 RString HTTPHelper::SubmitPostRequest(const RString &URL, const RString &PostData)
 {
 	RString sBUFFER = "";
@@ -98,7 +169,7 @@ void HTTPHelper::Threaded_SubmitPostRequest_Thread_Wrapper()
 	m_ResultLock->Unlock();
 }
 
-//Starts a threaded version of SubmitPostRequest -- Game can continue immediatly
+//Starts a threaded version of SubmitPostRequest -- Game can continue immediately
 void HTTPHelper::Threaded_SubmitPostRequest(const RString &myURL, const RString &myPostData)
 {
 	RageThread HTTPThread;

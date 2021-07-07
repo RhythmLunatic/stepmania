@@ -174,6 +174,15 @@ void MusicWheel::BeginScreen()
 		SCREENMAN->PlayStartSound();
 		m_fLockedWheelVelocity = 0;
 	}
+	//hack for RP because I want to allow difficulty changing but not the song
+#ifdef NO_PAY_MODE
+	else if (GAMESTATE->IsExtraStage2())
+    {
+        m_WheelState = STATE_LOCKED;
+        SCREENMAN->PlayStartSound();
+        m_fLockedWheelVelocity = 0;
+    }
+#endif
 
 	GAMESTATE->m_SortOrder.Set( GAMESTATE->m_PreferredSortOrder );
 
