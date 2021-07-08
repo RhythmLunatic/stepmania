@@ -584,10 +584,12 @@ struct VideoCardDefaults
 		1024,
 		false
 	),
+	//Even in 2021, this is still a problem. Unbelievable. -RL
+	//Specifically the Intel HD Graphics 3000 and all iGPUs below 500 have broken OpenGL drivers on Windows 10.
 	VideoCardDefaults(
-		"Intel.*", /* fallback: all unknown Intel cards to D3D, since Intel is notoriously bad at OpenGL */
+		"Intel.*", // fallback: all unknown Intel cards to D3D, since Intel is notoriously bad at OpenGL
 		"d3d,opengl",
-		640,480,
+		1280,720,
 		16,16,16,
 		2048,
 		false
