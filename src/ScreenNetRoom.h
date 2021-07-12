@@ -13,17 +13,29 @@ class RoomData {
 public:
 	void SetName( const RString& name ) { m_name = name; }
 	void SetDescription( const RString& desc ) { m_description = desc; }
+	void SetNumPlayers( unsigned int numPlayers) { m_numPlayers = numPlayers; }
+	void SetMaxNumPlayers( unsigned int maxNumPlayers ) { m_maxNumPlayers = maxNumPlayers; }
 	void SetState(unsigned int state) { m_state = state; }
 	void SetFlags( unsigned int iFlags ) { m_iFlags = iFlags; }
 	inline RString Name() { return m_name; }
 	inline RString Description() { return m_description; }
-	inline unsigned int State() { return m_state; }
-	inline unsigned int GetFlags() { return m_iFlags; }
+	inline unsigned int State() const { return m_state; }
+	inline unsigned int GetFlags() const { return m_iFlags; }
+    unsigned char GetNumPlayers() const {
+        return m_numPlayers;
+    }
+    unsigned char GetMaxNumPlayers() const {
+        return m_maxNumPlayers;
+    }
 private:
 	RString m_name;
 	RString m_description;
 	unsigned int m_state;
-	unsigned int m_iFlags;
+	unsigned int m_iFlags; //1 if passworded, 0 if not
+	unsigned char m_numPlayers;
+
+private:
+    unsigned char m_maxNumPlayers;
 };
 
 class ScreenNetRoom : public ScreenNetSelectBase
@@ -47,6 +59,8 @@ protected:
 
 private:
 	void UpdateRoomsList();
+	bool MenuUp( const InputEventPlus &input ) override;
+	bool MenuDown( const InputEventPlus &input ) override;
 	bool MenuLeft( const InputEventPlus &input );
 	bool MenuRight( const InputEventPlus &input );
 	void CreateNewRoom( const RString& rName,  const RString& rDesc, const RString& rPass );

@@ -113,6 +113,9 @@ void ScreenNetRoom::HandleScreenMessage( const ScreenMessage SM )
 						RoomData tmpRoomData;
 						tmpRoomData.SetName( NSMAN->m_SMOnlinePacket.ReadNT() );
 						tmpRoomData.SetDescription( NSMAN->m_SMOnlinePacket.ReadNT() );
+						tmpRoomData.SetNumPlayers( NSMAN->m_SMOnlinePacket.Read1() );
+						tmpRoomData.SetMaxNumPlayers( NSMAN->m_SMOnlinePacket.Read1() );
+                        //LOG->Trace("%i",tmpRoomData.GetMaxNumPlayers());
 						m_Rooms.push_back( tmpRoomData );
 					}
 					//Abide by protocol and read room status
@@ -259,6 +262,13 @@ bool ScreenNetRoom::MenuRight( const InputEventPlus &input )
 	return ScreenNetSelectBase::MenuRight( input ) || bHandled;
 }
 
+bool ScreenNetRoom::MenuUp(const InputEventPlus &input) {
+    return MenuLeft(input);
+}
+bool ScreenNetRoom::MenuDown(const InputEventPlus &input) {
+    return MenuRight(input);
+}
+
 void ScreenNetRoom::UpdateRoomsList()
 {
 	int difference = 0;
@@ -291,6 +301,8 @@ void ScreenNetRoom::UpdateRoomsList()
 		itemData->m_sText = m_Rooms[i].Name();
 		itemData->m_sDesc = m_Rooms[i].Description();
 		itemData->m_iFlags = m_Rooms[i].GetFlags();
+		itemData->m_numPlayers = m_Rooms[i].GetNumPlayers();
+		itemData->m_maxNumPlayers = m_Rooms[i].GetMaxNumPlayers();
 
 		switch( m_Rooms[i].State() )
 		{

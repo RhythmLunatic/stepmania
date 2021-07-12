@@ -47,7 +47,7 @@ void ScreenNetSelectMusic::Init()
 
 	FOREACH_EnabledPlayer (p)
 	{
-		m_DC[p] = GAMESTATE->m_PreferredDifficulty[p];
+		//m_DC[p] = GAMESTATE->m_PreferredDifficulty[p];
 
 		m_StepsDisplays[p].SetName( ssprintf("StepsDisplayP%d",p+1) );
 		m_StepsDisplays[p].Load( "StepsDisplayNet", NULL );
@@ -378,49 +378,16 @@ bool ScreenNetSelectMusic::MenuDown( const InputEventPlus &input )
 		}
 	}
 
-	if( GAMESTATE->m_pCurSong == NULL )
+	if( GAMESTATE->m_pCurSong == nullptr )
 		return false;
-	StepsType st = GAMESTATE->GetCurrentStyle(pn)->m_StepsType;
-	vector <Steps *> MultiSteps;
-	MultiSteps = GAMESTATE->m_pCurSong->GetStepsByStepsType( st );
-	if(MultiSteps.size() == 0)
-		m_DC[pn] = NUM_Difficulty;
-	else
-	{
-		int i;
+    ASSERT_M(!m_vpSteps.empty(),"No available steps to choose from!");
+    m_iSelection[pn] += 1;
+    wrap(m_iSelection[pn], m_vpSteps.size());
 
-		bool dcs[NUM_Difficulty];
-
-		for( i=0; i<NUM_Difficulty; ++i )
-			dcs[i] = false;
-
-		for( i=0; i<(int)MultiSteps.size(); ++i )
-			dcs[MultiSteps[i]->GetDifficulty()] = true;
-
-		for( i=0; i<NUM_Difficulty; ++i )
-		{
-			if( (dcs[i]) && (i > m_DC[pn]) )
-			{
-				m_DC[pn] = (Difficulty)i;
-				break;
-			}
-		}
-		// If failed to go up, loop
-		if( i == NUM_Difficulty )
-		{
-			for(i = 0;i<NUM_Difficulty;i++)
-			{
-				if(dcs[i])
-				{
-					m_DC[pn] = (Difficulty)i;
-					break;
-				}
-			}
-		}
-
-	}
-	UpdateDifficulties( pn );
-	GAMESTATE->m_PreferredDifficulty[pn].Set( m_DC[pn] );
+    Steps *pSteps = m_vpSteps[m_iSelection[pn]];
+    GAMESTATE->ChangePreferredDifficulty(pn, pSteps->GetDifficulty());
+    LOG->Trace("selected steps with meter %i",pSteps->GetMeter());
+    UpdateDifficulties(pn);
 	return true;
 }
 
@@ -441,7 +408,7 @@ bool ScreenNetSelectMusic::SelectCurrent()
 
 	Song * pSong = m_MusicWheel.GetSelectedSong();
 
-	if (pSong == NULL)
+	if (pSong == nullptr)
 		return false;
 
 	GAMESTATE->m_pCurSong.Set(pSong);
@@ -491,9 +458,7 @@ void ScreenNetSelectMusic::StartSelectedSong()
 	GAMESTATE->m_pCurSong.Set( pSong );
 	FOREACH_EnabledPlayer (pn)
 	{
-		StepsType st = GAMESTATE->GetCurrentStyle(pn)->m_StepsType; //StepsType_dance_single;
-		GAMESTATE->m_PreferredDifficulty[pn].Set( m_DC[pn] );
-		Steps *pSteps = SongUtil::GetStepsByDifficulty(pSong, st, m_DC[pn]);
+        Steps *pSteps = m_vpSteps[m_iSelection[pn]];
 		GAMESTATE->m_pCurSteps[pn].Set( pSteps );
 	}
 
@@ -509,19 +474,20 @@ void ScreenNetSelectMusic::StartSelectedSong()
 
 void ScreenNetSelectMusic::UpdateDifficulties( PlayerNumber pn )
 {
-	if( GAMESTATE->m_pCurSong == NULL )
+	if( GAMESTATE->m_pCurSong == nullptr )
 	{
 		m_StepsDisplays[pn].SetFromStepsTypeAndMeterAndDifficultyAndCourseType( StepsType_Invalid, 0, Difficulty_Beginner, CourseType_Invalid ); 
 		//m_DifficultyIcon[pn].SetFromSteps( pn, NULL );	// It will blank it out 
 		return;
 	}
 
-	StepsType st = GAMESTATE->GetCurrentStyle(pn)->m_StepsType;
+	//StepsType st = GAMESTATE->GetCurrentStyle(pn)->m_StepsType;
 
-	Steps * pSteps = SongUtil::GetStepsByDifficulty( GAMESTATE->m_pCurSong, st, m_DC[pn] );
+	Difficulty m_DC = GAMESTATE->m_PreferredDifficulty[pn];
+    Steps *pSteps = m_vpSteps[m_iSelection[pn]];
 	GAMESTATE->m_pCurSteps[pn].Set( pSteps );
 
-	if( ( m_DC[pn] < NUM_Difficulty ) && ( m_DC[pn] >= Difficulty_Beginner ) )
+	if( ( m_DC < NUM_Difficulty ) && ( m_DC >= Difficulty_Beginner ) )
 		m_StepsDisplays[pn].SetFromSteps( pSteps );
 	else
 		m_StepsDisplays[pn].SetFromStepsTypeAndMeterAndDifficultyAndCourseType( StepsType_Invalid, 0, Difficulty_Beginner, CourseType_Invalid );
@@ -529,7 +495,7 @@ void ScreenNetSelectMusic::UpdateDifficulties( PlayerNumber pn )
 
 void ScreenNetSelectMusic::MusicChanged()
 {
-	if( GAMESTATE->m_pCurSong == NULL )
+	if( GAMESTATE->m_pCurSong == nullptr )
 	{
 		FOREACH_EnabledPlayer (pn)
 			UpdateDifficulties( pn );
@@ -538,45 +504,41 @@ void ScreenNetSelectMusic::MusicChanged()
 		// todo: handle playing section music correctly. -aj
 		// SOUND->PlayMusic( m_sSectionMusicPath, NULL, true, 0, -1 );
 		return;
-	} 
-
-	FOREACH_EnabledPlayer (pn)
-	{
-		m_DC[pn] = GAMESTATE->m_PreferredDifficulty[pn];
-		StepsType st = GAMESTATE->GetCurrentStyle(pn)->m_StepsType;
-		vector <Steps *> MultiSteps;
-		MultiSteps = GAMESTATE->m_pCurSong->GetStepsByStepsType( st );
-		if(MultiSteps.size() == 0)
-			m_DC[pn] = NUM_Difficulty;
-		else
-		{
-			int i;
-			Difficulty Target = Difficulty_Easy;
-
-			bool dcs[NUM_Difficulty];
-
-			for( i=0; i<NUM_Difficulty; ++i )
-				dcs[i] = false;
-
-			for( i=0; i<(int)MultiSteps.size(); ++i )
-				dcs[MultiSteps[i]->GetDifficulty()] = true;
-
-			for( i=0; i<NUM_Difficulty; ++i )
-				if( dcs[i] )
-				{
-					Target = (Difficulty)i;
-					if( i >= m_DC[pn] )
-					{
-						m_DC[pn] = (Difficulty)i;
-						break;
-					}
-				}
-
-			if( i == NUM_Difficulty )
-				m_DC[pn] = Target;
-		}
-		UpdateDifficulties( pn );
 	}
+    m_vpSteps.clear();
+    StepsType st = GAMESTATE->GetCurrentStyle(PLAYER_1)->m_StepsType;
+    m_vpSteps = GAMESTATE->m_pCurSong->GetStepsByStepsType( st );
+
+    //Copied straight from ScreenSelectMusic
+    FOREACH_HumanPlayer( pn ) {
+        int &iSelection = m_iSelection[pn];
+        // Find the closest match to the user's preferred difficulty and StepsType.
+        int iCurDifference = -1;
+        FOREACH_CONST(Steps*, m_vpSteps, s) {
+            int i = s - m_vpSteps.begin();
+
+            // If the current steps are listed, use them.
+            if (GAMESTATE->m_pCurSteps[pn] == *s) {
+                iSelection = i;
+                break;
+            }
+
+            if (GAMESTATE->m_PreferredDifficulty[pn] != Difficulty_Invalid) {
+                int iDifficultyDifference = abs((*s)->GetDifficulty() - GAMESTATE->m_PreferredDifficulty[pn]);
+                int iStepsTypeDifference = 0;
+                if (GAMESTATE->m_PreferredStepsType != StepsType_Invalid)
+                    iStepsTypeDifference = abs((*s)->m_StepsType - GAMESTATE->m_PreferredStepsType);
+                int iTotalDifference = iStepsTypeDifference * NUM_Difficulty + iDifficultyDifference;
+
+                if (iCurDifference == -1 || iTotalDifference < iCurDifference) {
+                    iSelection = i;
+                    iCurDifference = iTotalDifference;
+                }
+            }
+        }
+        CLAMP( iSelection, 0, m_vpSteps.size()-1 );
+        UpdateDifficulties(pn);
+    }
 
 	// Copied from ScreenSelectMusic
 	// TODO: Update me! -aj
@@ -640,27 +602,46 @@ LUA_REGISTER_DERIVED_CLASS(ScreenNetSelectMusic, ScreenNetSelectBase)
 
 #endif
 
-/*
- * (c) 2004-2005 Charles Lohr
- * All rights reserved.
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, and/or sell copies of the Software, and to permit persons to
- * whom the Software is furnished to do so, provided that the above
- * copyright notice(s) and this permission notice appear in all copies of
- * the Software and that both the above copyright notice(s) and this
- * permission notice appear in supporting documentation.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
- * THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS
- * INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT
- * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
- * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
- * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
+/*  (c) 2021 Rhythm Lunatic.
+
+    This file is part of StepAMWorks.
+
+    StepAMWorks is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    StepAMWorks is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with StepAMWorks.  If not, see <https://www.gnu.org/licenses/>.
+
+    This file incorporates work covered by the following copyright and
+    permission notice:
+
+     * (c) 2004-2005 Charles Lohr, Joshua Allen
+     * All rights reserved.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a
+     * copy of this software and associated documentation files (the
+     * "Software"), to deal in the Software without restriction, including
+     * without limitation the rights to use, copy, modify, merge, publish,
+     * distribute, and/or sell copies of the Software, and to permit persons to
+     * whom the Software is furnished to do so, provided that the above
+     * copyright notice(s) and this permission notice appear in all copies of
+     * the Software and that both the above copyright notice(s) and this
+     * permission notice appear in supporting documentation.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+     * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+     * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
+     * THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS
+     * INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT
+     * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+     * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+     * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+     * PERFORMANCE OF THIS SOFTWARE.
  */

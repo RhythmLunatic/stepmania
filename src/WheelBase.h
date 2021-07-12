@@ -54,18 +54,18 @@ public:
 	virtual bool Select();	// return true if this selection can end the screen
 
 	WheelState GetWheelState() { return m_WheelState; }
-	bool WheelIsLocked() { return (m_WheelState == STATE_LOCKED ? true : false); }
+	bool WheelIsLocked() { return m_WheelState == STATE_LOCKED; }
 	void RebuildWheelItems( int dist = INT_MAX );	// INT_MAX = refresh all
 	// Update the list of songs to match whatever songs are indexed by the song manager (SONGMAN)
 	virtual void ReloadSongList() {}
 
 	virtual unsigned int GetNumItems() const { return m_CurWheelItemData.size(); }
-	bool IsEmpty() { return m_bEmpty; }
+	bool IsEmpty() const { return m_bEmpty; }
 	WheelItemBaseData* GetItem(unsigned int index);
 	WheelItemBaseData* LastSelected();
 	WheelItemBase *GetWheelItem( int i ) { if( i < 0 || i >= (int) m_WheelBaseItems.size() ) return NULL; return m_WheelBaseItems[i]; }
 	RString GetExpandedSectionName() { return m_sExpandedSectionName; }
-	int GetCurrentIndex() { return m_iSelection; }
+	int GetCurrentIndex() const { return m_iSelection; }
 
 	WheelItemDataType GetSelectedType() { return m_CurWheelItemData[m_iSelection]->m_Type; }
 

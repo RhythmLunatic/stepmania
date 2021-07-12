@@ -1047,7 +1047,7 @@ void ScreenSelectMusic::ChangeSteps( PlayerNumber pn, int dir )
 				return;
 		}
 
-		// the user explicity switched difficulties. Update the preferred Difficulty and StepsType
+		// the user explicitly switched difficulties. Update the preferred Difficulty and StepsType
 		Steps *pSteps = m_vpSteps[ m_iSelection[pn] ];
 		GAMESTATE->ChangePreferredDifficultyAndStepsType( pn, pSteps->GetDifficulty(), pSteps->m_StepsType );
 	}

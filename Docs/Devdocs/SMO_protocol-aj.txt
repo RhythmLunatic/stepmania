@@ -14,6 +14,8 @@ This has nothing to do with the server versions (see below)
   1: SMLan (old)
 128: SMOnline
 129: SMOnline with "better song identification using chart hashes"
+130: Early Etterna protocol
+131: StepAMWorks Protocol
 
 ==Notes==
 I use the term "client" and "player" interchangeably.
@@ -94,6 +96,7 @@ Payload:
 	   2 = Medium
 	   3 = Hard
 	   4 = Expert
+	   5 = Edit
    LSN Secondary Player Difficulty (values same as primary)
    MSN Start Position:
 	   0 = pre-sync
@@ -106,6 +109,8 @@ Payload:
    NT  Song options string
    NT  Primary player's options (null if doesn't exist)
    NT  Secondary player's options (null if doesn't exist)
+   If server version 130 or above:
+   NT  Chart hash, based on notes in the chart
 
 Expected response: Server 0x03 (003)
 ________________________________________________________________________________
@@ -392,8 +397,8 @@ The status flag:
 0x00 = Inactive (user unknown)
 0x01 = Active (user known)
 0x02 = On a selection screen
-0x02 = In options
-0x02 = On Eval.
+0x03 = In options
+0x04 = On Eval.
 ________________________________________________________________________________
 0x8A (138) [0x0A (010)] Force change to NetSelectMusic
 
@@ -437,6 +442,15 @@ ________________________________________________________________________________
 Payload:
 [Size] [Description]
 	NT XML data
+	
+________________________________________________________________________________
+0x10 (016) Friends List Update
+
+0x01 num friends
+for num friends
+	0x01 status
+	NT   name of player
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ==[ Client SMOnline Packets ]===================================================
@@ -516,22 +530,26 @@ if Update Type == 1 (Update room/game list)
 [Size] [Description]
   0x01 Number of rooms
 for 1 to Number of Rooms where room number = # do
-	NT Room# Title
-	NT Room# Description
+		NT Room# Title
+		NT Room# Description
+	  0x01 number of players inside the room - Version 131 or higher only
+	  0x01 maximum number of players (room size) - Version 131 or higher only
 
-Reverse compatiblity Room Status
-[Size] [Description]
-  0x01 Room# Status
-	   0 = Normal
-	   1 = unused
-	   2 = Playing Game
-	   3 = Song Selection Stage1
-	   4 = Song Selection Stage2
+	For compatibility with earlier clients this array comes after the title & description array.
 
-Reverse compatiblity Room Flags
-[Size] [Description]
-  0x01 Room# Flags
-	   if bit 0, Passworded
+	Room Status
+	[Size] [Description]
+	  0x01 Room# Status
+		   0 = Normal
+		   1 = unused
+		   2 = Playing Game
+		   3 = Song Selection Stage1
+		   4 = Song Selection Stage2
+
+	Room Flags
+	[Size] [Description]
+	  0x01 Room# Flags
+		   if bit 0, Passworded
 ________________________________________________________________________________
 0x02 (002) Request general information from server.
 

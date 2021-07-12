@@ -14,7 +14,9 @@ struct RoomWheelItemData : public WheelItemBaseData
 		WheelItemBaseData( type, sTitle, color ), m_sDesc(sDesc), m_iFlags(0) { };
 
 	RString		m_sDesc;
-	unsigned int	m_iFlags;
+	unsigned int	m_iFlags; //Refer to ScreenNetRoom.h
+	unsigned char m_numPlayers;
+	unsigned char m_maxNumPlayers;
 };
 
 class RoomWheelItem : public WheelItemBase
@@ -33,6 +35,7 @@ private:
 	AutoActor	m_sprOverPart;
 	BitmapText	m_text;
 	BitmapText	m_Desc;
+	BitmapText  m_numPlayers;
 };
 
 struct RoomInfo

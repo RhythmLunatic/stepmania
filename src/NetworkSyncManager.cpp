@@ -154,7 +154,7 @@ void NetworkSyncManager::PostStartUp( const RString& ServerIP )
 
 	useSMserver = true;
 
-	m_startupStatus = 1;	// Connection attepmpt successful
+	m_startupStatus = 1;	// Connection attempt successful
 
 	// If network play is desired and the connection works,
 	// halt until we know what server version we're dealing with
@@ -195,7 +195,13 @@ void NetworkSyncManager::PostStartUp( const RString& ServerIP )
 	NetPlayerClient->blocking = false;
 
 	m_ServerVersion = m_packet.Read1();
-	if( m_ServerVersion >= 128 )
+	if( m_ServerVersion != 131 )
+    {
+	   useSMserver=false;
+	   m_startupStatus = 3;
+	   return;
+    }
+	else
 		isSMOnline = true;
 
 	m_ServerName = m_packet.ReadNT();
@@ -382,6 +388,9 @@ void NetworkSyncManager::StartRequest( short position )
 
 	unsigned char ctr=0;
 
+	//You're not reading this wrong... This protocol can only support charts from lv0-127!
+	//Why it was ever designed this way is a complete mystery, since meters are at least a
+	//16-bit signed int capable of supporting numbers ranging from -32768 to 32767.
 	Steps * tSteps;
 	tSteps = GAMESTATE->m_pCurSteps[PLAYER_1];
 	if( tSteps!=NULL && GAMESTATE->IsPlayerEnabled(PLAYER_1) )
@@ -503,6 +512,7 @@ void NetworkSyncManager::StartRequest( short position )
 
 static LocalizedString CONNECTION_SUCCESSFUL( "NetworkSyncManager", "Connection to '%s' successful." );
 static LocalizedString CONNECTION_FAILED	( "NetworkSyncManager", "Connection failed." );
+static LocalizedString CONNECTION_FAILED_CLIENT_TOO_OLD ( "NetworkSyncManager", "Connection failed: The client is out of date.");
 void NetworkSyncManager::DisplayStartupStatus()
 {
 	RString sMessage("");
@@ -510,7 +520,7 @@ void NetworkSyncManager::DisplayStartupStatus()
 	switch (m_startupStatus)
 	{
 	case 0:
-		//Networking wasn't attepmpted
+		//Networking wasn't attempted
 		return;
 	case 1:
 		sMessage = ssprintf( CONNECTION_SUCCESSFUL.GetValue(), m_ServerName.c_str() );
@@ -518,6 +528,8 @@ void NetworkSyncManager::DisplayStartupStatus()
 	case 2:
 		sMessage = CONNECTION_FAILED.GetValue();
 		break;
+    case 3:
+        sMessage = CONNECTION_FAILED_CLIENT_TOO_OLD.GetValue();
 	}
 	SCREENMAN->SystemMessage( sMessage );
 }
@@ -1090,27 +1102,46 @@ LuaFunction( ReportStyle,			ReportStyle() )
 LuaFunction( GetServerName,			NSMAN->GetServerName() )
 LuaFunction( CloseConnection,		CloseNetworkConnection() )
 
-/*
- * (c) 2003-2004 Charles Lohr, Joshua Allen
- * All rights reserved.
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, and/or sell copies of the Software, and to permit persons to
- * whom the Software is furnished to do so, provided that the above
- * copyright notice(s) and this permission notice appear in all copies of
- * the Software and that both the above copyright notice(s) and this
- * permission notice appear in supporting documentation.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
- * THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS
- * INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT
- * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
- * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
- * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
+/*  (c) 2021 Rhythm Lunatic.
+
+    This file is part of StepAMWorks.
+
+    StepAMWorks is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    StepAMWorks is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with StepAMWorks.  If not, see <https://www.gnu.org/licenses/>.
+
+    This file incorporates work covered by the following copyright and
+    permission notice:
+
+     * (c) 2003-2004 Charles Lohr, Joshua Allen
+     * All rights reserved.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a
+     * copy of this software and associated documentation files (the
+     * "Software"), to deal in the Software without restriction, including
+     * without limitation the rights to use, copy, modify, merge, publish,
+     * distribute, and/or sell copies of the Software, and to permit persons to
+     * whom the Software is furnished to do so, provided that the above
+     * copyright notice(s) and this permission notice appear in all copies of
+     * the Software and that both the above copyright notice(s) and this
+     * permission notice appear in supporting documentation.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+     * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+     * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
+     * THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS
+     * INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT
+     * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+     * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+     * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+     * PERFORMANCE OF THIS SOFTWARE.
  */

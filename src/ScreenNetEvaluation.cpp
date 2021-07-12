@@ -233,10 +233,45 @@ class LunaScreenNetEvaluation: public Luna<ScreenNetEvaluation>
 {
 public:
 	static int GetNumActivePlayers( T* p, lua_State *L ) { lua_pushnumber( L, p->GetNumActivePlayers() ); return 1; }
+    static int GetPlayerEvalStats( T* p, lua_State *L ) {
+        int player = IArg(1);
+        if (player > p->GetNumActivePlayers())
+            luaL_error( L, "%i out of bounds", player );
+        EndOfGame_PlayerData playerData = NSMAN->m_EvalPlayerData[player];
+        lua_createtable(L, 6, 0); //size of struct
 
+        lua_pushstring(L, NSMAN->m_PlayerNames[playerData.name].c_str());
+        lua_rawseti(L, -2, 1);
+
+        lua_pushnumber(L, playerData.score);
+        lua_rawseti(L, -2, 2);
+
+        lua_pushnumber(L, playerData.grade);
+        lua_rawseti(L, -2, 3);
+
+        LuaHelpers::Push(L, playerData.difficulty);
+        lua_rawseti(L, -2, 4);
+
+        //Turns out it only works with vectors
+        //LuaHelpers::CreateTableFromArray<int>(playerData.tapScores, L);
+        lua_createtable(L, 8, 0); //NETNUMTAPSCORES=8 in NetworkSyncManager.h
+        for (int i=0;i<8;++i)
+        {
+            lua_pushnumber(L,playerData.tapScores[i]);
+            lua_rawseti(L, -2, i+1);
+        }
+        lua_rawseti(L,-2,5);
+
+        lua_pushstring(L, playerData.playerOptions.c_str());
+        lua_rawseti(L, -2, 6);
+
+
+	    return 1;
+	}
 	LunaScreenNetEvaluation()
 	{
   		ADD_METHOD( GetNumActivePlayers );
+  		ADD_METHOD( GetPlayerEvalStats );
 	}
 };
 
@@ -245,28 +280,46 @@ LUA_REGISTER_DERIVED_CLASS( ScreenNetEvaluation, ScreenEvaluation )
 
 #endif
 
-/*
- * (c) 2004-2005 Charles Lohr, Joshua Allen
- * All rights reserved.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, and/or sell copies of the Software, and to permit persons to
- * whom the Software is furnished to do so, provided that the above
- * copyright notice(s) and this permission notice appear in all copies of
- * the Software and that both the above copyright notice(s) and this
- * permission notice appear in supporting documentation.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
- * THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS
- * INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT
- * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
- * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
- * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- */
+/*  (c) 2021 Rhythm Lunatic.
 
+    This file is part of StepAMWorks.
+
+    StepAMWorks is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    StepAMWorks is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with StepAMWorks.  If not, see <https://www.gnu.org/licenses/>.
+
+    This file incorporates work covered by the following copyright and
+    permission notice:
+
+     * (c) 2004-2005 Charles Lohr, Joshua Allen
+     * All rights reserved.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a
+     * copy of this software and associated documentation files (the
+     * "Software"), to deal in the Software without restriction, including
+     * without limitation the rights to use, copy, modify, merge, publish,
+     * distribute, and/or sell copies of the Software, and to permit persons to
+     * whom the Software is furnished to do so, provided that the above
+     * copyright notice(s) and this permission notice appear in all copies of
+     * the Software and that both the above copyright notice(s) and this
+     * permission notice appear in supporting documentation.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+     * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+     * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
+     * THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS
+     * INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT
+     * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+     * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+     * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+     * PERFORMANCE OF THIS SOFTWARE.
+ */

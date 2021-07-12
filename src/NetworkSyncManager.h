@@ -58,7 +58,7 @@ const NSCommand NSServerOffset = (NSCommand)128;
 // TODO: Provide a Lua binding that gives access to this data. -aj
 struct EndOfGame_PlayerData
 {
-	int name;
+	int name; //It maps to m_PlayerNames
 	int score;
 	int grade;
 	Difficulty difficulty;
@@ -204,8 +204,13 @@ private:
 	int m_step;
 	int m_score;
 	int m_combo;
-    
-	int m_startupStatus;	// Used to see if attempt was successful or not.
+
+    // Used to see if attempt was successful or not.
+    // 0 - Connection hasn't been attempted yet.
+    // 1 - Connection succesful.
+    // 2 - Connection failed.
+    // 3 - Client too old to connect to server.
+	int m_startupStatus;
 	int m_iSalt;
 
 	bool m_scoreboardchange[NUM_NSScoreBoardColumn];

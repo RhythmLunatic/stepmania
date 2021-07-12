@@ -1885,7 +1885,7 @@ public:
         //I have no idea what this does, I took it from get_coefficients
         //Create table to hold tables
 		lua_createtable(L, size,0);
-		for (size_t i = 0; i < size; ++i)
+		for (int i = 0; i < size; ++i)
         {
 			//Create table inside the table.
 			// I think the size is required in advance for rawseti to know what index to put the pushed thing into.

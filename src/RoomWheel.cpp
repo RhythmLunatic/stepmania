@@ -52,7 +52,8 @@ RoomWheelItem::RoomWheelItem( const RoomWheelItem &cpy ):
 	m_sprColorPart( cpy.m_sprColorPart ),
 	m_sprOverPart( cpy.m_sprOverPart ),
 	m_text( cpy.m_text ),
-	m_Desc( cpy.m_Desc )
+	m_Desc( cpy.m_Desc ),
+	m_numPlayers( cpy.m_numPlayers )
 {
 	if( cpy.GetNumChildren() != 0 )
 	{
@@ -61,6 +62,7 @@ RoomWheelItem::RoomWheelItem( const RoomWheelItem &cpy ):
 		this->AddChild( m_sprOverPart );
 		this->AddChild( &m_text );
 		this->AddChild( &m_Desc );
+		this->AddChild( &m_numPlayers);
 	}
 }
 
@@ -82,6 +84,11 @@ void RoomWheelItem::Load( RString sType )
 	m_Desc.LoadFromFont( THEME->GetPathF("RoomWheel","text") );
 	LOAD_ALL_COMMANDS_AND_SET_XY( m_Desc );
 	this->AddChild( &m_Desc );
+
+    m_numPlayers.SetName( "NumPlayers" );
+    m_numPlayers.LoadFromFont( THEME->GetPathF("RoomWheel","NumPlayers") );
+    LOAD_ALL_COMMANDS_AND_SET_XY( m_numPlayers );
+    this->AddChild( &m_numPlayers );
 
 	m_sprOverPart.Load( THEME->GetPathG(sType,"OverPart") );
 	this->AddChild( m_sprOverPart );
@@ -171,6 +178,21 @@ void RoomWheelItem::LoadFromWheelItemData( const WheelItemBaseData *pWID, int iI
 	m_Desc.SetText( tmpdata->m_sDesc );
 	m_Desc.SetDiffuseColor( pWID->m_color );
 	m_sprColorPart->SetDiffuse( pWID->m_color );
+
+	/*
+	 * There's actually no way for a wheel object to know if this is a button to create a new room
+	 * or just an existing room since the input handler above just checks if the current selection is
+	 * 0.
+	 */
+	if (iIndex == 0)
+	    m_numPlayers.SetVisible(false);
+	else
+    {
+
+        m_numPlayers.SetText(ssprintf("%d/%d",tmpdata->m_numPlayers, tmpdata->m_maxNumPlayers));
+        m_numPlayers.SetVisible(true);
+        //m_numPlayers.SetText("255/255");
+    }
 }
 
 void RoomWheel::Move( int n )

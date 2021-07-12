@@ -55,7 +55,10 @@ private:
 	MusicWheel m_MusicWheel;
 
 	StepsDisplay m_StepsDisplays[NUM_PLAYERS];
-	Difficulty m_DC[NUM_PLAYERS];
+	// Yes I know these two variables are protected in the parent class...
+    vector<Steps*>		m_vpSteps;
+    int			 m_iSelection[NUM_PLAYERS];
+	//Difficulty m_DC[NUM_PLAYERS];
 
 	void UpdateDifficulties( PlayerNumber pn );
 
